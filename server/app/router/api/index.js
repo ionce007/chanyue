@@ -14,6 +14,7 @@ const AdController = require('../../controller/api/ad.js');
 const MessageController = require('../../controller/api/message.js');
 const upload = require('../../extend/upload.js');
 const auth = require('../../middleware/auth.js');
+const QiniuController = require('../../controller/api/qiniu.js')
 
 // 验证码
 router.get('/captcha', AdminController.captcha); // 验证码
@@ -121,5 +122,7 @@ router.get('/message/detail', MessageController.detail);
 router.post('/message/create', auth(), MessageController.create);
 router.get('/message/delete', auth(), MessageController.delete);
 router.post('/message/update', auth(), MessageController.update);
+
+router.get('/qiniu/getUploadToken',QiniuController.getUploadToken)
 
 module.exports = router;

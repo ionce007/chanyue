@@ -452,6 +452,17 @@ const routes = [
         },
         component:()=>import('../views/memberManagement/menberLevels/index.vue'),
       },
+      {
+        path:'/demo/qiniuOss',
+        name:'qiniuOss',
+        meta:{
+          title:'七牛oss',
+          auth:false,
+          icon:'',
+          level:1
+        },
+        component:()=>import('../views/demo/qiniuOss/Index.vue'),
+      },
     ],
   },
 

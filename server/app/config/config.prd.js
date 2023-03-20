@@ -93,4 +93,11 @@ config.debug = false;
 config.template = 'lianmeng';
 config.apiService = 'api';
 
+// 七牛云上传相关配置
+config.qiniuOss = {
+    accessKey:'',
+    secretKey:'',
+    bucket:''
+}
+
 module.exports = config;
