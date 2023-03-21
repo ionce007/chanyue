@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const SysMenuController = require('../../controller/api/sys_menu.js');
 const AdminController = require('../../controller/api/admin.js');
 const ArticleController = require('../../controller/api/article.js');
 const SiteController = require('../../controller/api/site.js');
 const CategoryController = require('../../controller/api/category.js');
+const MemberController = require('../../controller/api/member.js');
 const PageController = require('../../controller/api/page.js');
 const ModelController = require('../../controller/api/model.js');
 const FieldController = require('../../controller/api/field.js');
@@ -12,6 +14,7 @@ const TagController = require('../../controller/api/tag.js');
 const FriendlinkController = require('../../controller/api/friendlink.js');
 const AdController = require('../../controller/api/ad.js');
 const MessageController = require('../../controller/api/message.js');
+
 const upload = require('../../extend/upload.js');
 const auth = require('../../middleware/auth.js');
 const QiniuController = require('../../controller/api/qiniu.js')
@@ -48,6 +51,15 @@ router.get('/category/search', CategoryController.search);
 router.get('/category/delete', auth(), CategoryController.delete);
 router.post('/category/update', auth(), CategoryController.update);
 router.post('/category/create', auth(), CategoryController.create);
+
+//系统菜单
+router.get('/sys_memu/find', SysMenuController.find);
+router.get('/sys_memu/findId', SysMenuController.findId);
+router.get('/sys_memu/findSubId', SysMenuController.findSubId);
+router.get('/sys_memu/search', SysMenuController.search);
+router.get('/sys_memu/delete', auth(), SysMenuController.delete);
+router.post('/sys_memu/update', auth(), SysMenuController.update);
+router.post('/sys_memu/create', auth(), SysMenuController.create);
 
 // 文章栏目
 router.get('/article/list', ArticleController.list);
@@ -123,6 +135,17 @@ router.post('/message/create', auth(), MessageController.create);
 router.get('/message/delete', auth(), MessageController.delete);
 router.post('/message/update', auth(), MessageController.update);
 
+
+//会员管理
+router.get('/member/find', MemberController.find);
+router.get('/member/findId', MemberController.findId);
+router.get('/member/findSubId', MemberController.findSubId);
+router.get('/member/search', MemberController.search);
+router.get('/member/delete', auth(), MemberController.delete);
+router.post('/member/update', auth(), MemberController.update);
+router.post('/member/create', auth(), MemberController.create);
+
+// 七牛云相关
 router.get('/qiniu/getUploadToken',QiniuController.getUploadToken)
 
 module.exports = router;
