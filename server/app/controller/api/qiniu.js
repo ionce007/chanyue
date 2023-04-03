@@ -21,6 +21,16 @@ class QiniuController extends BaseController {
     }
   }
 
+  // 获取七牛云bucket domain
+  static async getBucketDomain(req, res, next) {
+    try {
+      const data = await QiniuService.getBucketDomain()
+      res.json({ ...success, data: data })
+    } catch (error) {
+      next(error);
+    }
+  }
+
 }
 
 module.exports = QiniuController;

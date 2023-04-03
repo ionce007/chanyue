@@ -147,5 +147,6 @@ router.post('/member/create', auth(), MemberController.create);
 
 // 七牛云相关
 router.get('/qiniu/getUploadToken',QiniuController.getUploadToken)
+router.get('/qiniu/getBucketDomain',QiniuController.getBucketDomain)
 
 module.exports = router;
