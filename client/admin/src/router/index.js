@@ -456,15 +456,26 @@ const routes = [
           import("../views/memberManagement/menberLevels/index.vue"),
       },
       {
-        path:'/demo/qiniuOss',
-        name:'qiniuOss',
+        path:'/demo/qiniu/clientUpload',
+        name:'clientUpload',
         meta:{
-          title:'七牛oss',
+          title:'七牛云客户端上传',
           auth:false,
           icon:'',
           level:1
         },
-        component:()=>import('../views/demo/qiniuOss/Index.vue'),
+        component:()=>import('../views/demo/qiniuOss/ClientUpload.vue'),
+      },
+      {
+        path:'/demo/qiniu/serverUpload',
+        name:'serverUpload',
+        meta:{
+          title:'七牛云服务端上传',
+          auth:false,
+          icon:'',
+          level:1
+        },
+        component:()=>import('../views/demo/qiniuOss/ServerUpload.vue'),
       },
     ],
   },

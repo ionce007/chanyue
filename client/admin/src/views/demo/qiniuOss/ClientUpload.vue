@@ -93,7 +93,11 @@ const upload = (file:UploadFile)=>{
     
     let _file = file?.file;
     // 唯一文件名 七牛etag+时间戳（etag 是根据官网node的方案改造的纯js方法）
-    let key = `${getEtag(_file)}_${new Date().getTime()}`;
+    let date= new Date();
+    let year = date.getFullYear();
+    let month = (date.getMonth()+1).toString().padStart(2,'0');
+    let day = date.getDate().toString().padStart(2,'0');
+    let key = `${year}/${month}/${day}/${getEtag(_file)}_${new Date().getTime()}`;
     let token=res.data.token;
     let putExtra = {}
     let config = {}

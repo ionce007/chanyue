@@ -31,6 +31,20 @@ class QiniuController extends BaseController {
     }
   }
 
+  // 服务端直传七牛
+  static async upload(req,res,next){
+    try {
+    
+      let file =  req.files;
+      //  console.log('file1:',file)
+      const data = await QiniuService.upload(file[0])
+     
+      res.json({ ...success, data: data})
+    } catch (error) {
+      next(error);
+    }
+  }
+
 }
 
 module.exports = QiniuController;
