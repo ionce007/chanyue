@@ -3,6 +3,7 @@ const BaseService = require("./base");
 const qiniu = require('qiniu');
 const config = require('../../config/config.js')
 const axios = require('axios');
+const qetag = require('../../utils/qetag')
 
 class QiniuService extends BaseService {
 
@@ -27,6 +28,21 @@ class QiniuService extends BaseService {
     };
     let putPolicy = new qiniu.rs.PutPolicy(options);
     return putPolicy.uploadToken(mac);
+  }
+
+  // 生成唯一上传名字
+  static async _createFileName(file){
+    return new Promise(resove=>{
+      // 唯一文件名 七牛etag+时间戳
+      let date= new Date();
+      let year = date.getFullYear();
+      let month = (date.getMonth()+1).toString().padStart(2,'0');
+      let day = date.getDate().toString().padStart(2,'0');
+      qetag(file,function(_etag){
+        let key = `${year}/${month}/${day}/${_etag}_${new Date().getTime()}`;
+        resove(key)
+      })
+    })
   }
 
   // 获取上传token
@@ -62,7 +78,7 @@ class QiniuService extends BaseService {
         null,
         headers
     );
-    console.log('accessToken',accessToken)
+    // console.log('accessToken',accessToken)
     
     let result = await axios({
       method:'get',
@@ -88,25 +104,25 @@ class QiniuService extends BaseService {
   }
 
   static async upload(file){
-
-   console.log('1111',file)
-    //上传到七牛后保存的文件名
-    let key = file.filename;
-    
-    var uploadToken = await this._getToken();
-    var config = new qiniu.conf.Config();
-    var localFile = file.path;
+  
+   
+    let key = await this._createFileName(file)
+    // console.log('key',key)
+    let uploadToken = await this._getToken();
+    let _config = new qiniu.conf.Config();
+    console.log('_config',_config)
+    let localFile = file.path;
     // config.zone = qiniu.zone.Zone_z0;
-    var formUploader = new qiniu.form_up.FormUploader(config);
-    var putExtra = new qiniu.form_up.PutExtra();
+    let formUploader = new qiniu.form_up.FormUploader(_config);
+    let putExtra = new qiniu.form_up.PutExtra();
     // file
     putExtra.fname =file.filename;
     // putExtra.crc32 = 3497766758;
     putExtra.metadata = {
-        'x-qn-meta-name': 'qiniu'
+        // 'x-qn-meta-name': 'qiniu'
     };
     let result = new Promise(resove=>{
-      formUploader.putFile(uploadToken, null, localFile, putExtra, function (respErr,
+      formUploader.putFile(uploadToken, key, localFile, putExtra, function (respErr,
           respBody, respInfo) {
           if (respErr) {
               throw respErr;
@@ -123,7 +139,9 @@ class QiniuService extends BaseService {
       });
     })
     
-    console.log('result',result)
+    
+    // let bucketInfo = await this.getBucketDomain();
+    // let fullPath = `//${bucketInfo.bucketDomain}/${config.qiniuOss.bucket}/${key}`
     return result
 
 
