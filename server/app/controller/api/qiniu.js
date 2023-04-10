@@ -37,9 +37,17 @@ class QiniuController extends BaseController {
     
       let file =  req.files;
       //  console.log('file1:',file)
-      const data = await QiniuService.upload(file[0])
+      const uploadResult = await QiniuService.upload(file[0])
+      // 如果上线后配置了固定域名这里可以不要了，直接从配置返回
+      let bucketInfo = await QiniuService.getBucketDomain();
+      console.log('bucketInfo:',bucketInfo)
+      if(uploadResult.code==200){
+        res.json({ ...success, data: Object.assign(uploadResult.data,bucketInfo)})
+      }else{
+        res.json({...fail,data:uploadResult.data})
+      }
      
-      res.json({ ...success, data: data})
+      
     } catch (error) {
       next(error);
     }

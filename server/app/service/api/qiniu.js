@@ -91,9 +91,9 @@ class QiniuService extends BaseService {
       }
     }).then((res)=>{
       let bucketDomain = res?.data[0] || ''
-      console.log('bucketDomain',bucketDomain)
+      // console.log('bucketDomain',bucketDomain)
       return {
-        'bucketDomain':bucketDomain
+        'bucketDomain':`http://${bucketDomain}`
       }
     }).catch(err=>{
       return {
@@ -121,27 +121,26 @@ class QiniuService extends BaseService {
     putExtra.metadata = {
         // 'x-qn-meta-name': 'qiniu'
     };
-    let result = new Promise(resove=>{
-      formUploader.putFile(uploadToken, key, localFile, putExtra, function (respErr,
-          respBody, respInfo) {
+    let result = new Promise(async resove=>{
+
+      let bucketInfo = await this.getBucketDomain();
+      let bucketDomain = bucketInfo.bucketDomain
+
+      formUploader.putFile(
+        uploadToken,
+        key, 
+        localFile, 
+        putExtra, 
+        function (respErr,respBody, respInfo) {
           if (respErr) {
               throw respErr;
           }
-    
-          if (respInfo.statusCode == 200) {
-              console.log(respBody);
-              resove(respBody) 
-          } else {
-              console.log(respInfo.statusCode);
-              console.log(respBody);
-              resove(respBody) 
-          }
+          resove({
+            code:respInfo.statusCode ,
+            data:respBody
+          })
       });
     })
-    
-    
-    // let bucketInfo = await this.getBucketDomain();
-    // let fullPath = `//${bucketInfo.bucketDomain}/${config.qiniuOss.bucket}/${key}`
     return result
 
 
