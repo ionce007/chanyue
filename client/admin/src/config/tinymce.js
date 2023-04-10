@@ -2,11 +2,12 @@ export let tinymceSet = {
   // 开启组件拓展的 上传图片功能，工具栏 图片按钮 弹框中出现 `upload` 选项
   custom_images_upload: true,
   // 复用 图片上传 api 地址
-  images_upload_url: "/api/upload",
+  images_upload_url: "/api/qiniu/upload",
   // 上传成功回调函数，return 图片地址。默认 response.location
   custom_images_upload_callback: (res) => {
+    console.log('res::::',res)
     if (res.code === 200) {
-      return res.data.path;
+      return `${res?.data?.bucketDomain}/${res?.data?.key}`;
     }
   },
   // 上传 api 请求头

@@ -80,7 +80,8 @@
           <el-form-item label="缩略图">
             <el-upload
               class="avatar-uploader"
-              action="/api/upload"
+              action="/api/qiniu/upload"
+              accept="image/*"
               :on-success="upload"
               :show-file-list="false"
               :before-upload="beforeUpload"
@@ -378,7 +379,7 @@ export default {
     //上传缩略图
     upload(res) {
       if (res.code === 200) {
-        this.params.img = res.data.path;
+        this.params.img = `${res?.data?.bucketDomain}/${res?.data?.key}`;
       }
     },
 
