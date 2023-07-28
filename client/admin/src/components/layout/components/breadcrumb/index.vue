@@ -26,10 +26,10 @@ const route = useRoute();
 // 生成数组数据
 const breadcrumbData = ref([]);
 const getBreadcrumbData = () => {
-  const list = route.matched.filter((item) => item.name !== "index");
-  console.log("list--->", list);
+  // const list = route.matched.filter((item) => item.name !== "index");
+  // console.log("list--->", list);
   breadcrumbData.value = route.matched.filter(
-    (item) => item.meta && item.meta.title
+    (item) => item.meta && item.meta.title,
   );
 };
 // 监听路由变化时触发
@@ -40,7 +40,7 @@ watch(
   },
   {
     immediate: true,
-  }
+  },
 );
 
 // 处理点击事件

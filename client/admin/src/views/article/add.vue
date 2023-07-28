@@ -106,19 +106,19 @@
                 </el-popover>
               </el-upload>
 
-              <el-popover placement="right" :width="400" trigger="hover">
+              <el-popover
+                v-if="params.img"
+                placement="right"
+                :width="400"
+                trigger="hover"
+              >
                 <template #reference>
                   <el-image
                     class="avatar-uploader-icon pointer ml-10"
-                    v-if="params.img"
                     :src="params.img"
                   />
                 </template>
-                <el-image
-                  style="width: 100%"
-                  v-if="params.img"
-                  :src="params.img"
-                />
+                <el-image style="width: 100%" :src="params.img" />
               </el-popover>
 
               <el-button type="primary" class="ml-10" @click="drawer = true">

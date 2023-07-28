@@ -2,7 +2,6 @@ import { defineStore } from "pinia";
 import Login from "@/api/Login";
 
 const modules = import.meta.glob("@/views/*/*.vue");
-console.log("modules--->", modules);
 import { setCookie, getCookie } from "@/utils/tool.js";
 export const userStore = defineStore("user", {
   state: () => ({
@@ -62,7 +61,7 @@ export const userStore = defineStore("user", {
       //const fullPathRoutes = getFullPathRoutes(accessRoutes, "");
       //将redirect改为children的第一个
       // updateRoutesRedirect(fullPathRoutes);
-      console.log("fullPathRoutes-->", accessRoutes);
+      // console.log("fullPathRoutes-->", accessRoutes);
       this.menuList = accessRoutes;
       return accessRoutes;
     },
@@ -116,7 +115,7 @@ function getFullPathRoutes(routes, parentPath) {
     if (temp?.children?.length > 0) {
       temp.children = getFullPathRoutes(
         temp.children,
-        temp.path + (temp.path === "/" ? "" : "/")
+        temp.path + (temp.path === "/" ? "" : "/"),
       );
     }
   });
@@ -139,11 +138,9 @@ function dealRoute(routes) {
   let res = []; //递归的适合函数内部形成作用域，不影响这个
   routes.forEach((item) => {
     if (item.component) {
-      console.log("oooo----0000", item.component);
       item.component = item.component.replace("@/", "/src/");
       item.component = modules[`${item.component}`];
     }
-    console.log("item", item);
     res.push(item);
     if (item.children) {
       dealRoute(item.children);

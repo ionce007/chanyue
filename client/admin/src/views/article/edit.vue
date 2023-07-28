@@ -108,19 +108,19 @@
                 </el-popover>
               </el-upload>
 
-              <el-popover placement="right" :width="400" trigger="hover">
+              <el-popover
+                v-if="params.img"
+                placement="right"
+                :width="400"
+                trigger="hover"
+              >
                 <template #reference>
                   <el-image
                     class="avatar-uploader-icon pointer ml-10"
-                    v-if="params.img"
                     :src="params.img"
                   />
                 </template>
-                <el-image
-                  style="width: 100%"
-                  v-if="params.img"
-                  :src="params.img"
-                />
+                <el-image style="width: 100%" :src="params.img" />
               </el-popover>
 
               <el-button type="primary" class="ml-10" @click="drawer = true">
@@ -139,7 +139,7 @@
                     :key="index"
                     :src="item"
                     @click="selectCover(item)"
-                    fit="fit"
+                    fit="fill"
                   />
                 </div>
               </el-drawer>
@@ -301,7 +301,6 @@ import { update, detail, findField } from "@/api/article.js";
 import Vue3Tinymce from "@jsdawn/vue3-tinymce";
 import { tinymceSet } from "@/config/tinymce.js";
 import { search } from "@/api/tag.js";
-import { Plus } from "@element-plus/icons-vue";
 import {
   getImgUrlFromStr,
   filterHtml,
@@ -315,7 +314,6 @@ export default {
   name: "article-edit",
   components: {
     Vue3Tinymce,
-    Plus,
   },
   data: () => {
     return {
