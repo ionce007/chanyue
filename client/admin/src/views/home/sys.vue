@@ -150,7 +150,7 @@
 import { siteInfo, updateInfo, updateSeo } from "@/api/site.js";
 
 export default {
-  name: "home-sys",
+  name: "sys-index",
   data: () => {
     return {
       loading: true,

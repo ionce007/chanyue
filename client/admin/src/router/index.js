@@ -49,10 +49,10 @@ export const asyncRoutes = [
       isShow: true,
       role: ["admin"],
     },
-    redirect: "/sys/index",
+    redirect: "/system",
     children: [
       {
-        path: "/sys/index",
+        path: "/system",
         name: "sys-index",
         component: "@/views/home/sys.vue",
         meta: {

@@ -91,9 +91,19 @@
                 :show-file-list="false"
                 :before-upload="beforeUpload"
               >
-                <el-icon class="avatar-uploader-icon">
-                  <Plus />
-                </el-icon>
+                <el-popover
+                  placement="top-start"
+                  title="上传"
+                  :width="200"
+                  trigger="hover"
+                  content="上传图片作为封面图，尺寸240*180，大小50k内"
+                >
+                  <template #reference>
+                    <el-icon class="avatar-uploader-icon">
+                      <MostlyCloudy />
+                    </el-icon>
+                  </template>
+                </el-popover>
               </el-upload>
 
               <el-popover placement="right" :width="400" trigger="hover">
@@ -110,6 +120,27 @@
                   :src="params.img"
                 />
               </el-popover>
+
+              <el-button type="primary" class="ml-10" @click="drawer = true">
+                默认封面图
+              </el-button>
+
+              <el-drawer
+                v-model="drawer"
+                title="默认封面图"
+                class="w-300"
+                :with-header="false"
+              >
+                <div class="cover row">
+                  <el-image
+                    v-for="(item, index) of drawerList"
+                    :key="index"
+                    :src="item"
+                    @click="selectCover(item)"
+                    fit="fit"
+                  />
+                </div>
+              </el-drawer>
 
               <el-input class="ml-10 flex-1" v-model="params.img"></el-input>
             </el-form-item>
@@ -344,6 +375,19 @@ export default {
       disabled: false,
       cur: 1,
       keywords: "",
+      drawer: false,
+      drawerList: [
+        "/public/cover/01.jpg",
+        "/public/cover/02.jpg",
+        "/public/cover/03.jpg",
+        "/public/cover/04.jpg",
+        "/public/cover/05.jpg",
+        "/public/cover/06.jpg",
+        "/public/cover/07.jpg",
+        "/public/cover/08.jpg",
+        "/public/cover/09.jpg",
+        "/public/cover/10.jpg",
+      ],
     };
   },
   computed: {},
@@ -364,6 +408,10 @@ export default {
 
     tinymce() {
       this.loading = false;
+    },
+
+    selectCover(v) {
+      this.params.img = v;
     },
 
     //查询标签
@@ -493,8 +541,21 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="less">
 :deep(.tiny-textarea) {
   height: 436px;
+}
+
+.cover {
+  div {
+    width: 120px;
+    height: 90px;
+    margin: 5px;
+    cursor: pointer;
+  }
+}
+
+.w-300 {
+  width: 300px !important;
 }
 </style>

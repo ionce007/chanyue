@@ -89,6 +89,7 @@ export default {
   computed: {},
   created() {
     this.username = getCookie("username");
+    console.log("username-->", this.username);
     this.list();
   },
   methods: {

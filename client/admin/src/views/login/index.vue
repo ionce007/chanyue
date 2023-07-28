@@ -7,17 +7,47 @@
           class="mt-20"
           ref="loginForm"
           :model="loginForm"
-          :rules="loginRules"
           label-width="70px"
+          @keyup.enter="login"
         >
-          <el-form-item label="用户名" prop="username">
+          <el-form-item
+            label="用户名"
+            prop="username"
+            :rules="[
+              {
+                required: true,
+                message: '请输入用户名',
+                trigger: 'blur',
+              },
+            ]"
+          >
             <el-input v-model="loginForm.username"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop="password">
+          <el-form-item
+            label="密码"
+            prop="password"
+            :rules="[
+              {
+                required: true,
+                message: '请输入密码',
+                trigger: 'blur',
+              },
+            ]"
+          >
             <el-input type="password" v-model="loginForm.password"></el-input>
           </el-form-item>
 
-          <el-form-item label="验证码" prop="captcha">
+          <el-form-item
+            label="验证码"
+            prop="captcha"
+            :rules="[
+              {
+                required: true,
+                message: '请输入验证码',
+                trigger: 'blur',
+              },
+            ]"
+          >
             <el-row :gutter="20">
               <el-col :span="15"
                 ><el-input
@@ -25,8 +55,8 @@
                   placeholder="请输入验证码"
                 ></el-input
               ></el-col>
-              <el-col :span="4"
-                ><span
+              <el-col :span="4">
+                <span
                   class="captcha block pointer"
                   v-html="captcha"
                   @click="getCaptcha"
@@ -36,9 +66,9 @@
           </el-form-item>
 
           <el-form-item>
-            <el-button type="primary" size="large" @click="login"
-              >登录</el-button
-            >
+            <el-button type="primary" size="large" @click="login">
+              登录
+            </el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -73,13 +103,6 @@ export default defineComponent({
         username: "",
         password: "",
         captcha: "", // 添加验证码属性
-      },
-      loginRules: {
-        username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-        ],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
-        captcha: [{ required: true, message: "请输入验证码", trigger: "blur" }],
       },
       captcha: "", // 添加验证码图片链接属性
     };
