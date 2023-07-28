@@ -434,6 +434,7 @@ router.beforeEach(async (to, from) => {
       //已登录直接进入首页
       return { path: "/" };
     } else {
+      console.log("user.userInfo----------", user.userInfo);
       //校验token是否正确或者过期
       if (user.userInfo) {
         //刷新页面后，这个就没有了，然后动态添加路由，刷新重定向路由

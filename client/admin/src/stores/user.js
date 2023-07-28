@@ -26,6 +26,7 @@ export const userStore = defineStore("user", {
     async getUserInfo() {
       try {
         const res = await Login.userInfo();
+        console.log("getUserInfo", res);
         if (res.code == 200) {
           this.userInfo = res.data;
           return res.data.role;
