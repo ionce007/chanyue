@@ -1,4 +1,4 @@
-# 💒<center>![禅悦内容管理系统](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/client/admin/public/admin/img/logo-2.png)禅悦内容管理系统介绍（`chanyue-cms`）</center>
+# 💒<center>![禅悦内容管理系统](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/client/admin/public/admin/img/logo-2.png)禅悦内容管理系统（`chanyue-cms`）</center>
 
 ------
 
