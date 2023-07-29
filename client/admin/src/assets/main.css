@@ -70,6 +70,13 @@
   }
 }
 
+@font-face {
+  font-family: 'chanyue';
+  src: url('/admin/font/chanyue.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   min-height: 100vh;
   color: var(--color-text);

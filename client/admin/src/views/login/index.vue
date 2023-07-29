@@ -1,7 +1,10 @@
 <template>
   <div class="page">
     <div class="login">
-      <h1 class="title">禅悦cms后台管理系统</h1>
+      <h1 class="title row align-c">
+        <IconLogo class="icon"></IconLogo>
+        禅悦后台管理系统
+      </h1>
       <div class="login-cont">
         <el-form
           class="mt-20"
@@ -95,8 +98,9 @@ import { defineComponent } from "vue";
 import { userStore } from "@/stores/user";
 import { login, captcha } from "@/api/index";
 import { setCookie, getCookie } from "@/utils/tool.js";
-
+import IconLogo from "@/components/icons/IconLogo.vue";
 export default defineComponent({
+  components: { IconLogo },
   data() {
     return {
       loginForm: {
@@ -176,6 +180,15 @@ export default defineComponent({
   background-image: linear-gradient(300deg, #778cca, #65de83);
   min-height: 100vh;
 }
+
+.icon {
+  width: 42px;
+  height: 42px;
+  background: #f6f6f6;
+  border-radius: 50%;
+  padding: 4px;
+  margin-right: 5px;
+}
 .login {
   display: flex;
   justify-content: center;
@@ -188,6 +201,7 @@ export default defineComponent({
     color: #fff;
     text-align: center;
     font-weight: lighter;
+    font-family: "chanyue";
   }
   .login-cont {
     max-width: 500px;

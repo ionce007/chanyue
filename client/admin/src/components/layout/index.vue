@@ -5,7 +5,7 @@
       class="sidebar"
       :style="{ width: isCollapse ? '65px' : '200px' }"
     >
-      <Logo :style="{ width: isCollapse ? '65px' : '200px' }" />
+      <Logo :isCollapse="isCollapse" />
       <SideBar :isCollapse="isCollapse" />
     </el-scrollbar>
 
