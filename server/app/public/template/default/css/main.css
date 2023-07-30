@@ -1,0 +1,127 @@
+/* 通用 */
+@font-face {
+    font-family: 'chanyue';
+    src: url('../font/chanyue.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .c-003a8c{
+    color: #003a8c;
+  }
+
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 首页 */
+.header-wrap{
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter:blur(8px);
+}
+
+.header{
+    height: 64px;
+    max-width: 1800px;
+    width: 1200px;
+}
+
+.logo{
+    height: 42px;
+    background: url(../img/logo.svg) left center no-repeat;
+    background-size: 34px 34px;
+    font-family: "chanyue";
+    font-weight: lighter;
+    padding-left: 39px;
+    line-height: 42px;
+}
+
+.nav{
+    margin-left:100px;
+}
+
+.nav-item{
+    position: relative;
+    height: 100%;
+}
+.nav-item a{
+    font-size: 14px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+
+.sub-nav::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #abbaeb transparent;
+  }
+.sub-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sub-nav-item {
+    margin-bottom: 5px;
+}
+
+.nav-item:hover .sub-nav {
+    display: block;
+}
+
+
+/* banner */
+.banner{
+    height: 340px;
+    background-color: #dce3ec;
+    flex-direction: column;
+}
+
+.chanyue{
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 120px;
+    line-height: 1.2;
+    color: #fff;
+    font-family: 'chanyue';
+    background: -webkit-linear-gradient(45deg,#00a0e9,#10d39d,#00a0e9,#10d39d,#00a0e9);
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-animation: ran 18s linear infinite;
+    animation: ran 18s linear infinite;
+}
+
+@-webkit-keyframes ran {
+    0%,to {
+        backgroud-position: 0 0
+    }
+
+    50% {
+        background-position: 1000px 0
+    }
+}
+
+@keyframes ran {
+    0%,to {
+        backgroud-position: 0 0
+    }
+
+    50% {
+        background-position: 1000px 0
+    }
+}
