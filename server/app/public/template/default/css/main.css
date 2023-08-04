@@ -121,7 +121,6 @@ ul>li:last-child {
     font-weight: lighter;
     padding-left: 39px;
     line-height: 42px;
-
 }
 
 .theme {
@@ -720,57 +719,67 @@ ul>li:last-child {
 
 /* pdf.html */
 
-
 iframe {
     border: none;
     width: 100%;
 }
 
-
 @media only screen and (max-width:768px) {
-    .header{
+    .header {
         max-width: 100%;
-        width:  100%;
+        width: 100%;
     }
-    .main,.w-460,.w-520{
+
+    .main {
         margin-left: 10px;
         margin-right: 10px;
     }
 
-    .w-460,.w-520,.article-index,.main{
+    .w-460,
+    .w-520,
+    .article-index,
+    .main {
         width: 100%;
     }
-    .logo{
+
+    .logo {
         margin-left: 10px;
     }
 
-    .el-backtop{
-        right: 20px!important;
-        bottom: 50px!important;
+    .el-backtop {
+        right: 20px !important;
+        bottom: 50px !important;
     }
-    .h-290{
+
+    .h-290 {
         height: auto;
     }
 
-    .el-carousel{
+    .el-carousel {
         width: 100%;
     }
 
-    .nav{
+    .nav {
         display: none;
     }
 
-    .search{
+    .search {
         display: none;
     }
 
-    .books-item{
+    .books-item {
         width: calc((100% / 2) - 1px);
     }
 
-    .flex-1{
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-}
+   .flex-1 .mb-20:last-child{
+    margin-bottom: 0px;
+   }
 
+
+   .footer.pd-20{
+        padding: 20px 0 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+   }
+    
+}
