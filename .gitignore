@@ -39,3 +39,4 @@ package-lock.json
 /doc
 /API.MD
 /server/app/config/config.default copy.js
+/server/app/public/pdf-viewer/compressed.tracemonkey-pldi-09.pdf

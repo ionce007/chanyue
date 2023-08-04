@@ -22,13 +22,12 @@
 </head>
 
 <body>
-
-    <!-- 头部 -->
-    <header class="row header-wrap justify-center pos-r">
+     <!-- 头部 -->
+     <header class="row header-wrap justify-center pos-r">
         <div class="header row align-c justify-between pt-5 pb-5">
             <div class="row align-c">
-                <h1 class="logo c-003a8c" title="禅悦内容管理系统chanyue-cms">
-                    禅悦
+                <h1 class="logo" title="禅悦内容管理系统chanyue-cms">
+                    <span class="c-141414">前端小栈</span><span class="theme f-16 ml-5">• 禅悦</span>
                 </h1>
                 <nav class="nav">
                     <ul class="row">
@@ -73,23 +72,400 @@
                         </span>
                         <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
                     </div>
-                    <span class="el-button  ml-5">搜索</span>
+                    <!-- <el-button class="ml-5">搜索</el-button> -->
                 </div>
             </div>
         </div>
     </header>
 
     <!-- banner -->
-    <section class="banner row justify-center">
+    <!-- <section class="banner row justify-center">
         <h1 class="chanyue text-c">chanyue-cms</h1>
         <p class="f-23 text-c mt-20">基于express+mysql的高质量cms管理系统</p>
         <p class="text-c mt-20"><span class="el-button is-round">码云</span></p>
-    </section>
+    </section> -->
 
+    <!-- 头条文章 -->
+    <main class="bg-f2f2f2 pt-10 pb-20 row">
+        <div class="main center mt-10 row gap-20">
+            <!-- 最新文章 -->
+            <article class="article-index">
+                <section class="row justify-between gap-10  mb-20" id="app" >
+                    <el-carousel :interval="5000" arrow="always" v-clock>
+                        <el-carousel-item>
+                            <img src="./img/11.jpg" alt="">
+                            <h3 class="carousel-title">1</h3>
+                        </el-carousel-item>
+                        <el-carousel-item>
+                            <img src="./img/12.jpg" alt="">
+                            <h3 class="carousel-title">2</h3>
+                        </el-carousel-item>
+                        <el-carousel-item>
+                            <img src="./img/13.jpg" alt="">
+                            <h3>3</h3>
+                        </el-carousel-item>
+                        <el-carousel-item>
+                            <img src="./img/14.jpg" alt="">
+                            <h3>4</h3>
+                        </el-carousel-item>
+                        <el-carousel-item>
+                            <img src="./img/15.jpg" alt="">
+                            <h3>4</h3>
+                        </el-carousel-item>
+                    </el-carousel>
+
+                    <div class="w-520 h-290 bg-fff pd-20">
+                        <div class="row justify-between">
+                            <h2 class="f-16 ellips-2 c-1a1a1a">js实现识别声音判断琴谱是否正确，并跟随琴声绘制修改琴谱背景颜色，给出评分和纠错提示</h2>
+                            <p class="f-14  ellips-3  mb-10 mt-10">
+                               首先要通过canvas来绘制琴谱，收集钢琴声音通过算法实时判断是否正确，并再五线谱上面标注是否正确，和进度，算法需用js写超玄定理和八卦预测方程来实现。<a class="c-003a8c" href="/" title="">详情</a>
+                            </p>
+                        </div>
+                        <ul class="w-460-list">
+                            <li class="f-14 pt-4 pb-4 row justify-between">
+                                <a href="" title="">【new】雷雨天这些“陷阱”要避开</a><time class="c-999">1分钟</time>
+                            </li>
+                            <li class="f-14 pt-4 pb-4 row justify-between">
+                                <a href="" title="">【new】雷雨天这些“陷阱”要避开避开</a>
+                                <time class="c-999">半小时前</time>
+                            </li>
+                            <li class="f-14 pt-4 pb-4 row justify-between">
+                                <a href="" title="">【new】雷雨天这些“陷阱”要避开</a>
+                                <time class="c-999">1天前</time>
+                            </li>
+                            <li class="f-14 pt-4 pb-4 row justify-between">
+                                <a href="" title="">【new】雷雨天这些“陷阱”要避开</a><time class="c-999">1月前</time>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <el-backtop :right="100" :bottom="100" />
+                </section>
+                <section class="row justify-between gap-10">
+                    <div class="w-460 bg-fff pd-20">
+                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">nodejs开发<span class="more">热榜</span></h3>
+                        <figure class="row justify-between">
+                            <div class="thumb-120">
+                                <img class="w-p100" src="./img/01.jpg" alt="" title="">
+                            </div>
+                            <div class="flex-1">
+                                <figcaption class="f-14 ellips-2 bold mb-4">雷雨天这些“陷阱”要避开</figcaption>
+                                <p class="f-13 ellips-3">
+                                    近日，因台风“杜苏芮”影响，北京市发布暴雨红色预警。对于雷雨天气，这些“陷阱”要避开！<a href="/" title="">详情</a></p>
+                            </div>
+                        </figure>
+                        <ul class="w-460-list mt-16">
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1天前</time></li>
+                        </ul>
+                        <p class="mt-10">
+                            <a class="el-tag mr-5" href="/">nodejs</a>
+                            <a class="el-tag mr-5" href="/">express</a>
+                            <a class="el-tag mr-5" href="/">mysql</a>
+                        </p>
+                    </div>
+
+                    <div class="w-460 bg-fff pd-20">
+                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">搜索引擎SEO<span class="more">更多</span></h3>
+                        <figure class="row justify-between">
+                            <div class="thumb-120">
+                                <img class="w-p100" src="./img/02.jpg" alt="" title="">
+                            </div>
+                            <div class="flex-1">
+                                <figcaption class="f-14 ellips-2 bold mb-4">雷雨天这些“陷阱”要避开</figcaption>
+                                <p class="f-13 ellips-3">
+                                    近日，因台风“杜苏芮”影响，北京市发布暴雨红色预警。对于雷雨天气，这些“陷阱”要避开！<a href="/" title="">详情</a></p>
+                            </div>
+                        </figure>
+                        <ul class="w-460-list mt-16">
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1天前</time></li>
+                        </ul>
+                        <p class="mt-10">
+                            <a class="el-tag mr-5" href="/">nodejs</a>
+                            <a class="el-tag mr-5" href="/">express</a>
+                            <a class="el-tag mr-5" href="/">mysql</a>
+                        </p>
+                    </div>
+
+                    <div class="w-460 bg-fff pd-20">
+                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">前端库&工具<span class="more">热榜</span></h3>
+                        <figure class="row justify-between">
+                            <div class="thumb-120">
+                                <img class="w-p100" src="./img/03.jpg" alt="" title="">
+                            </div>
+                            <div class="flex-1">
+                                <figcaption class="f-14 ellips-2 bold mb-4">雷雨天这些“陷阱”要避开</figcaption>
+                                <p class="f-13 ellips-3">
+                                    近日，因台风“杜苏芮”影响，北京市发布暴雨红色预警。对于雷雨天气，这些“陷阱”要避开！<a href="/" title="">详情</a></p>
+                            </div>
+                        </figure>
+                        <ul class="w-460-list mt-16">
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1天前</time></li>
+                        </ul>
+                        <p class="mt-10">
+                            <a class="el-tag mr-5" href="/">nodejs</a>
+                            <a class="el-tag mr-5" href="/">express</a>
+                            <a class="el-tag mr-5" href="/">mysql</a>
+                        </p>
+                    </div>
+
+                    <div class="w-460 bg-fff pd-20">
+                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">前端开发<span class="more">热榜</span></h3>
+                        <figure class="row justify-between">
+                            <div class="thumb-120">
+                                <img class="w-p100" src="./img/03.jpg" alt="" title="">
+                            </div>
+                            <div class="flex-1">
+                                <figcaption class="f-14 ellips-2 bold mb-4">雷雨天这些“陷阱”要避开</figcaption>
+                                <p class="f-13 ellips-3">
+                                    近日，因台风“杜苏芮”影响，北京市发布暴雨红色预警。对于雷雨天气，这些“陷阱”要避开！<a href="/" title="">详情</a></p>
+                            </div>
+                        </figure>
+                        <ul class="w-460-list mt-16">
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1分钟</time></li>
+                            <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">雷雨天这些“陷阱”要避开</a><time
+                                    class="c-999">1天前</time></li>
+                        </ul>
+                        <p class="mt-10">
+                            <a class="el-tag mr-5" href="/">nodejs</a>
+                            <a class="el-tag mr-5" href="/">express</a>
+                            <a class="el-tag mr-5" href="/">mysql</a>
+                        </p>
+                    </div>
+
+                    <!-- 书籍/图片/视频 pdf -->
+                    <section class="mt-10">
+                        <h3 class="m-title title-dashed f-16 row justify-between">javascript书籍<span
+                                class="more">热榜</span></h3>
+                        <div class="row gap-2">
+                            <figure class="books-item  f-14  pd-16 bg-fff">
+                                <a class="m-img" href="" title="">
+                                    <img src="./img/06.jpg" alt="" /></a>
+                                <figcaption class="mt-6 mb-6">
+                                    <a href="/" title="">javascript权威指南</a>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="books-item  f-14 pd-16 bg-fff">
+                                <a class="m-img" href="" title="">
+                                    <img src="./img/05.jpg" alt="" /></a>
+                                <figcaption class="mt-6 mb-6">
+                                    <a href="/" title="">javascript权威指南，从入门到精通，入门到放弃</a>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="books-item  f-14 pd-16 bg-fff">
+                                <a class="m-img" href="" title="">
+                                    <img src="./img/04.jpg" alt="" /></a>
+                                <figcaption class="mt-6 mb-6">
+                                    <a href="/" title="">javascript权威指南</a>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="books-item  f-14 pd-16 bg-fff">
+                                <a class="m-img" href="" title="">
+                                    <img src="./img/02.jpg" alt="" /></a>
+                                <figcaption class="mt-6 mb-6">
+                                    <a href="/" title="">javascript权威指南</a>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="books-item  f-14 pd-16 bg-fff">
+                                <a class="m-img" href="" title="">
+                                    <img src="./img/03.jpg" alt="" /></a>
+                                <figcaption class="mt-6 mb-6">
+                                    <a href="/" title="">javascript权威指南</a>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="books-item  f-14 pd-16 bg-fff">
+                                <a class="m-img" href="" title="">
+                                    <img src="./img/09.jpg" alt="" /></a>
+                                <figcaption class="mt-6 mb-6">
+                                    <a href="/" title="">javascript权威指南</a>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="books-item  f-14 pd-16 bg-fff">
+                                <a class="m-img" href="" title="">
+                                    <img src="./img/08.jpg" alt="" /></a>
+                                <figcaption class="mt-6 mb-6">
+                                    <a href="/" title="">javascript权威指南</a>
+                                </figcaption>
+                            </figure>
+
+                            <figure class="books-item  f-14 pd-16 bg-fff">
+                                <a class="m-img" href="" title="">
+                                    <img src="./img/07.jpg" alt="" /></a>
+                                <figcaption class="mt-6 mb-6">
+                                    <a href="/" title="">javascript权威指南</a>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </section>
+
+                </section>
+            </article>
+
+            <aside class="flex-1">
+                <!-- 介绍文本 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">chanyue-cms介绍</h3>
+                    <p class="mt-10 f-14 lh-24">
+                        禅悦内容管理系统，基于`nodejs` `express` `mysql` `knex` `jwt` `vue3`
+                        进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。<a href="/"
+                        title="">[详情]</a>
+                    </p>
+                </section>
+
+                <!-- 通知 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">公告通知<span class="more">more</span></h3>
+                    <ul class="mt-10">
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js实现拍照试卷给出评分和答案</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js把页面转成pdf进行打印</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">three.js实现展馆演示厅</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">pixi.js小游戏开发实战经验</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">基于nodejs实现tts文本转语音</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js识别声音判断琴谱是否正确，并跟随琴声绘制修改琴谱背景颜色，给出评分和纠错提示</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">用canvas+websoket实时绘制心电图实战</a></li>
+                    </ul>
+                </section>
+
+                <!-- tag标签 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">tag标签</h3>
+                    <p class="mt-10">
+                        <a class="el-tag mr-5 mb-5" href="/">nodejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">express</a>
+                        <a class="el-tag mr-5 mb-5" href="/">mysql</a>
+                        <a class="el-tag mr-5 mb-5" href="/">vue</a>
+                        <a class="el-tag mr-5 mb-5" href="/">react</a>
+                        <a class="el-tag mr-5 mb-5" href="/">javascript</a>
+                        <a class="el-tag mr-5 mb-5" href="/">go</a>
+                        <a class="el-tag mr-5 mb-5" href="/">java</a>
+                        <a class="el-tag mr-5 mb-5" href="/">python</a>
+                        <a class="el-tag mr-5 mb-5" href="/">css</a>
+                        <a class="el-tag mr-5 mb-5" href="/">threejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">pixi.js</a>
+                        <a class="el-tag mr-5 mb-5" href="/">electron</a>
+                    </p>
+                </section>
+
+                <!-- tag标签 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">友情链接</h3>
+                    <p class="mt-10">
+                        <a class="el-tag mr-5 mb-5" href="/">nodejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">express</a>
+                        <a class="el-tag mr-5 mb-5" href="/">mysql</a>
+                        <a class="el-tag mr-5 mb-5" href="/">vue</a>
+                        <a class="el-tag mr-5 mb-5" href="/">react</a>
+                        <a class="el-tag mr-5 mb-5" href="/">javascript</a>
+                        <a class="el-tag mr-5 mb-5" href="/">go</a>
+                        <a class="el-tag mr-5 mb-5" href="/">java</a>
+                        <a class="el-tag mr-5 mb-5" href="/">python</a>
+                        <a class="el-tag mr-5 mb-5" href="/">css</a>
+                        <a class="el-tag mr-5 mb-5" href="/">threejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">pixi.js</a>
+                        <a class="el-tag mr-5 mb-5" href="/">electron</a>
+                    </p>
+                </section>
+
+
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">推荐图文</h3>
+                    <figure class="row justify-between mt-10 border-dashed">
+                        <div class="thumb mb-10"><img class="w-p100" src="./img/02.jpg" alt="" title=""></div>
+                        <div class="flex-1  mb-20">
+                            <figcaption class="f-14 ellips-2 bold mt-4 mb-4">JavaScript权威指南</figcaption>
+                        </div>
+                    </figure>
+
+                    <figure class="row justify-between mt-10 ">
+                        <div class="flex-1">
+                            <figcaption class="f-14 ellips-2 bold mt-4 mb-4">nodejs实战cms系统开发</figcaption>
+                            <p class="f-13 ellips-3"> 近日，因台风“杜苏芮”影响，北京市发布暴雨红色预警。对于雷雨天气，这些“陷阱”要避开！<a href="/"
+                                    title="">详情</a></p>
+                        </div>
+                    </figure>
+                </section>
+
+            </aside>
+        </div>
+    </main>
+
+    <!-- footer -->
+
+    <footer class="pd-20">
+        <div class="footer main center pd-20">
+            <div class="row justify-between">
+                <div class="col-6">
+                    <h4 class="f-15 pb-10">前端</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >JavaScript</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >vue</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >react</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >css3</a></p>
+                </div>
+
+                <div class="col-6">
+                    <h4 class="f-15  pb-10">nodejs</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >express</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >koa</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >mysql</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >mongoDB</a></p>
+                </div>
+                <div class="col-6">
+                    <h4 class="f-15 pb-10">chanyue-cms</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >在线文档</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >视频教程</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >标签工具</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >模板</a></p>
+                </div>
+                <div class="col-6">
+                    <h4 class="f-15  pb-10">关于</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >关于我们</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >最新动态</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >联系作者</a></p>
+                </div>
+            </div>
+            <p class="mt-20  text-c f-14">©copyright 前端小栈•禅悦 <span class="ml-10 c-595959">自豪的采用 chanyue-cms</span></p>
+        </div>
+    </footer>
 
     <script src="./js/vue@3.js"></script>
     <script src="./js/element-plus.js"></script>
-    <script src="./js/scrollnav.min.umd.js"></script>
+    <script>
+        const app = Vue.createApp({});
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
 </body>
 
 </html>
