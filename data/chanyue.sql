@@ -11,7 +11,7 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 05/08/2023 22:28:00
+ Date: 05/08/2023 23:37:18
 */
 
 SET NAMES utf8mb4;
@@ -273,12 +273,10 @@ CREATE TABLE `site`  (
   `wx` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '微信',
   `icp` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'ICP备案号',
   `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '站点统计代码',
+  `json` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '万能配置',
   `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '页面标题',
   `keywords` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '页面关键词',
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '页面描述',
-  `companyAddress` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '公司地址',
-  `companyName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '公司名称',
-  `companyTel` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '公司电话',
   `createdAt` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `updatedAt` datetime NULL DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`) USING BTREE
@@ -287,7 +285,7 @@ CREATE TABLE `site`  (
 -- ----------------------------
 -- Records of site
 -- ----------------------------
-INSERT INTO `site` VALUES (1, '前端小栈', 'www.chanyue.top', '867528315@qq.com', NULL, NULL, NULL, 'chanyue-cms禅悦内容管理系统', 'cms,chanyue-cms,chanyue,内容管理系统,nodejs,express,mysql,knex,jwt,vue3', '禅悦内容管理系统，基于nodejs express mysql knex jwt vue3 进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。', NULL, '• 禅悦', '13366826071', NULL, NULL);
+INSERT INTO `site` VALUES (1, '前端小栈', 'www.chanyue.top', '867528315@qq.com', NULL, NULL, '', '{\"siteSubtitle\":\"• 禅悦\"}', 'chanyue-cms禅悦内容管理系统', 'cms,chanyue-cms,chanyue,内容管理系统,nodejs,express,mysql,knex,jwt,vue3', '禅悦内容管理系统，基于nodejs express mysql knex jwt vue3 进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_config
