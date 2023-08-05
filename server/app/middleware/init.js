@@ -18,6 +18,8 @@ module.exports = () => {
     // 友情链接
     const friendlink = await FriendlinkService.list();
     const base_url = `/public/template/${template}`;
+    //获取碎片
+    
     res.locals = { site, nav, category, friendlink, base_url };
     await next();
   }
