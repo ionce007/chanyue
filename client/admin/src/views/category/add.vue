@@ -172,7 +172,7 @@ export default {
     "params.name": function (newv, oldv) {
       this.params.pinyin = pinyin(newv, { toneType: "none" }).replace(
         /\s+/g,
-        ""
+        "",
       );
     },
   },
