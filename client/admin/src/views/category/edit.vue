@@ -235,6 +235,7 @@ export default {
         let res = await findId(this.id);
         if (res.code === 200) {
           this.params = res.data;
+          console.log("this.params-->", res.data);
         }
       } catch (error) {
         console.error(error);
@@ -264,7 +265,7 @@ export default {
     },
 
     submit(formName) {
-      this.params.path = this.allPath;
+      // this.params.path = this.allPath;
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.update();
