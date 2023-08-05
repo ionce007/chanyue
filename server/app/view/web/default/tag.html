@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>前端开发-禅悦内容管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description"
+        content="前端开发,分享前端知识,丰富前端技能。汇集国内专业的前端开发文档,为推动业内前端开发水平共同奋斗。DoraCMS,html,js,css,nodejs,前端开发,jquery,web前端, web前端开发, 前端开发工程师">
+    <meta content="前端开发,chanyue-cms,Nodejs内容管理系统,禅悦cms,禅悦, 前端开发, web前端, vue,react,node,express,mysql 前端开发工具 "
+        name="keywords" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="前端开发俱乐部" />
+    <meta property="og:description"
+        content="前端开发俱乐部,分享前端知识,丰富前端技能。汇集国内专业的前端开发文档,为推动业内前端开发水平共同奋斗。DoraCMS,html,js,css,nodejs,前端开发,jquery,web前端, web前端开发, 前端开发工程师" />
+    <meta property="og:image" content="./img/logo.png"/>
+    <meta property="og:url" content="https://www.chanyue.top"/>
+    <meta name="author" content="chanyue-cms"/>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/element-plus.css" />
+    <link rel="stylesheet" href="./css/saduo@1.0.9.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+
+<body class="bg-f8f8f8">
+    <!-- 头部 -->
+    <header class="row header-wrap justify-center pos-r">
+        <div class="header row align-c justify-between pt-5 pb-5">
+            <div class="row align-c">
+                <h1 class="logo" title="禅悦内容管理系统chanyue-cms">
+                    <span class="c-141414">前端小栈</span><span class="theme f-16 ml-5">• 禅悦</span>
+                </h1>
+                <nav class="nav">
+                    <ul class="row">
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">首页</a></li>
+                        <li class="nav-item">
+                            <a href="/" target="_blank" title="首页">前端开发</a>
+                            <ul class="sub-nav">
+                                <li class="sub-nav-item"><a href="/" target="_blank">vue</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">react</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">javascript</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">css</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" target="_blank" title="首页">node开发</a>
+                            <ul class="sub-nav">
+                                <li class="sub-nav-item"><a href="/" target="_blank">express</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">mysql</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">服务器</a></li>
+                            </ul>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">SEO</a></li>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">前端库</a></li>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">禅悦cms</a></li>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">案例</a></li>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">关于</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="search">
+                <div class="el-input  el-input--prefix ">
+                    <div class="el-input__wrapper" role="button">
+                        <span class="el-input__prefix">
+                            <span class="el-input__prefix-inner">
+                                <i class="el-icon el-input__icon">
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="currentColor"
+                                            d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
+                                        </path>
+                                    </svg>
+                                </i>
+                            </span>
+                        </span>
+                        <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
+                    </div>
+                    <!-- <el-button class="ml-5">搜索</el-button> -->
+                </div>
+            </div>
+
+            <div class="ico-open"></div>
+        </div>
+    </header>
+
+    <div class="position center main bg-fff pd-15 mt-20 f-14 c-999">
+        <i class="ico-20 ico-home pos-r t-3"></i>
+        <a class="" href="" target="_blank">首页</a> >
+        <a class="c-666" href="" target="_blank">太极</a>
+    </div>
+
+    <!-- 头条文章 -->
+    <main class="bg-f2f2f2 pt-10 pb-20 row">
+        <div class="main center mt-10 row gap-20">
+            <!-- 最新文章 -->
+            <article class="article-index">
+                <div class="list bg-fff pd-25">
+                    <ul>
+                        <li class="row border-b pt-20 pb-20">
+                            <figure class="figure overflow-h mr-20">
+                                <img src="img/p1.png" class="w-p100" alt="">
+                            </figure>
+                            <div class="flex">
+                                <h3 class="f-16 c-333 bold mt-10"><a href="" target="_blank">杨氏太极拳</a></h3>
+                                <p class="f-12 c-999 mt-5 mb-15">
+                                    <i class="ico-20 ico-time pos-r t-4"></i> 2018-02-22
+                                    <i class="ico-20 ico-admin pos-r t-4 ml-4"></i> 明空
+                                    <i class="ico-20 ico-view pos-r t-5 ml-4"></i> 阅读（19604）
+                                    <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95）
+                                </p>
+                                <p class="lh-22 c-666 f-14"><a href=""
+                                        target="_blank">最新有个需求，想在Windows平台上用Node.js实现文本转语音 (Text to Speech, TTS)
+                                        功能，实现过程中走了一些弯路，总结一下，做个记录。
+
+                                        因为不要求听起来多自然，也不考虑跨平台，所以就打算自己实现一下。...</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 分页 -->
+                <div class="page mt-1 bg-fff pd-25 row justify-center  radius-6" id="app">
+                    <!-- <ul class="overflow-h center" id="page">
+                        <li><a aria-label="Previous">«</a></li>
+                        <li><a>上一页</a></li>
+                        <li class="active" page="1"><a>1</a></li>
+                        <li page="2"><a>2</a></li>
+                        <li page="3"><a>3</a></li>
+                        <li><a>下一页</a></li>
+                        <li><a aria-label="Next">»</a></li>
+                    </ul> -->
+
+                    <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
+                        <div class="search mb-20">
+                            <div class="el-input  el-input--prefix ">
+                                <div class="el-input__wrapper" role="button">
+                                    <span class="el-input__prefix">
+                                        <span class="el-input__prefix-inner">
+                                            <i class="el-icon el-input__icon">
+                                                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill="currentColor"
+                                                        d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
+                                                    </path>
+                                                </svg>
+                                            </i>
+                                        </span>
+                                    </span>
+                                    <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
+                                </div>
+                                <!-- <el-button class="ml-5">搜索</el-button> -->
+                            </div>
+                        </div>
+                        <ul class="f-16">
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">首页</a></li>
+                            <li>
+                                <a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">前端开发</a>
+                                <ul class="pl-16">
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">vue</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">react</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">javascript</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">css</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">node开发</a>
+                                <ul class="pl-16">
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">express</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">mysql</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">服务器</a></li>
+                                </ul>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">SEO</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">前端库</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">禅悦cms</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">案例</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">关于</a></li>
+                        </ul>
+                    </el-drawer>
+
+                    <el-pagination background v-clock layout="prev, pager, next" :total="total"
+                        @current-change="handleCurrentChange">
+                    </el-pagination>
+
+                    <el-backtop :right="100" :bottom="100" />
+                </div>
+
+            </article>
+
+            <aside class="flex-1">
+                <!-- tag标签 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">tag标签</h3>
+                    <p class="mt-10">
+                        <a class="el-tag mr-5 mb-5" href="/">nodejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">express</a>
+                        <a class="el-tag mr-5 mb-5" href="/">mysql</a>
+                        <a class="el-tag mr-5 mb-5" href="/">vue</a>
+                        <a class="el-tag mr-5 mb-5" href="/">react</a>
+                        <a class="el-tag mr-5 mb-5" href="/">javascript</a>
+                        <a class="el-tag mr-5 mb-5" href="/">go</a>
+                        <a class="el-tag mr-5 mb-5" href="/">java</a>
+                        <a class="el-tag mr-5 mb-5" href="/">python</a>
+                        <a class="el-tag mr-5 mb-5" href="/">css</a>
+                        <a class="el-tag mr-5 mb-5" href="/">threejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">pixi.js</a>
+                        <a class="el-tag mr-5 mb-5" href="/">electron</a>
+                    </p>
+                </section>
+
+                <!-- tag标签 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">友情链接</h3>
+                    <p class="mt-10">
+                        <a class="el-tag mr-5 mb-5" href="/">nodejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">express</a>
+                        <a class="el-tag mr-5 mb-5" href="/">mysql</a>
+                        <a class="el-tag mr-5 mb-5" href="/">vue</a>
+                        <a class="el-tag mr-5 mb-5" href="/">react</a>
+                        <a class="el-tag mr-5 mb-5" href="/">javascript</a>
+                        <a class="el-tag mr-5 mb-5" href="/">go</a>
+                        <a class="el-tag mr-5 mb-5" href="/">java</a>
+                        <a class="el-tag mr-5 mb-5" href="/">python</a>
+                        <a class="el-tag mr-5 mb-5" href="/">css</a>
+                        <a class="el-tag mr-5 mb-5" href="/">threejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">pixi.js</a>
+                        <a class="el-tag mr-5 mb-5" href="/">electron</a>
+                    </p>
+                </section>
+
+                <!-- 介绍文本 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">chanyue-cms介绍</h3>
+                    <p class="mt-10 f-14 lh-24">
+                        禅悦内容管理系统，基于`nodejs` `express` `mysql` `knex` `jwt` `vue3`
+                        进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。<a
+                            href="/" title="">[详情]</a>
+                    </p>
+                </section>
+            </aside>
+        </div>
+    </main>
+
+    <!-- footer -->
+    <footer class="pd-20">
+        <div class="footer main center pd-20">
+            <div class="row justify-between">
+                <div class="col-6">
+                    <h4 class="f-15   pb-10">前端</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">JavaScript</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">vue</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">react</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">css3</a></p>
+                </div>
+
+                <div class="col-6">
+                    <h4 class="f-15  pb-10">nodejs</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">express</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">koa</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">mysql</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">mongoDB</a></p>
+                </div>
+                <div class="col-6">
+                    <h4 class="f-15 pb-10">chanyue-cms</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">在线文档</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">视频教程</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">标签工具</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">模板</a></p>
+                </div>
+                <div class="col-6">
+                    <h4 class="f-15 pb-10">关于</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">关于我们</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">最新动态</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">联系作者</a></p>
+                </div>
+            </div>
+            <p class="mt-30 text-c f-14">©copyright 前端小栈•禅悦 </p>
+            <p class="f-13 text-c c-bfbfbf">自豪的采用 chanyue-cms</span></p>
+        </div>
+    </footer>
+    <script src="./js/vue@3.js"></script>
+    <script src="./js/element-plus.js"></script>
+    <script src="./js/scrollnav.min.umd.js"></script>
+    <script>
+        var app = Vue.createApp({
+            data: function () {
+                return {
+                    drawer: false,
+                    total: 10
+                }
+            },
+            mounted() {
+                let _this = this;
+                document.querySelector('.ico-open').addEventListener('click', () => {
+                    _this.drawer = true
+                })
+            },
+            methods: {
+                handleCurrentChange(vue) {
+
+                },
+                handleClose() {
+                    this.drawer = false
+                }
+            }
+        });
+        app.use(ElementPlus);
+        app.mount('#app');
+    </script>
+</body>
+
+</html>

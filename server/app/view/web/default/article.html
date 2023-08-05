@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>前端开发-禅悦内容管理系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description"
+        content="前端开发,分享前端知识,丰富前端技能。汇集国内专业的前端开发文档,为推动业内前端开发水平共同奋斗。DoraCMS,html,js,css,nodejs,前端开发,jquery,web前端, web前端开发, 前端开发工程师">
+    <meta content="前端开发,chanyue-cms,Nodejs内容管理系统,禅悦cms,禅悦, 前端开发, web前端, vue,react,node,express,mysql 前端开发工具 "
+        name="keywords" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="前端开发俱乐部" />
+    <meta property="og:description"
+        content="前端开发俱乐部,分享前端知识,丰富前端技能。汇集国内专业的前端开发文档,为推动业内前端开发水平共同奋斗。DoraCMS,html,js,css,nodejs,前端开发,jquery,web前端, web前端开发, 前端开发工程师" />
+    <meta property="og:image" content="./img/logo.png"/>
+    <meta property="og:url" content="https://www.chanyue.top"/>
+    <meta name="author" content="chanyue-cms"/>
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/element-plus.css"/>
+    <link rel="stylesheet" href="./css/saduo@1.0.9.css"/>
+    <link rel="stylesheet" href="./css/main.css"/>
+</head>
+
+
+<body class="bg-f8f8f8 pos-r">
+    <!-- 头部 -->
+    <header class="row header-wrap justify-center pos-r">
+        <div class="header row align-c justify-between pt-5 pb-5">
+            <div class="row align-c">
+                <h1 class="logo" title="禅悦内容管理系统chanyue-cms">
+                    <span class="c-141414">前端小栈</span><span class="theme f-16 ml-5">• 禅悦</span>
+                </h1>
+                <nav class="nav">
+                    <ul class="row">
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">首页</a></li>
+                        <li class="nav-item">
+                            <a href="/" target="_blank" title="首页">前端开发</a>
+                            <ul class="sub-nav">
+                                <li class="sub-nav-item"><a href="/" target="_blank">vue</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">react</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">javascript</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">css</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" target="_blank" title="首页">node开发</a>
+                            <ul class="sub-nav">
+                                <li class="sub-nav-item"><a href="/" target="_blank">express</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">mysql</a></li>
+                                <li class="sub-nav-item"><a href="/" target="_blank">服务器</a></li>
+                            </ul>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">SEO</a></li>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">前端库</a></li>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">禅悦cms</a></li>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">案例</a></li>
+                        <li class="nav-item"><a href="/" target="_blank" title="首页">关于</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="search">
+                <div class="el-input  el-input--prefix ">
+                    <div class="el-input__wrapper" role="button">
+                        <span class="el-input__prefix">
+                            <span class="el-input__prefix-inner">
+                                <i class="el-icon el-input__icon">
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="currentColor"
+                                            d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
+                                        </path>
+                                    </svg>
+                                </i>
+                            </span>
+                        </span>
+                        <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
+                    </div>
+                    <!-- <el-button class="ml-5">搜索</el-button> -->
+                </div>
+            </div>
+
+            <div class="ico-open"></div>
+        </div>
+    </header>
+
+    <!-- 头条文章 -->
+    <main class="bg-f2f2f2 pt-10 pb-20 row">
+
+        <div class="main center mt-10 row gap-20">
+            <!-- 最新文章 -->
+            <article class="article-index">
+                <div class="bg-fff radius-6 pd-15 mb-1 f-14 c-999">
+                    <i class="ico-20 ico-home pos-r t-3"></i>
+                    <a class="" href="" target="_blank">首页</a> /
+                    <a class="c-666" href="" target="_blank">nodejs开发</a> /
+                    express专题
+                </div>
+                <div class="bg-fff radius-6 pd-25">
+                    <header class="border-b pos-r">
+                        <h2 class="f-26 c-252933  bold mt-10">「express专题」作者招募第一期｜写小册，领专属礼包+拿长效收益，等你来报名！</h2>
+                        <p class="f-12 c-999 mt-5 mb-26">
+                            <span>
+                                <i class="ico-20 ico-time pos-r t-4"></i> 2018-02-22
+                                <i class="ico-20 ico-admin pos-r t-4 ml-4"></i> 明空
+                                <i class="ico-20 ico-view pos-r t-5 ml-4"></i> 阅读（19604）
+                                <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95）
+                            </span>
+                        </p>
+                    </header>
+                    <article id="article" class="article-cont f-17 lh-35">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>作者</th>
+                                    <th>简介</th>
+                                    <th>小册</th>
+                                    <th>学习人数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>修言</td>
+                                    <td>某外企前端 Leader，前阿里巴巴/滴滴出行/创业团队前端工程师</td>
+                                    <td><a href="https://juejin.cn/book/7173591403639865377/section" target="_blank"
+                                            title="https://juejin.cn/book/7173591403639865377/section">《JavaScript
+                                            函数式编程实践指南</a>》《<a href="https://juejin.cn/book/6844733790204461070/section"
+                                            target="_blank"
+                                            title="https://juejin.cn/book/6844733790204461070/section">JavaScript
+                                            设计模式核心原理与应用实践</a>》《<a
+                                            href="https://juejin.cn/book/6844733800300150797/section" target="_blank"
+                                            title="https://juejin.cn/book/6844733800300150797/section">前端算法与数据结构面试：底层逻辑解读与大厂真题训练</a>》《<a
+                                            href="https://juejin.cn/book/6844733750048210957/section" target="_blank"
+                                            title="https://juejin.cn/book/6844733750048210957/section">前端性能优化原理与实践</a>》
+                                    </td>
+                                    <td>34530人</td>
+                                </tr>
+                                <tr>
+                                    <td>小孩子</td>
+                                    <td>前在线教育公司「跟谁学」后端工程师</td>
+                                    <td>《<a href="https://juejin.cn/book/6844733769996304392" target="_blank"
+                                            title="https://juejin.cn/book/6844733769996304392">MySQL 是怎样运行的：从根儿上理解
+                                            MySQL</a>》《<a href="https://juejin.cn/book/6844733802426662926"
+                                            target="_blank" title="https://juejin.cn/book/6844733802426662926">MySQL
+                                            是怎样使用的：从零蛋开始学习 MySQL</a>》《<a
+                                            href="https://juejin.cn/book/6844733810282594312/section" target="_blank"
+                                            title="https://juejin.cn/book/6844733810282594312/section">计算机是怎样运行的：从根儿上理解计算机</a>》
+                                    </td>
+                                    <td>30882人</td>
+                                </tr>
+                                <tr>
+                                    <td>神说要有光</td>
+                                    <td>资深前端工程师</td>
+                                    <td>《<a href="https://juejin.cn/book/7226988578700525605" target="_blank"
+                                            title="https://juejin.cn/book/7226988578700525605">Nest 通关秘籍</a>》《<a
+                                            href="https://juejin.cn/book/7070324244772716556" target="_blank"
+                                            title="https://juejin.cn/book/7070324244772716556">前端调试通关秘籍</a>》《<a
+                                            href="https://juejin.cn/book/7047524421182947366" target="_blank"
+                                            title="https://juejin.cn/book/7047524421182947366">TypeScript
+                                            类型体操通关秘籍</a>》《<a href="https://juejin.cn/book/6946117847848321055"
+                                            target="_blank" title="https://juejin.cn/book/6946117847848321055">Babel
+                                            插件通关秘籍</a>》</td>
+                                    <td>19101人</td>
+                                </tr>
+                                <tr>
+                                    <td>神三元</td>
+                                    <td>字节跳动前端工程师</td>
+                                    <td>《<a href="https://juejin.cn/book/7050063811973218341/section" target="_blank"
+                                            title="https://juejin.cn/book/7050063811973218341/section">深入浅出 Vite</a>》《<a
+                                            href="https://juejin.cn/book/6844733816460804104/section" target="_blank"
+                                            title="https://juejin.cn/book/6844733816460804104/section">React Hooks 与
+                                            Immutable 数据流实战</a>》《【视频】 <a
+                                            href="https://juejin.cn/video/7163857336258265102/section" target="_blank"
+                                            title="https://juejin.cn/video/7163857336258265102/section">基于 Vite 的 SSG
+                                            框架开发实战</a>》</td>
+                                    <td>11024人</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ol start="2">
+                            <li><strong>🎤个人影响力</strong>：稀土掘金社区<strong>百万</strong>流量倾斜，给予个人社区帐号及小册更多曝光，帮助创作者个人品牌打造升级，获得稀土掘金线上、线下活动优先合作权。
+                            </li>
+                            <li><strong>🏅️活动专属奖励</strong>：8月1日～9月15日，成功报名本次活动即可获得 「2 张小册 5
+                                折优惠码」，小册成功上线，除稳定的兼职收益外，还可额外获得价值「500 元的奖励礼包」！</li>
+                        </ol>
+                        <h2 data-id="heading-1">📃报名要求</h2>
+                        <h3 data-id="heading-2">作者要求</h3>
+                        <ul>
+                            <li>对某一技术领域，有 3 年以上的知识和应用沉淀（技术过硬，全网粉丝在 3000 以上，有过付费课程书籍等写作者可放宽要求）；</li>
+                            <li>对技术有自己的洞察和理解，有丰富应用实践更佳；</li>
+                            <li>写作流畅，内容不拘泥在概念解释和空泛的形容词罗列。</li>
+                        </ul>
+                        <h3 data-id="heading-3">内容要求</h3>
+                        <p>一本掘金小册，是<strong>小篇幅、高浓度、成体系的图文内容</strong>。因此，你需要提供：</p>
+                        <ul>
+                            <li>
+                                <p><strong>明确的内容选题</strong>：</p>
+                                <ul>
+                                    <li>选题要具体、明确，拥有一定规模的核心用户群体；</li>
+                                    <li>有付费价值，能解决开发者的实际问题；</li>
+                                    <li>与已上线小册不完全重复，侧重点不同。</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p><strong>成体系的大纲</strong>：</p>
+                                <ul>
+                                    <li>15～35 篇之内最佳，每篇不少于 2000 字；</li>
+                                    <li>小册设计成体系，模块和模块之间有清晰的逻辑关系，比如：由浅入深、由原理到实战等；</li>
+                                    <li>整本小册解决一个大问题，每一讲解决一个小问题/讲深讲透一个知识点。</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p><strong>完整的样章</strong>：</p>
+                                <ul>
+                                    <li>&gt;=3 篇，每篇不少于 2000 字（全篇代码，文字过少不符合要求）；</li>
+                                    <li>内容原创、排版清晰，区别于网络上免费教程，拒绝纯概念、理论讲解的八股文；</li>
+                                    <li>内容贴近读者实际的工作、应用需求，输出作者个人分析、思考，提供独到、深入的见解及实践经验。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <blockquote>
+                            <p><strong>🌟参考已上线小册：</strong></p>
+                            <ul>
+                                <li><a href="https://juejin.cn/book/7050063811973218341" target="_blank"
+                                        title="https://juejin.cn/book/7050063811973218341">《深入浅出 Vite - 神三元 </a>》</li>
+                                <li>《<a href="https://juejin.cn/book/6844733769996304392" target="_blank"
+                                        title="https://juejin.cn/book/6844733769996304392">MySQL 是怎样运行的:从根儿上理解 MySQL -
+                                        小孩子4919 </a>》</li>
+                                <li>《<a href="https://juejin.cn/book/7052964245259943948?utm_source=course_list"
+                                        target="_blank"
+                                        title="https://juejin.cn/book/7052964245259943948?utm_source=course_list">CSS
+                                        技术揭秘与实战通关-Chokcoco</a>》</li>
+                            </ul>
+                            <p>请提前了解「<a href="https://juejin.cn/book/6844733795329900551/section/6976515731160563742"
+                                    target="_blank"
+                                    title="https://juejin.cn/book/6844733795329900551/section/6976515731160563742">掘金技术社区签约作者内容品控指南</a>」及《<a
+                                    href="https://juejin.cn/book/6844723704639782920?utm_source=course_list"
+                                    target="_blank"
+                                    title="https://juejin.cn/book/6844723704639782920?utm_source=course_list">如何写一本掘金小册</a>》，认真写作～
+                            </p>
+                        </blockquote>
+                        <h3 data-id="heading-4">🔥题材方向</h3>
+                        <p>如下是一些呼声较高的选题方向，供大家参考。</p>
+                        <ul>
+                            <li>
+                                <p><strong>大前端：</strong></p>
+                                <ul>
+                                    <li>可视化方向的原理&amp;实战小册，如 Canvas、Three.js、WebGL等主题；</li>
+                                    <li>性能优化方向的主题；</li>
+                                    <li>实战方向的小册：React、Vue、TypeScript 等主题；</li>
+                                    <li>跨端开发，如 Taro、React Native 等主题。</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p><strong>后端：</strong></p>
+                                <ul>
+                                    <li>Java、C++、数据结构、算法、Rust、Go 实战等主题；</li>
+                                    <li>数据库实战、优化等主题；</li>
+                                    <li>性能优化方向的主题。</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p><strong>人工智能&amp;大数据：</strong></p>
+                                <ul>
+                                    <li>机器学习、NLP；</li>
+                                    <li>Python 基础及实战、Spark、Hadoop、Flink；</li>
+                                    <li>推荐、搜索实战等主题。</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p><strong>其他：</strong></p>
+                                <ul>
+                                    <li>运维测试方向的选题；</li>
+                                    <li>网络安全、WebAssembly 等。</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h2 data-id="heading-5">⚠️注意事项</h2>
+                        <p>❌不建议&amp;不鼓励：</p>
+                        <ul>
+                            <li>申请理财、炒股、军事、小说、情感类主题；</li>
+                            <li>搬运、抄袭其他平台的付费文章；</li>
+                            <li>用自己的话翻译一遍官方文档的内容，汇总来申请小册；</li>
+                            <li>提供无效的报名信息，没有主题，没有大纲/只有几个关键词、没有样章/个人学习摘录笔记。</li>
+                        </ul>
+                        <p>如发现上述行为，将取消报名资格，无法参与之后的小册作者招募活动。</p>
+                        <h2 data-id="heading-6">🎁活动奖励</h2>
+                        <p>成功报名本次活动即可获得<code>「2 张小册 5 折优惠码」</code>。成功合作小册，除<strong>稳定的兼职收益</strong>外，还可额外获得价值<code>「500 元的奖励礼包」</code>。
+                        </p>
+                        <h2 data-id="heading-7">☎️ 参与规则&amp;方式</h2>
+                        <p>⏰<strong>活动日期：2023年8月1日～2023年9月15日</strong></p>
+                        <p>📃 报名通道：👉🏻<a href="https://wenjuan.feishu.cn/m?t=szftM3TsjtOi-fxro" target="_blank"
+                                title="https://wenjuan.feishu.cn/m?t=szftM3TsjtOi-fxro"
+                                ref="nofollow noopener noreferrer">报名问卷</a>👈🏻，成功报名，即可获得 2 张掘金小册 5 折优惠券；</p>
+                        <p>报名之后，我们将于 7~15 个工作日内进行「内容初审」，初审通过进入「内容筹备阶段」，完成课程设计对齐、样章打磨、用户调研、合作确认、文章筹备。符合上线要求，即可上线，并获得专属推广。
+                        </p>
+                        <p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4a3b9b35f6eb402da529fff26bf8bb93~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp?"
+                                alt="报名流程图.jpeg" loading="lazy" class="medium-zoom-image"></p>
+                        <blockquote>
+                            <p>为提升小册品质和用户体验，<strong>每本小册会有一位编辑</strong>，他会辅助创作者完成从内容框架搭建、文章打磨、用户调研到小册上线的全流程工作。</p>
+                        </blockquote>
+                        <h2 data-id="heading-8">❓常见 Q&amp;A</h2>
+                        <ol>
+                            <li>
+                                <p><strong>此次招募活动对应的形式是怎样的？</strong></p>
+                                <p>此次招募活动对应的形式<code>仅限于图文</code>。</p>
+                            </li>
+                            <li>
+                                <p><strong>提交问卷申请后，怎样知道自己是否通过审核？</strong></p>
+                                <p>不管申请是否通过，都会有编辑给予“一对一”的反馈。 我们的审核反馈周期为 <code>7~15 个工作日</code>。</p>
+                                <p>为了便于我们精准给予反馈，问卷的联系方式一定不要漏填或错填哦～</p>
+                            </li>
+                            <li>
+                                <p><strong>一个选题没有通过，是否可以重复申请？</strong></p>
+                                <p>可以，但如果是因为文章非原创、信息无效等原因未能通过审核，就不能继续申请了。</p>
+                            </li>
+                            <li>
+                                <p><strong>招募活动对应的专属奖励什么时候发放？找谁领取？</strong></p>
+                                <p>小册优惠码将于<code>活动结束后 7 个工作日内</code>完成发放。</p>
+                                <p>小册上线的专属礼包，可以在小册上线后，<code>找到对接的编辑领取</code>。</p>
+                            </li>
+                        </ol>
+                        <p><strong>更多问题，请添加👇「小册四姐」👇 咨询。</strong></p>
+                        <p align="center"><img
+                                src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7459a46ad4394a8cab6739d1a72350b4~tplv-k3u1fbpfcp-zoom-in-crop-mark:1512:0:0:0.awebp"
+                                alt="" width="40%" loading="lazy" class="medium-zoom-image"></p>
+
+
+
+
+                    </article>
+
+                </div>
+
+                <footer class="pd-25 bg-fff radius-6 mt-1 f-14 c-333">
+                    <p>上一篇：<a href="" class="c-666" target="_blank">脊椎全息图</a></p>
+                    <p class="mt-14">下一篇：<a href="" class="c-666" target="_blank">意守下丹田的奥秘</a></p>
+                </footer>
+
+            </article>
+
+            <aside class="flex-1">
+
+                <!-- 最新 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">nodejs最新文章<span class="more">more</span>
+                    </h3>
+                    <ul class="mt-10">
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js实现拍照试卷给出评分和答案</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js把页面转成pdf进行打印</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">three.js实现展馆演示厅</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">pixi.js小游戏开发实战经验</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">基于nodejs实现tts文本转语音</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href=""
+                                title="">js识别声音判断琴谱是否正确，并跟随琴声绘制修改琴谱背景颜色，给出评分和纠错提示</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">用canvas+websoket实时绘制心电图实战</a>
+                        </li>
+                    </ul>
+                </section>
+
+
+                <!-- 图文 热门 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">推荐图文</h3>
+                    <figure class="row justify-between mt-10 border-dashed">
+                        <div class="thumb mb-10"><img class="w-p100" src="./img/02.jpg" alt="" title=""></div>
+                        <div class="flex-1  mb-20">
+                            <figcaption class="f-14 ellips-2 bold mt-4 mb-4">JavaScript权威指南</figcaption>
+                        </div>
+                    </figure>
+
+                    <figure class="row justify-between mt-10 ">
+                        <div class="flex-1">
+                            <figcaption class="f-14 ellips-2 bold mt-4 mb-4">nodejs实战cms系统开发</figcaption>
+                            <p class="f-13 ellips-3"> 近日，因台风“杜苏芮”影响，北京市发布暴雨红色预警。对于雷雨天气，这些“陷阱”要避开！<a href="/"
+                                    title="">详情</a></p>
+                        </div>
+                    </figure>
+                </section>
+
+                <section class="ad mb-20">
+                    <img src="./img/12.jpg" class="w-p100" alt="">
+                </section>
+
+                <!-- tag标签 -->
+                <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">tag标签</h3>
+                    <p class="mt-10">
+                        <a class="el-tag mr-5 mb-5" href="/">nodejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">express</a>
+                        <a class="el-tag mr-5 mb-5" href="/">mysql</a>
+                        <a class="el-tag mr-5 mb-5" href="/">vue</a>
+                        <a class="el-tag mr-5 mb-5" href="/">react</a>
+                        <a class="el-tag mr-5 mb-5" href="/">javascript</a>
+                        <a class="el-tag mr-5 mb-5" href="/">go</a>
+                        <a class="el-tag mr-5 mb-5" href="/">java</a>
+                        <a class="el-tag mr-5 mb-5" href="/">python</a>
+                        <a class="el-tag mr-5 mb-5" href="/">css</a>
+                        <a class="el-tag mr-5 mb-5" href="/">threejs</a>
+                        <a class="el-tag mr-5 mb-5" href="/">pixi.js</a>
+                        <a class="el-tag mr-5 mb-5" href="/">electron</a>
+                    </p>
+                </section>
+
+                <section class="notices pd-20 mb-20 bg-fff pos-s" style="top:80px;z-index: 2;">
+                    <h3 class="m-title border-dashed f-16 row justify-between">目录</h3>
+                    <div class="mt-10" id="article-outline">
+                    </div>
+                </section>
+            </aside>
+
+        </div>
+    </main>
+
+
+
+
+
+    <!-- footer -->
+    <footer class="pd-20">
+        <div class="footer main center pd-20">
+            <div class="row justify-between">
+                <div class="col-6">
+                    <h4 class="f-15   pb-10">前端</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">JavaScript</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">vue</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">react</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">css3</a></p>
+                </div>
+
+                <div class="col-6">
+                    <h4 class="f-15  pb-10">nodejs</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">express</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">koa</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">mysql</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">mongoDB</a></p>
+                </div>
+                <div class="col-6">
+                    <h4 class="f-15 pb-10">chanyue-cms</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">在线文档</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">视频教程</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">标签工具</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">模板</a></p>
+                </div>
+                <div class="col-6">
+                    <h4 class="f-15 pb-10">关于</h4>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">关于我们</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">最新动态</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">联系作者</a></p>
+                </div>
+            </div>
+            <p class="mt-30 text-c f-14">©copyright 前端小栈•禅悦 </p>
+            <p class="f-13 text-c c-bfbfbf">自豪的采用 chanyue-cms</span></p>
+        </div>
+    </footer>
+
+    <div id="app">
+        <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
+            <div class="search mb-20">
+                <div class="el-input  el-input--prefix ">
+                    <div class="el-input__wrapper" role="button">
+                        <span class="el-input__prefix">
+                            <span class="el-input__prefix-inner">
+                                <i class="el-icon el-input__icon">
+                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="currentColor"
+                                            d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
+                                        </path>
+                                    </svg>
+                                </i>
+                            </span>
+                        </span>
+                        <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
+                    </div>
+                    <!-- <el-button class="ml-5">搜索</el-button> -->
+                </div>
+            </div>
+            <ul class="f-16">
+                <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">首页</a></li>
+                <li>
+                    <a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">前端开发</a>
+                    <ul class="pl-16">
+                        <li><a class="pt-5 pb-5 block" href="/" target="_blank">vue</a></li>
+                        <li><a class="pt-5 pb-5 block" href="/" target="_blank">react</a></li>
+                        <li><a class="pt-5 pb-5 block" href="/" target="_blank">javascript</a></li>
+                        <li><a class="pt-5 pb-5 block" href="/" target="_blank">css</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">node开发</a>
+                    <ul class="pl-16">
+                        <li><a class="pt-5 pb-5 block" href="/" target="_blank">express</a></li>
+                        <li><a class="pt-5 pb-5 block" href="/" target="_blank">mysql</a></li>
+                        <li><a class="pt-5 pb-5 block" href="/" target="_blank">服务器</a></li>
+                    </ul>
+                <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">SEO</a></li>
+                <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">前端库</a></li>
+                <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">禅悦cms</a></li>
+                <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">案例</a></li>
+                <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">关于</a></li>
+            </ul>
+        </el-drawer>
+        <el-backtop :right="100" :bottom="100" />
+    </div>
+
+    <script src="./js/vue@3.js"></script>
+    <script src="./js/element-plus.js"></script>
+    <script src="./js/katelog.min.js"></script>
+
+    <script>
+        const app = Vue.createApp({
+            data: function () {
+                return {
+                    drawer: false,
+                    total: 10
+                }
+            },
+            mounted() {
+                let _this = this;
+                document.querySelector('.ico-open').addEventListener('click', () => {
+                    _this.drawer = true
+                })
+            },
+            methods: {
+                handleCurrentChange(vue) {
+
+                },
+                handleClose() {
+                    this.drawer = false
+                }
+            }
+        });
+        app.use(ElementPlus);
+        app.mount('#app');
+
+        const katelogIns = new katelog({
+            contentEl: 'article',
+            catelogEl: 'article-outline',
+            linkClass: 'k-catelog-link',
+            linkActiveClass: 'k-catelog-link-active',
+            selector: ['h2', 'h3', 'h4', 'h5', 'h6'],
+            supplyTop: 20,
+            active: function (el) {
+            }
+        });
+
+    // const html = '<h2>动态添加的标题</h2>'
+    // katelogIns.contentEl.insertAdjacentHTML('afterBegin', html);
+    // katelogIns.rebuild();
+    </script>
+
+</body>
+
+</html>
