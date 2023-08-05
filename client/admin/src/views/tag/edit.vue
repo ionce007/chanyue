@@ -12,7 +12,7 @@
       </el-form-item>
 
       <el-form-item label="标签标识">
-        <el-input v-model="params.path" disabled></el-input>
+        <el-input v-model="params.path"></el-input>
       </el-form-item>
 
       <el-form-item>

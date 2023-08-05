@@ -13,7 +13,7 @@
           <el-input v-model="params.name" placeholder="请输入汉字"></el-input>
         </el-form-item>
 
-        <el-form-item label="碎片标识">
+        <el-form-item label="碎片标识" prop="mark">
           <el-input v-model="params.mark" placeholder="模板使用标识"></el-input>
         </el-form-item>
 

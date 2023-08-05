@@ -13,8 +13,8 @@
           <el-input v-model="params.name"></el-input>
         </el-form-item>
 
-        <el-form-item label="碎片标识">
-          <el-input v-model="params.mark" disabled></el-input>
+        <el-form-item label="碎片标识" prop="mark">
+          <el-input v-model="params.mark"></el-input>
         </el-form-item>
 
         <el-form-item label="文章内容">
