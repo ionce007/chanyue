@@ -11,7 +11,7 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 24/07/2023 06:57:42
+ Date: 05/08/2023 18:25:34
 */
 
 SET NAMES utf8mb4;
@@ -90,7 +90,7 @@ CREATE TABLE `article`  (
 -- ----------------------------
 -- Records of article
 -- ----------------------------
-INSERT INTO `article` VALUES (1, 6, '', '国内常见的基于node开发的cms系统', '', '', '', '', '', '', '', '', '1.chanyue-cms\n禅悦内容管理系统，基于nodejs&nbsp;express&nbsp;mysql&nbsp;knex&nbsp;jwt&nbsp;vue3&nbsp;进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。\ngitee:https://gitee.com/yanyutao0402/chanyue-cms\n2.DoraCMS\nDoraCMS&nbsp;是', NULL, '<p>1.chanyue-cms</p>\n<p>禅悦内容管理系统，基于<code>nodejs</code>&nbsp;<code>express</code>&nbsp;<code>mysql</code>&nbsp;<code>knex</code>&nbsp;<code>jwt</code>&nbsp;<code>vue3</code>&nbsp;进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。</p>\n<p>gitee:https://gitee.com/yanyutao0402/chanyue-cms</p>\n<p>2.DoraCMS</p>\n<p><code>DoraCMS</code>&nbsp;是基于 nodejs 的内容管理系统，所用技术栈包含 eggjs、mongodb、vue、single-spa 等。代码结构清晰，目录规划合理，项目整体考虑到了从普通用户使用，开发者开发，编译，发布的整个流程。</p>\n<p>gitee:https://github.com/doramart/DoraCMS/</p>\n<p>3.nodercms</p>\n<p>nodercms基于nodejs mongodb开发的简单的内容管理系统。</p>\n<p>官网：http://www.nodercms.com/</p>', 0, 0, '', '2023-06-27 22:48:40', '2023-06-27 22:48:40');
+INSERT INTO `article` VALUES (1, 6, '', '国内常见的基于node开发的cms系统', '', '', '', '', '', '', '', '', '1.chanyue-cms\n禅悦内容管理系统，基于nodejs&nbsp;express&nbsp;mysql&nbsp;knex&nbsp;jwt&nbsp;vue3&nbsp;进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。\ngitee:https://gitee.com/yanyutao0402/chanyue-cms\n2.DoraCMS\nDoraCMS&nbsp;是', '/public/cover/09.jpg', '<p>1.chanyue-cms</p>\n<p>禅悦内容管理系统，基于<code>nodejs</code>&nbsp;<code>express</code>&nbsp;<code>mysql</code>&nbsp;<code>knex</code>&nbsp;<code>jwt</code>&nbsp;<code>vue3</code>&nbsp;进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。</p>\n<p>gitee:https://gitee.com/yanyutao0402/chanyue-cms</p>\n<p>2.DoraCMS</p>\n<p><code>DoraCMS</code>&nbsp;是基于 nodejs 的内容管理系统，所用技术栈包含 eggjs、mongodb、vue、single-spa 等。代码结构清晰，目录规划合理，项目整体考虑到了从普通用户使用，开发者开发，编译，发布的整个流程。</p>\n<p>gitee:https://github.com/doramart/DoraCMS/</p>\n<p>3.nodercms</p>\n<p>nodercms基于nodejs mongodb开发的简单的内容管理系统。</p>\n<p>官网：http://www.nodercms.com/</p>', 0, 0, '', '2023-06-27 22:48:40', '2023-06-27 22:48:40');
 
 -- ----------------------------
 -- Table structure for article_map_tag
@@ -102,12 +102,12 @@ CREATE TABLE `article_map_tag`  (
   `tid` int(11) NULL DEFAULT NULL COMMENT '标签id',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章-标签表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章-标签表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of article_map_tag
 -- ----------------------------
-INSERT INTO `article_map_tag` VALUES (4, 1, 0);
+INSERT INTO `article_map_tag` VALUES (5, 1, 0);
 
 -- ----------------------------
 -- Table structure for category
@@ -130,19 +130,22 @@ CREATE TABLE `category`  (
   `status` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '0 显示 1隐藏',
   `mid` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '0' COMMENT '模型id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '网站栏目' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '网站栏目' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES (1, 0, '', '', '', '下载', 'xiazai', '/chanyuecms', '', '0', '', 0, '0', '0', '0');
-INSERT INTO `category` VALUES (2, 0, '', '', '', '前端', 'qianduan', '/nodejs', '', '0', '', 0, '0', '0', '0');
-INSERT INTO `category` VALUES (3, 0, '', '', '', '案例', 'anli', '/anli', '', '0', '', 0, '0', '0', '0');
-INSERT INTO `category` VALUES (4, 0, '', '', '', '文档', 'wendang', '/wendang', '', '0', '', 0, '0', '0', '0');
-INSERT INTO `category` VALUES (5, 0, '', '', '', '合作', 'hezuo', '/hezuo', '', '1', '', 0, '0', '0', '0');
-INSERT INTO `category` VALUES (6, 2, '', '', '', '常用库', 'changyongku', '/qianduan/kaiyuangongju', '', '0', '', 0, '0', '0', '0');
-INSERT INTO `category` VALUES (7, 2, '', '', '', '开发工具', 'kaifagongju', '/qianduan/kaifagongju', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (1, 0, '', '', '', '前端开发', 'qianduankaifa', '/chanyuecms', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (2, 0, '', '', '', 'node开发', 'nodekaifa', '/nodejs', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (3, 0, '', '', '', '前端库', 'qianduanku', '/anli', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (4, 0, '', '', '', 'SEO', 'SEO', '/wendang', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (5, 0, '', '', '', 'chanyue', 'chanyue', '/hezuo', '', '1', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (6, 2, '', '', '', 'express', 'express', '/qianduan/kaiyuangongju', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (7, 2, '', '', '', '服务运维', 'fuwuyunwei', '/qianduan/kaifagongju', '', '0', '', 0, '0', '0', '0');
 INSERT INTO `category` VALUES (8, 0, '', '', '', '关于', 'guanyu', '/guanyu', '', '1', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (9, 1, '', '', '', 'JavaScript', 'JavaScript', '/qianduankaifa/JavaScript', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (10, 1, '', '', '', 'vue', 'vue', '/qianduankaifa/vue', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (11, 2, '', '', '', 'mysql', 'mysql', '/nodekaifa/mysql', '', '0', '', 0, '0', '0', '0');
 
 -- ----------------------------
 -- Table structure for down
@@ -192,12 +195,14 @@ CREATE TABLE `frag`  (
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '内容',
   `createdAt` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '碎片' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '碎片' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of frag
 -- ----------------------------
 INSERT INTO `frag` VALUES (1, '广告', 'guanggao', '禅悦', '2023-07-14 20:48:50');
+INSERT INTO `frag` VALUES (2, '版权', 'banquan', '<p class=\"f-13 text-c c-bfbfbf\">自豪的采用 chanyue-cms</p>', '2023-08-05 17:34:49');
+INSERT INTO `frag` VALUES (3, 'chanyue-cms介绍', 'chanyue-cmsjieshao', '<p>禅悦内容管理系统，基于`nodejs` `express` `mysql` `knex` `jwt` `vue3` 进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。<a title=\"\" href=\"http://localhost:81/\">[详情]</a></p>', '2023-08-05 17:36:09');
 
 -- ----------------------------
 -- Table structure for friendlink
@@ -357,7 +362,7 @@ CREATE TABLE `site`  (
 -- ----------------------------
 -- Records of site
 -- ----------------------------
-INSERT INTO `site` VALUES (1, '禅悦内容管理系统', 'www.chanyue.top', '867528315@qq.com', NULL, NULL, NULL, 'chanyue-cms禅悦内容管理系统', 'cms,chanyue-cms,chanyue,内容管理系统,nodejs,express,mysql,knex,jwt,vue3', '禅悦内容管理系统，基于nodejs express mysql knex jwt vue3 进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。', NULL, NULL, '13366826071', NULL, NULL);
+INSERT INTO `site` VALUES (1, '前端小栈', 'www.chanyue.top', '867528315@qq.com', NULL, NULL, NULL, 'chanyue-cms禅悦内容管理系统', 'cms,chanyue-cms,chanyue,内容管理系统,nodejs,express,mysql,knex,jwt,vue3', '禅悦内容管理系统，基于nodejs express mysql knex jwt vue3 进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。', NULL, '• 禅悦', '13366826071', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_config
@@ -505,11 +510,13 @@ CREATE TABLE `tag`  (
   `name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '标签名称',
   `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '标识',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '标签' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '标签' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tag
 -- ----------------------------
 INSERT INTO `tag` VALUES (1, 'cms', 'cms');
+INSERT INTO `tag` VALUES (2, 'js库', 'jsku');
+INSERT INTO `tag` VALUES (3, '开发工具', 'kaifagongju');
 
 SET FOREIGN_KEY_CHECKS = 1;
