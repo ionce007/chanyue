@@ -22,8 +22,8 @@
 </head>
 
 <body>
-     <!-- 头部 -->
-     <header class="row header-wrap justify-center pos-r">
+    <!-- 头部 -->
+    <header class="row header-wrap justify-center pos-r">
         <div class="header row align-c justify-between pt-5 pb-5">
             <div class="row align-c">
                 <h1 class="logo" title="禅悦内容管理系统chanyue-cms">
@@ -75,6 +75,8 @@
                     <!-- <el-button class="ml-5">搜索</el-button> -->
                 </div>
             </div>
+
+            <div class="ico-open"></div>
         </div>
     </header>
 
@@ -90,7 +92,7 @@
         <div class="main center mt-10 row gap-20">
             <!-- 最新文章 -->
             <article class="article-index">
-                <section class="row justify-between gap-10  mb-20" id="app" >
+                <section class="row justify-between gap-10  mb-20" id="app">
                     <el-carousel :interval="5000" arrow="always" v-clock>
                         <el-carousel-item>
                             <img src="./img/11.jpg" alt="">
@@ -113,12 +115,57 @@
                             <h3>4</h3>
                         </el-carousel-item>
                     </el-carousel>
-
+                    <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
+                        <div class="search mb-20">
+                            <div class="el-input  el-input--prefix ">
+                                <div class="el-input__wrapper" role="button">
+                                    <span class="el-input__prefix">
+                                        <span class="el-input__prefix-inner">
+                                            <i class="el-icon el-input__icon">
+                                                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill="currentColor"
+                                                        d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
+                                                    </path>
+                                                </svg>
+                                            </i>
+                                        </span>
+                                    </span>
+                                    <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
+                                </div>
+                                <!-- <el-button class="ml-5">搜索</el-button> -->
+                            </div>
+                        </div>
+                        <ul class="f-16">
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">首页</a></li>
+                            <li>
+                                <a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">前端开发</a>
+                                <ul class="pl-16">
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">vue</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">react</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">javascript</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">css</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">node开发</a>
+                                <ul class="pl-16">
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">express</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">mysql</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">服务器</a></li>
+                                </ul>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">SEO</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">前端库</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">禅悦cms</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">案例</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">关于</a></li>
+                        </ul>
+                    </el-drawer>
                     <div class="w-520 h-290 bg-fff pd-20">
                         <div class="row justify-between">
                             <h2 class="f-16 ellips-2 c-1a1a1a">js实现识别声音判断琴谱是否正确，并跟随琴声绘制修改琴谱背景颜色，给出评分和纠错提示</h2>
                             <p class="f-14  ellips-3  mb-10 mt-10">
-                               首先要通过canvas来绘制琴谱，收集钢琴声音通过算法实时判断是否正确，并再五线谱上面标注是否正确，和进度，算法需用js写超玄定理和八卦预测方程来实现。<a class="c-003a8c" href="/" title="">详情</a>
+                                首先要通过canvas来绘制琴谱，收集钢琴声音通过算法实时判断是否正确，并再五线谱上面标注是否正确，和进度，算法需用js写超玄定理和八卦预测方程来实现。<a
+                                    class="c-003a8c" href="/" title="">详情</a>
                             </p>
                         </div>
                         <ul class="w-460-list">
@@ -137,14 +184,13 @@
                                 <a href="" title="">【new】雷雨天这些“陷阱”要避开</a><time class="c-999">1月前</time>
                             </li>
                         </ul>
-
                     </div>
-
                     <el-backtop :right="100" :bottom="100" />
                 </section>
                 <section class="row justify-between gap-10">
                     <div class="w-460 bg-fff pd-20">
-                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">nodejs开发<span class="more">热榜</span></h3>
+                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">nodejs开发<span
+                                class="more">热榜</span></h3>
                         <figure class="row justify-between">
                             <div class="thumb-120">
                                 <img class="w-p100" src="./img/01.jpg" alt="" title="">
@@ -173,7 +219,8 @@
                     </div>
 
                     <div class="w-460 bg-fff pd-20">
-                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">搜索引擎SEO<span class="more">更多</span></h3>
+                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">搜索引擎SEO<span
+                                class="more">更多</span></h3>
                         <figure class="row justify-between">
                             <div class="thumb-120">
                                 <img class="w-p100" src="./img/02.jpg" alt="" title="">
@@ -202,7 +249,8 @@
                     </div>
 
                     <div class="w-460 bg-fff pd-20">
-                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">前端库&工具<span class="more">热榜</span></h3>
+                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">前端库&工具<span
+                                class="more">热榜</span></h3>
                         <figure class="row justify-between">
                             <div class="thumb-120">
                                 <img class="w-p100" src="./img/03.jpg" alt="" title="">
@@ -231,7 +279,8 @@
                     </div>
 
                     <div class="w-460 bg-fff pd-20">
-                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">前端开发<span class="more">热榜</span></h3>
+                        <h3 class="m-title f-16 row justify-between border-dashed mb-10">前端开发<span
+                                class="more">热榜</span></h3>
                         <figure class="row justify-between">
                             <div class="thumb-120">
                                 <img class="w-p100" src="./img/03.jpg" alt="" title="">
@@ -339,22 +388,26 @@
                     <h3 class="m-title border-dashed f-16 row justify-between">chanyue-cms介绍</h3>
                     <p class="mt-10 f-14 lh-24">
                         禅悦内容管理系统，基于`nodejs` `express` `mysql` `knex` `jwt` `vue3`
-                        进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。<a href="/"
-                        title="">[详情]</a>
+                        进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。<a
+                            href="/" title="">[详情]</a>
                     </p>
                 </section>
 
                 <!-- 通知 -->
                 <section class="notices pd-20 mb-20 bg-fff">
-                    <h3 class="m-title border-dashed f-16 row justify-between">公告通知<span class="more">more</span></h3>
+                    <h3 class="m-title border-dashed f-16 row justify-between">公告通知<span class="more">more</span>
+                    </h3>
                     <ul class="mt-10">
                         <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js实现拍照试卷给出评分和答案</a></li>
                         <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js把页面转成pdf进行打印</a></li>
                         <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">three.js实现展馆演示厅</a></li>
                         <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">pixi.js小游戏开发实战经验</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">基于nodejs实现tts文本转语音</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js识别声音判断琴谱是否正确，并跟随琴声绘制修改琴谱背景颜色，给出评分和纠错提示</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">用canvas+websoket实时绘制心电图实战</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">基于nodejs实现tts文本转语音</a>
+                        </li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href=""
+                                title="">js识别声音判断琴谱是否正确，并跟随琴声绘制修改琴谱背景颜色，给出评分和纠错提示</a></li>
+                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">用canvas+websoket实时绘制心电图实战</a>
+                        </li>
                     </ul>
                 </section>
 
@@ -423,47 +476,72 @@
 
     <!-- footer -->
 
+
     <footer class="pd-20">
         <div class="footer main center pd-20">
             <div class="row justify-between">
                 <div class="col-6">
                     <h4 class="f-15 pb-10">前端</h4>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >JavaScript</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >vue</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >react</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >css3</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">JavaScript</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">vue</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">react</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">css3</a></p>
                 </div>
 
                 <div class="col-6">
                     <h4 class="f-15  pb-10">nodejs</h4>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >express</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >koa</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >mysql</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >mongoDB</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">express</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">koa</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">mysql</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">mongoDB</a></p>
                 </div>
                 <div class="col-6">
                     <h4 class="f-15 pb-10">chanyue-cms</h4>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >在线文档</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >视频教程</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >标签工具</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >模板</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">在线文档</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">视频教程</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">标签工具</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">模板</a></p>
                 </div>
                 <div class="col-6">
                     <h4 class="f-15  pb-10">关于</h4>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >关于我们</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >最新动态</a></p>
-                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959" >联系作者</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">关于我们</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">最新动态</a></p>
+                    <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">联系作者</a></p>
                 </div>
             </div>
-            <p class="mt-20  text-c f-14">©copyright 前端小栈•禅悦 <span class="ml-10 c-595959">自豪的采用 chanyue-cms</span></p>
+            <p class="mt-30 text-c f-14">©copyright 前端小栈•禅悦 </p>
+            <p class="f-13 text-c c-bfbfbf">自豪的采用 chanyue-cms</span></p>
         </div>
     </footer>
+
 
     <script src="./js/vue@3.js"></script>
     <script src="./js/element-plus.js"></script>
     <script>
-        const app = Vue.createApp({});
+        const app = Vue.createApp({
+            data: function () {
+                return {
+                    drawer: false
+                }
+            },
+            mounted() {
+                let _this = this;
+                document.querySelector('.ico-open').addEventListener('click', () => {
+                    _this.drawer = true
+                })
+            },
+            methods: {
+                handleCurrentChange(vue) {
+
+                },
+
+                handleClose() {
+                    this.drawer = false
+                }
+            }
+        });
         app.use(ElementPlus);
+
         app.mount('#app');
     </script>
 </body>

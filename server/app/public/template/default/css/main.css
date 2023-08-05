@@ -183,6 +183,13 @@ ul>li:last-child {
     display: block;
 }
 
+.ico-open {
+    width: 42px;
+    height: 42px;
+    background: url(../img/open.svg) center center no-repeat;
+    background-size: 22px 22px;
+    display: none;
+}
 
 /* banner */
 .banner {
@@ -337,7 +344,7 @@ ul>li:last-child {
 /* list.html */
 
 
-.page {
+.el-pagination {
     background-color: #fff;
 }
 
@@ -355,25 +362,25 @@ ul>li:last-child {
     border: 1px solid #69b1ff;
 } */
 
-.page ul li:hover a {
+.el-pagination ul li:hover a {
     display: block;
     cursor: pointer;
     color: #69b1ff;
 }
 
-.page ul li a {
+.el-pagination ul li a {
     color: #bdbbbb;
 }
 
 
 
-.page ul li.active {
+.el-pagination ul li.active {
     border: none;
     background-color: #1677ff;
     color: #fff;
 }
 
-.page ul li.active a {
+.el-pagination ul li.active a {
     color: #fff;
 }
 
@@ -724,7 +731,7 @@ iframe {
     width: 100%;
 }
 
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:992px) {
     .header {
         max-width: 100%;
         width: 100%;
@@ -751,6 +758,14 @@ iframe {
         bottom: 50px !important;
     }
 
+    .chanyue{
+        font-size: 50px;
+    }
+
+    .banner{
+        height: 260px;
+    }
+
     .h-290 {
         height: auto;
     }
@@ -758,7 +773,18 @@ iframe {
     .el-carousel {
         width: 100%;
     }
+    .m-card{
+        width: 100%;
+        box-shadow:none;
+        margin: 0px;
+        padding: 0px;
+        border-radius: none;
+    }
 
+    .main.pd-30{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
     .nav {
         display: none;
     }
@@ -767,19 +793,42 @@ iframe {
         display: none;
     }
 
+    .ico-open {
+        display: block;
+    }
+
+    .el-drawer {
+        width: 60% !important;
+    }
+
+    .el-drawer__body .nav {
+        display: block;
+        margin-left: 0px;
+    }
+
+    .el-drawer__body .sub-nav {
+        display: block;
+    }
+
+    .el-drawer__body .search {
+        display: block;
+    }
+
     .books-item {
         width: calc((100% / 2) - 1px);
     }
 
-   .flex-1 .mb-20:last-child{
-    margin-bottom: 0px;
-   }
+    .flex-1 .mb-20:last-child {
+        margin-bottom: 0px;
+    }
 
 
-   .footer.pd-20{
+    .footer.pd-20 {
         padding: 20px 0 20px;
         margin-left: 0px;
         margin-right: 0px;
-   }
+    }
+
     
+
 }

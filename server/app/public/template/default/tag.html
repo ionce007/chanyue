@@ -74,6 +74,8 @@
                     <!-- <el-button class="ml-5">搜索</el-button> -->
                 </div>
             </div>
+
+            <div class="ico-open"></div>
         </div>
     </header>
 
@@ -109,14 +111,11 @@
                                         因为不要求听起来多自然，也不考虑跨平台，所以就打算自己实现一下。...</a></p>
                             </div>
                         </li>
-
-                       
-
                     </ul>
                 </div>
 
-                 <!-- 分页 -->
-                 <div class="page mt-1 bg-fff pd-25 row justify-center  radius-6" id="app" >
+                <!-- 分页 -->
+                <div class="page mt-1 bg-fff pd-25 row justify-center  radius-6" id="app">
                     <!-- <ul class="overflow-h center" id="page">
                         <li><a aria-label="Previous">«</a></li>
                         <li><a>上一页</a></li>
@@ -127,7 +126,54 @@
                         <li><a aria-label="Next">»</a></li>
                     </ul> -->
 
-                    <el-pagination background v-clock layout="prev, pager, next" :total="total"  @current-change="handleCurrentChange" >
+                    <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
+                        <div class="search mb-20">
+                            <div class="el-input  el-input--prefix ">
+                                <div class="el-input__wrapper" role="button">
+                                    <span class="el-input__prefix">
+                                        <span class="el-input__prefix-inner">
+                                            <i class="el-icon el-input__icon">
+                                                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill="currentColor"
+                                                        d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
+                                                    </path>
+                                                </svg>
+                                            </i>
+                                        </span>
+                                    </span>
+                                    <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
+                                </div>
+                                <!-- <el-button class="ml-5">搜索</el-button> -->
+                            </div>
+                        </div>
+                        <ul class="f-16">
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">首页</a></li>
+                            <li>
+                                <a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">前端开发</a>
+                                <ul class="pl-16">
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">vue</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">react</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">javascript</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">css</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">node开发</a>
+                                <ul class="pl-16">
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">express</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">mysql</a></li>
+                                    <li><a class="pt-5 pb-5 block" href="/" target="_blank">服务器</a></li>
+                                </ul>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">SEO</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">前端库</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">禅悦cms</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">案例</a></li>
+                            <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">关于</a></li>
+                        </ul>
+                    </el-drawer>
+
+                    <el-pagination background v-clock layout="prev, pager, next" :total="total"
+                        @current-change="handleCurrentChange">
                     </el-pagination>
 
                     <el-backtop :right="100" :bottom="100" />
@@ -136,8 +182,6 @@
             </article>
 
             <aside class="flex-1">
-               
-
                 <!-- tag标签 -->
                 <section class="notices pd-20 mb-20 bg-fff">
                     <h3 class="m-title border-dashed f-16 row justify-between">tag标签</h3>
@@ -178,8 +222,8 @@
                     </p>
                 </section>
 
-                 <!-- 介绍文本 -->
-                 <section class="notices pd-20 mb-20 bg-fff">
+                <!-- 介绍文本 -->
+                <section class="notices pd-20 mb-20 bg-fff">
                     <h3 class="m-title border-dashed f-16 row justify-between">chanyue-cms介绍</h3>
                     <p class="mt-10 f-14 lh-24">
                         禅悦内容管理系统，基于`nodejs` `express` `mysql` `knex` `jwt` `vue3`
@@ -224,7 +268,8 @@
                     <p class="f-13 pt-3 pb-3"><a href="" class="c-595959">联系作者</a></p>
                 </div>
             </div>
-            <p class="mt-20  text-c f-14">©copyright 前端小栈•禅悦 自豪的采用chanyue-cms</p>
+            <p class="mt-30 text-c f-14">©copyright 前端小栈•禅悦 </p>
+            <p class="f-13 text-c c-bfbfbf">自豪的采用 chanyue-cms</span></p>
         </div>
     </footer>
     <script src="./js/vue@3.js"></script>
@@ -232,14 +277,24 @@
     <script src="./js/scrollnav.min.umd.js"></script>
     <script>
         var app = Vue.createApp({
-            data:function(){
+            data: function () {
                 return {
-                    total:10
+                    drawer: false,
+                    total: 10
                 }
             },
-            methods:{
-                handleCurrentChange(vue){
+            mounted() {
+                let _this = this;
+                document.querySelector('.ico-open').addEventListener('click', () => {
+                    _this.drawer = true
+                })
+            },
+            methods: {
+                handleCurrentChange(vue) {
 
+                },
+                handleClose() {
+                    this.drawer = false
                 }
             }
         });
