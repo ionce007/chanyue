@@ -5,13 +5,12 @@ const AdminController = require('../../controller/api/admin.js');
 const ArticleController = require('../../controller/api/article.js');
 const SiteController = require('../../controller/api/site.js');
 const CategoryController = require('../../controller/api/category.js');
-const MemberController = require('../../controller/api/member.js');
 const ModelController = require('../../controller/api/model.js');
 const FieldController = require('../../controller/api/field.js');
 const FragController = require('../../controller/api/frag.js');
 const TagController = require('../../controller/api/tag.js');
 const FriendlinkController = require('../../controller/api/friendlink.js');
-const AdController = require('../../controller/api/ad.js');
+
 const MessageController = require('../../controller/api/message.js');
 
 const upload = require('../../extend/upload.js');
@@ -107,14 +106,6 @@ router.get('/friendlink/detail', FriendlinkController.detail);
 router.post('/friendlink/create', auth(), FriendlinkController.create);
 router.get('/friendlink/delete', auth(), FriendlinkController.delete);
 router.post('/friendlink/update', auth(), FriendlinkController.update);
-
-// 广告管理
-router.get('/ad/list', AdController.list);
-router.get('/ad/search', AdController.search);
-router.get('/ad/detail', AdController.detail);
-router.post('/ad/create', auth(), AdController.create);
-router.get('/ad/delete', auth(), AdController.delete);
-router.post('/ad/update', auth(), AdController.update);
 
 // 留言管理
 router.get('/message/list', MessageController.list);
