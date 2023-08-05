@@ -6,7 +6,7 @@ const router = express.Router();
 const { template } = require('../config/config.js');
 const api = require('./api/index.js');
 const weixin = require('./weixin/index.js');
-const web = require(`./web/${template}/index.js`);
+const web = require(`./web/default/index.js`);
 const open = require(`./open/index.js`);
 //前台
 router.use('/', web);

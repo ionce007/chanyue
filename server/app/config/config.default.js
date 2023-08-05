@@ -64,12 +64,12 @@ config.multipart = {
 
 
 // 模板配置
-config.view = {
-    defaultViewEngine: 'ejs',
-    mapping: {
-        '.html': 'ejs', // 左边写成.html后缀，会自动渲染.html文件
-    },
-};
+// config.view = {
+//     defaultViewEngine: 'ejs',
+//     mapping: {
+//         '.html': 'ejs', // 左边写成.html后缀，会自动渲染.html文件
+//     },
+// };
 
 config.static = {
     prefix: '/public/',
@@ -90,7 +90,7 @@ config.logger = {
 config.debug = true;
 
 // add your user config here
-config.template = 'qigong';
+config.template = 'default';
 config.apiService = 'api';
 
 module.exports = config;

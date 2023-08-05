@@ -60,7 +60,7 @@ export default {
         id: 0,
         name: 0,
         mark: "",
-        updatedAt: new Date(),
+        createdAt: new Date(),
         content: "禅悦",
       },
       dialogVisible: false,

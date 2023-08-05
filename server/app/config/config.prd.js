@@ -64,12 +64,12 @@ config.multipart = {
 
 
 // 模板配置
-config.view = {
-    defaultViewEngine: 'ejs',
-    mapping: {
-        '.html': 'ejs', // 左边写成.html后缀，会自动渲染.html文件
-    },
-};
+// config.view = {
+//     defaultViewEngine: 'ejs',
+//     mapping: {
+//         '.html': 'ejs', // 左边写成.html后缀，会自动渲染.html文件
+//     },
+// };
 
 config.static = {
     prefix: '/public/',

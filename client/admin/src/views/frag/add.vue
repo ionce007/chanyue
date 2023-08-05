@@ -61,7 +61,6 @@ export default {
         name: "",
         mark: "",
         createdAt: new Date(),
-        updatedAt: new Date(),
         content: "禅悦",
       },
       paramsRules: {
