@@ -70,24 +70,25 @@ class TagService extends BaseService {
   }
 
   // 文章列表
-  static async list(cur = 1, pageSize = 10) {
+  static async list(cur = 1, pageSize = 100) {
     try {
       // 查询个数
-      const total = await knex(TagService.model).count("id", { as: "count" });
+     // const total = await knex(TagService.model).count("id", { as: "count" });
       const offset = parseInt((cur - 1) * pageSize);
       const list = await knex
-        .select("*")
+        .select(['id','name','path'])
         .from(TagService.model)
         .limit(pageSize)
         .offset(offset)
         .orderBy("id", "desc");
-      const count = total[0].count || 1;
-      return {
-        count: count,
-        total: Math.ceil(count / pageSize),
-        current: +cur,
-        list: list,
-      };
+        return list;
+      // const count = total[0].count || 1;
+      // return {
+      //   count: count,
+      //   total: Math.ceil(count / pageSize),
+      //   current: +cur,
+      //   list: list,
+      // };
     } catch (err) {
       console.error(err);
     }

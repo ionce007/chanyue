@@ -2,7 +2,7 @@
 const BaseService = require('./base');
 const path = require('path');
 const knex = require('../../config/config.knex.js');
-const { delImg, filterImgFromStr } = require('../../extend/helper.js');
+const {convertArrayToObject } = require('../../extend/helper.js');
 
 class FragService extends BaseService {
   static model = 'frag';
@@ -43,24 +43,27 @@ class FragService extends BaseService {
   }
 
 
-  // 文章列表
-  static async list(cur = 1, pageSize = 10) {
+  // 获取全量frag，默认100个
+  static async list(cur = 1, pageSize = 100) {
     try {
       // 查询个数
-      const total = await knex(FragService.model).count('id', { as: 'count' });
-      const offset = parseInt((cur - 1) * pageSize);
-      const list = await knex.select('*')
+      // const total = await knex(FragService.model).count('id', { as: 'count' });
+     const offset = parseInt((cur - 1) * pageSize);
+      const list = await knex.select([ 'name', 'mark','content'])
         .from(FragService.model)
         .limit(pageSize)
         .offset(offset)
         .orderBy('id', 'desc');
-        const count = total[0].count || 1;
-      return {
-        count: count,
-        total: Math.ceil(count / pageSize),
-        current: +cur,
-        list: list,
-      };
+
+       const frags =  convertArrayToObject(list,'mark');
+       return frags;
+       // const count = total[0].count || 1;
+      // return {
+      //   count: count,
+      //   total: Math.ceil(count / pageSize),
+      //   current: +cur,
+      //   list: frags,
+      // };
     } catch (err) {
       console.error(err);
     }

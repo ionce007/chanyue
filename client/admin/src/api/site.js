@@ -22,9 +22,7 @@ export let updateInfo = ({
   address,
   copyright,
   code,
-  companyTel,
-  companyName,
-  companyAddress,
+  json,
 }) => {
   return http({
     url: `${API.BASE_API}/api/site/updateInfo`,
@@ -39,9 +37,7 @@ export let updateInfo = ({
       address,
       copyright,
       code,
-      companyTel,
-      companyName,
-      companyAddress,
+      json,
     },
   });
 };

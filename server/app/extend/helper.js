@@ -183,3 +183,22 @@ exports.mkdirsSync = (dirname)=>{
 exports.ip = (req)=>{
   return (req.headers['x-real-ip'] || req.connection.remoteAddress).slice(7);
 }
+
+/**
+ * @example [{name:'yanyutao',age:33}] => {yanyutao:33}
+ * @description 数组变对象：将数组中的key作为对象的key，其余作为value
+ */
+exports.convertArrayToObject = (array, key)=>{
+  //数组是否为空
+  if (!Array.isArray(array) || array.length === 0) {
+    return {};
+  }
+  const result = {};
+  for (const item of array) {
+    const { [key]: mark, ...rest } = item;
+    if (mark) {
+      result[mark] = { ...rest };
+    }
+  }
+  return result;
+}

@@ -11,34 +11,11 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 05/08/2023 18:25:34
+ Date: 05/08/2023 22:28:00
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-
--- ----------------------------
--- Table structure for ad
--- ----------------------------
-DROP TABLE IF EXISTS `ad`;
-CREATE TABLE `ad`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '广告id',
-  `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '广告名称',
-  `mark` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '标识',
-  `imgUrl` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '图片地址',
-  `link` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '跳转地址',
-  `platform` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '1' COMMENT '平台1->PC，2->H5',
-  `position` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '1' COMMENT '广告位置 (1首页 2频道页 3列表 4详情 5单页)',
-  `status` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '1' COMMENT '状态 1 开启 2 关闭',
-  `createdAt` datetime NULL DEFAULT NULL COMMENT '创建时间',
-  `updatedAt` datetime NULL DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '广告' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of ad
--- ----------------------------
-INSERT INTO `ad` VALUES (1, '禅悦cms', 'chanyuecms', '\\public\\uploads\\qigong\\2023\\07\\22\\1690038110859.jpg', '', '1', '1', '1', '2023-07-22 23:00:30', '2023-07-22 23:00:30');
 
 -- ----------------------------
 -- Table structure for admin
@@ -135,7 +112,7 @@ CREATE TABLE `category`  (
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES (1, 0, '', '', '', '前端开发', 'qianduankaifa', '/chanyuecms', '', '0', '', 0, '0', '0', '0');
+INSERT INTO `category` VALUES (1, 0, '', '', '', '前端开发', 'qianduankaifa', '/qianduankaifa', '', '0', '', 0, '0', '0', '0');
 INSERT INTO `category` VALUES (2, 0, '', '', '', 'node开发', 'nodekaifa', '/nodejs', '', '0', '', 0, '0', '0', '0');
 INSERT INTO `category` VALUES (3, 0, '', '', '', '前端库', 'qianduanku', '/anli', '', '0', '', 0, '0', '0', '0');
 INSERT INTO `category` VALUES (4, 0, '', '', '', 'SEO', 'SEO', '/wendang', '', '0', '', 0, '0', '0', '0');
@@ -200,9 +177,9 @@ CREATE TABLE `frag`  (
 -- ----------------------------
 -- Records of frag
 -- ----------------------------
-INSERT INTO `frag` VALUES (1, '广告', 'guanggao', '禅悦', '2023-07-14 20:48:50');
-INSERT INTO `frag` VALUES (2, '版权', 'banquan', '<p class=\"f-13 text-c c-bfbfbf\">自豪的采用 chanyue-cms</p>', '2023-08-05 17:34:49');
-INSERT INTO `frag` VALUES (3, 'chanyue-cms介绍', 'chanyue-cmsjieshao', '<p>禅悦内容管理系统，基于`nodejs` `express` `mysql` `knex` `jwt` `vue3` 进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。<a title=\"\" href=\"http://localhost:81/\">[详情]</a></p>', '2023-08-05 17:36:09');
+INSERT INTO `frag` VALUES (1, '广告', 'ad', '禅悦', '2023-07-14 20:48:50');
+INSERT INTO `frag` VALUES (2, '版权', 'copyright', '<p class=\"f-13 text-c c-bfbfbf\">自豪的采用 chanyue-cms</p>', '2023-08-05 17:34:49');
+INSERT INTO `frag` VALUES (3, 'chanyue-cms介绍', 'chanyue-introduce', '<p>禅悦内容管理系统，基于`nodejs` `express` `mysql` `knex` `jwt` `vue3` 进行开发的一套实用轻量cms系统，且提供丰富的api数据接口。常用企业网站，微信小程序官网，图片网站，新闻资讯，软件下载网站，博客，文章等诸多文章类型网站开发，也适用于前端二次开发。<a title=\"\" href=\"http://localhost:81/\">[详情]</a></p>', '2023-08-05 17:36:09');
 
 -- ----------------------------
 -- Table structure for friendlink
@@ -221,58 +198,6 @@ CREATE TABLE `friendlink`  (
 -- Records of friendlink
 -- ----------------------------
 INSERT INTO `friendlink` VALUES (1, '香港日报', 'http://www.hongkongdaily.net', 0, '2023-07-22 22:59:55');
-
--- ----------------------------
--- Table structure for member
--- ----------------------------
-DROP TABLE IF EXISTS `member`;
-CREATE TABLE `member`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
-  `mid` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '会员id',
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '用户名',
-  `password` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '密码',
-  `gender` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '性别（0男 1女）',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '邮箱',
-  `openid` int(11) NULL DEFAULT NULL COMMENT '微信小程序openid',
-  `unionid` int(11) NULL DEFAULT NULL COMMENT '微信unionid（公众号，小程序标识同一个用户）',
-  `avatarUrl` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像',
-  `country` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '国家',
-  `province` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '省',
-  `city` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '城市',
-  `language` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '语言',
-  `nickName` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '微信昵称',
-  `level` tinyint(1) NOT NULL COMMENT '会员等级（1 普通会员 2 月会员 3季度会员 4年度会员 5终身会员）',
-  `vip_endtime` datetime NULL DEFAULT NULL COMMENT '到期时间',
-  `scores` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '积分',
-  `createdAt` datetime NULL DEFAULT NULL COMMENT '注册时间',
-  `updateAt` datetime NULL DEFAULT NULL COMMENT '更新时间',
-  `mark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '会员' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of member
--- ----------------------------
-
--- ----------------------------
--- Table structure for member_order
--- ----------------------------
-DROP TABLE IF EXISTS `member_order`;
-CREATE TABLE `member_order`  (
-  `id` int(11) NOT NULL COMMENT '自增id',
-  `order_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '订单编码',
-  `goods_id` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品id',
-  `member_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '会员id',
-  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '支付状态（0 未支付成功 1支付成功）',
-  `createdAt` datetime NULL DEFAULT NULL COMMENT '下单时间',
-  `updateAt` datetime NULL DEFAULT NULL COMMENT '支付时间',
-  `mark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '会员订单' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of member_order
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for message
@@ -516,7 +441,7 @@ CREATE TABLE `tag`  (
 -- Records of tag
 -- ----------------------------
 INSERT INTO `tag` VALUES (1, 'cms', 'cms');
-INSERT INTO `tag` VALUES (2, 'js库', 'jsku');
-INSERT INTO `tag` VALUES (3, '开发工具', 'kaifagongju');
+INSERT INTO `tag` VALUES (2, 'js库', 'jslib');
+INSERT INTO `tag` VALUES (3, '开发工具', 'devtool');
 
 SET FOREIGN_KEY_CHECKS = 1;

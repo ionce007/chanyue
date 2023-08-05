@@ -301,36 +301,6 @@ export const asyncRoutes = [
           role: ["admin"],
         },
       },
-      {
-        path: "/ad",
-        name: "ad-index",
-        component: "@/views/ad/index.vue",
-        meta: {
-          title: "广告管理",
-          isShow: true,
-          role: ["admin"],
-        },
-      },
-      {
-        path: "/ad/add",
-        name: "ad-add",
-        component: "@/views/ad/add.vue",
-        meta: {
-          title: "广告管理-新增",
-          isShow: false,
-          role: ["admin"],
-        },
-      },
-      {
-        path: "/ad/edit/:id",
-        name: "ad-edit",
-        component: "@/views/ad/edit.vue",
-        meta: {
-          title: "广告管理-更新",
-          isShow: false,
-          role: ["admin"],
-        },
-      },
 
       {
         path: "/message",

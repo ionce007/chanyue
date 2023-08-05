@@ -11,6 +11,7 @@ class SiteService extends BaseService {
   static async find() {
     try {
       let res = await BaseService.all(SiteService.model);
+      res[0].json = JSON.parse(res[0].json);
       return res[0];
     } catch (error) {
       console.error(error);

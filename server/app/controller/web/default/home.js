@@ -12,13 +12,7 @@ class HomeController {
   // 首页
   static async index(req, res, next) {
     try {
-      // 广告
-      let ad = await HomeService.ad(1, 1);
-      const obj = {};
-      ad.forEach((item) => {
-        obj[item.mark] = item;
-      });
-      ad = obj;
+     
 
       // 轮播
       const _slide = await HomeService.getArticleList(3, 0, 5);
@@ -161,7 +155,6 @@ class HomeController {
         slide,
         top,
         topList,
-        ad,
         news,
         xueshu,
         tiyu,
