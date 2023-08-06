@@ -86,15 +86,7 @@ class HomeController {
         "YYYY-MM-DD HH:mm:ss"
       );
 
-      // 广告
-      let ad = await HomeService.ad(1, 3);
-      if (ad) {
-        const obj = {};
-        ad.forEach((item) => {
-          obj[item.mark] = item;
-        });
-        ad = obj;
-      }
+      
 
       // 当前栏目和当前栏目下所有子导航
       const navSub = getChildrenId(cid, res.locals.category);
@@ -102,34 +94,26 @@ class HomeController {
       // 当前位置
       const position = treeById(cid, res.locals.category);
 
-      // 增加数量
-      await ArticleService.count(id);
+      // // 增加数量
+      // await ArticleService.count(id);
 
-      // 上一页
-      const pre = await ArticleService.pre(id, cid);
+      // // 上一页
+      // const pre = await ArticleService.pre(id, cid);
 
-      // 下一页
-      const next = await ArticleService.next(id, cid);
+      // // 下一页
+      // const next = await ArticleService.next(id, cid);
 
-      // 本类推荐
-      const tj = await HomeService.getArticleListById(cid, 2, 5);
+      // // 本类推荐
+      // const tj = await HomeService.getArticleListById(cid, 2, 5);
 
-      // 本类热门
-      const hot = await HomeService.getArticlePvList(cid, 10);
+      // // 本类热门
+      // const hot = await HomeService.getArticlePvList(cid, 10);
 
-      // 本类图文
-      const pic = await HomeService.getArticleImgList(cid, 10);
+      // // 本类图文
+      // const pic = await HomeService.getArticleImgList(cid, 10);
 
       await res.render(`web/${template}/article.html`, {
-        position,
-        navSub,
-        ad,
-        article,
-        pre,
-        next,
-        tj,
-        hot,
-        pic,
+        
       });
     } catch (error) {
       console.error(error);
