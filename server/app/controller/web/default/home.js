@@ -14,14 +14,13 @@ class HomeController {
   // 首页
   static async index(req, res, next) {
     try {
-      if ('slide' in res.locals) {
+      if ("slide" in res.locals) {
         res.render(`web/${template}/index.html`);
-        return; 
+        return;
       }
-     let result =  await HomeService.home();
-     res.locals = {...res.locals,...result};
-      // 加入缓存？
-      res.render(`web/${template}/index.html`,result);
+      let result = await HomeService.home();
+      res.locals = { ...res.locals, ...result };
+      res.render(`web/${template}/index.html`, result);
     } catch (error) {
       console.error(error);
     }

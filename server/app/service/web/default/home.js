@@ -1,7 +1,7 @@
 "use strict";
 const knex = require("../../../config/config.knex.js");
 const CommonService = require("./common.js");
-const { filterFields } = require("../../../extend/helper.js");
+const { filterFields,formatDay } = require("../../../extend/helper.js");
 
 
 class HomeService {
@@ -39,6 +39,8 @@ class HomeService {
         let top = await CommonService.getArticleListByCid(item.id, 1, 2);
         // 最新
         let list = await CommonService.getArticleListByCid(item.id, 4);
+        list = formatDay(list);
+        
         // tag列表
         for(let j=0,sub;j<list.length;j++){
             sub = list[j];

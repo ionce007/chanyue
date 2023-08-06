@@ -14,15 +14,7 @@
             </span>
             <input id="search" class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
         </div>
-        <el-button class="ml-5" onclick="toSearch()">搜索</el-button>
+        <el-button class="ml-5 el-button el-button--primary" onclick="toSearch()">搜索</el-button>
     </div>
 </div>
 
-<script>
-    function toSearch(){
-     var keywords = document.querySelector('#search').value;
-     if(keywords){
-         location.href = location.origin + '/search/' + keywords + '/index.html'
-     }
-    } 
-  </script>

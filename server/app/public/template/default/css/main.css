@@ -191,6 +191,14 @@ ul>li:last-child {
     display: none;
 }
 
+.el-button--primary {
+    background: center center #4A54FF;
+    background-image: linear-gradient(315deg,#6772FF 0,#00F9E5 100%);
+    background-size: 104% 104%;
+    color: #fff;
+    border: none;
+}
+
 /* banner */
 .banner {
     height: 340px;

@@ -9,26 +9,26 @@ router.get('/', init(), HomeController.index);
 
 // 分类
 router.get([
-  '/list/:cid',
-  '/c/:cate/index.html',
-  '/c/:cate/index:current.html',
-  '/c/:cate1/:cate/index.html',
-  '/c/:cate1/:cate/index:current.html',
-  '/c/:cate2/:cate1/:cate/index.html',
-  '/c/:cate2/:cate1/:cate/index:current.html',
-  '/c/:cate3/:cate2/:cate1/:cate/index.html',
-  '/c/:cate3/:cate2/:cate1/:cate/index:current.html'], init(), HomeController.list);
+  '/list/:cid', //兼容old
+  '/:cate/index.html',
+  '/:cate/index:current.html',
+  '/:cate1/:cate/index.html',
+  '/:cate1/:cate/index:current.html',
+  '/:cate2/:cate1/:cate/index.html',
+  '/:cate2/:cate1/:cate/index:current.html',
+  '/:cate3/:cate2/:cate1/:cate/index.html',
+  '/:cate3/:cate2/:cate1/:cate/index:current.html'], init(), HomeController.list);
 
 // 文章页
 router.get([
-  '/article/:id',
-  '/article/:id.html',
-  '/a/:id.html',
-  '/a/:cate/:id.html',
-  '/a/:cate1/:cate/:id.html',
-  '/a/:cate2/:cate1/:cate/:id.html',
-  '/a/:cate2/:cate1/:cate/:id.html',
-  '/a/:cate3/:cate2/:cate1/:cate/:id.html',
+  '/article/:id', //兼容old
+  '/article/:id.html', //兼容old
+  '/article-:id.html',
+  '/:cate/article-:id.html',
+  '/:cate1/:cate/article-:id.html',
+  '/:cate2/:cate1/:cate/article-:id.html',
+  '/:cate2/:cate1/:cate/article-:id.html',
+  '/:cate3/:cate2/:cate1/:cate/article-:id.html',
 ], init(), HomeController.article);
 
 // 搜索页
