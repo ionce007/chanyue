@@ -182,7 +182,7 @@
     <!-- footer -->
     {{include './common/footer.html'}}
 
-    <div class="tags mb-20 mt-20 pd-20">
+    <div class="tags mb-20 mt-20 pd-20 bg-f2f2f2">
         <p>全局数据：</p>
         <p class="mb-20">site-> {{site}} </p>
         <p class="mb-20">111-->{{site.json.siteSubtitle}}</p>
@@ -197,9 +197,9 @@
         <p class="mb-20">article--->{{article}}</p>
         <p class="mb-20">imgs--->{{imgs}}</p>
         <p class="mb-20">recommendImgs--->{{recommendImgs}}</p>
-
+        <p class="mb-20">console.log('{{ site.id }}')</p>
     </div>
-    console.log('{{ site.id }}')
+    
     {{include './common/js.html'}}
     <script>
         const app = Vue.createApp({
