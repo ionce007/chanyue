@@ -3,6 +3,8 @@ const dayjs = require("dayjs");
 const { template } = require("../../../config/config.js");
 const HomeService = require(`../../../service/web/default/home.js`);
 const { getChildrenId, treeById } = require("../../../extend/helper.js");
+
+const CommonService = require("../../../service/web/default/common.js");
 const ArticleService = require("../../../service/api/article.js");
 
 class HomeController {
@@ -12,164 +14,14 @@ class HomeController {
   // 首页
   static async index(req, res, next) {
     try {
-     
-
-      // 轮播
-      const _slide = await HomeService.getArticleList(3, 0, 5);
-      const slide = _slide.list;
-      slide.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("YYYY-MM-DD HH:mm:ss");
-      });
-
-      // 顶部头条 1头条
-      const _top = await HomeService.getArticleList(1, 0, 1);
-      const top = _top.list;
-
-      // 顶部头条 2-5
-      const _topList = await HomeService.getArticleList(1, 1, 4);
-      const topList = _topList.list;
-      topList.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 新闻推荐
-      const news_tj = await HomeService.getArticleListById(1, 2, 1);
-      const news_list = await HomeService.getArticleListById(1, "", 5);
-      const news = {};
-      news.tj = news_tj.list[0];
-
-      news.list = news_list.list;
-      news.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 学术交流
-      const xueshu = {};
-      const xueshu_tj = await HomeService.getArticleListById(2, 2, 1);
-      const xueshu_list = await HomeService.getArticleListById(2, "", 5);
-      xueshu.tj = xueshu_tj.list[0];
-
-      xueshu.list = xueshu_list.list;
-      xueshu.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 体育气功
-      const tiyu = {};
-      const tiyu_tj = await HomeService.getArticleListById(3, 2, 1);
-      const tiyu_list = await HomeService.getArticleListById(3, "", 5);
-      tiyu.tj = tiyu_tj.list[0];
-      tiyu.list = tiyu_list.list;
-      tiyu.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 医学气功
-      const yixue = {};
-      const yixue_tj = await HomeService.getArticleListById(4, 2, 1);
-      const yixue_list = await HomeService.getArticleListById(4, "", 5);
-      yixue.tj = yixue_tj.list[0];
-      yixue.list = yixue_list.list;
-      yixue.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 养生气功
-      const ys = {};
-      const ys_tj = await HomeService.getArticleListById(5, 2, 1);
-      const ys_list = await HomeService.getArticleListById(5, "", 5);
-      ys.tj = ys_tj.list[0];
-      ys.list = ys_list.list;
-      ys.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 气功医案
-      const ya = {};
-      const ya_tj = await HomeService.getArticleListById(8, 2, 1);
-      const ya_list = await HomeService.getArticleListById(8, "", 5);
-      ya.tj = ya_tj.list[0];
-      ya.list = ya_list.list;
-      ya.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 气功与书画
-      const sh = {};
-      const sh_tj = await HomeService.getArticleListById(9, 2, 1);
-      const sh_list = await HomeService.getArticleListById(9, "", 5);
-      sh.tj = sh_tj.list[0];
-      sh.list = sh_list.list;
-      sh.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 气功人物
-      const rw = {};
-      const rw_tj = await HomeService.getArticleListById(10, 2, 1);
-      const rw_list = await HomeService.getArticleListById(10, "", 5);
-      rw.tj = rw_tj.list[0];
-      rw.list = rw_list.list;
-      rw.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 气功实践
-      const sj = {};
-      const sj_tj = await HomeService.getArticleListById(12, 2, 1);
-      const sj_list = await HomeService.getArticleListById(12, "", 5);
-      sj.tj = sj_tj.list[0];
-      sj.list = sj_list.list;
-      sj.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 气功纠偏
-      const jp = {};
-      const jp_tj = await HomeService.getArticleListById(13, 2, 1);
-      const jp_list = await HomeService.getArticleListById(13, "", 5);
-      jp.tj = jp_tj.list[0];
-      jp.list = jp_list.list;
-      jp.list.forEach((item) => {
-        item.createdAt = dayjs(item.createdAt).format("MM-DD");
-      });
-
-      // 热门文章
-      const _hot = await HomeService.getArticlePvList();
-      const hot = _hot.list;
-
-      // 李春生文集
-      const _chunsheng = await HomeService.getArticleListById(32, "", 10);
-      const chunsheng = _chunsheng.list;
-
-      // 太极
-      const _taiji = await HomeService.getArticleListById(6, "", 10);
-      const taiji = _taiji.list;
-
-      // 瑜伽
-      const _yj = await HomeService.getArticleListById(7, "", 10);
-      const yujia = _yj.list;
-
+      if ('slide' in res.locals) {
+        res.render(`web/${template}/index.html`);
+        return; 
+      }
+     let result =  await HomeService.home();
+     res.locals = {...res.locals,...result};
       // 加入缓存？
-      res.render(`web/${template}/index.html`, {
-        slide,
-        top,
-        topList,
-        news,
-        xueshu,
-        tiyu,
-        yixue,
-        ys,
-        ya,
-        sh,
-        rw,
-        sj,
-        jp,
-        hot,
-        chunsheng,
-        taiji,
-        yujia,
-      });
+      res.render(`web/${template}/index.html`,result);
     } catch (error) {
       console.error(error);
     }

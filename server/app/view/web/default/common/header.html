@@ -1,55 +1,40 @@
 <header class="row header-wrap justify-center pos-r">
     <div class="header row align-c justify-between pt-5 pb-5">
         <div class="row align-c">
-            <h1 class="logo" title="禅悦内容管理系统chanyue-cms">
-                <span class="c-141414">前端小栈</span><span class="theme f-16 ml-5">• 禅悦</span>
+            <h1 class="logo" title="{{site.name}}">
+                <span class="c-141414">{{site.name}}</span><span
+                    class="theme f-16 ml-5">{{site.json.siteSubtitle}}</span>
             </h1>
+            {{if nav.length>0}}
             <nav class="nav">
                 <ul class="row">
                     <li class="nav-item"><a href="/" target="_blank" title="首页">首页</a></li>
+                    {{each nav}}
+                    {{if $value.status == 0}}
                     <li class="nav-item">
-                        <a href="/" target="_blank" title="首页">前端开发</a>
+                        <a href="{{$value.path}}/index.html" target="_blank" title="{{$value.name}}">{{$value.name}}</a>
+                        {{if $value.children && $value.children.length>0}}
                         <ul class="sub-nav">
-                            <li class="sub-nav-item"><a href="/" target="_blank">vue</a></li>
-                            <li class="sub-nav-item"><a href="/" target="_blank">react</a></li>
-                            <li class="sub-nav-item"><a href="/" target="_blank">javascript</a></li>
-                            <li class="sub-nav-item"><a href="/" target="_blank">css</a></li>
+                            {{each $value.children}}
+                                {{if $value.status == 0}}
+                                <li class="sub-nav-item">
+                                    <a href="{{$value.path}}/index.html" target="_blank"
+                                        title="{{$value.name}}">{{$value.name}}
+                                    </a>
+                                </li>
+                                {{/if}}
+                            {{/each}}
                         </ul>
+                        {{/if}}
                     </li>
-                    <li class="nav-item">
-                        <a href="/" target="_blank" title="首页">node开发</a>
-                        <ul class="sub-nav">
-                            <li class="sub-nav-item"><a href="/" target="_blank">express</a></li>
-                            <li class="sub-nav-item"><a href="/" target="_blank">mysql</a></li>
-                            <li class="sub-nav-item"><a href="/" target="_blank">服务器</a></li>
-                        </ul>
-                    <li class="nav-item"><a href="/" target="_blank" title="首页">SEO</a></li>
-                    <li class="nav-item"><a href="/" target="_blank" title="首页">前端库</a></li>
-                    <li class="nav-item"><a href="/" target="_blank" title="首页">禅悦cms</a></li>
-                    <li class="nav-item"><a href="/" target="_blank" title="首页">案例</a></li>
-                    <li class="nav-item"><a href="/" target="_blank" title="首页">关于</a></li>
+                    {{/if}}
+                    {{/each}}
                 </ul>
             </nav>
+            {{/if}}
         </div>
-        <div class="search">
-            <div class="el-input  el-input--prefix ">
-                <div class="el-input__wrapper" role="button">
-                    <span class="el-input__prefix">
-                        <span class="el-input__prefix-inner">
-                            <i class="el-icon el-input__icon">
-                                <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill="currentColor"
-                                        d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
-                                    </path>
-                                </svg>
-                            </i>
-                        </span>
-                    </span>
-                    <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
-                </div>
-                <!-- <el-button class="ml-5">搜索</el-button> -->
-            </div>
-        </div>
+        
+        {{include './search.html'}}
 
         <div class="ico-open"></div>
     </div>

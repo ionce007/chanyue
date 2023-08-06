@@ -202,3 +202,35 @@ exports.convertArrayToObject = (array, key)=>{
   }
   return result;
 }
+
+
+/**
+ * @description 过滤非必要字段
+ * @param {Array} data 原始数组数据
+ * @param {Array} fields  需要的字段
+ * @returns {Array} 返回最终的数组
+ */
+const dayjs = require('dayjs');
+require('dayjs/locale/zh-cn');
+const relativeTime = require('dayjs/plugin/relativeTime');
+dayjs.extend(relativeTime); // 相对时间
+dayjs.locale('zh-cn'); // 使用本地化语言
+
+exports.filterFields = (data, fields)=>{
+  if (!Array.isArray(data) || data.length === 0) {
+   return []
+  }
+  
+  return data.map(item => {
+    // item.createdAt = dayjs(item.createdAt).format('YYYY-MM-DD');
+    item.createdAt =  dayjs(item.createdAt).fromNow().replace(' ','');
+    // item.createdAt = dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss');
+    const filteredItem = {};
+    for (const field of fields) {
+      if (item.hasOwnProperty(field)) {
+        filteredItem[field] = item[field];
+      }
+    }
+    return filteredItem;
+  });
+}

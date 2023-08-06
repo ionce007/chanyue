@@ -65,7 +65,6 @@ class AdminService extends BaseService {
         .limit(pageSize)
         .offset(offset)
         .orderBy('id', 'desc');
-        console.log('total---->',total)
         const count = total[0].count || 1;
       return {
         count: count,
