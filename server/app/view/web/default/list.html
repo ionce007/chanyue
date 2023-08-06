@@ -16,9 +16,14 @@
             <article class="article-index">
                 <div class="bg-fff pd-15 mb-1 f-14 c-999 radius-6">
                     <i class="ico-20 ico-home pos-r t-3"></i> 
-                    <a class="" href="" target="_blank">首页</a> /
-                    <a class="c-666" href="" target="_blank">nodejs</a> /
-                    express
+                    <a class="" href="/" target="_blank">首页</a> /
+                    {{each position}}
+                        {{if $index = position.length-1}}
+                        <a class="" href="" target="_blank">{{$value.name}}</a> /
+                        {{else}}
+                        <a class="c-666" href="" target="_blank">{{$value.name}}</a>
+                        {{/if}}
+                    {{/each}}
                 </div>
 
                 <div class="bg-fff pl-25 pr-25 pb-25 radius-6">
@@ -155,6 +160,28 @@
 
     <!-- footer -->
     {{include './common/footer.html'}}
+
+    
+    <div class="tags mb-20 mt-20 pd-20 bg-f2f2f2">
+        <h1>接口页面--全局数据：</h1>
+        <p class="mb-20">site-> {{site}} </p>
+        <p class="mb-20">111-->{{site.json.siteSubtitle}}</p>
+        <p class="mb-20">nav-> {{nav}} </p>
+        <p class="mb-20">category-> {{category}}</p>
+        <p class="mb-20">friendlink-> {{friendlink}}</p>
+        <p class="mb-20">base_url-> {{base_url}}</p>
+        <p class="mb-20">frag--->{{frag}}</p>
+        <p class="mb-20">tag--->{{tag}}</p>
+
+        <p class="mb-20">-----------</p>
+        <p class="mb-20">position------>{{position}}</p>
+        <p class="mb-20">navSub------>{{navSub}}</p>
+        <p class="mb-20">data------>{{data}}</p>
+        <p class="mb-20">recommend------>{{recommend}}</p>
+        <p class="mb-20">hot------>{{hot}}</p>
+        <p class="mb-20">imgs------>{{imgs}}</p>
+       
+    </div>
    
     {{include './common/js.html'}}
     <script src="./js/scrollnav.min.umd.js"></script>

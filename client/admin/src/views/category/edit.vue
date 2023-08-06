@@ -15,17 +15,16 @@
       class="w640"
     >
       <div v-show="activeIndex == 0">
-        <el-form-item label="上级栏目" v-if="!params.pid == 0">
+        <el-form-item label="上级栏目">
           <el-cascader
             :props="categoryProps"
             :show-all-levels="false"
-            :disabled="true"
             v-model="categorySelected"
             :options="category"
             @change="handleChange"
+            placeholder="不选择为顶级栏目"
           >
           </el-cascader>
-          不选择为顶级栏目
         </el-form-item>
 
         <el-form-item
@@ -45,15 +44,15 @@
             },
           ]"
         >
-          <el-input v-model="params.name"></el-input>
+          <el-input v-model="params.name" @change="createPinyin"></el-input>
         </el-form-item>
 
         <el-form-item label="栏目标识">
-          <el-input v-model="params.pinyin" disabled></el-input>
+          <el-input v-model="params.pinyin" @change="changePath"></el-input>
         </el-form-item>
 
         <el-form-item label="栏目路径">
-          <el-input v-model="params.path"></el-input>
+          <el-input v-model="params.path" disabled></el-input>
         </el-form-item>
 
         <el-form-item label="栏目类型">
@@ -130,6 +129,7 @@ export default {
     return {
       id: 0, //栏目
       categorySelected: [], //-1默认选中顶级栏目
+      categorySelectedPath: "",
       categoryProps: { checkStrictly: true },
 
       activeName: "first", //tab 默认显示第一个
@@ -144,8 +144,8 @@ export default {
         seo_keywords: "",
         seo_description: "",
         name: "",
-        pinyin: "",
         path: "",
+        pinyin: "",
         mid: "0",
         description: "",
         url: "",
@@ -170,19 +170,7 @@ export default {
   },
 
   computed: {},
-  watch: {
-    "params.name": function (newv, oldv) {
-      this.params.pinyin = pinyin(newv, { toneType: "none" }).replace(
-        /\s+/g,
-        "",
-      );
-      let path = this.params.path;
-      let pathArr = path.split("/");
-      pathArr.length = pathArr.length - 1;
-      pathArr.push(this.params.pinyin);
-      this.params.path = pathArr.join("/");
-    },
-  },
+
   created() {
     this.id = this.$route.params.id;
     this.modelList();
@@ -191,6 +179,19 @@ export default {
   },
 
   methods: {
+    createPinyin(v) {
+      this.params.pinyin = pinyin(v, { toneType: "none" }).replace(/\s+/g, "");
+      this.params.path = this.categorySelectedPath
+        ? this.categorySelectedPath + this.params.pinyin
+        : "/" + this.categorySelectedPath + this.params.pinyin;
+    },
+
+    changePath(v) {
+      this.params.path = this.categorySelectedPath
+        ? this.categorySelectedPath + v
+        : "/" + this.categorySelectedPath + v;
+    },
+
     handleClick(tab) {
       this.activeIndex = tab.index;
     },
@@ -201,6 +202,7 @@ export default {
         let res = await find();
         if (res.code === 200) {
           let data = res.data;
+          this.cate = res.data;
           let ids = treeById(this.id, data);
           if (ids.length > 1) {
             ids.length = ids.length - 1;
@@ -235,7 +237,14 @@ export default {
         let res = await findId(this.id);
         if (res.code === 200) {
           this.params = res.data;
-          console.log("this.params-->", res.data);
+          let path = [];
+          this.cate.forEach((sub) => {
+            if (sub.id == res.data.pid) {
+              path.push("/" + sub.pinyin);
+            }
+          });
+
+          this.categorySelectedPath = path.join("") + "/";
         }
       } catch (error) {
         console.error(error);
@@ -243,6 +252,21 @@ export default {
     },
 
     handleChange(e) {
+      //获取路径
+      let path = [];
+      let ids = Object.values(e);
+      ids.forEach((item) => {
+        this.cate.forEach((sub) => {
+          if (sub.id == item) {
+            path.push("/" + sub.pinyin);
+          }
+        });
+      });
+
+      this.categorySelectedPath = path.join("") + "/";
+
+      this.params.path = this.categorySelectedPath + this.params.pinyin;
+
       if (e[0] != -1) {
         this.params.pid = e[e.length - 1];
       }
@@ -265,7 +289,6 @@ export default {
     },
 
     submit(formName) {
-      // this.params.path = this.allPath;
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.update();

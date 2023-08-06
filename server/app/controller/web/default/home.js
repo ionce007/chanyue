@@ -2,7 +2,7 @@
 const dayjs = require("dayjs");
 const { template } = require("../../../config/config.js");
 const HomeService = require(`../../../service/web/default/home.js`);
-const { getChildrenId, treeById } = require("../../../extend/helper.js");
+const { getChildrenId, treeById,formatDay,filterFields } = require("../../../extend/helper.js");
 
 const CommonService = require("../../../service/web/default/common.js");
 const ArticleService = require("../../../service/api/article.js");
@@ -42,39 +42,18 @@ class HomeController {
       }
 
       // 当前位置
-      const position = treeById(id, res.locals.category);
+      let position = treeById(id, res.locals.category);
+      const positionField = ["id", "name", "path"];
+      position = filterFields(position, positionField);
 
-      // 广告
-      let ad = await HomeService.ad(1, 3);
-      const obj = {};
-      ad.forEach((item) => {
-        obj[item.mark] = item;
-      });
-      ad = obj;
-
-      // 文章列表
+      //列表页全量数据
       const data = await HomeService.list(id, currentPage, pageSize);
-      data.list.forEach((ele) => {
-        ele.createdAt = dayjs(ele.createdAt).format("MM-DD");
-      });
-      // 本类推荐
-      const tj = await HomeService.getArticleListById(id, 2, 5);
-
-      // 本类热门
-      const hot = await HomeService.getArticlePvList(id, 10);
-
-      // 本类图文
-      const pic = await HomeService.getArticleImgList(id, 10);
-
-      await res.render(`web/${template}/list.html`, {
+      await res.render(`web/default/list.html`, {
         position,
-        list: data,
         navSub,
-        ad,
-        tj,
-        hot,
-        pic,
+        ...data
       });
+      
     } catch (error) {
       console.error(error);
     }

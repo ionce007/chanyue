@@ -1,8 +1,7 @@
 "use strict";
 const knex = require("../../../config/config.knex.js");
 const CommonService = require("./common.js");
-const { filterFields,formatDay } = require("../../../extend/helper.js");
-
+const { filterFields,formatDay ,treeById} = require("../../../extend/helper.js");
 
 class HomeService {
   constructor() {}
@@ -68,6 +67,28 @@ class HomeService {
       console.error(err);
     }
   }
+
+
+   // 列表页
+   static async list(id,currentPage=1,pageSize=10) {
+    try {
+      // 文章列表
+      const data = await CommonService.list(id, currentPage, pageSize);
+      data.list = formatDay(data.list);
+       // 本类推荐
+      let recommend  = await CommonService.getArticleListByCid(id,5, 2);
+      // 本类热门
+      const hot = await CommonService.getArticlePvList(10,id);
+      // 本类图文
+      const imgs = await CommonService.getNewImgList( 10,id);
+      return { data,recommend,hot,imgs};
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
+
+
+
 
 module.exports = HomeService;

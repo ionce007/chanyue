@@ -16,9 +16,9 @@
             v-model="categorySelected"
             :options="category"
             @change="handleChange"
+            placeholder="不选择为顶级栏目"
           >
           </el-cascader>
-          不选择为顶级栏目
         </el-form-item>
 
         <el-form-item
@@ -38,15 +38,15 @@
             },
           ]"
         >
-          <el-input v-model="params.name"></el-input>
+          <el-input v-model="params.name" @change="createPinyin"></el-input>
         </el-form-item>
 
         <el-form-item label="栏目标识">
-          <el-input v-model="params.pinyin" disabled></el-input>
+          <el-input v-model="params.pinyin" @change="changePath"></el-input>
         </el-form-item>
 
         <el-form-item label="栏目路径">
-          <el-input v-model="allPath" disabled></el-input>
+          <el-input v-model="params.path" disabled></el-input>
         </el-form-item>
 
         <el-form-item label="栏目类型">
@@ -119,6 +119,7 @@ export default {
   data: () => {
     return {
       categorySelected: [], //-1默认选中顶级栏目
+      categorySelectedPath: "",
       categoryProps: { checkStrictly: true },
       activeName: "first", //tab 默认显示第一个
       activeIndex: "0", //tab 内容默认显示第一个
@@ -155,29 +156,25 @@ export default {
       },
     };
   },
-  computed: {
-    allPath() {
-      if (this.params.path == "") {
-        return this.params.path + "/" + this.params.pinyin;
-      } else {
-        return this.params.path + this.params.pinyin;
-      }
-    },
-  },
+
   created() {
     this.query();
     this.modelList();
   },
-  watch: {
-    "params.name": function (newv, oldv) {
-      this.params.pinyin = pinyin(newv, { toneType: "none" }).replace(
-        /\s+/g,
-        "",
-      );
-    },
-  },
 
   methods: {
+    createPinyin(v) {
+      this.params.pinyin = pinyin(v, { toneType: "none" }).replace(/\s+/g, "");
+      this.params.path = this.categorySelectedPath
+        ? this.categorySelectedPath + this.params.pinyin
+        : "/" + this.categorySelectedPath + this.params.pinyin;
+    },
+
+    changePath(v) {
+      this.params.path = this.categorySelectedPath
+        ? this.categorySelectedPath + v
+        : "/" + this.categorySelectedPath + v;
+    },
     handleClick(tab) {
       this.activeIndex = tab.index;
     },
@@ -199,7 +196,6 @@ export default {
       //获取路径
       let path = [];
       let ids = Object.values(e);
-      console.log(ids);
       ids.forEach((item) => {
         this.cate.forEach((sub) => {
           if (sub.id == item) {
@@ -208,7 +204,10 @@ export default {
         });
       });
 
-      this.params.path = path.join("") + "/";
+      this.categorySelectedPath = path.join("") + "/";
+
+      this.params.path = this.categorySelectedPath + this.params.pinyin;
+
       if (e[0] != -1) {
         this.params.pid = e[e.length - 1];
       }
@@ -243,7 +242,6 @@ export default {
     },
 
     submit(formName) {
-      this.params.path = this.allPath;
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.categoryAdd();
