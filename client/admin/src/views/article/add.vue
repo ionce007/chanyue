@@ -344,8 +344,8 @@ export default {
       activeIndex: "0", //tab 内容默认显示第一个
       category: [], //当前所有栏目
       cateList: [], //所有栏目
-      autoImg: true,
-      autoDes: true,
+      autoImg: false,
+      autoDes: false,
       picNum: 1,
       taglist: [],
       params: {
