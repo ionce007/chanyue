@@ -1,2 +1,0 @@
-System.register(["./index-legacy.js"],(function(e,t){"use strict";var a,d;return{setters:[e=>{a=e.h,d=e.A}],execute:function(){e("s",((e,t="")=>a({url:`${d.BASE_API}/api/ad/search?cur=${e}&pageSize=10&keyword=${t}`,method:"get"}))),e("c",(e=>a({url:`${d.BASE_API}/api/ad/create`,method:"post",data:e}))),e("a",(e=>a({url:`${d.BASE_API}/api/ad/delete?id=${e}`,method:"get"}))),e("u",(e=>a({url:`${d.BASE_API}/api/ad/update`,method:"post",data:e}))),e("d",(e=>a({url:`${d.BASE_API}/api/ad/detail?id=${e}`,method:"get"})))}}}));
-//# sourceMappingURL=ad-legacy.js.map

@@ -1,2 +1,0 @@
-import{h as a,A as t}from"./index.js";let c=(c,e="")=>a({url:"".concat(t.BASE_API,"/api/ad/search?cur=").concat(c,"&pageSize=10&keyword=").concat(e),method:"get"}),e=c=>a({url:"".concat(t.BASE_API,"/api/ad/create"),method:"post",data:c}),d=c=>a({url:"".concat(t.BASE_API,"/api/ad/delete?id=").concat(c),method:"get"}),o=c=>a({url:"".concat(t.BASE_API,"/api/ad/update"),method:"post",data:c}),r=c=>a({url:"".concat(t.BASE_API,"/api/ad/detail?id=").concat(c),method:"get"});export{d as a,e as c,r as d,c as s,o as u};
-//# sourceMappingURL=ad.js.map
