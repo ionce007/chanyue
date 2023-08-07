@@ -78,13 +78,15 @@ exports.treeById = (id, source) => {
 exports.getChildrenId = (py, source) => {
   let cate = {};
   let id = "";
-  source.forEach((item) => {
-    if (item.pinyin == py || item.id == py) {
-      cate = item;
-      id = item.id;
-    }
-  });
-  return { cate, id };
+  const foundItem = source.find((item) => item.pinyin === py || item.id === py);
+
+  if (foundItem) {
+    cate = foundItem;
+    id = foundItem.id;
+  }
+
+  const {children=[]} = cate
+  return { children, id };
 };
 
 // 设置token this.ctx.token this.app.token

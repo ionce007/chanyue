@@ -2,7 +2,12 @@
 const dayjs = require("dayjs");
 const { template } = require("../../../config/config.js");
 const HomeService = require(`../../../service/web/default/home.js`);
-const { getChildrenId, treeById,formatDay,filterFields } = require("../../../extend/helper.js");
+const {
+  getChildrenId,
+  treeById,
+  formatDay,
+  filterFields,
+} = require("../../../extend/helper.js");
 
 const CommonService = require("../../../service/web/default/common.js");
 const ArticleService = require("../../../service/api/article.js");
@@ -34,10 +39,13 @@ class HomeController {
       const pageSize = 10;
 
       // 当前栏目和当前栏目下所有子导航
-      const navSub = getChildrenId(cate || cid, res.locals.category);
-      const id = cid ? cid : navSub.cate.id;
-      if (!id) {
-        res.redirect("/");
+      const { children, id } = getChildrenId(cate || cid, res.locals.category);
+      const childrenField = ["id", "name", "path"];
+      const navSub = filterFields(children, childrenField);
+
+      // const id = cid || id;
+      if (!(cid || id)) {
+        res.redirect("/404.html");
         return;
       }
 
@@ -51,9 +59,8 @@ class HomeController {
       await res.render(`web/default/list.html`, {
         position,
         navSub,
-        ...data
+        ...data,
       });
-      
     } catch (error) {
       console.error(error);
     }
@@ -86,8 +93,6 @@ class HomeController {
         "YYYY-MM-DD HH:mm:ss"
       );
 
-      
-
       // 当前栏目和当前栏目下所有子导航
       const navSub = getChildrenId(cid, res.locals.category);
 
@@ -112,9 +117,7 @@ class HomeController {
       // // 本类图文
       // const pic = await HomeService.getArticleImgList(cid, 10);
 
-      await res.render(`web/${template}/article.html`, {
-        
-      });
+      await res.render(`web/${template}/article.html`, {});
     } catch (error) {
       console.error(error);
     }
