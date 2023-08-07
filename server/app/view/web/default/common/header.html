@@ -8,18 +8,17 @@
             {{if nav.length>0}}
             <nav class="nav">
                 <ul class="row">
-                    <li class="nav-item"><a href="/" target="_blank" title="首页">首页</a></li>
+                    <li class="nav-item"><a href="/" title="首页">首页</a></li>
                     {{each nav}}
                     {{if $value.status == 0}}
                     <li class="nav-item">
-                        <a href="{{$value.path}}/index.html" target="_blank" title="{{$value.name}}">{{$value.name}}</a>
+                        <a href="{{$value.path}}/index.html" title="{{$value.name}}">{{$value.name}}</a>
                         {{if $value.children && $value.children.length>0}}
                         <ul class="sub-nav">
                             {{each $value.children}}
                                 {{if $value.status == 0}}
                                 <li class="sub-nav-item">
-                                    <a href="{{$value.path}}/index.html" target="_blank"
-                                        title="{{$value.name}}">{{$value.name}}
+                                    <a href="{{$value.path}}/index.html" title="{{$value.name}}">{{$value.name}}
                                     </a>
                                 </li>
                                 {{/if}}
