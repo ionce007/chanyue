@@ -104,7 +104,7 @@ class HomeController {
        const next = await ArticleService.next(id, cid);
 
        //热门 推荐 图文
-      const data = await HomeService.list(cid);
+      const data = await HomeService.article(cid);
 
       await res.render(`web/${template}/article.html`, {
         ...data,

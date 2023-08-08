@@ -43,7 +43,17 @@
   >
     <el-table-column type="selection"></el-table-column>
     <el-table-column prop="id" label="编号" width="60" fixed></el-table-column>
-    <el-table-column prop="title" label="标题"></el-table-column>
+    <el-table-column prop="title" label="标题">
+      <template #default="scope">
+        <a
+          class="block"
+          :href="`/article-${scope.row.id}.html`"
+          target="_blank"
+        >
+          {{ scope.row.title }}
+        </a>
+      </template>
+    </el-table-column>
     <!-- <el-table-column prop="attr" label="属性">
         <template #default="scope">
           <p v-if="scope.row.attr.includes('1')">头条</p>
@@ -285,5 +295,13 @@ export default {
 <style scoped>
 :deep(.el-form-item) {
   margin-bottom: 0px;
+}
+
+:deep(a) {
+  color: #1f1f1f;
+}
+
+:deep(a:hover) {
+  color: #165dff;
 }
 </style>

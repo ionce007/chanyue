@@ -101,7 +101,7 @@
                         <div class="row gap-2">
                             {{each imgs}}
                             <figure class="books-item  f-14  pd-16 bg-fff">
-                                <a class="m-img" href="" title="{{$value.title}}">
+                                <a class="m-img" href="{{$value.path}}/article-{{$value.id}}.html" title="{{$value.title}}">
                                     <img src="{{$value.img}}" alt="{{$value.title}}" /></a>
                                 <figcaption class="mt-6 mb-6">
                                     <a href="{{$value.path}}/article-{{$value.id}}.html"

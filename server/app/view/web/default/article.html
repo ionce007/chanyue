@@ -27,37 +27,41 @@
                     {{/each}}
                 </div>
 
-               
-
                 <div class="bg-fff radius-6 pd-25">
                     <header class="border-b pos-r">
-                        <h2 class="f-26 c-252933  bold mt-10">「express专题」作者招募第一期｜写小册，领专属礼包+拿长效收益，等你来报名！</h2>
+                        <h2 class="f-26 c-252933  bold mt-10">{{article.title}}</h2>
                         <p class="f-12 c-999 mt-5 mb-26">
                             <span>
-                                <i class="ico-20 ico-time pos-r t-4"></i> 2018-02-22
-                                <i class="ico-20 ico-admin pos-r t-4 ml-4"></i> 明空
-                                <i class="ico-20 ico-view pos-r t-5 ml-4"></i> 阅读（19604）
-                                <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95）
+                                <i class="ico-20 ico-time pos-r t-4"></i> {{article.updatedAt}}
+                                <i class="ico-20 ico-admin pos-r t-4 ml-4"></i> {{article.author}}
+                                <i class="ico-20 ico-view pos-r t-5 ml-4"></i> 阅读（{{article.pv}}）
+                                <!-- <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95） -->
                             </span>
                         </p>
                     </header>
-                    <article id="article" class="article-cont f-17 lh-35">
-                       
-                        <ol start="2">
-                            <li><strong>🎤个人影响力</strong>：稀土掘金社区<strong>百万</strong>流量倾斜，给予个人社区帐号及小册更多曝光，帮助创作者个人品牌打造升级，获得稀土掘金线上、线下活动优先合作权。
-                            </li>
-                            <li><strong>🏅️活动专属奖励</strong>：8月1日～9月15日，成功报名本次活动即可获得 「2 张小册 5
-                                折优惠码」，小册成功上线，除稳定的兼职收益外，还可额外获得价值「500 元的奖励礼包」！</li>
-                        </ol>
-                       
 
+                    {{if article.description}}
+                    <section class="introduction pd-10 border-6 mb-20 mt-20 lh-25 f-14 bg-f2f2f2">
+                        「导读」{{@ article.description}}
+                    </section>
+                    {{/if}}
+                    <article id="article" class="article-cont f-17 lh-35">
+                       {{@ article.content}}
                     </article>
 
                 </div>
 
                 <footer class="pd-25 bg-fff radius-6 mt-1 f-14 c-333">
-                    <p>上一篇：<a href="" class="c-666" >脊椎全息图</a></p>
-                    <p class="mt-14">下一篇：<a href="" class="c-666" >意守下丹田的奥秘</a></p>
+                    <p>上一篇：<a href="{{pre.path}}/article-{{pre.id}}.html" class="c-666" >{{pre.title}}</a></p>
+                    <p class="mt-14">下一篇：
+                        {{if next}}
+                        <a href="{{next.path}}/article-{{next.id}}.html" class="c-666" >
+                            {{next.title}}
+                        </a>
+                        {{else}}
+                        真的没有了
+                        {{/if}}
+                    </p>
                 </footer>
 
             </article>
@@ -69,15 +73,13 @@
                     <h3 class="m-title border-dashed f-16 row justify-between">nodejs最新文章<span class="more">more</span>
                     </h3>
                     <ul class="mt-10">
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js实现拍照试卷给出评分和答案</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">js把页面转成pdf进行打印</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">three.js实现展馆演示厅</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">pixi.js小游戏开发实战经验</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">基于nodejs实现tts文本转语音</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href=""
-                                title="">js识别声音判断琴谱是否正确，并跟随琴声绘制修改琴谱背景颜色，给出评分和纠错提示</a></li>
-                        <li class="f-14 pt-4 pb-4 row justify-between"><a href="" title="">用canvas+websoket实时绘制心电图实战</a>
+                        {{each news}}
+                        <li class="f-14 pt-4 pb-4 row justify-between">
+                            <a href="{{$value.path}}/article-{{$value.id}}.html" title="{{$value.title}}">
+                                {{$value.title}}
+                            </a>
                         </li>
+                       {{/each}}
                     </ul>
                 </section>
 
@@ -85,43 +87,39 @@
                 <!-- 图文 热门 -->
                 <section class="notices pd-20 mb-20 bg-fff">
                     <h3 class="m-title border-dashed f-16 row justify-between">推荐图文</h3>
-                    <figure class="row justify-between mt-10 border-dashed">
-                        <div class="thumb mb-10"><img class="w-p100" src="./img/02.jpg" alt="" title=""></div>
-                        <div class="flex-1  mb-20">
-                            <figcaption class="f-14 ellips-2 bold mt-4 mb-4">JavaScript权威指南</figcaption>
-                        </div>
-                    </figure>
-
+                    {{each imgs}}
                     <figure class="row justify-between mt-10 ">
+                        {{if $value.img}}
+                        <div class="thumb mb-10">
+                            <img class="w-p100" src="{{$value.img}}" alt="{{$value.title}}" title="{{$value.title}}">
+                        </div>
+                        {{/if}}
                         <div class="flex-1">
-                            <figcaption class="f-14 ellips-2 bold mt-4 mb-4">nodejs实战cms系统开发</figcaption>
-                            <p class="f-13 ellips-3"> 近日，因台风“杜苏芮”影响，北京市发布暴雨红色预警。对于雷雨天气，这些“陷阱”要避开！<a href="/"
-                                    title="">详情</a></p>
+                            <figcaption class="f-18 ellips-2 bold mt-4">{{$value.title}}</figcaption>
+                            <p class="f-14 ellips-3"> 
+                                {{@ $value.description}}
+                                <a href="{{$value.path}}/article-{{$value.id}}.html"
+                                    title="{{$value.title}}">详情
+                                </a>
+                            </p>
                         </div>
                     </figure>
+                    {{/each}}
                 </section>
 
-                <section class="ad mb-20">
-                    <img src="./img/12.jpg" class="w-p100" alt="">
+                <!-- 广告 -->
+                <section class="ad mb-20 bg-fff">
+                    {{frag.ad.name}}
+                    {{@ frag.ad.content}}
                 </section>
 
                 <!-- tag标签 -->
                 <section class="notices pd-20 mb-20 bg-fff">
                     <h3 class="m-title border-dashed f-16 row justify-between">tag标签</h3>
                     <p class="mt-10">
-                        <a class="el-tag mr-5 mb-5" href="/">nodejs</a>
-                        <a class="el-tag mr-5 mb-5" href="/">express</a>
-                        <a class="el-tag mr-5 mb-5" href="/">mysql</a>
-                        <a class="el-tag mr-5 mb-5" href="/">vue</a>
-                        <a class="el-tag mr-5 mb-5" href="/">react</a>
-                        <a class="el-tag mr-5 mb-5" href="/">javascript</a>
-                        <a class="el-tag mr-5 mb-5" href="/">go</a>
-                        <a class="el-tag mr-5 mb-5" href="/">java</a>
-                        <a class="el-tag mr-5 mb-5" href="/">python</a>
-                        <a class="el-tag mr-5 mb-5" href="/">css</a>
-                        <a class="el-tag mr-5 mb-5" href="/">threejs</a>
-                        <a class="el-tag mr-5 mb-5" href="/">pixi.js</a>
-                        <a class="el-tag mr-5 mb-5" href="/">electron</a>
+                        {{each tag}}
+                        <a class="el-tag mr-5 mb-5" href="/tags/{{$value.path}}.html" title="{{$value.name}}">{{$value.name}}</a>
+                        {{/each}}
                     </p>
                 </section>
 
@@ -153,10 +151,12 @@
        <p class="mb-20">-----------</p>
        <p class="mb-20">position------>{{position}}</p>
        <p class="mb-20">navSub------>{{navSub}}</p>
-       <p class="mb-20">data------>{{data}}</p>
-       <p class="mb-20">recommend------>{{recommend}}</p>
+       <p class="mb-20">article------>{{article}}</p>
+       <p class="mb-20">news------>{{news}}</p>
        <p class="mb-20">hot------>{{hot}}</p>
        <p class="mb-20">imgs------>{{imgs}}</p>
+       <p class="mb-20">pre------>{{pre}}</p>
+       <p class="mb-20">next------>{{next}}</p>
       
    </div>
 

@@ -94,15 +94,15 @@ class HomeService {
    // 文章页
    static async article(id) {
     try {
-      // 本类推荐
-      let recommend  = await CommonService.getArticleListByCid(id,5, 2);
+      // 本类最新
+      let news  = await CommonService.getArticleListByCid(id,10);
       // 本类热门
       let hot = await CommonService.getArticlePvList(10,id);
       const hotField = ["id", "title", "path"];
       hot = filterFields(hot, hotField);
       // 本类图文
       const imgs = await CommonService.getNewImgList( 10,id);
-      return { recommend,hot,imgs};
+      return { news,hot,imgs};
     } catch (err) {
       console.error(err);
     }

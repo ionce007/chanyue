@@ -120,8 +120,8 @@
                         {{/if}}
                         <div class="flex-1">
                             <figcaption class="f-18 ellips-2 bold mt-4">{{$value.title}}</figcaption>
-                            <p class="f-14 ellips-3"> 
-                                {{$value.description}}
+                            <p class="f-14 ellips-3 pd-15"> 
+                                {{@ $value.description}}
                                 <a href="{{$value.path}}/article-{{$value.id}}.html"
                                     title="{{$value.title}}">详情
                                 </a>
@@ -142,7 +142,7 @@
                     <h3 class="m-title border-dashed f-16 row justify-between">tag标签</h3>
                     <p class="mt-10">
                         {{each tag}}
-                        <a class="el-tag mr-5 mb-5" href="/tags/{{$value.path}}.html">{{$value.name}}</a>
+                        <a class="el-tag mr-5 mb-5" href="/tags/{{$value.path}}.html" title="{{$value.name}}">{{$value.name}}</a>
                         {{/each}}
                     </p>
                 </section>

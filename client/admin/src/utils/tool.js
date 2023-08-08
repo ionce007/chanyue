@@ -73,6 +73,17 @@ export let getImgUrlFromStr = (str) => {
   return imgArr;
 };
 
+export let filterAndReplaceImgSrc = (html) => {
+  var regex = /<img[^>]+src="([^">]+)"/g;
+  var result = html.replace(regex, function (match, src) {
+    if (src.startsWith("public")) {
+      src = src.replace("public", "/public");
+    }
+    return '<img src="' + src + '"';
+  });
+  return result;
+};
+
 // 过滤 html标签
 export let filterHtml = (str) => {
   // 查找第一个段落的结束位置

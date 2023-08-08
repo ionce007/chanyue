@@ -322,6 +322,7 @@ import { Plus } from "@element-plus/icons-vue";
 import {
   addLabelValue,
   getImgUrlFromStr,
+  filterAndReplaceImgSrc,
   filterHtml,
   filterBody,
   tree,
@@ -498,6 +499,9 @@ export default {
         let params = { ...this.params };
         params.attr = params.attr.toString();
         params.tag_id = params.tag_id.toString();
+
+        params.content = filterAndReplaceImgSrc(params.content);
+
         //判断是否有缩略图
         if (!params.img) {
           params.img = getImgUrlFromStr(params.content)[0];

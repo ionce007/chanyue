@@ -5,9 +5,9 @@ import App from "./App.vue";
 import router from "./router";
 //加载element-ui框架
 import installElementPlus from "@/plugins/element";
-import "./assets/main.css";
 //轻量原子类样式库
 import "saduocss/src/all.css";
+import "./assets/main.css";
 const app = createApp(App);
 // store持久化，缓存到session中
 const store = createPinia();
