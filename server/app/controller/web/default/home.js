@@ -2,12 +2,7 @@
 const dayjs = require("dayjs");
 const { template } = require("../../../config/config.js");
 const HomeService = require(`../../../service/web/default/home.js`);
-const {
-  getChildrenId,
-  treeById,
-  formatDay,
-  filterFields,
-} = require("../../../extend/helper.js");
+const { getChildrenId, treeById, formatDay, filterFields } = require("../../../extend/helper.js");
 
 const CommonService = require("../../../service/web/default/common.js");
 const ArticleService = require("../../../service/api/article.js");
@@ -19,12 +14,11 @@ class HomeController {
   // 首页
   static async index(req, res, next) {
     try {
-      if ("slide" in res.locals) {
-        res.render(`web/${template}/index.html`);
-        return;
+      let result = {};
+      if (!("slide" in res.locals)) {
+        result = await HomeService.home();
+        res.locals = { ...res.locals, ...result };
       }
-      let result = await HomeService.home();
-      res.locals = { ...res.locals, ...result };
       res.render(`web/${template}/index.html`, result);
     } catch (error) {
       console.error(error);
@@ -35,17 +29,18 @@ class HomeController {
   static async list(req, res, next) {
     try {
       const { cate, current, cid } = req.params;
-      const currentPage = current || 1;
+      const currentPage = parseInt(current) || 1;
       const pageSize = 10;
 
       // 当前栏目和当前栏目下所有子导航
-      const { children, id } = getChildrenId(cate || cid, res.locals.category);
-      const childrenField = ["id", "name", "path"];
-      const navSub = filterFields(children, childrenField);
-
-      // const id = cid || id;
-      if (!(cid || id)) {
-        res.redirect("/404.html");
+      let navSub = getChildrenId(cate || cid, res.locals.category);
+      // const navSubField = ["id", "name", "path"];
+      // navSub.cate.children = filterFields(navSub.cate.children, navSubField);
+    
+      //获取栏目id
+      const id = cid || navSub.cate.id || '';
+      if (!id) {
+        res.redirect("/");
         return;
       }
 
@@ -56,11 +51,12 @@ class HomeController {
 
       //列表页全量数据
       const data = await HomeService.list(id, currentPage, pageSize);
-      await res.render(`web/default/list.html`, {
+      await res.render(`web/${template}/list.html`, {
         position,
         navSub,
-        ...data,
+        ...data
       });
+
     } catch (error) {
       console.error(error);
     }
@@ -69,8 +65,7 @@ class HomeController {
   // 详情页
   static async article(req, res, next) {
     try {
-      const id = req.params.id.replace(".html", "");
-
+      const { id } = req.params;
       if (!id) {
         res.redirect("/");
         return;
@@ -99,25 +94,26 @@ class HomeController {
       // 当前位置
       const position = treeById(cid, res.locals.category);
 
-      // // 增加数量
-      // await ArticleService.count(id);
+      // 增加数量
+       await ArticleService.count(id);
 
-      // // 上一页
-      // const pre = await ArticleService.pre(id, cid);
+      //上一页
+       const pre = await ArticleService.pre(id, cid);
 
-      // // 下一页
-      // const next = await ArticleService.next(id, cid);
+      //下一页
+       const next = await ArticleService.next(id, cid);
 
-      // // 本类推荐
-      // const tj = await HomeService.getArticleListById(cid, 2, 5);
+       //热门 推荐 图文
+      const data = await HomeService.list(cid);
 
-      // // 本类热门
-      // const hot = await HomeService.getArticlePvList(cid, 10);
-
-      // // 本类图文
-      // const pic = await HomeService.getArticleImgList(cid, 10);
-
-      await res.render(`web/${template}/article.html`, {});
+      await res.render(`web/${template}/article.html`, {
+        ...data,
+        article,
+        navSub,
+        position,
+        pre,
+        next
+      });
     } catch (error) {
       console.error(error);
     }

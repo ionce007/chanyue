@@ -16,11 +16,19 @@
             <!-- 最新文章 -->
             <article class="article-index">
                 <div class="bg-fff radius-6 pd-15 mb-1 f-14 c-999">
-                    <i class="ico-20 ico-home pos-r t-3"></i>
-                    <a class="" href="" target="_blank">首页</a> /
-                    <a class="c-666" href="" target="_blank">nodejs开发</a> /
-                    express专题
+                    <i class="ico-20 ico-home pos-r t-3"></i> 
+                    <a class="" href="/" >首页</a> /
+                    {{each position}}
+                        {{if $index < position.length-1}}
+                        <a  href="{{$value.path}}/index.html" >{{$value.name}}</a> /
+                        {{else}}
+                        <a class="c-666" href="{{$value.path}}/index.html" >{{$value.name}}</a>
+                        {{/if}}
+                    {{/each}}
                 </div>
+
+               
+
                 <div class="bg-fff radius-6 pd-25">
                     <header class="border-b pos-r">
                         <h2 class="f-26 c-252933  bold mt-10">「express专题」作者招募第一期｜写小册，领专属礼包+拿长效收益，等你来报名！</h2>
@@ -48,8 +56,8 @@
                 </div>
 
                 <footer class="pd-25 bg-fff radius-6 mt-1 f-14 c-333">
-                    <p>上一篇：<a href="" class="c-666" target="_blank">脊椎全息图</a></p>
-                    <p class="mt-14">下一篇：<a href="" class="c-666" target="_blank">意守下丹田的奥秘</a></p>
+                    <p>上一篇：<a href="" class="c-666" >脊椎全息图</a></p>
+                    <p class="mt-14">下一篇：<a href="" class="c-666" >意守下丹田的奥秘</a></p>
                 </footer>
 
             </article>

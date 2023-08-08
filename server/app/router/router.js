@@ -8,8 +8,6 @@ const api = require('./api/index.js');
 const weixin = require('./weixin/index.js');
 const web = require(`./web/default/index.js`);
 const open = require(`./open/index.js`);
-const init = require('../middleware/init.js');
-
 //前台
 router.use('/', web);
 
@@ -29,9 +27,8 @@ router.get('/robots.txt', function (req, res, next) {
 });
 
 //404处理
-router.use(init(),(req, res, next) => {
-	// res.status(404).send('404 - NOT Found');
-	res.status(404).render(`web/default/404.html`, );
+router.use((req, res, next) => {
+	res.status(404).send('404 - NOT Found');
 });
 
 //在所有组件挂在之后处理错误中间件

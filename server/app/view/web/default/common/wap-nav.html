@@ -2,17 +2,17 @@
 
 {{if nav.length>0}}
     <ul class="f-16">
-        <li><a class="pt-5 pb-5 block" href="/" target="_blank" title="首页">首页</a></li>
+        <li><a class="pt-5 pb-5 block" href="/"  title="首页">首页</a></li>
         {{each nav}}
         {{if $value.status == 0}}
         <li>
-            <a class="pt-5 pb-5 block" href="{{$value.path}}/index.html" target="_blank" title="{{$value.name}}">{{$value.name}}</a>
+            <a class="pt-5 pb-5 block" href="{{$value.path}}/index.html"  title="{{$value.name}}">{{$value.name}}</a>
             {{if $value.children && $value.children.length>0}}
             <ul class="pl-16">
                 {{each $value.children}}
                     {{if $value.status == 0}}
                     <li>
-                        <a class="pt-5 pb-5 block" href="{{$value.path}}/index.html" target="_blank"
+                        <a class="pt-5 pb-5 block" href="{{$value.path}}/index.html" 
                             title="{{$value.name}}">{{$value.name}}
                         </a>
                     </li>

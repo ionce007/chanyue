@@ -56,6 +56,7 @@ class FragService extends BaseService {
         .orderBy('id', 'desc');
 
        const frags =  convertArrayToObject(list,'mark');
+       console.log('frags111111111111111111',frags)
        return frags;
        // const count = total[0].count || 1;
       // return {

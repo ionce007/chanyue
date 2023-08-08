@@ -75,13 +75,34 @@ class HomeService {
       // 文章列表
       const data = await CommonService.list(id, currentPage, pageSize);
       data.list = formatDay(data.list);
-       // 本类推荐
+
+      // 本类推荐
       let recommend  = await CommonService.getArticleListByCid(id,5, 2);
       // 本类热门
-      const hot = await CommonService.getArticlePvList(10,id);
+      let hot = await CommonService.getArticlePvList(10,id);
+      const hotField = ["id", "title", "path"];
+      hot = filterFields(hot, hotField);
       // 本类图文
       const imgs = await CommonService.getNewImgList( 10,id);
       return { data,recommend,hot,imgs};
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+
+   // 文章页
+   static async article(id) {
+    try {
+      // 本类推荐
+      let recommend  = await CommonService.getArticleListByCid(id,5, 2);
+      // 本类热门
+      let hot = await CommonService.getArticlePvList(10,id);
+      const hotField = ["id", "title", "path"];
+      hot = filterFields(hot, hotField);
+      // 本类图文
+      const imgs = await CommonService.getNewImgList( 10,id);
+      return { recommend,hot,imgs};
     } catch (err) {
       console.error(err);
     }
