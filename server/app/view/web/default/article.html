@@ -52,7 +52,15 @@
                 </div>
 
                 <footer class="pd-25 bg-fff radius-6 mt-1 f-14 c-333">
-                    <p>上一篇：<a href="{{pre.path}}/article-{{pre.id}}.html" class="c-666" >{{pre.title}}</a></p>
+                    <p>上一篇：
+                        {{if pre}}
+                        <a href="{{pre.path}}/article-{{pre.id}}.html" class="c-666" >
+                            {{pre.title}}
+                        </a>
+                        {{else}}
+                        真的没有了
+                        {{/if}}
+                    </p>
                     <p class="mt-14">下一篇：
                         {{if next}}
                         <a href="{{next.path}}/article-{{next.id}}.html" class="c-666" >
