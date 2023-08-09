@@ -2,7 +2,12 @@
 const dayjs = require("dayjs");
 const { template } = require("../../../config/config.js");
 const HomeService = require(`../../../service/web/default/home.js`);
-const { getChildrenId, treeById, formatDay, filterFields } = require("../../../extend/helper.js");
+const {
+  getChildrenId,
+  treeById,
+  formatDay,
+  filterFields,
+} = require("../../../extend/helper.js");
 
 const CommonService = require("../../../service/web/default/common.js");
 const ArticleService = require("../../../service/api/article.js");
@@ -22,6 +27,7 @@ class HomeController {
       res.render(`web/${template}/index.html`, result);
     } catch (error) {
       console.error(error);
+      next(error);
     }
   }
 
@@ -38,9 +44,9 @@ class HomeController {
       // navSub.cate.children = filterFields(navSub.cate.children, navSubField);
 
       //获取栏目id
-      const id = cid || navSub.cate.id || '';
+      const id = cid || navSub.cate.id || "";
       if (!id) {
-        res.redirect("/");
+        res.redirect("/404.html");
         return;
       }
 
@@ -54,11 +60,11 @@ class HomeController {
       await res.render(`web/${template}/list.html`, {
         position,
         navSub,
-        ...data
+        ...data,
       });
-
     } catch (error) {
       console.error(error);
+      next(error);
     }
   }
 
@@ -67,14 +73,14 @@ class HomeController {
     try {
       const { id } = req.params;
       if (!id) {
-        res.redirect("/");
+        res.redirect("/404.html");
         return;
       }
 
       // 文章列表
       const article = await ArticleService.detail(id);
       if (!article) {
-        res.redirect("/");
+        res.redirect("/404.html");
         return;
       }
 
@@ -112,51 +118,87 @@ class HomeController {
         navSub,
         position,
         pre,
-        next
+        next,
       });
     } catch (error) {
       console.error(error);
+      next(error);
     }
   }
 
   // 单页
   static async page(req, res, next) {
     try {
-      const { cate, current, cid } = req.params;
+      const { cate, id } = req.params;
 
       // 当前栏目和当前栏目下所有子导航
-      let navSub = getChildrenId(cate || cid, res.locals.category);
-      //获取栏目id
-      const id = cid || navSub.cate.id || '';
-      if (!id) {
-        res.redirect("/");
+      let cid = "";
+      let navSub = null;
+      let article = null;
+
+      if (!id && !cate) {
+        res.redirect("/404.html");
         return;
       }
 
-
-      //列表页全量数据
-      const data = await HomeService.page(id, 1, 20);
-      console.log('111', data)
-      let article = []
-      if (data.list.length > 0) {
-        article = await ArticleService.detail(data.list[0].id);
-        if (!article) {
-          res.redirect("/");
-          return;
-        }
-      } else {
-        res.redirect("/404.html");
+      //通过拼音找到对应的栏目
+      if (cate) {
+        navSub = getChildrenId(cate, res.locals.category);
+        //获取栏目id
+        cid = navSub.cate.id || "";
       }
 
-      console.log('data--------', data)
+      //文章id查找栏目id
+      if (id) {
+        // 文章列表
+        article = await ArticleService.detail(id);
+        // 栏目id
+        cid = article.cid || "";
+      }
+
+      //没找到栏目 去404
+      if (!cid) {
+        res.redirect("/404.html");
+        return;
+      }
+
+      //获取单页列表
+      const data = await HomeService.page(cid, 1, 20);
+      if(data.list.length == 0){
+        res.redirect("/404.html");
+        return;
+      }else{
+        article = await ArticleService.detail(data.list[0].id);
+      }
+
+      //没找到文章 去404
+      if (Object.keys(article).length==0) {
+        res.redirect("/404.html");
+        return;
+      }
+
+      article.createdAt = dayjs(article.createdAt).format(
+        "YYYY-MM-DD HH:mm:ss"
+      );
+      article.updatedAt = dayjs(article.updatedAt).format(
+        "YYYY-MM-DD HH:mm:ss"
+      );
+
       // 当前位置
       const position = treeById(article.cid, res.locals.category);
 
-      // 点击数量
-      await res.render(`web/default/page.html`, { data, navSub, position, article });
-
+       // 增加数量
+       await ArticleService.count(article.id);
+       
+      await res.render(`web/default/page.html`, {
+        data: data.list,
+        navSub,
+        position,
+        article,
+      });
     } catch (error) {
       console.error(error);
+      next(error);
     }
   }
 
@@ -186,6 +228,7 @@ class HomeController {
       await res.render(`web/${template}/search.html`, { keywords, list, ad });
     } catch (error) {
       console.error(error);
+      next(error);
     }
   }
 }

@@ -18,26 +18,20 @@
     <main class="bg-f2f2f2 pt-10 pb-20 row">
 
         <div class="main center mt-10 row gap-20">
-
-
             <aside class="flex-1">
-
-
                 <!-- tag标签 -->
                 <section class="notices pos-s pd-20 mb-20 bg-fff" style="top:80px;z-index: 2;">
                     <h3 class="m-title border-dashed f-16 row justify-between">{{navSub.cate.name}}</h3>
-                    {{if data.list.length>0}}
+                    {{if data.length>0}}
                     <ul class="mt-10">
-                        {{each data.list}}
+                        {{each data}}
                         <li class="f-16 pt-4 pb-4 row bold  pl-10">
-                            <a href="{{$value.path}}/article-{{$value.id}}.html"  title="{{$value.title}}">{{$value.title}}</a>
+                            <a href="{{$value.path}}/page-{{$value.id}}.html"  title="{{$value.title}}">{{$value.title}}</a>
                         </li>
                         {{/each}}
                     </ul>
                     {{/if}}
                 </section>
-
-
             </aside>
 
             <!-- 最新文章 -->
@@ -50,32 +44,18 @@
                 </div> -->
                 <div class="bg-fff radius-6 pd-25">
                     <header class="border-b pos-r">
-                        <h2 class="f-26 c-252933  bold mt-10">「关于」关于我们</h2>
+                        <h2 class="f-26 c-252933  bold mt-10">{{article.title}}</h2>
                         <p class="f-12 c-999 mt-5 mb-26">
                             <span>
-                                <i class="ico-20 ico-time pos-r t-4"></i> 2018-02-22
-                                <i class="ico-20 ico-admin pos-r t-4 ml-4"></i> 明空
-                                <i class="ico-20 ico-view pos-r t-5 ml-4"></i> 阅读（19604）
-                                <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95）
+                                <i class="ico-20 ico-time pos-r t-4"></i> {{article.updatedAt}}
+                                <i class="ico-20 ico-admin pos-r t-4 ml-4"></i> {{article.author}}
+                                <i class="ico-20 ico-view pos-r t-5 ml-4"></i> 阅读（{{article.pv}}）
+                                <!-- <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95） -->
                             </span>
                         </p>
                     </header>
                     <article class="article-cont f-17 lh-35">
-                        <h2>chanyue-cms 历史</h2>
-                        <p>第一次构想2015/6/2 基于express mongoDB开发第一版cms</p>
-                        <p>第二次重构（koacms）2018/4/2 基于koa2 mysql重构</p>
-                        <p>第三次重构（eggcms）2020/10/1基于egg mysql Sequelize重构</p>
-                        <p>第四次重构（chanyue-cms）2022/6/12基于express mysql knex开发第三版，经过多年开发和线上运营，回归最稳定的express。</p>
-                        </p>
-
-
-                        <h2>技术选型说明</h2>
-
-                        <p>问：很多同学问为啥选择express而不是nest或Midway？</p>
-                        <p>答：express全球下载量第一，功能超级稳定，相关依赖包众多（所以不选koa2,洋葱皮模型）,依赖包大部分基于JavaScript写的，相对于nest,express更加灵活，轻量。至于为啥不选择eggjs/Midway，怕了，你懂得。
-                        </p>
-                        <p>问：为啥不选择Sequelize、typeorm或者prisma作为orm框架？**</p>
-                        <p>答：knex易用，友好，强大，objection.js都是基于knex开发的。</p>
+                        {{@ article.content}}
                     </article>
                 </div>
             </article>
@@ -91,6 +71,27 @@
         {{include './common/wap-nav.html'}}
     </el-drawer>
     <el-backtop :right="100" :bottom="100" />
+</div>
+
+
+<div class="tags mb-20 mt-20 pd-20 bg-f2f2f2">
+    <h1>接口页面--全局数据：</h1>
+    <p class="mb-20">site-> {{site}} </p>
+    <p class="mb-20">111-->{{site.json.siteSubtitle}}</p>
+    <p class="mb-20">nav-> {{nav}} </p>
+    <p class="mb-20">category-> {{category}}</p>
+    <p class="mb-20">friendlink-> {{friendlink}}</p>
+    <p class="mb-20">base_url-> {{base_url}}</p>
+    <p class="mb-20">frag--->{{frag}}</p>
+    <p class="mb-20">ad--->{{frag.ad}}</p>
+    <p class="mb-20">tag--->{{tag}}</p>
+
+    <p class="mb-20">-----------</p>
+    <p class="mb-20">position------>{{position}}</p>
+    <p class="mb-20">navSub------>{{navSub}}</p>
+    <p class="mb-20">list------>{{data}}</p>
+    <p class="mb-20">article------>{{article}}</p>
+   
 </div>
 
 {{include './common/js.html'}}

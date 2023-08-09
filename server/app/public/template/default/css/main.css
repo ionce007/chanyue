@@ -367,7 +367,9 @@ ul>li:last-child {
 .el-pagination {
     background-color: #fff;
 }
-
+.el-empty{
+    font-family: 'chanyue';
+}
 
 /* .page ul li {
     float: left;
