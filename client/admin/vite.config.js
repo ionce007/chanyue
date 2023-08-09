@@ -58,7 +58,7 @@ export default ({ mode }) => {
       outDir: "dist", //输出路径
       assetsDir: "assets", //静态资源的存放路径
       manifest: false,
-      sourcemap: true,
+      sourcemap: mode == "dev" ? true : false,
       minify: "terser", // 混淆器,terser构建后文件体积更小
       chunkSizeWarningLimit: 200, // chunk 大小警告的限制
       cssCodeSplit: true, // 如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中

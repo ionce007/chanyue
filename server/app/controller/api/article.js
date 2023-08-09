@@ -25,16 +25,16 @@ class ArticleController extends BaseController {
     }
   }
 
-// 删除
-static async delete(req, res, next) {
-  try {
-    const id = req.query.id;
-    const data = await ArticleService.delete(id);
-    res.json({ ...success, data: data });
-  } catch (error) {
-    next(error);
+  // 删除
+  static async delete(req, res, next) {
+    try {
+      const id = req.query.id;
+      const data = await ArticleService.delete(id);
+      res.json({ ...success, data: data });
+    } catch (error) {
+      next(error);
+    }
   }
-}
 
   // 改
   static async update(req, res, next) {
@@ -108,7 +108,7 @@ static async delete(req, res, next) {
       const cur = req.query.cur;
       const cid = req.query.cid;
       const pageSize = 10;
-      const data = await ArticleService.list(cur, pageSize,cid);
+      const data = await ArticleService.list(cur, pageSize, cid);
       data.list.forEach(ele => {
         ele.updatedAt = dayjs(ele.updatedAt).format('YYYY-MM-DD HH:mm:ss');
       });
@@ -119,17 +119,25 @@ static async delete(req, res, next) {
   }
 
   // 上传图片
-  static async upload(req,res,next) {
+  static async upload(req, res, next) {
     try {
-      let file =  req.files;
-      const {originalname,filename,path} = file[0];
-      res.json({ ...success, data: { link: path.replace('app',''), domain: req.hostname ,originalname,filename,path:path.replace('app','')} });
+      let file = req.files;
+      const { originalname, filename, path } = file[0];
+      res.json({
+        ...success, data: {
+          link: path.replace('app', ''),
+          domain: req.hostname,
+          originalname,
+          filename,
+          path: '/'+path.replace(/\\/g, "/").replace(/^app\//, "")
+        }
+      });
     } catch (error) {
       next(error);
     }
   }
 
-  static async findField(req,res,next) {
+  static async findField(req, res, next) {
     try {
       const cid = req.query.cid;
       const data = await ArticleService.findField(cid);
@@ -139,7 +147,7 @@ static async delete(req, res, next) {
     }
   }
 
-  static async tongji(req,res,next) {
+  static async tongji(req, res, next) {
     try {
       const data = await ArticleService.tongji();
       res.json({ ...success, data: data });

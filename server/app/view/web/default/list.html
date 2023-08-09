@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <title>{{site.name}}-{{site.title}}</title>
     {{include './common/meta.html'}}
+
 <body class="bg-f8f8f8">
-      <!-- 头部 -->
+    <!-- 头部 -->
     {{include './common/header.html'}}
 
     <!-- 头条文章 -->
@@ -15,31 +16,32 @@
             <!-- 最新文章 -->
             <article class="article-index">
                 <div class="bg-fff pd-15 mb-1 f-14 c-999 radius-6">
-                    <i class="ico-20 ico-home pos-r t-3"></i> 
-                    <a href="/" >首页</a> /
+                    <i class="ico-20 ico-home pos-r t-3"></i>
+                    <a href="/">首页</a> /
                     {{each position}}
-                        {{if $index < position.length-1}}
-                        <a  href="{{$value.path}}/index.html" >{{$value.name}}</a> /
+                    {{if $index < position.length-1}} <a href="{{$value.path}}/index.html">{{$value.name}}</a> /
                         {{else}}
-                        <a class="c-666" href="{{$value.path}}/index.html" >{{$value.name}}</a>
+                        <a class="c-666" href="{{$value.path}}/index.html">{{$value.name}}</a>
                         {{/if}}
                     {{/each}}
                 </div>
 
-                <div class="bg-fff pl-25 pr-25 pb-25 radius-6">
+                <div class="bg-fff pl-25 pr-25 pb-25 radius-6 list">
+                    {{if data.list.length>0}}
                     <ul>
                         {{each data.list}}
                         <li class="row border-dashed pt-20 pb-20">
                             <figure class="row justify-between mt-10 ">
                                 {{if $value.img}}
                                 <div class="thumb-120 mb-10">
-                                    <img class="w-p100" src="{{$value.img}}" alt="{{$value.title}}" title="{{$value.title}}">
+                                    <img class="w-p100" src="{{$value.img}}" alt="{{$value.title}}"
+                                        title="{{$value.title}}">
                                 </div>
                                 {{/if}}
                                 <div class="flex-1">
                                     <h3 class="f-18 ellips-2 bold mt-4 c-141414">
                                         <a href="{{$value.path}}/article-{{$value.id}}.html"
-                                        title="{{$value.title}}">{{$value.title}}</a>
+                                            title="{{$value.title}}">{{$value.title}}</a>
                                     </h3>
                                     <p class="f-12 c-bfbfbf mb-8">
                                         <i class="ico-20 ico-time pos-r t-4"></i> {{$value.createdAt}}
@@ -48,18 +50,29 @@
                                         <!-- <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95） -->
                                     </p>
                                     <p class="f-14 ellips-3 c-595959">
-                                        <a href="{{$value.path}}/article-{{$value.id}}.html"
-                                        title="{{$value.title}}"> {{@ $value.description}}[详情]</a>
+                                        <a href="{{$value.path}}/article-{{$value.id}}.html" title="{{$value.title}}">
+                                            {{@ $value.description}}[详情]</a>
                                     </p>
                                 </div>
                             </figure>
                         </li>
                         {{/each}}
                     </ul>
+                    {{else}}
+                    <div class="el-empty">
+                        <div class=" f-30">
+                            <p>众里寻他千百度，</p>
+                            <p>文章一点无！</p>
+                        </div>
+                        <div class="el-empty__description">
+                            <p>禅禅-语录</p>
+                        </div>
+                    </div>
+                    {{/if}}
                 </div>
 
                 <!-- 分页 -->
-                <div class="page mt-1 bg-fff pd-25 row justify-center  radius-6" id="app" >
+                <div class="page mt-1 bg-fff pd-25 row justify-center  radius-6" id="app">
                     <!-- <ul class="overflow-h center" id="page">
                         <li><a aria-label="Previous">«</a></li>
                         <li><a>上一页</a></li>
@@ -72,8 +85,9 @@
                     <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
                         {{include './common/wap-nav.html'}}
                     </el-drawer>
-              
-                    <el-pagination background v-clock layout="prev, pager, next" :total="total"  @current-change="handleCurrentChange" >
+
+                    <el-pagination background v-clock layout="prev, pager, next" :total="total"
+                        @current-change="handleCurrentChange">
                     </el-pagination>
 
                     <el-backtop :right="100" :bottom="100" />
@@ -82,8 +96,8 @@
             </article>
 
             <aside class="flex-1">
-                 <!-- HOT -->
-                 <section class="notices pd-20 mb-20 bg-fff">
+                <!-- HOT -->
+                <section class="notices pd-20 mb-20 bg-fff">
                     <h3 class="m-title border-dashed f-16 row justify-between">
                         {{navSub.cate.name}}<span class="more">more</span>
                     </h3>
@@ -94,7 +108,7 @@
                                 {{$value.title}}
                             </a>
                         </li>
-                       {{/each}}
+                        {{/each}}
                     </ul>
                 </section>
 
@@ -104,7 +118,7 @@
                     <p class="mt-10">
                         {{each navSub.cate.children}}
                         <a class="el-tag mr-5 mb-5" href="/">{{$value.name}}</a>
-                       {{/each}}
+                        {{/each}}
                     </p>
                 </section>
 
@@ -120,10 +134,9 @@
                         {{/if}}
                         <div class="flex-1">
                             <figcaption class="f-18 ellips-2 bold mt-4">{{$value.title}}</figcaption>
-                            <p class="f-14 ellips-3 pd-15"> 
+                            <p class="f-14 ellips-3 pd-15">
                                 {{@ $value.description}}
-                                <a href="{{$value.path}}/article-{{$value.id}}.html"
-                                    title="{{$value.title}}">详情
+                                <a href="{{$value.path}}/article-{{$value.id}}.html" title="{{$value.title}}">详情
                                 </a>
                             </p>
                         </div>
@@ -142,7 +155,8 @@
                     <h3 class="m-title border-dashed f-16 row justify-between">tag标签</h3>
                     <p class="mt-10">
                         {{each tag}}
-                        <a class="el-tag mr-5 mb-5" href="/tags/{{$value.path}}.html" title="{{$value.name}}">{{$value.name}}</a>
+                        <a class="el-tag mr-5 mb-5" href="/tags/{{$value.path}}.html"
+                            title="{{$value.name}}">{{$value.name}}</a>
                         {{/each}}
                     </p>
                 </section>
@@ -153,7 +167,7 @@
     <!-- footer -->
     {{include './common/footer.html'}}
 
-    
+
     <div class="tags mb-20 mt-20 pd-20 bg-f2f2f2">
         <h1>接口页面--全局数据：</h1>
         <p class="mb-20">site-> {{site}} </p>
@@ -173,30 +187,30 @@
         <p class="mb-20">recommend------>{{recommend}}</p>
         <p class="mb-20">hot------>{{hot}}</p>
         <p class="mb-20">imgs------>{{imgs}}</p>
-       
+
     </div>
-   
+
     {{include './common/js.html'}}
     <script src="./js/scrollnav.min.umd.js"></script>
     <script>
         var app = Vue.createApp({
-            data:function(){
+            data: function () {
                 return {
                     drawer: false,
                     total: parseInt('{{data.total}}')
                 }
             },
-             mounted() {
+            mounted() {
                 let _this = this;
                 document.querySelector('.ico-open').addEventListener('click', () => {
                     _this.drawer = true
                 })
             },
-            methods:{
-                handleCurrentChange(vue){
+            methods: {
+                handleCurrentChange(vue) {
 
                 },
-                 handleClose() {
+                handleClose() {
                     this.drawer = false
                 }
             }

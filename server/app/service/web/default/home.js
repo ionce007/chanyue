@@ -50,7 +50,7 @@ class HomeService {
       }
 
       //图片列表(10条)
-      let imgs = await CommonService.getNewImgList();
+      let imgs = await CommonService.getNewImgList(8);
       const imgsField = ["id", "title", "path","img"];
       imgs = filterFields(imgs, imgsField);
 
@@ -107,6 +107,20 @@ class HomeService {
       console.error(err);
     }
   }
+
+
+  // 列表页
+  static async page(id,currentPage=1,pageSize=10) {
+    try {
+      // 文章列表
+      const data = await CommonService.list(id, currentPage, pageSize);
+      data.list = formatDay(data.list);
+      return data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
 }
 
 

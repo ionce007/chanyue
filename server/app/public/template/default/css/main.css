@@ -210,6 +210,12 @@ ul>li:last-child {
     flex-direction: column;
 }
 
+.tips-404{
+    height: calc(100vh - 180px);
+    background-color: #f8f8f9;
+    flex-direction: column;
+}
+
 .chanyue {
     letter-spacing: 2px;
     font-weight: 500;
@@ -361,6 +367,7 @@ ul>li:last-child {
 .el-pagination {
     background-color: #fff;
 }
+
 
 /* .page ul li {
     float: left;

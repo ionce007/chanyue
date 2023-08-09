@@ -36,7 +36,7 @@ class HomeController {
       let navSub = getChildrenId(cate || cid, res.locals.category);
       // const navSubField = ["id", "name", "path"];
       // navSub.cate.children = filterFields(navSub.cate.children, navSubField);
-    
+
       //获取栏目id
       const id = cid || navSub.cate.id || '';
       if (!id) {
@@ -95,15 +95,15 @@ class HomeController {
       const position = treeById(cid, res.locals.category);
 
       // 增加数量
-       await ArticleService.count(id);
+      await ArticleService.count(id);
 
       //上一页
-       const pre = await ArticleService.pre(id, cid);
+      const pre = await ArticleService.pre(id, cid);
 
       //下一页
-       const next = await ArticleService.next(id, cid);
+      const next = await ArticleService.next(id, cid);
 
-       //热门 推荐 图文
+      //热门 推荐 图文
       const data = await HomeService.article(cid);
 
       await res.render(`web/${template}/article.html`, {
@@ -120,40 +120,45 @@ class HomeController {
   }
 
   // 单页
-  // static async page(req, res, next) {
-  //   try {
-  //     const id = req.params.id;
-  //     if (!id) {
-  //       res.redirect('/');
-  //       return;
-  //     }
-  //     // 广告
-  //     let ad = await HomeService.ad(1, 3);
-  //     const obj = {};
-  //     ad.forEach(item => {
-  //       obj[item.mark] = item;
-  //     });
-  //     ad = obj;
+  static async page(req, res, next) {
+    try {
+      const { cate, current, cid } = req.params;
 
-  //     // 文章列表
-  //     const article = await PageService.article(id);
-  //     article.createdAt = dayjs(article.createdAt).format('YYYY-MM-DD HH:mm:ss');
-  //     article.updatedAt = dayjs(article.updatedAt).format('YYYY-MM-DD HH:mm:ss');
+      // 当前栏目和当前栏目下所有子导航
+      let navSub = getChildrenId(cate || cid, res.locals.category);
+      //获取栏目id
+      const id = cid || navSub.cate.id || '';
+      if (!id) {
+        res.redirect("/");
+        return;
+      }
 
-  //     // 当前栏目和当前栏目下所有子导航
-  //     const navSub = getChildrenId(article.cid, res.locals.category);
 
-  //     // 当前位置
-  //     const position = treeById(article.cid, res.locals.category);
+      //列表页全量数据
+      const data = await HomeService.page(id, 1, 20);
+      console.log('111', data)
+      let article = []
+      if (data.list.length > 0) {
+        article = await ArticleService.detail(data.list[0].id);
+        if (!article) {
+          res.redirect("/");
+          return;
+        }
+      } else {
+        res.redirect("/404.html");
+      }
 
-  //     // 点击数量
+      console.log('data--------', data)
+      // 当前位置
+      const position = treeById(article.cid, res.locals.category);
 
-  //     await res.render(`web/default/page.html`, { article, navSub, ad, position });
+      // 点击数量
+      await res.render(`web/default/page.html`, { data, navSub, position, article });
 
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   // 搜索页
   static async search(req, res, next) {

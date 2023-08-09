@@ -31,6 +31,22 @@ router.get([
   '/:cate3/:cate2/:cate1/:cate/article-:id.html',
 ], init(), HomeController.article);
 
+
+
+// 文章页
+router.get([
+  '/page/:id', //兼容old
+  '/page/:id.html', //兼容old
+  '/page-:id.html',
+  '/:cate/page.html',
+  '/:cate1/:cate/page.html',
+  '/:cate2/:cate1/:cate/page.html',
+  '/:cate2/:cate1/:cate/page.html',
+  '/:cate3/:cate2/:cate1/:cate/page.html',
+], init(), HomeController.page);
+
+
+
 // 搜索页
 router.get([
   '/search/:keywords/index.html',

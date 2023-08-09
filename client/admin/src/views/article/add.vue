@@ -367,7 +367,7 @@ export default {
         updatedAt: new Date(),
         content: "禅悦",
         status: "0",
-        pv: 0,
+        pv: 1,
         link: "",
       },
       field: [], //字段列表

@@ -1,4 +1,6 @@
 export let tinymceSet = {
+  //避免图片地址和链接地址转换成相对路径
+  convert_urls: false,
   // 开启组件拓展的 上传图片功能，工具栏 图片按钮 弹框中出现 `upload` 选项
   custom_images_upload: true,
   // 复用 图片上传 api 地址
