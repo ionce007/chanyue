@@ -19,7 +19,27 @@
 
         <div class="main center mt-10 row gap-20">
             <aside class="flex-1">
-                <!-- tag标签 -->
+
+
+                  <!-- tag标签 -->
+                  <section class="notices pd-20 mb-20 bg-fff">
+                    <h3 class="m-title border-dashed f-16 row justify-between">tag标签</h3>
+                    <p class="mt-10">
+                        {{each tag}}
+                        <a class="el-tag mr-5 mb-5" href="/tags/{{$value.path}}.html"
+                            title="{{$value.name}}">{{$value.name}}</a>
+                        {{/each}}
+                    </p>
+                </section>
+
+                <!-- 广告 -->
+                <section class="ad mb-20 bg-fff">
+                    {{frag.ad.name}}
+                    {{@ frag.ad.content}}
+                </section>
+
+
+                <!-- 单页栏目 -->
                 <section class="notices pos-s pd-20 mb-20 bg-fff" style="top:80px;z-index: 2;">
                     <h3 class="m-title border-dashed f-16 row justify-between">{{navSub.cate.name}}</h3>
                     {{if data.length>0}}
@@ -32,6 +52,7 @@
                     </ul>
                     {{/if}}
                 </section>
+
             </aside>
 
             <!-- 最新文章 -->

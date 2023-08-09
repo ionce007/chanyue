@@ -13,4 +13,3 @@ var e,n,t,i,r,o,a,d,u,c,l,s,f,p,w,m=!1;function x(){if(!m){m=!0;var x=navigator.
 * @internal
 * @license Modernizr 3.0.0pre (Custom Build) | MIT
 */export{E as Y};
-//# sourceMappingURL=normalize-wheel-es.js.map
