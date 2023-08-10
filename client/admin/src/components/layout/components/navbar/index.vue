@@ -42,7 +42,7 @@
       <el-button :icon="IconMoon" circle />
     </el-tooltip> -->
 
-    <el-tooltip
+    <!-- <el-tooltip
       class="box-item"
       effect="dark"
       content="消息通知"
@@ -51,7 +51,7 @@
       <el-badge is-dot class="bell">
         <el-button :icon="IconBell" circle />
       </el-badge>
-    </el-tooltip>
+    </el-tooltip> -->
 
     <!-- <el-tooltip
       class="box-item"
@@ -77,7 +77,7 @@
         <el-button icon="Avatar" circle />
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item>用户中心</el-dropdown-item>
+            <!-- <el-dropdown-item>用户中心</el-dropdown-item> -->
             <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
