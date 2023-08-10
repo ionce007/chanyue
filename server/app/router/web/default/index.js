@@ -19,6 +19,9 @@ router.get([
   '/:cate3/:cate2/:cate1/:cate/index.html',
   '/:cate3/:cate2/:cate1/:cate/index:current.html'], init(), HomeController.list);
 
+
+ 
+
 // 文章页
 router.get([
   '/article/:id', //兼容old
@@ -33,7 +36,7 @@ router.get([
 
 
 
-// 文章页
+// 单页栏目
 router.get([
   '/page/:id', //兼容old
   '/page/:id.html', //兼容old
@@ -47,12 +50,15 @@ router.get([
 ], init(), HomeController.page);
 
 
+ // 搜索页
+ router.get([
+  '/search/:keywords.html',
+  '/search/:keywords/:id.html'], init(), HomeController.search);
 
-// 搜索页
-router.get([
-  '/search/:keywords/index.html',
-  '/search/:keywords/index:id.html'], init(), HomeController.search);
+ // tag列表页
+ router.get([
+  '/tags/:path.html',
+  '/tags/:path/:id.html'], init(), HomeController.tag);
 
-// router.get('/page/:id', init(), HomeController.page);
 
 module.exports = router;

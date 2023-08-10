@@ -23,7 +23,7 @@
                         {{else}}
                         <a class="c-666" href="{{$value.path}}/index.html">{{$value.name}}</a>
                         {{/if}}
-                    {{/each}}
+                        {{/each}}
                 </div>
 
                 <div class="bg-fff pl-25 pr-25 pb-25 radius-6 list">
@@ -86,7 +86,7 @@
                         {{include './common/wap-nav.html'}}
                     </el-drawer>
 
-                    <el-pagination background v-clock layout="prev, pager, next" :total="total"
+                    <el-pagination background v-clock layout="prev, pager, next" :current-page="current" :total="total"
                         @current-change="handleCurrentChange">
                     </el-pagination>
 
@@ -168,7 +168,7 @@
     {{include './common/footer.html'}}
 
 
-    <div class="tags mb-20 mt-20 pd-20 bg-f2f2f2">
+    <div class="api mb-20 mt-20 pd-20 bg-f2f2f2">
         <h1>接口页面--全局数据：</h1>
         <p class="mb-20">site-> {{site}} </p>
         <p class="mb-20">111-->{{site.json.siteSubtitle}}</p>
@@ -191,14 +191,21 @@
     </div>
 
     {{include './common/js.html'}}
-    <script src="./js/scrollnav.min.umd.js"></script>
+
     <script>
         var app = Vue.createApp({
             data: function () {
                 return {
                     drawer: false,
-                    total: parseInt('{{data.total}}')
+                    current: 1,
+                    total: parseInt('{{data.count}}')
                 }
+            },
+            created() {
+                var regex = /(\d+)/;
+                var matches = location.pathname.match(regex);
+                var number = matches && matches.length > 0 ? parseInt(matches[0]) : null;
+                this.current = number
             },
             mounted() {
                 let _this = this;
@@ -207,8 +214,17 @@
                 })
             },
             methods: {
-                handleCurrentChange(vue) {
-
+                handleCurrentChange(v) {
+                    var url = location.pathname;
+                    var match = url.match(/(\d+)/); // 提取数字部分
+                    if (match && match.length > 0) {
+                        var number = parseInt(match[0]);
+                        var newURL = url.replace(match[0], v);
+                        location.href = newURL;
+                    } else {
+                        var newURL = url.replace("index", "index" + v);
+                        location.href = newURL;
+                    }
                 },
                 handleClose() {
                     this.drawer = false

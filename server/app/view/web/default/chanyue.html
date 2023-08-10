@@ -3,93 +3,22 @@
 
 <head>
     <meta charset="utf-8">
-    <title>前端开发-禅悦内容管理系统</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description"
-        content="前端开发,分享前端知识,丰富前端技能。汇集国内专业的前端开发文档,为推动业内前端开发水平共同奋斗。DoraCMS,html,js,css,nodejs,前端开发,jquery,web前端, web前端开发, 前端开发工程师">
-    <meta content="前端开发,chanyue-cms,Nodejs内容管理系统,禅悦cms,禅悦, 前端开发, web前端, vue,react,node,express,mysql 前端开发工具 "
-        name="keywords" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="前端开发俱乐部" />
-    <meta property="og:description"
-        content="前端开发俱乐部,分享前端知识,丰富前端技能。汇集国内专业的前端开发文档,为推动业内前端开发水平共同奋斗。DoraCMS,html,js,css,nodejs,前端开发,jquery,web前端, web前端开发, 前端开发工程师" />
-    <meta property="og:image" content="./img/logo.png"/>
-    <meta property="og:url" content="https://www.chanyue.top"/>
-    <meta name="author" content="chanyue-cms"/>
-    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/element-plus.css"/>
-    <link rel="stylesheet" href="./css/saduo@1.0.9.css"/>
-    <link rel="stylesheet" href="./css/main.css"/>
-</head>
-
-<body>
-
-    <!-- 头部 -->
-    <header class="row header-wrap justify-center pos-r">
-        <div class="header row align-c justify-between pt-5 pb-5">
-            <div class="row align-c">
-                <h1 class="logo" title="禅悦内容管理系统chanyue-cms">
-                    <span class="c-141414">前端小栈</span><span class="theme f-16 ml-5">• 禅悦</span>
-                </h1>
-                <nav class="nav">
-                    <ul class="row">
-                        <li class="nav-item"><a href="/"  title="首页">首页</a></li>
-                        <li class="nav-item">
-                            <a href="/"  title="首页">前端开发</a>
-                            <ul class="sub-nav">
-                                <li class="sub-nav-item"><a href="/" >vue</a></li>
-                                <li class="sub-nav-item"><a href="/" >react</a></li>
-                                <li class="sub-nav-item"><a href="/" >javascript</a></li>
-                                <li class="sub-nav-item"><a href="/" >css</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/"  title="首页">node开发</a>
-                            <ul class="sub-nav">
-                                <li class="sub-nav-item"><a href="/" >express</a></li>
-                                <li class="sub-nav-item"><a href="/" >mysql</a></li>
-                                <li class="sub-nav-item"><a href="/" >服务器</a></li>
-                            </ul>
-                        <li class="nav-item"><a href="/"  title="首页">SEO</a></li>
-                        <li class="nav-item"><a href="/"  title="首页">前端库</a></li>
-                        <li class="nav-item"><a href="/"  title="首页">禅悦cms</a></li>
-                        <li class="nav-item"><a href="/"  title="首页">案例</a></li>
-                        <li class="nav-item"><a href="/"  title="首页">关于</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="search">
-                <div class="el-input  el-input--prefix ">
-                    <div class="el-input__wrapper" role="button">
-                        <span class="el-input__prefix">
-                            <span class="el-input__prefix-inner">
-                                <i class="el-icon el-input__icon">
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="currentColor"
-                                            d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
-                                        </path>
-                                    </svg>
-                                </i>
-                            </span>
-                        </span>
-                        <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
-                    </div>
-                    <!-- <el-button class="ml-5">搜索</el-button> -->
-                </div>
-            </div>
-
-            <div class="ico-open"></div>
-        </div>
-    </header>
-
+    <title>{{site.name}}-{{site.title}}</title>
+    {{include './common/meta.html'}}
+<body class="bg-f8f8f8">
+      <!-- 头部 -->
+    {{include './common/header.html'}}
     <!-- banner -->
     <section class="banner row justify-center">
         <h1 class="chanyue text-c">chanyue-cms</h1>
         <p class="f-23 text-c mt-20">基于express+mysql的一款轻量级高质量cms管理系统</p>
         <p class="text-c mt-20">
-            <span class="el-button el-button--primary is-round">开始使用</span>
-            <span class="el-button el-button--primary is-round">码云</span>
-            <span class="el-button el-button--primary is-round">下载</span>
+            <span class="el-button el-button--primary is-round">
+                <a href="https://gitee.com/yanyutao0402/chanyue-cms"  target="_blank">开始使用</a>
+            </span>
+            <span class="el-button el-button--primary is-round">
+                <a  href="https://gitee.com/yanyutao0402/chanyue-cms" target="_blank">码云</a>
+            </span>
         </p>
     </section>
 
@@ -130,63 +59,19 @@
 
 
     <footer class="pd-20">
-        <p class="mt-30 text-c f-14">©copyright 前端小栈•禅悦 </p>
-        <p class="f-13 text-c c-bfbfbf">自豪的采用 chanyue-cms</span></p>
+        <p class="mt-30 text-c f-14">©copyright {{site.name}}{{site.json.siteSubtitle}}</p>
+        {{@ frag.copyright.content}}
     </footer>
 
 
     <div id="app">
         <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
-            <div class="search mb-20">
-                <div class="el-input  el-input--prefix ">
-                    <div class="el-input__wrapper" role="button">
-                        <span class="el-input__prefix">
-                            <span class="el-input__prefix-inner">
-                                <i class="el-icon el-input__icon">
-                                    <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill="currentColor"
-                                            d="m795.904 750.72 124.992 124.928a32 32 0 0 1-45.248 45.248L750.656 795.904a416 416 0 1 1 45.248-45.248zM480 832a352 352 0 1 0 0-704 352 352 0 0 0 0 704z">
-                                        </path>
-                                    </svg>
-                                </i>
-                            </span>
-                        </span>
-                        <input class="el-input__inner" type="text" autocomplete="off" placeholder="搜索点什么">
-                    </div>
-                    <!-- <el-button class="ml-5">搜索</el-button> -->
-                </div>
-            </div>
-            <ul class="f-16">
-                <li><a class="pt-5 pb-5 block" href="/"  title="首页">首页</a></li>
-                <li>
-                    <a class="pt-5 pb-5 block" href="/"  title="首页">前端开发</a>
-                    <ul class="pl-16">
-                        <li><a class="pt-5 pb-5 block" href="/" >vue</a></li>
-                        <li><a class="pt-5 pb-5 block" href="/" >react</a></li>
-                        <li><a class="pt-5 pb-5 block" href="/" >javascript</a></li>
-                        <li><a class="pt-5 pb-5 block" href="/" >css</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="pt-5 pb-5 block" href="/"  title="首页">node开发</a>
-                    <ul class="pl-16">
-                        <li><a class="pt-5 pb-5 block" href="/" >express</a></li>
-                        <li><a class="pt-5 pb-5 block" href="/" >mysql</a></li>
-                        <li><a class="pt-5 pb-5 block" href="/" >服务器</a></li>
-                    </ul>
-                <li><a class="pt-5 pb-5 block" href="/"  title="首页">SEO</a></li>
-                <li><a class="pt-5 pb-5 block" href="/"  title="首页">前端库</a></li>
-                <li><a class="pt-5 pb-5 block" href="/"  title="首页">禅悦cms</a></li>
-                <li><a class="pt-5 pb-5 block" href="/"  title="首页">案例</a></li>
-                <li><a class="pt-5 pb-5 block" href="/"  title="首页">关于</a></li>
-            </ul>
+            {{include './common/wap-nav.html'}}
         </el-drawer>
         <el-backtop :right="100" :bottom="100" />
     </div>
 
-
-    <script src="./js/vue@3.js"></script>
-    <script src="./js/element-plus.js"></script>
+    {{include './common/js.html'}}
     <script>
         var app = Vue.createApp({
             data: function () {

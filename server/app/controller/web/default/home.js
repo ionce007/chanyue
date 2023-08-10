@@ -84,6 +84,7 @@ class HomeController {
         return;
       }
 
+      article.tags = await CommonService.fetchTagsByArticleId(id);
       // 栏目id
       const cid = article.cid || "";
 
@@ -130,6 +131,8 @@ class HomeController {
   static async page(req, res, next) {
     try {
       const { cate, id } = req.params;
+
+
 
       // 当前栏目和当前栏目下所有子导航
       let cid = "";
@@ -189,8 +192,14 @@ class HomeController {
 
        // 增加数量
        await ArticleService.count(article.id);
+
+
+       //特殊页面配置
+       const config = {
+          'chanyue':'web/default/chanyue.html'
+       }
        
-      await res.render(`web/default/page.html`, {
+      await res.render(`${config[cate] || 'web/default/page.html'}`, {
         data: data.list,
         navSub,
         position,
@@ -208,29 +217,44 @@ class HomeController {
       const page = req.params.id || 1;
       const keywords = req.params.keywords;
       const pageSize = 10;
-
-      // 广告
-      let ad = await HomeService.ad(1, 3);
-      if (ad.length > 0) {
-        const obj = {};
-        ad.forEach((item) => {
-          obj[item.mark] = item;
-        });
-        ad = obj;
-      }
-
       // 文章列表
-      const list = await ArticleService.search(keywords, page, pageSize);
-      list.list.forEach((ele) => {
+      const data = await ArticleService.search(keywords, page, pageSize);
+      data.list.forEach((ele) => {
         ele.updatedAt = dayjs(ele.updatedAt).format("YYYY-MM-DD HH:mm:ss");
       });
-
-      await res.render(`web/${template}/search.html`, { keywords, list, ad });
+      await res.render(`web/${template}/search.html`, { keywords, data });
     } catch (error) {
       console.error(error);
       next(error);
     }
   }
+
+
+  // 搜索页
+  static async tag(req, res, next) {
+    try {
+
+      const {path,id} = req.params;
+
+      const page = id || 1;
+
+      const pageSize = 10;
+
+      // 文章列表
+      const data = await HomeService.tags(path, page, pageSize);
+
+      console.log('tags',path)
+      data.list.forEach((ele) => {
+        ele.updatedAt = dayjs(ele.updatedAt).format("YYYY-MM-DD HH:mm:ss");
+      });
+
+      await res.render(`web/${template}/tag.html`, { data ,path});
+    } catch (error) {
+      console.error(error);
+      next(error);
+    }
+  }
+
 }
 
 module.exports = HomeController;

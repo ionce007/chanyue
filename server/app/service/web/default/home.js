@@ -121,6 +121,19 @@ class HomeService {
     }
   }
 
+
+  // 列表页
+  static async tags(path,currentPage=1,pageSize=10) {
+    try {
+      // 文章列表
+      const data = await CommonService.tags(path, currentPage, pageSize);
+      data.list = formatDay(data.list);
+      return data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
 }
 
 

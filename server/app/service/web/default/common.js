@@ -311,6 +311,91 @@ static async getNewImgList(len = 10, id = "", attr = '') {
       console.error(`id->${id} current->${current} pageSize->${pageSize}`, err);
     }
   }
+
+
+  /**
+   * @description tag搜索
+   * @param {Number} tag tagpath
+   * @param {Number|String} current 当前页面
+   * @param {Number} pageSize 默认10条
+   * @returns {Array} 
+   */
+  static async tags(path, current=1, pageSize=10) {
+    try {
+      const start = (current - 1) * pageSize;
+      
+      // 查询个数
+      const total = await knex('article as a')
+      .join('category as c', 'a.cid', 'c.id')
+      .whereExists(function() {
+        this.select(1)
+          .from('tag as t')
+          .whereRaw('FIND_IN_SET(t.id, a.tag_id) > 0')
+          .andWhere('t.path', 'cms');
+      })
+      .count('* as total');
+
+    
+      console.log('total------------',total[0])
+     
+  
+      // 查询文章列表
+      const result = await knex('article as a')
+        .select(
+          'a.id',
+          'a.title',
+          'a.short_title',
+          'a.img',
+          'a.description',
+          'a.createdAt',
+          'a.author',
+          'a.pv',
+          'c.pinyin',
+          'c.name',
+          'c.path',
+        )
+        .join('category as c', 'a.cid', 'c.id')
+        .whereExists(function() {
+          this.select(1)
+            .from('tag as t')
+            .whereRaw('FIND_IN_SET(t.id, a.tag_id) > 0')
+            .andWhere('t.path', 'cms');
+        })
+        .orderBy('a.createdAt', 'DESC')
+        .offset(start)
+        .limit(pageSize);
+
+        const count = total.total || 1;
+  
+      return {
+         count,
+         total: Math.ceil(count / pageSize),
+         current: +current,
+         list: result,
+      };
+    } catch (err) {
+      console.error(`id->${path} current->${current} pageSize->${pageSize}`, err);
+    }
+  }
+
+
+  /**
+   * @description 通过文章id获取tags
+   * @param {*} articleId 
+   * @returns {Array} 返回数组 
+   */
+  static async fetchTagsByArticleId (articleId) {
+    try {
+      const tags = await knex('tag')
+        .select('tag.id', 'tag.path', 'tag.name')
+        .join('article', knex.raw(`article.tag_id LIKE CONCAT('%', tag.id, '%')`))
+        .where('article.id', articleId)
+        .limit(10);
+      return tags;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
 
 module.exports = CommonService;

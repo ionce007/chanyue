@@ -55,7 +55,6 @@
 
                     {{each article}}
                     <div class="w-460 bg-fff pd-20">
-
                         <h3 class="m-title f-16 row justify-between border-dashed mb-10">{{$value.category.name}}<span
                                 class="more"><a href="{{$value.category.path}}/index.html">NEW</a></span></h3>
                         {{if $value.top.title}}
@@ -180,7 +179,7 @@
     <!-- footer -->
     {{include './common/footer.html'}}
 
-    <div class="tags mb-20 mt-20 pd-20 bg-f2f2f2">
+    <div class="api mb-20 mt-20 pd-20 bg-f2f2f2">
         <h1>接口页面--全局数据：</h1>
         <p class="mb-20">site-> {{site}} </p>
         <p class="mb-20">111-->{{site.json.siteSubtitle}}</p>

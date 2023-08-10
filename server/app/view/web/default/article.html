@@ -30,13 +30,18 @@
                 <div class="bg-fff radius-6 pd-25">
                     <header class="border-b pos-r">
                         <h2 class="f-26 c-252933  bold mt-10">{{article.title}}</h2>
-                        <p class="f-12 c-999 mt-5 mb-26">
-                            <span>
+                        <p class="f-12 mt-5 mb-26">
+                            
+                            <span class="c-999 ">
                                 <i class="ico-20 ico-time pos-r t-4"></i> {{article.updatedAt}}
                                 <i class="ico-20 ico-admin pos-r t-4 ml-4"></i> {{article.author}}
                                 <i class="ico-20 ico-view pos-r t-5 ml-4"></i> 阅读（{{article.pv}}）
                                 <!-- <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95） -->
                             </span>
+
+                            {{each article.tags}}
+                            <a class="el-tag mr-5 mb-5" href="/tags/{{$value.path}}.html" title="{{$value.name}}">{{$value.name}}</a>
+                            {{/each}}
                         </p>
                     </header>
 
@@ -145,7 +150,7 @@
    {{include './common/footer.html'}}
 
     
-   <div class="tags mb-20 mt-20 pd-20 bg-f2f2f2">
+   <div class="api mb-20 mt-20 pd-20 bg-f2f2f2">
        <h1>接口页面--全局数据：</h1>
        <p class="mb-20">site-> {{site}} </p>
        <p class="mb-20">111-->{{site.json.siteSubtitle}}</p>
@@ -160,6 +165,10 @@
        <p class="mb-20">position------>{{position}}</p>
        <p class="mb-20">navSub------>{{navSub}}</p>
        <p class="mb-20">article------>{{article}}</p>
+
+       <p class="mb-20 bg-fff">article.tags------>{{article.tags}}</p>
+
+
        <p class="mb-20">news------>{{news}}</p>
        <p class="mb-20">hot------>{{hot}}</p>
        <p class="mb-20">imgs------>{{imgs}}</p>

@@ -245,3 +245,54 @@ exports.formatDay = (data, time = false,format = "YYYY-MM-DD HH:mm:ss") => {
   });
   return data;
 };
+
+
+/**
+ * @description 生成分页
+ * @param {*} totalPages 总页数
+ * @param {*} currentPage 当前页
+ * @returns 返回html
+ */
+exports.createPagination = (req,totalPages, currentPage) => {
+  let html = '';
+
+  let startPage = Math.max(1, currentPage - 2);
+  let endPage = Math.min(totalPages, currentPage + 2);
+
+  if (currentPage > 1) {
+    const prevPage = currentPage - 1;
+    const prevUrl = req.originalUrl.replace(/[?&]page=\d+/, '') + `?page=${prevPage}`;
+    html += `<li><a href="${prevUrl}">上一页</a></li>`;
+  }
+
+  if (startPage > 1) {
+    html += `<li><a href="#">1</a></li>`;
+    if (startPage > 2) {
+      html += `<li><span>...</span></li>`;
+    }
+  }
+
+  for (let i = startPage; i <= endPage; i++) {
+    if (i === currentPage) {
+      html += `<li class="active"><a href="#">${i}</a></li>`;
+    } else {
+      const pageUrl = req.originalUrl.replace(/[?&]page=\d+/, '') + `?page=${i}`;
+      html += `<li><a href="${pageUrl}">${i}</a></li>`;
+    }
+  }
+
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) {
+      html += `<li><span>...</span></li>`;
+    }
+    html += `<li><a href="#">${totalPages}</a></li>`;
+  }
+
+  if (currentPage < totalPages) {
+    const nextPage = currentPage + 1;
+    const nextUrl = req.originalUrl.replace(/[?&]page=\d+/, '') + `?page=${nextPage}`;
+    html += `<li><a href="${nextUrl}">下一页</a></li>`;
+  }
+
+  return html;
+};
