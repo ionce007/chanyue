@@ -23,9 +23,6 @@ pnpm-debug.log*
 *.sw?
 package-lock.json
 *.zip
-/server/app/public/uploads/
-
-/server/app/public/upload
 /server/app/model
 /server/app/controller/user
 /server/app/controller/web/lianmeng
