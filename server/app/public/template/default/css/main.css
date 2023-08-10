@@ -51,9 +51,6 @@ ul>li:last-child {
     gap: 2px;
 }
 
-.main {
-    width: 1200px;
-}
 
 
 .center {
@@ -258,7 +255,11 @@ ul>li:last-child {
 /* main */
 .main {
     width: 1200px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+}
+
+.flex-wrap{
+    flex-wrap: wrap!important;
 }
 
 .w-460 {

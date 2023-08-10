@@ -19,11 +19,12 @@
                     <i class="ico-20 ico-home pos-r t-3"></i>
                     <a href="/">首页</a> /
                     {{each position}}
-                    {{if $index < position.length-1}} <a href="{{$value.path}}/index.html">{{$value.name}}</a> /
-                        {{else}}
-                        <a class="c-666" href="{{$value.path}}/index.html">{{$value.name}}</a>
+                        {{if $index < position.length-1}}
+                            <a href="{{$value.path}}/index.html">{{$value.name}}</a> /
+                            {{else}}
+                            <a class="c-666" href="{{$value.path}}/index.html">{{$value.name}}</a>
                         {{/if}}
-                        {{/each}}
+                    {{/each}}
                 </div>
 
                 <div class="bg-fff pl-25 pr-25 pb-25 radius-6 list">
@@ -134,7 +135,7 @@
                         {{/if}}
                         <div class="flex-1">
                             <figcaption class="f-18 ellips-2 bold mt-4">{{$value.title}}</figcaption>
-                            <p class="f-14 ellips-3 pd-15">
+                            <p class="f-14  pd-15">
                                 {{@ $value.description}}
                                 <a href="{{$value.path}}/article-{{$value.id}}.html" title="{{$value.title}}">详情
                                 </a>
