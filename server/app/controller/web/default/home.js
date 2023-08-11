@@ -239,19 +239,13 @@ class HomeController {
   static async tag(req, res, next) {
     try {
       const { path, id } = req.params;
-
       const page = id || 1;
-
       const pageSize = 10;
-
       // 文章列表
       const data = await HomeService.tags(path, page, pageSize);
-
-      console.log("tags", path);
       data.list.forEach((ele) => {
         ele.updatedAt = dayjs(ele.updatedAt).format("YYYY-MM-DD HH:mm:ss");
       });
-
       await res.render(`web/${template}/tag.html`, { data, path });
     } catch (error) {
       console.error(error);
