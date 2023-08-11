@@ -85,6 +85,8 @@ class HomeController {
       }
 
       article.tags = await CommonService.fetchTagsByArticleId(id);
+      let pdf = article.tags.filter((item) => item.name == "pdf");
+
       // 栏目id
       const cid = article.cid || "";
 
@@ -113,7 +115,13 @@ class HomeController {
       //热门 推荐 图文
       const data = await HomeService.article(cid);
 
-      await res.render(`web/${template}/article.html`, {
+      //模板配置
+      let config = {
+        pdf: pdf.length > 0 ? `web/${template}/article-pdf.html` : "",
+        default: `web/${template}/article.html`
+      };
+
+      await res.render(config["pdf"] ||config.default, {
         ...data,
         article,
         navSub,
@@ -131,8 +139,6 @@ class HomeController {
   static async page(req, res, next) {
     try {
       const { cate, id } = req.params;
-
-
 
       // 当前栏目和当前栏目下所有子导航
       let cid = "";
@@ -167,15 +173,15 @@ class HomeController {
 
       //获取单页列表
       const data = await HomeService.page(cid, 1, 20);
-      if(data.list.length == 0){
+      if (data.list.length == 0) {
         res.redirect("/404.html");
         return;
-      }else{
+      } else {
         article = await ArticleService.detail(data.list[0].id);
       }
 
       //没找到文章 去404
-      if (Object.keys(article).length==0) {
+      if (Object.keys(article).length == 0) {
         res.redirect("/404.html");
         return;
       }
@@ -190,16 +196,16 @@ class HomeController {
       // 当前位置
       const position = treeById(article.cid, res.locals.category);
 
-       // 增加数量
-       await ArticleService.count(article.id);
+      // 增加数量
+      await ArticleService.count(article.id);
 
+      //页面模板配置
+      const config = {
+        chanyue: `web/${template}/chanyue.html`,
+        default: `web/${template}/page.html`
+      };
 
-       //特殊页面配置
-       const config = {
-          'chanyue':'web/default/chanyue.html'
-       }
-       
-      await res.render(`${config[cate] || 'web/default/page.html'}`, {
+      await res.render(config[cate] || config.default, {
         data: data.list,
         navSub,
         position,
@@ -229,12 +235,10 @@ class HomeController {
     }
   }
 
-
   // 搜索页
   static async tag(req, res, next) {
     try {
-
-      const {path,id} = req.params;
+      const { path, id } = req.params;
 
       const page = id || 1;
 
@@ -243,18 +247,17 @@ class HomeController {
       // 文章列表
       const data = await HomeService.tags(path, page, pageSize);
 
-      console.log('tags',path)
+      console.log("tags", path);
       data.list.forEach((ele) => {
         ele.updatedAt = dayjs(ele.updatedAt).format("YYYY-MM-DD HH:mm:ss");
       });
 
-      await res.render(`web/${template}/tag.html`, { data ,path});
+      await res.render(`web/${template}/tag.html`, { data, path });
     } catch (error) {
       console.error(error);
       next(error);
     }
   }
-
 }
 
 module.exports = HomeController;
