@@ -20,8 +20,6 @@ router.get([
   '/:cate3/:cate2/:cate1/:cate/index:current.html'], init(), HomeController.list);
 
 
- 
-
 // 文章页
 router.get([
   '/article/:id', //兼容old
