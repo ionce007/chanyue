@@ -38,8 +38,8 @@
             },
             {
               min: 1,
-              max: 10,
-              message: '栏目不能超过10个字',
+              max: 50,
+              message: '栏目不能超过50个字',
               trigger: 'blur',
             },
           ]"
@@ -153,18 +153,6 @@ export default {
         type: "0",
         target: "0",
         status: "0",
-      },
-      paramsRules: {
-        //校验规则
-        name: [
-          { required: true, message: "请输入栏目名称", trigger: "blur" },
-          {
-            min: 2,
-            max: 10,
-            message: "名称长度在 2 到 10 个字符之间",
-            trigger: "blur",
-          },
-        ],
       },
     };
   },

@@ -11,7 +11,7 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 11/08/2023 21:00:09
+ Date: 14/08/2023 17:29:44
 */
 
 SET NAMES utf8mb4;
@@ -78,7 +78,7 @@ INSERT INTO `article` VALUES (8, 4, '', '小跑青年', '', '', '3', '', '', '',
 INSERT INTO `article` VALUES (9, 4, '', '最美的秋', '', '', '', '', '', '', '', '', '', '/public/cover/03.jpg', '<p><img src=\"/public/cover/03.jpg\" alt=\"\" width=\"240\" height=\"180\"></p>', 0, 18, '', '2023-08-06 18:18:58', '2023-08-06 18:18:58');
 INSERT INTO `article` VALUES (10, 5, '', '禅悦历史', '', '', '', '', '', '', '', '', 'chanyue-cms 历史\n第一次构想2015/6/2 基于express mongoDB开发第一版cms', NULL, '<h2>「关于」chanyue-cms 历史</h2>\n<p>第一次构想2015/6/2 基于express mongoDB开发第一版cms</p>\n<p>第二次重构（koacms）2018/4/2 基于koa2 mysql重构</p>\n<p>第三次重构（eggcms）2020/10/1基于egg mysql Sequelize重构</p>\n<p>第四次重构（chanyue-cms）2022/6/12基于express mysql knex开发第三版，经过多年开发和线上运营，回归最稳定的express。</p>\n<h2>「关于」技术选型说明</h2>\n<p>问：很多同学问为啥选择express而不是nest或Midway？</p>\n<p>答：express全球下载量第一，功能超级稳定，相关依赖包众多（所以不选koa2,洋葱皮模型）,依赖包大部分基于JavaScript写的，相对于nest,express更加灵活，轻量。至于为啥不选择eggjs/Midway，怕了，你懂得。</p>\n<p>问：为啥不选择Sequelize、typeorm或者prisma作为orm框架？**</p>\n<p>答：knex易用，友好，强大，objection.js都是基于knex开发的。</p>', 0, 52, '', '2023-08-09 21:43:13', '2023-08-09 21:43:13');
 INSERT INTO `article` VALUES (11, 8, NULL, '禅悦由来', '', '', '', '', '', '', '', '', '禅悦二首·其二', NULL, '<p class=\"chanyue-title text-c bold f-16\" data-v-584be997=\"\">禅悦二首&middot;其二</p>\n<p class=\"chanyue-author text-c f-14 mb-10 mt-10\" data-v-584be997=\"\">清代&middot;张问陶</p>\n<p class=\"chanyue-txt text-c f-15\" data-v-584be997=\"\">门庭清妙即禅关，</p>\n<p class=\"chanyue-txt text-c f-15\" data-v-584be997=\"\">枉费黄金去买山。</p>\n<p class=\"chanyue-txt text-c f-15\" data-v-584be997=\"\">只要心光如满月，</p>\n<p class=\"chanyue-txt text-c f-15\" data-v-584be997=\"\">在家还比出家闲。</p>\n<p class=\"mt-20\" data-v-584be997=\"\">译文：在清幽的家中修持，同样也可以进入禅关，不必花费万金去买山寻求幽静。 只要心性澄明，智慧之光绽放如满月，就算在家被俗世缠身，内心也比出家人清闲。</p>', 0, 26, '', '2023-08-09 22:24:24', '2023-08-09 22:24:24');
-INSERT INTO `article` VALUES (12, 7, '', 'pdf文章测试', '', '4', '', '', '', '', '', '', '', '/public/cover/05.jpg', '<p><iframe style=\"width: 100%; height: 1200px;\" src=\"/public/pdfjs/web/viewer.html?file=/public/uploads/pdf/01.pdf\"></iframe></p>', 0, 6, '/public/pdfjs/web/viewer.html?file=/public/uploads/pdf/01.pdf', '2023-08-11 20:30:26', '2023-08-11 20:30:26');
+INSERT INTO `article` VALUES (12, 7, '', 'pdf文章测试', '', '4', '', '', '', '', '', '', '', '/public/cover/05.jpg', '<p><iframe style=\"width: 100%; height: 1200px;\" src=\"/public/pdfjs/web/viewer.html?file=/public/uploads/pdf/01.pdf\"></iframe></p>', 0, 7, '/public/pdfjs/web/viewer.html?file=/public/uploads/pdf/01.pdf', '2023-08-11 20:30:26', '2023-08-11 20:30:26');
 
 -- ----------------------------
 -- Table structure for article_map_tag
@@ -119,7 +119,7 @@ CREATE TABLE `category`  (
   `seo_title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'seo标题',
   `seo_keywords` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'seo关键字',
   `seo_description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'seo描述',
-  `name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '栏目名称',
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '栏目名称',
   `pinyin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '栏目标识',
   `path` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '栏目路径',
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '栏目描述',

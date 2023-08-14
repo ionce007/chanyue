@@ -37,3 +37,4 @@ package-lock.json
 /API.MD
 /server/app/config/config.default copy.js
 /server/app/public/pdf-viewer/compressed.tracemonkey-pldi-09.pdf
+/server/app/view/web/qigong
