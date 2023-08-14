@@ -51,7 +51,9 @@ ul>li:last-child {
     gap: 2px;
 }
 
-
+.c-fff a{
+    color: #fff;
+}
 
 .center {
     margin-left: auto;

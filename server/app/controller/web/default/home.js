@@ -1,7 +1,7 @@
 "use strict";
 const dayjs = require("dayjs");
 const { template } = require("../../../config/config.js");
-const HomeService = require(`../../../service/web/default/home.js`);
+const HomeService = require(`../../../service/web/${template}/home.js`);
 const {
   getChildrenId,
   treeById,
@@ -115,7 +115,7 @@ class HomeController {
       //热门 推荐 图文
       const data = await HomeService.article(cid);
 
-      //模板配置
+      //模板配置 pdf文件必须选择pdf标签
       let config = {
         pdf: pdf.length > 0 ? `web/${template}/article-pdf.html` : "",
         default: `web/${template}/article.html`
