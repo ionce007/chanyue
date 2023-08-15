@@ -1,11 +1,10 @@
 <header class="row header-wrap justify-center pos-r">
-    <div class="header row align-c justify-between pt-5 pb-5">
-        <div class="row align-c">
-            <h1 class="logo" title="{{site.name}}">
-                <a href="/" class="c-141414">{{site.name}}</a><a href="/"
-                    class="theme f-16 ml-5">{{site.json.siteSubtitle}}</a>
-            </h1>
-            {{if nav.length>0}}
+    <div class="header row align-c justify-betwaeen pt-5 pb-5">
+        <h1 class="logo" title="{{site.name}}">
+            <a href="/" class="c-141414">{{site.name}}</a><a href="/"
+                class="theme f-16 ml-5">{{site.json.siteSubtitle}}</a>
+        </h1>
+        {{if nav.length>0}}
             <nav class="nav">
                 <ul class="row">
                     <li class="nav-item"><a href="/" title="首页">首页</a></li>
@@ -42,11 +41,8 @@
                     {{/each}}
                 </ul>
             </nav>
-            {{/if}}
-        </div>
-        
+        {{/if}}
         {{include './search.html'}}
-
         <div class="ico-open"></div>
     </div>
 </header>
