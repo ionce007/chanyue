@@ -1,0 +1,13 @@
+
+<script src="{{base_url}}/js/translate.js"></script>
+<div style="position: fixed;right: 20px;bottom: 20px;z-index: 10;">
+	切换语言:
+	<a class="ignore" href="javascript:translate.changeLanguage('english');">English</a> | 
+    <a class="ignore" href="javascript:translate.changeLanguage('japanese');">日本語</a>
+	<a class="ignore" href="javascript:translate.changeLanguage('chinese_simplified');">简体中文</a> | 
+	<a class="ignore" href="javascript:translate.changeLanguage('chinese_traditional');">繁體中文</a>
+</div>
+<script>
+    translate.setUseVersion2(); //设置使用v2.x 版本
+    translate.execute(); //执行翻译初始化操作，显示出select语言选择
+</script>
