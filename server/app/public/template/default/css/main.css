@@ -373,7 +373,9 @@ ul>li:last-child {
 .el-empty {
     font-family: 'chanyue';
 }
-
+.list{
+    min-height: calc(100vh - 500px);
+}
 /* .page ul li {
     float: left;
     border: 1px solid #ede7e7;
