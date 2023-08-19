@@ -19,6 +19,9 @@
           <p class="f-14 mb-6"><strong>发布时间：</strong>2023-08-19</p>
           <p class="f-14 mb-6"><strong>独立开发：</strong>明空</p>
           <p class="f-14 mb-6 row"><strong>联系微信：</strong>yanyutao2014</p>
+          <p class="f-14 mb-6 row">
+            <strong>联系邮箱：</strong>867528315@qq.com
+          </p>
           <p class="f-14 mb-6">
             <strong>禅悦内容管理系统：</strong>
             <a class="c-9ca4bf" href="http://www.chanyue.top" target="_blank">

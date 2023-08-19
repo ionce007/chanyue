@@ -444,11 +444,11 @@ ul>li:last-child {
 
 .article-cont h2:before {
     content: "# " !important;
-    color: #f33b1f;
+    color: #1f7ef3;
 }
 
 .article-cont ::marker {
-    color: #f33b1f;
+    color: #1f7ef3;
 }
 
 .article-cont ul {
@@ -462,7 +462,7 @@ ul>li:last-child {
 .article-cont h3 {
     font-size: 24px;
     padding-left: 9px;
-    border-left: 6px solid #f33b1f;
+    border-left: 6px solid #1f7ef3;
 }
 
 .article-cont p {
@@ -488,12 +488,12 @@ ul>li:last-child {
 
 .article-cont strong {
     padding: 1px;
-    color: #ee3f4d
+   
 }
 
 .article-cont em {
     padding: 0 2px;
-    color: #f33b1f
+   
 }
 
 .article-cont h1,
@@ -513,7 +513,7 @@ ul>li:last-child {
     text-align: center;
     padding-bottom: 5px;
     font-size: 32px;
-    color: #ac1f18
+   
 }
 
 .article-cont h1:after {
@@ -522,23 +522,23 @@ ul>li:last-child {
     margin: 4px auto 0;
     width: 100px;
     height: 2px;
-    border-bottom: 2px solid #f33b1f
+    border-bottom: 2px solid #1f7ef3
 }
 
 .article-cont h2 {
     font-size: 28px;
-    border-bottom: 1px solid #f33b1f
+    border-bottom: 1px solid #1f7ef3
 }
 
 .article-cont h2:before {
     content: "# " !important;
-    color: #f33b1f
+    color: #1f7ef3
 }
 
 .article-cont h3 {
     font-size: 24px;
     padding-left: 9px;
-    border-left: 6px solid #f33b1f
+    border-left: 6px solid #1f7ef3
 }
 
 .article-cont h4 {
