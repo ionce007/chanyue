@@ -217,12 +217,17 @@ export default {
     async categoryAdd() {
       try {
         let res = await create(this.params);
-        if (res.code) {
+        if (res.code == 200) {
           this.$message({
             message: "更新成功^_^",
             type: "success",
           });
           this.$router.go(-1);
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);

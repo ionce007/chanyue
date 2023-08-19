@@ -127,6 +127,11 @@ export default {
           this.data = res.data;
           this.loading = false;
           this.articleNum();
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);
@@ -139,6 +144,11 @@ export default {
         const { code, data } = res;
         if (code === 200) {
           this.dirname = data.dirname;
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);

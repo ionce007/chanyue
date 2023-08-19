@@ -133,6 +133,11 @@ export default {
         if (res.code === 200) {
           this.tableData = [...res.data.list];
           this.count = res.data.count;
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);
@@ -169,7 +174,7 @@ export default {
       let id = e.id;
       try {
         let res = await del(id);
-        if (res.code === 200) {
+        if (res.code == 200) {
           this.$message({
             message: "删除成功 ^_^",
             type: "success",

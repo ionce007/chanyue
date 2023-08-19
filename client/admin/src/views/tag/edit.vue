@@ -68,8 +68,13 @@ export default {
     async detail() {
       try {
         let res = await detail(this.params.id);
-        if (res.code === 200) {
+        if (res.code == 200) {
           this.params = res.data;
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.error(error);
@@ -79,12 +84,17 @@ export default {
     async update() {
       try {
         let res = await update(this.params);
-        if (res.code) {
+        if (res.code == 200) {
           this.$message({
             message: "更新成功^_^",
             type: "success",
           });
           this.$router.go(-1);
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);
@@ -93,7 +103,7 @@ export default {
     async has() {
       try {
         let res = await has(this.params.path);
-        if (res.code) {
+        if (res.code == 200) {
           if (res.data) {
             this.$message({
               message: "标签已存在，修改无效",
@@ -102,6 +112,11 @@ export default {
           } else {
             this.update();
           }
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);

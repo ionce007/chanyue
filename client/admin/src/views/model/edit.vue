@@ -82,6 +82,11 @@ export default {
           let data = res.data;
           //记老的表名，改新表名称
           this.params = { ...data, old_table_name: data.table_name };
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.error(error);
@@ -106,10 +111,17 @@ export default {
     async hasUse(id) {
       try {
         let res = await hasUse(id);
-        if (res.data.count) {
-          this.disable = true;
+        if (res.code == 200) {
+          if (res.data.count) {
+            this.disable = true;
+          } else {
+            this.disable = false;
+          }
         } else {
-          this.disable = false;
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);
@@ -120,9 +132,14 @@ export default {
     async update() {
       try {
         let res = await update(this.params);
-        if (res.code) {
+        if (res.code == 200) {
           this.$message({
             message: "更新成功^_^",
+            type: "success",
+          });
+        } else {
+          this.$message({
+            message: res.msg,
             type: "success",
           });
         }

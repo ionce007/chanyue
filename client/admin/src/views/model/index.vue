@@ -85,10 +85,15 @@ export default {
     async list() {
       try {
         let res = await list(this.cur);
-        if (res.code === 200) {
+        if (res.code == 200) {
           this.tableData = [...res.data.list];
           this.count = res.data.count;
           this.loading = false;
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);
@@ -138,20 +143,27 @@ export default {
       const { id, table_name } = e;
       try {
         let res = await this.hasUse(id);
-        if (res.data.count == 0) {
-          let res = await del(id, table_name);
-          if (res.code === 200) {
+        if (res.code == 200) {
+          if (res.data.count == 0) {
+            let res = await del(id, table_name);
+            if (res.code === 200) {
+              this.$message({
+                message: "删除成功 ^_^",
+                type: "error",
+              });
+              this.list();
+            } else {
+              this.$message({
+                message: res.msg,
+                type: "success",
+              });
+            }
+          } else {
             this.$message({
-              message: "删除成功 ^_^",
+              message: "当前模型已经使用，不能删除！",
               type: "error",
             });
-            this.list();
           }
-        } else {
-          this.$message({
-            message: "当前模型已经使用，不能删除！",
-            type: "error",
-          });
         }
       } catch (error) {
         console.log(error);

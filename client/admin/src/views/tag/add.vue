@@ -64,12 +64,17 @@ export default {
     async create() {
       try {
         let res = await create(this.params);
-        if (res.code) {
+        if (res.code == 200) {
           this.$message({
             message: "新增成功^_^",
             type: "success",
           });
           this.$router.go(-1);
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);
@@ -79,7 +84,7 @@ export default {
     async has() {
       try {
         let res = await has(this.params.path);
-        if (res.code === 200) {
+        if (res.code == 200) {
           if (res.data) {
             this.$message({
               message: "标签已存在，请不要再添加了",
@@ -88,6 +93,11 @@ export default {
           } else {
             this.create();
           }
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);

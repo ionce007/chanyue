@@ -173,6 +173,11 @@ export default {
             type: "success",
           });
           this.clearSearch();
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);

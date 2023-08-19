@@ -219,6 +219,11 @@ export default {
             json,
           };
           this.seo = { id, title, keywords, description };
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);
@@ -229,12 +234,17 @@ export default {
     async updateInfo() {
       try {
         let res = await updateInfo(this.info);
-        if (res.code === 200 && res.data) {
+        if (res.code === 200) {
           this.$message({
             message: "更新成功^_^",
             type: "success",
           });
           this.query();
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);
@@ -245,12 +255,17 @@ export default {
     async updateSeo() {
       try {
         let res = await updateSeo(this.seo);
-        if (res.code === 200 && res.data) {
+        if (res.code === 200) {
           this.$message({
             message: "更新成功^_^",
             type: "success",
           });
           this.query();
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);

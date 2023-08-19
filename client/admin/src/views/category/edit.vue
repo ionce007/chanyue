@@ -270,6 +270,11 @@ export default {
             type: "success",
           });
           this.$router.go(-1);
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);

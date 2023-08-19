@@ -124,6 +124,11 @@ export default {
             type: "success",
           });
           this.list();
+        } else {
+          this.$message({
+            message: res.msg,
+            type: "success",
+          });
         }
       } catch (error) {
         console.log(error);

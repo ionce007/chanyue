@@ -87,8 +87,8 @@ export default {
           // this.$router.go(-1);
         } else {
           this.$message({
-            message: res.msg || res.error.sqlMessage,
-            type: "fail",
+            message: res.msg,
+            type: "success",
           });
         }
       } catch (error) {
