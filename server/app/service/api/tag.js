@@ -13,8 +13,9 @@ class TagService extends BaseService {
     try {
       const result = await knex(TagService.model).insert(body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -38,7 +39,8 @@ class TagService extends BaseService {
       // res  返回值是 1
       return res ? "success" : "fail";
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -51,8 +53,9 @@ class TagService extends BaseService {
         .where("id", "=", id)
         .update(body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -64,8 +67,9 @@ class TagService extends BaseService {
         .where("id", "=", id)
         .update(body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -90,7 +94,8 @@ class TagService extends BaseService {
       //   list: list,
       // };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -137,7 +142,8 @@ class TagService extends BaseService {
         list: list,
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 }

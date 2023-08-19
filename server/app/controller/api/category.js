@@ -13,8 +13,8 @@ class CategoryController extends BaseController {
       const body = req.body;
       const data = await CategoryService.create(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -24,8 +24,8 @@ class CategoryController extends BaseController {
       const id = req.query.id;
       const data = await CategoryService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -35,8 +35,8 @@ class CategoryController extends BaseController {
       const body = req.body;
       const data = await CategoryService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -45,8 +45,8 @@ class CategoryController extends BaseController {
     try {
       const data = await CategoryService.find();
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -56,8 +56,8 @@ class CategoryController extends BaseController {
       const id = req.query.id;
       const data = await CategoryService.findId(id);
       res.json({ ...success, data: data});
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -67,8 +67,8 @@ class CategoryController extends BaseController {
       const id = req.query.id;
       const data = await CategoryService.findSubId(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -78,8 +78,8 @@ class CategoryController extends BaseController {
       const q = req.query.q;
       const data = await CategoryService.search(q);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 

@@ -20,8 +20,8 @@ class ArticleController extends BaseController {
       body.defaultParams.content = filterBody(body.defaultParams.content);
       const data = await ArticleService.create(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -31,8 +31,8 @@ class ArticleController extends BaseController {
       const id = req.query.id;
       const data = await ArticleService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -45,8 +45,8 @@ class ArticleController extends BaseController {
       body.content = filterBody(body.content);
       const data = await ArticleService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -56,8 +56,8 @@ class ArticleController extends BaseController {
     try {
       const data = await ArticleService.find();
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -67,8 +67,8 @@ class ArticleController extends BaseController {
       const id = req.query.id;
       const data = await ArticleService.detail(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -78,8 +78,8 @@ class ArticleController extends BaseController {
       const id = req.query.id;
       const data = await ArticleService.findSubId(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -96,8 +96,8 @@ class ArticleController extends BaseController {
         ele.updatedAt = dayjs(ele.updatedAt).format('YYYY-MM-DD HH:mm:ss');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -113,8 +113,8 @@ class ArticleController extends BaseController {
         ele.updatedAt = dayjs(ele.updatedAt).format('YYYY-MM-DD HH:mm:ss');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -132,8 +132,8 @@ class ArticleController extends BaseController {
           path: '/'+path.replace(/\\/g, "/").replace(/^app\//, "")
         }
       });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -142,8 +142,8 @@ class ArticleController extends BaseController {
       const cid = req.query.cid;
       const data = await ArticleService.findField(cid);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -151,8 +151,8 @@ class ArticleController extends BaseController {
     try {
       const data = await ArticleService.tongji();
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 }

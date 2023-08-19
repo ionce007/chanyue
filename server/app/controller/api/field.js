@@ -26,8 +26,8 @@ class FieldController extends BaseController {
       const data = await FieldService.create(body);
 
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -37,8 +37,8 @@ class FieldController extends BaseController {
       const id = req.query.id;
       const data = await FieldService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -48,8 +48,8 @@ class FieldController extends BaseController {
       const body = req.body;
       const data = await FieldService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -60,8 +60,8 @@ class FieldController extends BaseController {
       const id = req.query.id;
       const data = await FieldService.detail(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -73,8 +73,8 @@ class FieldController extends BaseController {
       const pageSize = 10;
       const data = await FieldService.list(model_id, cur, pageSize);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 }

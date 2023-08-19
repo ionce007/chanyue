@@ -1,6 +1,5 @@
 ﻿const config = require('./config');
 const { mysql: { host, port, user, password, database } } = config;
-
 // 连接数据库
 const knex = require('knex')({
     client: "mysql2",

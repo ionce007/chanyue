@@ -14,11 +14,10 @@
           <p class="f-14 mb-6">
             <strong>前端架构：</strong>vite4.0 vue3 element-plus pinia axios
           </p>
-          <p class="f-14 mb-6"><strong>程序版本：</strong>v.1.0.2</p>
+          <p class="f-14 mb-6"><strong>程序版本：</strong>v.0.5.0</p>
           <p class="f-14 mb-6"><strong>程序路径：</strong>{{ dirname }}</p>
-          <p class="f-14 mb-6"><strong>发布时间：</strong>2023-07-21</p>
+          <p class="f-14 mb-6"><strong>发布时间：</strong>2023-08-19</p>
           <p class="f-14 mb-6"><strong>独立开发：</strong>明空</p>
-          <p class="f-14 mb-6"><strong>UI界面：</strong>16号</p>
           <p class="f-14 mb-6 row"><strong>联系微信：</strong>yanyutao2014</p>
           <p class="f-14 mb-6">
             <strong>禅悦内容管理系统：</strong>
@@ -42,21 +41,21 @@
               :hollow="true"
               timestamp="2022/6/12"
             >
-              <p>第四次重构（chanyuecms）基于express mysql knex开发第三版</p>
+              <p>第四次重构（chanyue-cms）基于express mysql knex开发第三版</p>
             </el-timeline-item>
             <el-timeline-item
               type="primary"
               :hollow="true"
               timestamp="2020/10/1"
             >
-              <p>第三次重构（eggcms） 基于egg mysql Sequelize重构</p>
+              <p>第三次重构 基于egg mysql Sequelize重构</p>
             </el-timeline-item>
             <el-timeline-item
               type="primary"
               :hollow="true"
               timestamp="2018/4/2"
             >
-              <p>第二次重构（koacms）基于koa2 mysql重构</p>
+              <p>第二次重构 基于koa2 mysql重构</p>
             </el-timeline-item>
             <el-timeline-item
               type="primary"

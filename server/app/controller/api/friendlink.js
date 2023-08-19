@@ -18,8 +18,8 @@ class FriendlinkController extends BaseController {
       body.createdAt = dayjs(body.createdAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await FriendlinkService.create(body);
       res.json({ ...success, data: data })
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -29,8 +29,8 @@ class FriendlinkController extends BaseController {
       const id = req.query.id;
       const data = await FriendlinkService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -42,8 +42,8 @@ class FriendlinkController extends BaseController {
       body.createdAt = dayjs(body.createdAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await FriendlinkService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -53,8 +53,8 @@ class FriendlinkController extends BaseController {
       const id = req.query.id;
       const data = await FriendlinkService.find(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -64,8 +64,8 @@ class FriendlinkController extends BaseController {
       const id = req.query.id;
       const data = await FriendlinkService.detail(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -80,8 +80,8 @@ class FriendlinkController extends BaseController {
         ele.createdAt = dayjs(ele.createdAt).format('YYYY-MM-DD HH:MM');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -95,8 +95,8 @@ class FriendlinkController extends BaseController {
         ele.createdAt = dayjs(ele.createdAt).format('YYYY-MM-DD HH:MM');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 

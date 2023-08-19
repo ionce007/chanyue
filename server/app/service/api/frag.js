@@ -15,8 +15,9 @@ class FragService extends BaseService {
     try {
       const result = await knex(FragService.model).insert(body)
       return result ? 'success' : 'fail';
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -25,8 +26,9 @@ class FragService extends BaseService {
     try {
       const result = await knex(FragService.model).where('id', '=', id).del()
       return result ? 'success' : 'fail';
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -37,8 +39,9 @@ class FragService extends BaseService {
     try {
       const result = await knex(FragService.model).where('id', '=', id).update(body)
       return result ? 'success' : 'fail';
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -65,7 +68,8 @@ class FragService extends BaseService {
       //   list: frags,
       // };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -75,8 +79,9 @@ class FragService extends BaseService {
     try {
       const data = await knex(FragService.model).where('id', '=', id).select()
       return data[0];
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -112,7 +117,8 @@ class FragService extends BaseService {
         list: list,
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 

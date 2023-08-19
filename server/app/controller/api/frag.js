@@ -20,8 +20,8 @@ class FragController extends BaseController {
       body.createdAt = dayjs(body.createdAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await FragService.create(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -31,8 +31,8 @@ class FragController extends BaseController {
       const id = req.query.id;
       const data = await FragService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -43,8 +43,8 @@ class FragController extends BaseController {
       body.createdAt = dayjs(body.createdAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await FragService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -53,8 +53,8 @@ class FragController extends BaseController {
     try {
       const data = await FragService.find();
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -64,8 +64,8 @@ class FragController extends BaseController {
       const id = req.query.id;
       const data = await FragService.detail(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -75,8 +75,8 @@ class FragController extends BaseController {
       const id = req.query.id;
       const data = await FragService.findSubId(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -91,8 +91,8 @@ class FragController extends BaseController {
         ele.createdAt = dayjs(ele.createdAt).format('YYYY-MM-DD HH:MM');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -106,8 +106,8 @@ class FragController extends BaseController {
         ele.createdAt = dayjs(ele.createdAt).format('YYYY-MM-DD HH:MM');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 

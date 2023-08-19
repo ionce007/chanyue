@@ -52,7 +52,8 @@ class FieldService extends BaseService {
       });
 
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
 
   }
@@ -79,7 +80,8 @@ class FieldService extends BaseService {
         return result ? 'success' : 'fail';
       });
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -90,8 +92,9 @@ class FieldService extends BaseService {
     try {
       const result = await knex(FieldService.model).where('id', '=', id).update(body)
       return result ? 'success' : 'fail';
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -101,8 +104,9 @@ class FieldService extends BaseService {
     try {
       const result = await knex.raw('SELECT field_cname,field_ename from field WHERE field_cname=? or field_ename=? LIMIT 0,1', [field_cname, field_ename]);
       return result[0];
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -143,8 +147,9 @@ class FieldService extends BaseService {
     try {
       const data = await knex(FieldService.model).where('id', '=', id).select()
       return data[0];
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 

@@ -9,7 +9,8 @@ class OpenService   {
         const result = await fetch(url);
         return result.json()
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -19,7 +20,8 @@ class OpenService   {
         const result = await fetch(url);
         return result.json()
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
   

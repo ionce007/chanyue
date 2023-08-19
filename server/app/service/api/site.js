@@ -11,10 +11,10 @@ class SiteService extends BaseService {
   static async find() {
     try {
       let res = await BaseService.all(SiteService.model);
-      
       return res[0];
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -33,8 +33,9 @@ class SiteService extends BaseService {
         const result = await BaseService.insert(SiteService.model,body);
         return result ? "success" : "fail";
       }
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -52,8 +53,9 @@ class SiteService extends BaseService {
         const result = await BaseService.insert(SiteService.model,body);
         return result ? "success" : "fail";
       }
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 }

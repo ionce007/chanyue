@@ -13,8 +13,9 @@ class CategoryService extends BaseService {
     try {
       const result = await BaseService.insert(CategoryService.model, body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -25,8 +26,9 @@ class CategoryService extends BaseService {
         .where("id", "=", id)
         .del();
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -39,8 +41,9 @@ class CategoryService extends BaseService {
         .where("id", "=", id)
         .update(body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -49,8 +52,9 @@ class CategoryService extends BaseService {
     try {
       const result = await BaseService.all(CategoryService.model);
       return result;
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -61,8 +65,9 @@ class CategoryService extends BaseService {
         .where("id", "=", id)
         .select();
       return data[0];
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -73,8 +78,9 @@ class CategoryService extends BaseService {
         .where("pid", "=", id)
         .select();
       return result;
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -87,8 +93,9 @@ class CategoryService extends BaseService {
         .orderBy("id", "desc", "sort")
         : await knex(CategoryService.model).orderBy("id", "asc", "sort");
       return result;
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 }

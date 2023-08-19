@@ -8,7 +8,6 @@ const FriendlinkService = require("../service/api/friendlink");
 
 module.exports = () => {
   return async (req, res, next) => {
-
     try {
       if ("site" in res.locals) {
         console.log("已存在缓存，不需要重新在取");
@@ -37,8 +36,5 @@ module.exports = () => {
     } catch (error) {
       next(error)
     }
-
   };
-
-
 };

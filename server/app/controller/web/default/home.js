@@ -142,9 +142,10 @@ class HomeController {
 
       // 当前栏目和当前栏目下所有子导航
       let cid = "";
-      let navSub = null;
-      let article = null;
-
+      let navSub = {};
+      let article = {};
+      let position = {};
+      
       if (!id && !cate) {
         res.redirect("/404.html");
         return;
@@ -166,6 +167,7 @@ class HomeController {
       }
 
       //没找到栏目 去404
+     
       if (!cid) {
         res.redirect("/404.html");
         return;
@@ -173,18 +175,22 @@ class HomeController {
 
       //获取单页列表
       const data = await HomeService.page(cid, 1, 20);
-      if (data.list.length == 0) {
-        res.redirect("/404.html");
-        return;
-      } else {
+      if(data.list.length  > 0 ){
         article = await ArticleService.detail(data.list[0].id);
       }
+      // if (data.list.length == 0) {
+      //   res.redirect("/404.html");
+      //   return;
+      // } else {
+      //   article = await ArticleService.detail(data.list[0].id);
+      // }
 
       //没找到文章 去404
-      if (Object.keys(article).length == 0) {
-        res.redirect("/404.html");
-        return;
-      }
+      if(Object.keys(article).length > 0 ){
+      // if (Object.keys(article).length == 0) {
+      //   res.redirect("/404.html");
+      //   return;
+      // }
 
       article.createdAt = dayjs(article.createdAt).format(
         "YYYY-MM-DD HH:mm:ss"
@@ -194,11 +200,11 @@ class HomeController {
       );
 
       // 当前位置
-      const position = treeById(article.cid, res.locals.category);
+      position = treeById(article.cid, res.locals.category);
 
       // 增加数量
       await ArticleService.count(article.id);
-
+    }
       //页面模板配置
       const config = {
         chanyue: `web/${template}/chanyue.html`,

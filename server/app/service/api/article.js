@@ -76,8 +76,9 @@ class ArticleService extends BaseService {
           return result[0] ? "success" : "fail";
         }
       });
-    } catch (err) {
-      console.error(err);
+    }catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -143,7 +144,8 @@ class ArticleService extends BaseService {
         return delArticle[0].affectedRows > 0 ? "success" : "fail";
       });
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -188,7 +190,8 @@ class ArticleService extends BaseService {
         return result ? "success" : "fail";
       });
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -238,7 +241,8 @@ class ArticleService extends BaseService {
         list: list,
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -272,7 +276,8 @@ class ArticleService extends BaseService {
       }
       return { ...data[0], field: field[0] || {} };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -305,7 +310,6 @@ class ArticleService extends BaseService {
         sql_list = listStart + `AND c.id=? ` + listEnd;
       }
 
-     
 
       const list = cid
         ? await knex.raw(sql_list, [cid])
@@ -318,7 +322,8 @@ class ArticleService extends BaseService {
         list: list[0],
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -330,8 +335,9 @@ class ArticleService extends BaseService {
         [id]
       );
       return result[0].affectedRows ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -343,8 +349,9 @@ class ArticleService extends BaseService {
         [id, cid]
       );
       return result[0][0];
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -356,8 +363,9 @@ class ArticleService extends BaseService {
         [id, cid]
       );
       return result[0][0];
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -376,7 +384,8 @@ class ArticleService extends BaseService {
         fields: res[0],
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -427,7 +436,8 @@ class ArticleService extends BaseService {
         message: message[0][0].count,
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 }

@@ -27,7 +27,8 @@ class ModelService extends BaseService {
         };
       });
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -38,7 +39,8 @@ class ModelService extends BaseService {
       const has = await knex.raw(hasStr)
       return has[0]
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -60,7 +62,8 @@ class ModelService extends BaseService {
         };
       });
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
 
   }
@@ -80,7 +83,8 @@ class ModelService extends BaseService {
         };
       })
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -90,8 +94,9 @@ class ModelService extends BaseService {
     try {
       const result = await knex.raw(`SELECT model_name,table_name from model WHERE model_name=? or table_name=? LIMIT 0,1`, [model_name, table_name]);
       return result[0];
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -114,7 +119,8 @@ class ModelService extends BaseService {
         list: list,
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -123,8 +129,9 @@ class ModelService extends BaseService {
     try {
       const data = await knex(ModelService.model).where('id', '=', id).select()
       return data[0];
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 

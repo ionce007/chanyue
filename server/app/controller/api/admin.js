@@ -31,8 +31,8 @@ class AdminController extends BaseController {
       } else {
         res.json({ ...fail, data: null,msg:'登录失败' })
       }
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -45,8 +45,8 @@ class AdminController extends BaseController {
       body.updatedAt = dayjs(body.updatedAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await AdminService.create(body);
       res.json({ ...success, data: data })
-    } catch (error) {
-      next(error)
+    }  catch (err) {
+      next(err);
     }
   }
 
@@ -56,8 +56,8 @@ class AdminController extends BaseController {
       const id = req.query.id;
       const data = await AdminService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error)
+    }  catch (err) {
+      next(err);
     }
   }
 
@@ -71,8 +71,8 @@ class AdminController extends BaseController {
       body.updatedAt = dayjs(body.updatedAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await AdminService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -82,8 +82,8 @@ class AdminController extends BaseController {
       const id = req.query.id;
       const data = await AdminService.detail(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -99,8 +99,8 @@ class AdminController extends BaseController {
         ele.createdAt = dayjs(ele.createdAt).format('YYYY-MM-DD HH:MM');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -114,8 +114,8 @@ class AdminController extends BaseController {
         ele.createdAt = dayjs(ele.createdAt).format('YYYY-MM-DD HH:MM');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -135,8 +135,8 @@ class AdminController extends BaseController {
       res.cookie("captcha", captcha.text);
       res.type = 'image/svg+xml'; // 知道你个返回的类型
       res.end(captcha.data); // 返回一张图片
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 

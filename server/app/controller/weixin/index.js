@@ -49,8 +49,8 @@ class WeiXinController {
           nickName,
         },
       });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 }

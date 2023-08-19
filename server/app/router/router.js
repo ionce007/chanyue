@@ -29,16 +29,20 @@ router.get('/robots.txt', function (req, res, next) {
 });
 
 //404处理
-router.use(init(),(req, res, next) => {
-	// res.status(404).send('404 - NOT Found');
-	res.status(404).render(`web/default/404.html`, );
+router.use(init(), (req, res, next) => {
+	res.render(`web/default/404.html`,);
 });
 
 //在所有组件挂在之后处理错误中间件
-router.use((err, req, res, next) => {
+router.use(init(), (err, req, res, next) => {
 	console.log('err-req------>', req.method, req.url);
 	console.log('err-info----->', err)
-	res.status(500).send('服务器貌似有些问题了' + err.message);
+	let data = { url: req.url, method: req.method, error: err.message }
+	if(req.is('html')){
+		res.render(`web/default/500.html`,{data});
+	}else{
+		res.json({code:500,data,msg:data.error})
+	}
 });
 
 module.exports = router;

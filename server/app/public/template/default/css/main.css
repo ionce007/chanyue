@@ -228,6 +228,24 @@ ul>li:last-child {
     animation: ran 18s linear infinite;
 }
 
+.chanyue-s{
+    letter-spacing: 2px;
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 1.2;
+    color: #fff;
+    font-family: 'chanyue';
+    background: -webkit-linear-gradient(45deg, #00a0e9, #10d39d, #00a0e9, #10d39d, #00a0e9);
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-animation: ran 18s linear infinite;
+    animation: ran 18s linear infinite;
+}
+
+.error-500{
+    min-height: calc(100vh - 155px);
+}
+
 @-webkit-keyframes ran {
 
     0%,

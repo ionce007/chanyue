@@ -15,8 +15,8 @@ class SiteController extends BaseController {
     try {
       const data = await SiteService.find();
       res.json({ ...success, data: data })
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -27,8 +27,8 @@ class SiteController extends BaseController {
       const body = req.body;
       const data = await SiteService.create(body);
       res.json({ ...success, data: data })
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -38,8 +38,8 @@ class SiteController extends BaseController {
       const id = req.query.id;
       const data = await SiteService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -49,8 +49,8 @@ class SiteController extends BaseController {
       const body = req.body;
       const data = await SiteService.updateInfo(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -59,8 +59,8 @@ class SiteController extends BaseController {
       const body = req.body;
       const data = await SiteService.updateSeo(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -70,8 +70,8 @@ class SiteController extends BaseController {
       const id = req.query.id;
       const data = await SiteService.find(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -80,8 +80,8 @@ class SiteController extends BaseController {
     try {
       const dirname = path.join(__dirname, '../../../../');
       res.json({ ...success, data:{dirname: dirname} });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 

@@ -6,7 +6,6 @@ class AdminService extends BaseService {
 
   constructor(props) {
     super(props);
-   
   }
 
   // 登录
@@ -17,18 +16,20 @@ class AdminService extends BaseService {
         password: `${password}`
       }).select(['id', 'username', 'status']);
       return res[0];
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
   // 增加
   static async create(body) {
     try {
-      const result = await BaseService.insert(AdminService.model,body);
+      const result = await BaseService.insert(AdminService.model, body);
       return result ? 'success' : 'fail';
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -37,20 +38,22 @@ class AdminService extends BaseService {
     try {
       const result = await knex(AdminService.model).where('id', '=', id).del()
       return result ? 'success' : 'fail';
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
   // 修改
   static async update(body) {
-    const {id} = body;
+    const { id } = body;
     delete body.id;
     try {
       const result = await knex(AdminService.model).where('id', '=', id).update(body)
       return result ? 'success' : 'fail';
-    } catch (error) {
-      console.error(error)
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -58,14 +61,14 @@ class AdminService extends BaseService {
   static async list(cur = 1, pageSize = 10) {
     try {
       // 查询个数
-      const total = await knex(AdminService.model).count('id', {as: 'count'});
+      const total = await knex(AdminService.model).count('id', { as: 'count' });
       const offset = parseInt((cur - 1) * pageSize);
-      const list = await knex.select(['id','username','createdAt','updatedAt','status'])
+      const list = await knex.select(['id', 'username', 'createdAt', 'updatedAt', 'status'])
         .from(AdminService.model)
         .limit(pageSize)
         .offset(offset)
         .orderBy('id', 'desc');
-        const count = total[0].count || 1;
+      const count = total[0].count || 1;
       return {
         count: count,
         total: Math.ceil(count / pageSize),
@@ -74,6 +77,7 @@ class AdminService extends BaseService {
       };
     } catch (err) {
       console.error(err);
+      throw new Error(err)
     }
   }
 
@@ -83,8 +87,9 @@ class AdminService extends BaseService {
     try {
       const data = await knex(AdminService.model).where('id', '=', id).select(['id', 'username', 'createdAt', 'updatedAt', 'status'])
       return data[0];
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      console.log(err)
+      throw new Error(err)
     }
   }
 
@@ -106,10 +111,11 @@ class AdminService extends BaseService {
         list: list[0],
       };
     } catch (err) {
-      console.error(err);
+      console.log(err)
+      throw new Error(err)
     }
   }
 
 }
 
-module.exports =  AdminService;
+module.exports = AdminService;

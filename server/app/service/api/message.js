@@ -13,8 +13,9 @@ class MessageService extends BaseService {
     try {
       const result = await knex(MessageService.model).insert(body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -25,8 +26,9 @@ class MessageService extends BaseService {
         .where("id", "=", id)
         .del();
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -39,8 +41,9 @@ class MessageService extends BaseService {
         .where("id", "=", id)
         .update(body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -65,7 +68,8 @@ class MessageService extends BaseService {
         list: list,
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -76,8 +80,9 @@ class MessageService extends BaseService {
         .where("id", "=", id)
         .select();
       return data[0];
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -114,7 +119,8 @@ class MessageService extends BaseService {
         list: list[0],
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 }

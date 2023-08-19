@@ -2,7 +2,6 @@
 class WeiXinService   {
   constructor() {
   }
-
   // login
   static async login(appid,secret,code) {
     try {
@@ -11,9 +10,9 @@ class WeiXinService   {
         return result.json()
     } catch (err) {
       console.error(err);
+      throw new Error(err)
     }
   }
-  
 }
 
 module.exports = WeiXinService;

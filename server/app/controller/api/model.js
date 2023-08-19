@@ -24,8 +24,8 @@ class ModelController extends BaseController {
       }
       const data = await ModelService.create(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -35,8 +35,8 @@ class ModelController extends BaseController {
       const body = req.body;
       const data = await ModelService.delete(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -46,8 +46,8 @@ class ModelController extends BaseController {
       const body = req.body;
       const data = await ModelService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -57,8 +57,8 @@ class ModelController extends BaseController {
       const id = req.query.id;
       const data = await ModelService.detail(id);
       res.json({ ...success, data: data});
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -69,8 +69,8 @@ class ModelController extends BaseController {
       const id = req.query.id;
       const data = await ModelService.hasUse(id);
       res.json({ ...success, data:data[0] });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -81,8 +81,8 @@ class ModelController extends BaseController {
       const pageSize = 10;
       const data = await ModelService.list(cur, pageSize);
       res.json({ ...success, data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 }

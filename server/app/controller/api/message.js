@@ -19,8 +19,8 @@ class MessageController extends BaseController {
       body.createdAt = dayjs(body.createdAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await MessageService.create(body);
       res.json({ ...success, data: data })
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -31,8 +31,8 @@ class MessageController extends BaseController {
       const id = req.query.id;
       const data = await MessageService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -43,8 +43,8 @@ class MessageController extends BaseController {
       body.createdAt = dayjs(body.createdAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await MessageService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
   
@@ -55,8 +55,8 @@ class MessageController extends BaseController {
       const id = req.query.id;
       const data = await MessageService.find(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
  
@@ -67,8 +67,8 @@ class MessageController extends BaseController {
       const id = req.query.id;
       const data = await MessageService.detail(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
   
@@ -85,8 +85,8 @@ class MessageController extends BaseController {
         ele.createdAt = dayjs(ele.createdAt).format('YYYY-MM-DD HH:MM');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -100,8 +100,8 @@ class MessageController extends BaseController {
         ele.createdAt = dayjs(ele.createdAt).format('YYYY-MM-DD HH:MM');
       });
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 

@@ -20,7 +20,8 @@ class CommonService {
       ]);
       return res;
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -61,7 +62,8 @@ class CommonService {
       const result = await query;
       return result;
     } catch (err) {
-      console.error(`attr-> ${attr} start->${start} len->${len}`, err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -106,6 +108,7 @@ class CommonService {
       return result;
     } catch (err) {
       console.error(`cid->${cid} attr-> ${attr} len->${len}`, err);
+      throw new Error(err)
     }
   }
 
@@ -127,6 +130,7 @@ class CommonService {
       return result;
     } catch (err) {
       console.error(`aid->${aid}`, err);
+      throw new Error(err)
     }
   }
 
@@ -153,6 +157,7 @@ class CommonService {
       return result;
     } catch (err) {
       console.error(err);
+      throw new Error(err)
     }
   }
 
@@ -198,6 +203,7 @@ class CommonService {
       return result;
     } catch (err) {
       console.error(`id->${id} len->${len}`, err);
+      throw new Error(err)
     }
   }
 
@@ -245,7 +251,7 @@ static async getNewImgList(len = 10, id = "", attr = '') {
     return result;
   } catch (err) {
     console.error(`id->${id} len->${len}`, err);
-    // throw err;
+    throw new Error(err)
   }
 }
 
@@ -309,6 +315,7 @@ static async getNewImgList(len = 10, id = "", attr = '') {
       };
     } catch (err) {
       console.error(`id->${id} current->${current} pageSize->${pageSize}`, err);
+      throw new Error(err)
     }
   }
 
@@ -375,6 +382,7 @@ static async getNewImgList(len = 10, id = "", attr = '') {
       };
     } catch (err) {
       console.error(`id->${path} current->${current} pageSize->${pageSize}`, err);
+      throw new Error(err)
     }
   }
 
@@ -392,8 +400,9 @@ static async getNewImgList(len = 10, id = "", attr = '') {
         .where('article.id', articleId)
         .limit(10);
       return tags;
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
+      throw new Error(err)
     }
   };
 }

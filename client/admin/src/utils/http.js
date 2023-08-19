@@ -36,7 +36,7 @@ http.interceptors.request.use(
   (error) => {
     console.log(error);
     Promise.reject(error || "网络异常");
-  }
+  },
 );
 
 // respone拦截器
@@ -70,6 +70,7 @@ http.interceptors.response.use(
 
       const userInfo = userStore();
       userInfo.logout();
+      alert(1);
       location.reload();
     }
 
@@ -101,7 +102,7 @@ http.interceptors.response.use(
       // showToast("您的网络发生异常，无法连接服务器");
     }
     return Promise.reject(error);
-  }
+  },
 );
 
 http.jsonp = jsonp;

@@ -18,8 +18,8 @@ class TagController extends BaseController {
       const body = req.body;
       const data = await TagService.create(body);
       res.json({ ...success, data: data })
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -29,8 +29,8 @@ class TagController extends BaseController {
       const id = req.query.id;
       const data = await TagService.delete(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -40,8 +40,8 @@ class TagController extends BaseController {
       const body = req.body;
       const data = await TagService.update(body);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -51,8 +51,8 @@ class TagController extends BaseController {
       const id = req.query.id;
       const data = await TagService.detail(id);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -63,8 +63,8 @@ class TagController extends BaseController {
       const pageSize = 50;
       const data = await TagService.list(cur, pageSize);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -74,8 +74,8 @@ class TagController extends BaseController {
       const path = req.query.path;
       const data = await TagService.has(path);
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 
@@ -88,8 +88,8 @@ class TagController extends BaseController {
       const data = await TagService.search(key, cur, pageSize);
       
       res.json({ ...success, data: data });
-    } catch (error) {
-      next(error);
+    } catch (err) {
+      next(err);
     }
   }
 

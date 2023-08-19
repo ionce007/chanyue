@@ -11,8 +11,9 @@ class FriendlinkService extends BaseService {
     try {
       const result = await knex(FriendlinkService.model).insert(body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -23,8 +24,9 @@ class FriendlinkService extends BaseService {
         .where("id", "=", id)
         .del();
       return res ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -37,8 +39,9 @@ class FriendlinkService extends BaseService {
         .where("id", "=", id)
         .update(body);
       return result ? "success" : "fail";
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -64,7 +67,8 @@ class FriendlinkService extends BaseService {
         list: list,
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -75,8 +79,9 @@ class FriendlinkService extends BaseService {
         .where("id", "=", id)
         .select();
       return data[0];
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
     }
   }
 
@@ -111,7 +116,8 @@ class FriendlinkService extends BaseService {
         list: list[0],
       };
     } catch (err) {
-      console.error(err);
+      console.error(err)
+      throw new Error(err)
     }
   }
 }
