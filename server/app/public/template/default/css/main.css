@@ -51,7 +51,7 @@ ul>li:last-child {
     gap: 2px;
 }
 
-.c-fff a{
+.c-fff a {
     color: #fff;
 }
 
@@ -228,7 +228,7 @@ ul>li:last-child {
     animation: ran 18s linear infinite;
 }
 
-.chanyue-s{
+.chanyue-s {
     letter-spacing: 2px;
     font-weight: 500;
     font-size: 60px;
@@ -242,7 +242,7 @@ ul>li:last-child {
     animation: ran 18s linear infinite;
 }
 
-.error-500{
+.error-500 {
     min-height: calc(100vh - 155px);
 }
 
@@ -277,8 +277,8 @@ ul>li:last-child {
     flex-wrap: nowrap;
 }
 
-.flex-wrap{
-    flex-wrap: wrap!important;
+.flex-wrap {
+    flex-wrap: wrap !important;
 }
 
 .w-460 {
@@ -391,9 +391,11 @@ ul>li:last-child {
 .el-empty {
     font-family: 'chanyue';
 }
-.list{
+
+.list {
     min-height: calc(100vh - 500px);
 }
+
 /* .page ul li {
     float: left;
     border: 1px solid #ede7e7;
@@ -440,6 +442,12 @@ ul>li:last-child {
 /* article.html */
 .article-cont {
     line-height: 30px;
+    word-break: break-word;
+    font-weight: 400;
+    line-height: 2;
+    font-size: 17px;
+    overflow-x: hidden;
+    color: #000
 }
 
 .article-cont h2:before {
@@ -469,31 +477,23 @@ ul>li:last-child {
     margin-bottom: 20px;
 }
 
-.article-cont img {
-    max-width: 90%;
+.article-cont img,
+.article-cont video,
+.article-cont audio {
+    max-width: 100%;
     margin: 5px auto;
 }
 
 
 
-
-.article-cont {
-    word-break: break-word;
-    font-weight: 400;
-    line-height: 2;
-    font-size: 17px;
-    overflow-x: hidden;
-    color: #000
-}
-
 .article-cont strong {
     padding: 1px;
-   
+
 }
 
 .article-cont em {
     padding: 0 2px;
-   
+
 }
 
 .article-cont h1,
@@ -513,7 +513,7 @@ ul>li:last-child {
     text-align: center;
     padding-bottom: 5px;
     font-size: 32px;
-   
+
 }
 
 .article-cont h1:after {
@@ -527,7 +527,7 @@ ul>li:last-child {
 
 .article-cont h2 {
     font-size: 28px;
-    border-bottom: 1px solid #1f7ef3
+
 }
 
 .article-cont h2:before {
@@ -543,10 +543,6 @@ ul>li:last-child {
 
 .article-cont h4 {
     font-size: 20px
-}
-
-.article-cont img {
-    max-width: 100%
 }
 
 .article-cont hr {
@@ -591,15 +587,18 @@ ul>li:last-child {
 
 .article-cont a {
     text-decoration: none;
-    color: #1781b5;
+    color: #198cff;
     padding: 0 2px;
-    border-bottom: 1px solid #1781b5
+
 }
 
 .article-cont a:active,
 .article-cont a:hover {
-    border-bottom: 2px solid #f33b1f;
-    color: #ac1f18
+
+    color: #198cff;
+
+    /* text-decoration: underline; */
+    border-bottom: 1px solid #198cff
 }
 
 .article-cont blockquote {
@@ -629,17 +628,17 @@ ul>li:last-child {
     margin-bottom: 6px
 }
 
-.article-cont ol li .task-list-item,
-.article-cont ul li .task-list-item {
+.article-cont ol li,
+.article-cont ul li {
     list-style: none
 }
 
-.article-cont ol li .task-list-item ol,
-.article-cont ol li .task-list-item ul,
+.article-cont ol li ol,
+.article-cont ol li ul,
 .article-cont ol ol,
 .article-cont ol ul,
-.article-cont ul li .task-list-item ol,
-.article-cont ul li .task-list-item ul,
+.article-cont ul li ol,
+.article-cont ul li ul,
 .article-cont ul ol,
 .article-cont ul ul {
     margin-top: 6px
@@ -657,15 +656,15 @@ ul>li:last-child {
     padding-left: 0
 }
 
-.article-cont .task-list-item {
+.article-cont {
     list-style: none
 }
 
-.article-cont .task-list-item input[type=checkbox] {
+.article-cont input[type=checkbox] {
     position: relative
 }
 
-.article-cont .task-list-item input[type=checkbox]:before {
+.article-cont input[type=checkbox]:before {
     content: "";
     position: absolute;
     top: 0;
@@ -679,7 +678,7 @@ ul>li:last-child {
     z-index: 1
 }
 
-.article-cont .task-list-item input[type=checkbox]:checked:after {
+.article-cont input[type=checkbox]:checked:after {
     content: "✓";
     position: absolute;
     top: -5px;
