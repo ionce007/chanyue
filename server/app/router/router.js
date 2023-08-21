@@ -5,7 +5,7 @@ const router = express.Router();
 
 const { template } = require('../config/config.js');
 const api = require('./api/index.js');
-const weixin = require('./weixin/index.js');
+
 const web = require(`./web/${template}/index.js`);
 const open = require(`./open/index.js`);
 const init = require('../middleware/init.js');
@@ -15,9 +15,6 @@ router.use('/', web);
 
 //接口
 router.use('/api', api);
-
-//小程序
-router.use('/weixin', weixin);
 
 //开源api
 router.use('/open', open);

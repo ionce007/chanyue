@@ -1,18 +1,76 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
+
 <head>
-    <title></title>
+  <title></title>
 </head>
-<body >
-    <main >
-        <div >
-               <article>
-                <%_ data.list.forEach((item,index)=>{ -%>
-                    <h5><%=index+1 -%>、 <%=item.title -%></h5>
-                    <p><%=item.digest -%></p>
-               <%_ }) -%>
-               </article>
-        </div>
-    </main>
+
+<body>
+  <main>
+    <button id="playButton">播放音频流</button>
+    <button id="pauseButton">暂停音频流</button>
+    <button id="resumeButton">续播音频流</button>
+    <div>
+      <article>
+        {{each data.list}}
+        <h5>{{$index + 1}}、 {{$value.title}}</h5>
+        <p>{{$value.digest}}</p>
+        {{/each}}
+      </article>
+    </div>
+  </main>
+  <script>
+    // 创建音频元素
+    const audioRef = document.createElement("audio");
+
+    const mediaSource = new MediaSource();
+    let mimeCodec = `audio/mpeg`;
+    audioRef.muted = true;
+    audioRef.autoplay = true;
+    audioRef.controls = true;
+    audioRef.src = URL.createObjectURL(mediaSource);
+    mediaSource.addEventListener("sourceopen", onSourceOpen);
+
+
+    const getRemoteFile = () => {
+      const sourceBuffer = mediaSource.addSourceBuffer(mimeCodec);
+      let txt = '甘肃天水拥有中国西北现存规模较大的明清居民院落群，但古城在修缮后成了商业街。花近9亿修出个面目全非，问题在谁？'
+
+      fetch(`/open/gtts?text=${encodeURIComponent(txt)}`, {})
+        .then((res) => res.arrayBuffer())
+        .then((res) => {
+          console.log("res", res);
+          sourceBuffer.addEventListener("updateend", function (_) {
+            mediaSource.endOfStream();
+
+            audioRef.play();
+            audioRef.muted = false;
+
+            console.log(mediaSource.readyState); // ended
+          });
+          sourceBuffer.addEventListener("error", function (error) {
+            console.log(error);
+          });
+
+          sourceBuffer.appendBuffer(res);
+        });
+    };
+
+
+    function play() {
+      getRemoteFile();
+    }
+
+
+    function onSourceOpen() {
+      //
+    }
+
+
+      document.querySelector('#playButton').addEventListener('click',()=>{
+        getRemoteFile();
+      })
+  </script>
 </body>
+
 </html>
