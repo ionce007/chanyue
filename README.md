@@ -137,15 +137,11 @@
  欢迎💝
  各位大佬加入微信群交流学习，🧒 👧 👱  🧔 👴 👵
  联系微信: `yanyutao2014` 🍇 🍋 🍌
-<div align="center">
-<img src="http://pp.myapp.com/ma_pic2/0/shot_42391053_1_1488499316/550" height="330" width="190" >
 
-<img src="http://pp.myapp.com/ma_pic2/0/shot_42391053_2_1488499316/550" height="330" width="190" >
-
-<img src="http://pp.myapp.com/ma_pic2/0/shot_42391053_3_1488499316/550" height="330" width="190" >
-
- </div>
+* 交流微信群
 ![交流微信群](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/server/app/public/template/default/img/wechat-group.jpg)
+
+* 作者微信
 ![作者微信](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/server/app/public/template/default/img/wechat.jpg)
 
 ## 🍒更新日志 2023-08-15
