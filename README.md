@@ -138,11 +138,9 @@
  各位大佬加入微信群交流学习，🧒 👧 👱  🧔 👴 👵
  联系微信: `yanyutao2014` 🍇 🍋 🍌
 
-* 交流微信群
-![交流微信群](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/server/app/public/template/default/img/wechat-group.jpg)
-
-* 作者微信
-![作者微信](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/server/app/public/template/default/img/wechat.jpg)
+<center>
+![交流微信群](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/server/app/public/template/default/img/wechat-group.jpg)![作者微信](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/server/app/public/template/default/img/wechat.jpg)
+</center>
 
 ## 🍒更新日志 2023-08-15
 
