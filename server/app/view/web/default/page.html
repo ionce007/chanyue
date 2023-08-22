@@ -68,7 +68,7 @@
                 <div class="bg-fff radius-6 pd-25">
                     {{if article?.content}}
                     <header class="border-b pos-r">
-                        <h2 class="f-26 c-252933  bold mt-10">{{article.title}}</h2>
+                        <h2 class="f-26 c-252933  bold mt-10"> <i class="ico-20 ico-speech pos-r t-4 ml-4 mr-4" id="audio"></i> {{article.title}}</h2>
                         <p class="f-12 c-999 mt-5 mb-26">
                             <span>
                                 <i class="ico-20 ico-time pos-r t-4"></i> {{article.updatedAt}}
@@ -78,7 +78,7 @@
                             </span>
                         </p>
                     </header>
-                    <article class="article-cont f-17 lh-35">
+                    <article id="article" class="article-cont f-17 lh-35">
                         {{@ article.content}}
                     </article>
                     {{else}}

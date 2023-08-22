@@ -450,6 +450,22 @@ ul>li:last-child {
     color: #000
 }
 
+.ico-speech {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url(../img/icon-audio.png) no-repeat;
+    background-size: 25px;
+    cursor: pointer;
+}
+
+.ico-speech.on {
+    background: url(../img/icon-audio-on.png) no-repeat;
+    background-size: 25px;
+}
+
+
+
 .article-cont h2:before {
     content: "# " !important;
     color: #1f7ef3;
@@ -513,7 +529,6 @@ ul>li:last-child {
     text-align: center;
     padding-bottom: 5px;
     font-size: 32px;
-
 }
 
 .article-cont h1:after {
@@ -880,9 +895,11 @@ iframe {
         margin-left: 0px;
         margin-right: 0px;
     }
-
 }
 
+#translate {
+    display: none;
+}
 
 .api {
     display: none;

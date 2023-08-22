@@ -29,14 +29,14 @@
 
                 <div class="bg-fff radius-6 pd-25">
                     <header class="border-b pos-r">
-                        <h2 class="f-26 c-252933  bold mt-10">{{article.title}}</h2>
+                        <h2 class="f-26 c-252933  bold mt-10">  <i class="ico-20 ico-speech pos-r t-4 ml-4 mr-4" id="audio"></i> {{article.title}}</h2>
                         <p class="f-12 mt-5 mb-26">
-
                             <span class="c-999 ">
                                 <i class="ico-20 ico-time pos-r t-4"></i> {{article.updatedAt}}
                                 <i class="ico-20 ico-admin pos-r t-4 ml-4"></i> {{article.author}}
                                 <i class="ico-20 ico-view pos-r t-5 ml-4"></i> 阅读（{{article.pv}}）
                                 <!-- <i class="ico-20 ico-zan pos-r t-4 ml-4"></i>点赞（95） -->
+                               
                             </span>
 
                             {{each article.tags}}

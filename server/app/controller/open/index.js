@@ -27,20 +27,7 @@ class OpenController {
     }
   }
 
-  /**
-   * @param {req} req.query.text 传入文本
-   * @param {req} req.query.lang  zh->中文 en->englist ja->Japanese
-   */
-  static async gtts(req, res, next) {
-    try {
-      const { text, lang = 'zh' } = req.query;
-      const gtts = new Gtts(text, lang);
-      gtts.stream().pipe(res);
-    } catch (error) {
-      next(error)
-    }
-  }
-
+  
 }
 
 module.exports = OpenController;

@@ -35,6 +35,7 @@
   <script>
     let speech = new SpeechSynthesisUtterance();
     let voices = window.speechSynthesis.getVoices(); // 获取语言包
+    let progressText = document.querySelector('article');
     speech.voice = voices[1]; // 18：普通话
     speech.pitch = 1; //获取并设置话语的音调 (值越大越尖锐，range:0-2, default:1, float)
     speech.rate = 1;// 获取并设置说话的速度 (值越大语速越快, range:0.1-10, default:1, float)
@@ -42,9 +43,21 @@
     speech.lang = "zh-CN"; // 设置播放语言，测试没效果
     speech.voiceURI = 'Google 普通话（中国大陆）';
     speech.text = document.querySelector('article').innerHTML
+
     // 语音播报边界
     speech.onboundary = (e) => {
       //  console.log("语音播报边界",e)
+       // 获取边界索引或其它标识
+  let boundaryIndex = e.charIndex;
+  
+  // 根据当前边界修改播放进度文本的颜色
+  if (boundaryIndex === 0) {
+    progressText.style.color = 'red';
+  } else if (boundaryIndex === 5) {
+    progressText.style.color = 'blue';
+  } else if (boundaryIndex === 10) {
+    progressText.style.color = 'green';
+  }
     }
     // 错误语音播报事件
     speech.onerror = () => {
