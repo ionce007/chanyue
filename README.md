@@ -54,20 +54,20 @@
 * 案例二 [世界大健康运动联盟](http://www.worldhealthgames.com/) `http://www.worldhealthgames.com/`
 * 案例三 [北京辉达环保科技有限公司](http://www.huidaep.com/) `http://www.huidaep.com/`
 
-## ⚡ 开发文档
+## 👵开发文档
 
-**官网文档 <https://yanyutao0402.gitee.io/chanyue-doc>**
+* **官网文档 <https://yanyutao0402.gitee.io/chanyue-doc>**
 
 ## ❤️项目关注
 
-* 码云：<https://gitee.com/yanyutao0402/chanyue-cms>
+* **码云：<https://gitee.com/yanyutao0402/chanyue-cms>**
 
  **走过路过的老铁,帮忙点个小 ⭐⭐⭐⭐⭐,🤝🤝🤝🤝🤝,🙏🙏🙏🙏🙏**
 
 ## 👴项目交流
 
  欢迎💝
- 各位大佬加入微信群交流学习，🧒 👧 👱  🧔 👴 👵
+ 各位大佬加入微信群交流学习，🧒 👧 👱  🧔 👴
  联系微信: `yanyutao2014` 🍇 🍋 🍌
 
 ![交流微信群](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/server/app/public/template/default/img/wechat-group.jpg)
