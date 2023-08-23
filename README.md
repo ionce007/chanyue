@@ -54,9 +54,9 @@
 * 案例二 [世界大健康运动联盟](http://www.worldhealthgames.com/) `http://www.worldhealthgames.com/`
 * 案例三 [北京辉达环保科技有限公司](http://www.huidaep.com/) `http://www.huidaep.com/`
 
-## ⚡ 技术文档
+## ⚡ 开发文档
 
-**技术文档 <https://yanyutao0402.gitee.io/chanyue-doc>**
+**官网文档 <https://yanyutao0402.gitee.io/chanyue-doc>**
 
 ## ❤️项目关注
 
@@ -71,35 +71,3 @@
  联系微信: `yanyutao2014` 🍇 🍋 🍌
 
 ![交流微信群](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/server/app/public/template/default/img/wechat-group.jpg)
-
-## 🍒更新日志 2023-08-22
-
-* 【新增功能】 支持文本转语音在线播放
-
-## 🍒更新日志 2023-08-15
-
-* 【新增功能】 支持中英文多语言
-
-## 🍒更新日志 2023-08-11
-
-* 支持pdf在线预览，按需加载，支持pc/wap
-
-## 🍒更新日志 2023-08-10
-
-* 完成所有功能开发。
-
-## 🍒更新日志 2023-08-05
-
-* 完成默认模板开发，适配pc、wap。删除广告管理模块，用碎片模块替代。
-
-## 🍒更新日志 2023-07-24
-
-* 模板引擎ejs替换成高性能模板引擎art-Template
-
-## 🍒更新日志 2023-07-09
-
-* 后台管理界面重构升级，支持动态配置路由
-
-## 🍒更新日志 2023-04-01
-
-* 修复knex重构导致不显示分页问题
