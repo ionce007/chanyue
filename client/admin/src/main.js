@@ -7,7 +7,7 @@ import router from "./router";
 import installElementPlus from "@/plugins/element";
 //轻量原子类样式库
 import "saduocss/src/all.css";
-import "./assets/main.css";
+import "./assets/css/main.css";
 const app = createApp(App);
 // store持久化，缓存到session中
 const store = createPinia();

@@ -20,7 +20,6 @@ document.querySelectorAll('.search-input').forEach((item) => {
     let ele = document.querySelector('#audio');
     let article = document.querySelector('#article');
     if (article && ele) {
-
         if (!window.SpeechSynthesisUtterance || !window.speechSynthesis) {
             ele.style.display = 'none';
         } else {

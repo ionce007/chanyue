@@ -7,15 +7,9 @@
   </div>
 
   <div class="mr-10 ml-10 mb-20">
-    <el-form
-      ref="params"
-      :model="params"
-      :rules="paramsRules"
-      label-width="84px"
-      class="w640"
-    >
+    <el-form ref="params" :model="params" label-width="84px" class="w640">
       <div v-show="activeIndex == 0">
-        <el-form-item label="上级栏目">
+        <el-form-item label="上级栏目" v-if="params.pid != 0">
           <el-cascader
             :props="categoryProps"
             :show-all-levels="false"
@@ -65,6 +59,7 @@
             <el-radio label="0">基本模型</el-radio>
             <template v-if="modList.length > 0">
               <el-radio
+                :disabled="modelFlag"
                 v-for="(item, index) of modList"
                 :key="index"
                 :label="item.id"
@@ -73,6 +68,15 @@
               </el-radio>
             </template>
           </el-radio-group>
+          <el-tooltip
+            content="如果栏目已经存在文章，则不能更换模型"
+            effect="light"
+            placement="top-start"
+          >
+            <el-icon class="ml-20 pointer"
+              ><QuestionFilled class="c-165dff"
+            /></el-icon>
+          </el-tooltip>
         </el-form-item>
 
         <el-form-item label="是否显示">
@@ -120,9 +124,11 @@
 
 <script>
 import { find, findId, update } from "@/api/category.js";
+import { search } from "@/api/article.js";
 import { addLabelValue, treeById, tree } from "@/utils/tool.js";
 import { list } from "@/api/model.js";
 import { pinyin } from "pinyin-pro";
+import { tinymceSet } from "@/config/tinymce";
 export default {
   name: "category-edit",
   data: () => {
@@ -135,8 +141,10 @@ export default {
       activeName: "first", //tab 默认显示第一个
       activeIndex: "0", //tab 内容默认显示第一个
 
+      cate: [],
       category: [], //当前所有栏目
       modList: [], //模型列表
+      modelFlag: false,
       params: {
         //接口入参
         pid: 0,
@@ -164,6 +172,7 @@ export default {
     this.modelList();
     this.query();
     this.findById();
+    this.hasArticle();
   },
 
   methods: {
@@ -184,6 +193,18 @@ export default {
       this.activeIndex = tab.index;
     },
 
+    async hasArticle() {
+      try {
+        let res = await search(1, "", this.id);
+        console.log("has1111111", res);
+        if (res.code == 200) {
+          this.modelFlag = res.data.count > 0 ? true : false;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     //查询
     async query() {
       try {
@@ -195,6 +216,7 @@ export default {
           if (ids.length > 1) {
             ids.length = ids.length - 1;
           }
+          console.log(ids);
           this.categorySelected = ids;
           let end = addLabelValue(tree(data));
           this.category = [...end];

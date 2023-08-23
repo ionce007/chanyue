@@ -67,10 +67,8 @@ http.interceptors.response.use(
         // eslint-disable-next-line no-undef
         ElMessage.success(data.msg);
       }
-
       const userInfo = userStore();
       userInfo.logout();
-      alert(1);
       location.reload();
     }
 

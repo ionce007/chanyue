@@ -248,51 +248,59 @@ exports.formatDay = (data, time = false,format = "YYYY-MM-DD HH:mm:ss") => {
 
 
 /**
- * @description 生成分页
- * @param {*} totalPages 总页数
- * @param {*} currentPage 当前页
- * @returns 返回html
+ * @description 输出分页标签
+ * @param {*} current 当前页面
+ * @param {*} total 总条数
+ * @param {*} pageSize 每页数量
+ * @param {*} href 跳转路由
+ * @returns 返回分页html
  */
-exports.createPagination = (req,totalPages, currentPage) => {
-  let html = '';
-
-  let startPage = Math.max(1, currentPage - 2);
-  let endPage = Math.min(totalPages, currentPage + 2);
-
-  if (currentPage > 1) {
-    const prevPage = currentPage - 1;
-    const prevUrl = req.originalUrl.replace(/[?&]page=\d+/, '') + `?page=${prevPage}`;
-    html += `<li><a href="${prevUrl}">上一页</a></li>`;
+exports.pages = function(current, total, pageSize,href) {
+  let pageTemp = [];
+  let totalPage = Math.ceil(total / pageSize);
+  let pageStr = `<p>共${total}条记录，共${totalPage},当前${current}</p>`;
+  //上一页 
+  if (current == 1) {
+      pageTemp.push(`<li class="disabled">上一页</li>`)
+  } else {
+      pageTemp.push(`<li><a href='${href}${current - 1}.html'>上一页</a></li>`)
   }
-
-  if (startPage > 1) {
-    html += `<li><a href="#">1</a></li>`;
-    if (startPage > 2) {
-      html += `<li><span>...</span></li>`;
-    }
+  //中间的 小于8页面
+  if (totalPage <= 8) {
+      for (let i = 0; i < totalPage; i++) {
+          if (current == i + 1) {
+              pageTemp.push(`<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+          } else {
+              pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+          }
+      }
+  } else {
+      //获取前3 
+      for (let i = 0; i < 3; i++) {
+          if (current == i + 1) {
+              pageTemp.push(`<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+          } else {
+              pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+          }
+      }
+      pageTemp.push(`<li><a href='${href}${3 + 1}.html'>...</a></li>`)
+      for (let i = totalPage - 3; i < totalPage; i++) {
+          if (current == i + 1) {
+              pageTemp.push(`<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+          } else {
+              pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+          }
+      }
   }
-
-  for (let i = startPage; i <= endPage; i++) {
-    if (i === currentPage) {
-      html += `<li class="active"><a href="#">${i}</a></li>`;
-    } else {
-      const pageUrl = req.originalUrl.replace(/[?&]page=\d+/, '') + `?page=${i}`;
-      html += `<li><a href="${pageUrl}">${i}</a></li>`;
-    }
+  //下一页
+  if (current == totalPage) {
+      pageTemp.push(`<li class="disabled">下一页</li>`)
+  } else {
+      pageTemp.push(`<li><a href='${href}${current + 1}.html'>下一页</a></li>`)
   }
+  
+  // pageTemp.push(pageStr)
+  console.log('pageStr',pageStr)
 
-  if (endPage < totalPages) {
-    if (endPage < totalPages - 1) {
-      html += `<li><span>...</span></li>`;
-    }
-    html += `<li><a href="#">${totalPages}</a></li>`;
-  }
-
-  if (currentPage < totalPages) {
-    const nextPage = currentPage + 1;
-    const nextUrl = req.originalUrl.replace(/[?&]page=\d+/, '') + `?page=${nextPage}`;
-    html += `<li><a href="${nextUrl}">下一页</a></li>`;
-  }
-
-  return html;
-};
+  return pageTemp.join('')
+}

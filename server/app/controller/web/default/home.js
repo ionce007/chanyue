@@ -6,7 +6,7 @@ const {
   getChildrenId,
   treeById,
   formatDay,
-  filterFields,
+  filterFields,pages
 } = require("../../../extend/helper.js");
 
 const CommonService = require("../../../service/web/default/common.js");
@@ -57,9 +57,19 @@ class HomeController {
 
       //列表页全量数据
       const data = await HomeService.list(id, currentPage, pageSize);
+
+      //分页
+      let {count} = data.data;
+      let href = position.slice(-1)[0].path +'/index';
+      console.log('href________',href)
+
+      let pageHtml = pages(currentPage, count, pageSize,href);
+   
+      
       await res.render(`web/${template}/list.html`, {
         position,
         navSub,
+        pageHtml,
         ...data,
       });
     } catch (error) {

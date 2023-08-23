@@ -2,9 +2,9 @@ import http from "../utils/http.js";
 import API from "../config/index.js";
 
 //文章列表
-export let search = (cur, keyword = "", cid = 0) => {
+export let search = (cur = 1, keyword = "", cid = 0) => {
   return http({
-    url: `${API.BASE_API}/api/article/search?cur=${cur}&pageSize=10&keyword=${keyword}&cid=${cid}`,
+    url: `${API.BASE_API}/api/article/search?cur=${cur}&pageSize=20&keyword=${keyword}&cid=${cid}`,
     method: "get",
   });
 };

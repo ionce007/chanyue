@@ -383,7 +383,6 @@ ul>li:last-child {
 
 /* list.html */
 
-
 .el-pagination {
     background-color: #fff;
 }
@@ -396,48 +395,28 @@ ul>li:last-child {
     min-height: calc(100vh - 500px);
 }
 
-/* .page ul li {
+.page ul li {
     float: left;
     border: 1px solid #ede7e7;
-    padding: 10px 18px;
+    padding: 8px 15px;
     margin-right: 10px;
     color: #666;
-    border-radius: 2px;
     cursor: pointer;
     transition: all 0.5s linear;
+    border-radius: 5px;
+}
+.page ul li.current{
+    background-color: #1e80ff;
+    border: none;
+}
+
+.page ul li.current a{
+    color: #fff;
 }
 .page ul li:hover{
     border: 1px solid #69b1ff;
-} */
-
-.el-pagination ul li:hover a {
-    display: block;
-    cursor: pointer;
-    color: #69b1ff;
 }
 
-.el-pagination ul li a {
-    color: #bdbbbb;
-}
-
-
-
-.el-pagination ul li.active {
-    border: none;
-    background-color: #1677ff;
-    color: #fff;
-}
-
-.el-pagination ul li.active a {
-    color: #fff;
-}
-
-
-.el-pagination.is-background .btn-next,
-.el-pagination.is-background .btn-prev,
-.el-pagination.is-background .el-pager li {
-    background-color: #fff;
-}
 
 /* article.html */
 .article-cont {
