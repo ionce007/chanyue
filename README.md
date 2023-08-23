@@ -36,10 +36,6 @@
 * pm2 (prd)
 * nodemon (dev)
 
-## 使用文档
-
-**技术文档** <https://yanyutao0402.gitee.io/chanyue-doc>
-  
 ## 🚧功能介绍
 
 * 站点信息
@@ -58,67 +54,13 @@
 * 案例二 [世界大健康运动联盟](http://www.worldhealthgames.com/) `http://www.worldhealthgames.com/`
 * 案例三 [北京辉达环保科技有限公司](http://www.huidaep.com/) `http://www.huidaep.com/`
 
-## ⚡ 本地开发运行
+## ⚡ 技术文档
 
-* 1 导入数据库文件
-
-    ```JavaScript
-    chanyue.sql(data文件夹里面)
-    ```
-
-* 2 修改数据库配置文件
-
-    ```JavaScript
-    server/config/config.default.js //开发环境
-    server/config/config.prd.js //生产环境
-    ```
-
-* 3 进入server 文件夹
-    设置npm源安装依赖
-
-    ```JavaScript
-    npm config set registry https://registry.npmmirror.com
-    npm i 
-    npm run dev 
-    ```
-
-    后访问 <http://localhost:81> ，完成网站启动。
-
-* 4.后台管理界面  
-
-   ```html
-    http://localhost:81/public/admin/index.html 
-    ```
-
-   默认账号密码：**chanyue**  **123456**
-
-* 5.后端管理界面开发指南（不开发忽略这一步）
-
-    进入client文件夹
-
-    ```javascript
-    执行npm i,npm run dev  
-    ```
-
-    后访问 <http://localhost:3000> 后台管理界面开发，
-    功能开发完成后执行npm run build即可。
-
-## 🕊 linux服务器部署
-
-* 1 安装`BT`运维管理工具
-* 2 安装 `nginx` `mysql5.6`(5.7也可以，但是比较消耗服务器资源)  `pm2`管理器
-* 3 创建`mysql`，导入本地数据库，修改数据库配置文件
-* 4 创建网站,绑定域名和设置反向代理,上传代码,
-
-    ```javascript
-    npm i ,npm run start启动即可。
-    ```
-
-* 5 配置`https`
+**技术文档 <https://yanyutao0402.gitee.io/chanyue-doc>**
 
 ## ❤️项目关注
 
-* 码云：   <https://gitee.com/yanyutao0402/chanyue-cms>
+* 码云：<https://gitee.com/yanyutao0402/chanyue-cms>
 
  **走过路过的老铁,帮忙点个小 ⭐⭐⭐⭐⭐,🤝🤝🤝🤝🤝,🙏🙏🙏🙏🙏**
 
