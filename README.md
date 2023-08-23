@@ -35,6 +35,10 @@
 * jwt  
 * pm2 (prd)
 * nodemon (dev)
+
+## 使用文档
+
+<https://yanyutao0402.gitee.io/chanyue-doc>
   
 ## 技术选型说明
   
