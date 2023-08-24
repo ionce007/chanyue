@@ -6,7 +6,8 @@ const {
   getChildrenId,
   treeById,
   formatDay,
-  filterFields,pages
+  filterFields,
+  pages,
 } = require("../../../extend/helper.js");
 
 const CommonService = require("../../../service/web/default/common.js");
@@ -59,13 +60,12 @@ class HomeController {
       const data = await HomeService.list(id, currentPage, pageSize);
 
       //分页
-      let {count} = data.data;
-      let href = position.slice(-1)[0].path +'/index';
-      console.log('href________',href)
+      let { count } = data.data;
+      let href = position.slice(-1)[0].path + "/index";
+      console.log("href________", href);
 
-      let pageHtml = pages(currentPage, count, pageSize,href);
-   
-      
+      let pageHtml = pages(currentPage, count, pageSize, href);
+
       await res.render(`web/${template}/list.html`, {
         position,
         navSub,
@@ -128,10 +128,10 @@ class HomeController {
       //模板配置 pdf文件必须选择pdf标签
       let config = {
         pdf: pdf.length > 0 ? `web/${template}/article-pdf.html` : "",
-        default: `web/${template}/article.html`
+        default: `web/${template}/article.html`,
       };
 
-      await res.render(config["pdf"] ||config.default, {
+      await res.render(config["pdf"] || config.default, {
         ...data,
         article,
         navSub,
@@ -155,7 +155,7 @@ class HomeController {
       let navSub = {};
       let article = {};
       let position = {};
-      
+
       if (!id && !cate) {
         res.redirect("/404.html");
         return;
@@ -177,7 +177,7 @@ class HomeController {
       }
 
       //没找到栏目 去404
-     
+
       if (!cid) {
         res.redirect("/404.html");
         return;
@@ -185,7 +185,7 @@ class HomeController {
 
       //获取单页列表
       const data = await HomeService.page(cid, 1, 20);
-      if(data.list.length  > 0 ){
+      if (data.list.length > 0) {
         article = await ArticleService.detail(data.list[0].id);
       }
       // if (data.list.length == 0) {
@@ -196,29 +196,29 @@ class HomeController {
       // }
 
       //没找到文章 去404
-      if(Object.keys(article).length > 0 ){
-      // if (Object.keys(article).length == 0) {
-      //   res.redirect("/404.html");
-      //   return;
-      // }
+      if (Object.keys(article).length > 0) {
+        // if (Object.keys(article).length == 0) {
+        //   res.redirect("/404.html");
+        //   return;
+        // }
 
-      article.createdAt = dayjs(article.createdAt).format(
-        "YYYY-MM-DD HH:mm:ss"
-      );
-      article.updatedAt = dayjs(article.updatedAt).format(
-        "YYYY-MM-DD HH:mm:ss"
-      );
+        article.createdAt = dayjs(article.createdAt).format(
+          "YYYY-MM-DD HH:mm:ss"
+        );
+        article.updatedAt = dayjs(article.updatedAt).format(
+          "YYYY-MM-DD HH:mm:ss"
+        );
 
-      // 当前位置
-      position = treeById(article.cid, res.locals.category);
+        // 当前位置
+        position = treeById(article.cid, res.locals.category);
 
-      // 增加数量
-      await ArticleService.count(article.id);
-    }
+        // 增加数量
+        await ArticleService.count(article.id);
+      }
       //页面模板配置
       const config = {
         chanyue: `web/${template}/chanyue.html`,
-        default: `web/${template}/page.html`
+        default: `web/${template}/page.html`,
       };
 
       await res.render(config[cate] || config.default, {
@@ -236,22 +236,30 @@ class HomeController {
   // 搜索页
   static async search(req, res, next) {
     try {
-      const page = req.params.id || 1;
-      const keywords = req.params.keywords;
+      const { keywords, id } = req.params;
+      const page = id || 1;
       const pageSize = 10;
       // 文章列表
       const data = await ArticleService.search(keywords, page, pageSize);
+      //分页
+      let { count } = data;
+      let href = "/search/" + keywords;
+      let pageHtml = pages(page, count, pageSize, href);
       data.list.forEach((ele) => {
         ele.updatedAt = dayjs(ele.updatedAt).format("YYYY-MM-DD HH:mm:ss");
       });
-      await res.render(`web/${template}/search.html`, { keywords, data });
+      await res.render(`web/${template}/search.html`, {
+        keywords,
+        data,
+        pageHtml,
+      });
     } catch (error) {
       console.error(error);
       next(error);
     }
   }
 
-  // 搜索页
+  // tag
   static async tag(req, res, next) {
     try {
       const { path, id } = req.params;
@@ -259,10 +267,14 @@ class HomeController {
       const pageSize = 10;
       // 文章列表
       const data = await HomeService.tags(path, page, pageSize);
+      //分页
+      let { count } = data;
+      let href = "/tag/" + path;
+      let pageHtml = pages(page, count, pageSize, href);
       data.list.forEach((ele) => {
         ele.updatedAt = dayjs(ele.updatedAt).format("YYYY-MM-DD HH:mm:ss");
       });
-      await res.render(`web/${template}/tag.html`, { data, path });
+      await res.render(`web/${template}/tag.html`, { data, path, pageHtml });
     } catch (error) {
       console.error(error);
       next(error);

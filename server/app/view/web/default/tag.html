@@ -73,26 +73,10 @@
                 </div>
 
                 <div class="page mt-1 bg-fff pd-25 row justify-center  radius-6" id="app">
-                    <!-- <ul class="overflow-h center" id="page">
-                        <li><a aria-label="Previous">«</a></li>
-                        <li><a>上一页</a></li>
-                        <li class="active" page="1"><a>1</a></li>
-                        <li page="2"><a>2</a></li>
-                        <li page="3"><a>3</a></li>
-                        <li><a>下一页</a></li>
-                        <li><a aria-label="Next">»</a></li>
-                    </ul> -->
-
-                    <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
-                        {{include './common/wap-nav.html'}}
-                    </el-drawer>
-
-                    <el-pagination background v-clock layout="prev, pager, next"  :current-page="current" :total="total"
-                        @current-change="handleCurrentChange">
-                    </el-pagination>
-
-                    <el-backtop :right="100" :bottom="100" />
-                </div>
+                    <ul class="overflow-h center" id="page">
+                      {{@ pageHtml}}
+                    </ul> 
+               </div>
 
             </article>
 
@@ -123,6 +107,8 @@
 
     <!-- footer -->
     {{include './common/footer.html'}}
+ <!-- 移动端导航 -->
+ {{include './common/wap-nav.html'}}
 
     <div class="api mb-20 mt-20 pd-20 bg-f2f2f2">
         <h1>接口页面--全局数据：</h1>
@@ -142,44 +128,20 @@
         <p class="mb-20">list------>{{data}}</p>
     </div>
     {{include './common/js.html'}}
-    <script>
-        var app = Vue.createApp({
-            data: function () {
-                return {
-                    drawer: false,
-                    current: 1,
-                    total: parseInt('{{data.count}}')
-                }
-            },
-            created() {
-                let mumber = decodeURIComponent( location.pathname).match(/\d+/);
-               this.current = Array.isArray(mumber)?+mumber[0]:1;
-            },
-            mounted() {
-                let _this = this;
-                document.querySelector('.ico-open').addEventListener('click', () => {
-                    _this.drawer = true
-                })
-            },
-            methods: {
-                handleCurrentChange(v) {
-                    var searchTerm = "";
-                    var url = decodeURIComponent(location.pathname);
-                    // 匹配提取搜索词
-                    var termMatch = url.match(/\/([^/]+)(\/\d+)?\.html?$/);
-                    if (termMatch) {
-                        searchTerm = termMatch[1];
-                    }
-                    location.href = '/search/'+searchTerm+'/' + v + '.html'
-                },
-                handleClose() {
-                    this.drawer = false
-                }
-            }
-        });
-        app.use(ElementPlus);
-        app.mount('#app');
-    </script>
+    <!-- <script>
+      function toTag(){
+        let mumber = decodeURIComponent( location.pathname).match(/\d+/);
+        this.current = Array.isArray(mumber)?+mumber[0]:1;
+        var searchTerm = "";
+        var url = decodeURIComponent(location.pathname);
+        // 匹配提取搜索词
+        var termMatch = url.match(/\/([^/]+)(\/\d+)?\.html?$/);
+        if (termMatch) {
+            searchTerm = termMatch[1];
+        }
+        location.href = '/search/'+searchTerm+'/' + v + '.html'
+      }
+    </script> -->
 </body>
 
 </html>

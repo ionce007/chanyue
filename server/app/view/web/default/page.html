@@ -101,12 +101,8 @@
      <!-- footer -->
    {{include './common/footer.html'}}
 
-   <div id="app">
-    <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
-        {{include './common/wap-nav.html'}}
-    </el-drawer>
-    <el-backtop :right="100" :bottom="100" />
-</div>
+ <!-- 移动端导航 -->
+ {{include './common/wap-nav.html'}}
 
 
 <div class="api mb-20 mt-20 pd-20 bg-f2f2f2">
@@ -130,32 +126,7 @@
 </div>
 
 {{include './common/js.html'}}
-    <script>
-        var app = Vue.createApp({
-            data: function () {
-                return {
-                    drawer: false,
-                    total: 10
-                }
-            },
-            mounted() {
-                let _this = this;
-                document.querySelector('.ico-open').addEventListener('click', () => {
-                    _this.drawer = true
-                })
-            },
-            methods: {
-                handleCurrentChange(vue) {
-
-                },
-                handleClose() {
-                    this.drawer = false
-                }
-            }
-        });
-        app.use(ElementPlus);
-        app.mount('#app');
-    </script>
+   
 </body>
 
 </html>

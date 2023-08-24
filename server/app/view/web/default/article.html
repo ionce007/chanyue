@@ -150,7 +150,9 @@
     <!-- footer -->
     {{include './common/footer.html'}}
 
-
+    <!-- 移动端导航 -->
+    {{include './common/wap-nav.html'}}
+    
     <div class="api mb-20 mt-20 pd-20 bg-f2f2f2">
         <h1>接口页面--全局数据：</h1>
         <p class="mb-20">site-> {{site}} </p>
@@ -178,41 +180,13 @@
 
     </div>
 
-    <div id="app">
-        <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
-            {{include './common/wap-nav.html'}}
-        </el-drawer>
-        <el-backtop :right="100" :bottom="100" />
-    </div>
+  
 
     {{include './common/js.html'}}
     <script src="{{base_url}}/js/katelog.min.js"></script>
 
     <script>
-        const app = Vue.createApp({
-            data: function () {
-                return {
-                    drawer: false,
-                    total: 10
-                }
-            },
-            mounted() {
-                let _this = this;
-                document.querySelector('.ico-open').addEventListener('click', () => {
-                    _this.drawer = true
-                })
-            },
-            methods: {
-                handleCurrentChange(vue) {
-
-                },
-                handleClose() {
-                    this.drawer = false
-                }
-            }
-        });
-        app.use(ElementPlus);
-        app.mount('#app');
+     
 
         const katelogIns = new katelog({
             contentEl: 'article',

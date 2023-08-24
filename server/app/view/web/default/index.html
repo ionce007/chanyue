@@ -20,20 +20,23 @@
         <div class="main center mt-10 row gap-20">
             <!-- 最新文章 -->
             <article class="article-index">
-                <section class="row justify-between gap-10  mb-20" id="app">
+                <section class="row justify-between gap-10  mb-20" >
                     {{ if slide&&slide.length>0}}
-                    <el-carousel :interval="5000" arrow="always">
-                        {{each slide}}
-                        <el-carousel-item>
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            {{each slide}}
+                            <div class="swiper-slide">
                             <img src="{{$value.img}}" title="{{$value.title}}" alt="{{$value.title}}">
-                            <h3 class="carousel-title">{{$value.title}}</h3>
-                        </el-carousel-item>
-                        {{/each}}
-                    </el-carousel>
+                            <!-- <h3 class="carousel-title">{{$value.title}}</h3> -->
+                            </div>
+                            {{/each}}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        </div>
                     {{/if}}
-                    <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
-                        {{include './common/wap-nav.html'}}
-                    </el-drawer>
+                        
                     <div class="w-520 h-290 bg-fff pd-20">
                         <div class="row justify-between">
                             <h2 class="f-16 ellips-2 c-1a1a1a">{{topnews.top.title}}</h2>
@@ -53,7 +56,7 @@
                             {{/each}}
                         </ul>
                     </div>
-                    <el-backtop :right="100" :bottom="100" />
+                   
                 </section>
                 <section class="row justify-between gap-10">
 
@@ -182,6 +185,9 @@
 
     <!-- footer -->
     {{include './common/footer.html'}}
+    
+    <!-- 移动端导航 -->
+    {{include './common/wap-nav.html'}}
 
     <div class="api mb-20 mt-20 pd-20 bg-f2f2f2">
         <h1>接口页面--全局数据：</h1>
@@ -202,33 +208,7 @@
     </div>
     
     {{include './common/js.html'}}
-    <script>
-        const app = Vue.createApp({
-            data: function () {
-                return {
-                    drawer: false
-                }
-            },
-            mounted() {
-                let _this = this;
-                document.querySelector('.ico-open').addEventListener('click', () => {
-                    _this.drawer = true
-                })
-            },
-            methods: {
-                handleCurrentChange(vue) {
-
-                },
-
-                handleClose() {
-                    this.drawer = false
-                }
-            }
-        });
-        app.use(ElementPlus);
-        app.mount('#app');
-        
-    </script>
+    
 </body>
 
 </html>

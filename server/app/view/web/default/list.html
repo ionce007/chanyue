@@ -77,15 +77,6 @@
                      <ul class="overflow-h center" id="page">
                        {{@ pageHtml}}
                      </ul> 
-
-
-                    <el-drawer v-model="drawer" :show-close="false" :with-header="false" :before-close="handleClose">
-                        {{include './common/wap-nav.html'}}
-                    </el-drawer>
-
-                  
-
-                    <el-backtop :right="100" :bottom="100" />
                 </div>
 
             </article>
@@ -162,6 +153,8 @@
     <!-- footer -->
     {{include './common/footer.html'}}
 
+    <!-- 移动端导航 -->
+    {{include './common/wap-nav.html'}}
 
     <div class="api mb-20 mt-20 pd-20 bg-f2f2f2">
         <h1>接口页面--全局数据：</h1>
@@ -187,7 +180,7 @@
 
     {{include './common/js.html'}}
 
-    <script>
+    <!-- <script>
         var app = Vue.createApp({
             data: function () {
                 return {
@@ -228,7 +221,7 @@
         });
         app.use(ElementPlus);
         app.mount('#app');
-    </script>
+    </script> -->
 </body>
 
 </html>
