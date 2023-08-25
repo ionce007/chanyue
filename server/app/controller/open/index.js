@@ -1,6 +1,5 @@
 'use strict';
 const { success } = require("../../extend/api.js");
-const Gtts = require('gtts');
 
 class OpenController {
   //60秒读懂世界 
