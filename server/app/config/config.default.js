@@ -95,9 +95,9 @@ config.apiService = 'api';
 
 // 七牛云上传相关配置
 config.qiniuOss = {
-    accessKey:'NZfXKcJKN3O2P_rv9fkE_G17c_QOd63CtDSszPmp',
-    secretKey:'9VRsdS_WODynonClF6dszEw1D_wuvx-ndc3i3tqf',
-    bucket:'chanyue-dev'
+    accessKey:'x',
+    secretKey:'x-x',
+    bucket:'x-x'
 }
 
 module.exports = config;
