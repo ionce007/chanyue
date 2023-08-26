@@ -45,7 +45,7 @@ class QiniuService extends BaseService {
     let month = (date.getMonth()+1).toString().padStart(2,'0');
     let day = date.getDate().toString().padStart(2,'0');
     // upload
-    let key = `/upload/${year}/${month}/${day}/${new Date().getTime()}_${file.originalname}`
+    let key = `/uploads/${year}/${month}/${day}/${new Date().getTime()}_${file.originalname}`
     //上传token
     let uploadToken = await this._getToken();
     let _config = new qiniu.conf.Config();
