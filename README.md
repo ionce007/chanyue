@@ -1,6 +1,6 @@
 # <center>![禅悦内容管理系统](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/client/admin/public/admin/img/logo.png)禅悦内容管理系统（`chanyue-cms`）</center>
 
- 禅悦cms（chanyue-cms）基于express+mysql的一款轻量级高质量实用型cms管理系统。它具备广泛应用的企业、图片、新闻、资讯、软件、博客、文章等多种类型网站开发功能，灵活方便前端开发者进行二次开发。
+ 禅悦cms（chanyue-cms）基于express+mysql的一款轻量级高质量实用型cms管理系统。它具备广泛应用的企业、图片、新闻、资讯、软件、博客、文章等多种类型网站开发功能，灵活方便开发者进行二次开发。
 
 ## 🌈系统特色
 
