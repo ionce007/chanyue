@@ -2,11 +2,10 @@
 const BaseService = require("./base");
 const qiniu = require('qiniu');
 const config = require('../../config/config.js')
-const axios = require('axios');
 
 class QiniuService extends BaseService {
 
-  static model = 'qiniu'
+
   constructor(props) {
     super(props);
   }
@@ -25,7 +24,6 @@ class QiniuService extends BaseService {
     let putPolicy = new qiniu.rs.PutPolicy(options);
     return putPolicy.uploadToken(mac);
   }
-
 
   // 获取上传token
   static async getUploadToken() {

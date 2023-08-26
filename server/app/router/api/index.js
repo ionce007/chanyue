@@ -134,7 +134,5 @@ router.post('/message/update', auth(), MessageController.update);
 // 七牛云相关
 router.get('/qiniu/getUploadToken',QiniuController.getUploadToken)
 
-router.post('/qiniu/upload',auth(),  uploads.single("file"),QiniuController.upload)
-
 
 module.exports = router;

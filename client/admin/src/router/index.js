@@ -17,7 +17,6 @@ export const constantRoutes = [
     redirect: "/home",
     children: [],
   },
-
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",

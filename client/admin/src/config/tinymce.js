@@ -1,3 +1,4 @@
+import { upload, qiniuUpload } from "@/api/upload.js";
 export let tinymceSet = {
   //避免图片地址和链接地址转换成相对路径
   convert_urls: false,
@@ -5,6 +6,7 @@ export let tinymceSet = {
   custom_images_upload: true,
   // 复用 图片上传 api 地址
   images_upload_url: "/api/upload",
+
   // 上传成功回调函数，return 图片地址。默认 response.location
   custom_images_upload_callback: (res) => {
     if (res.code === 200) {
@@ -14,7 +16,7 @@ export let tinymceSet = {
   // 上传 api 请求头
   custom_images_upload_header: { "X-Token": "xxxx" },
   // 上传 api 额外的参数。图片默认 file
-  custom_images_upload_param: { id: "xxxx01", age: 18 },
+  custom_images_upload_param: {},
   height: 400, // editor 高度
   toolbar:
     "undo redo| code codesample | fullscreen | blocks alignleft aligncenter alignright alignjustify | link unlink | numlist bullist | image media table | fontsize forecolor backcolor | bold italic underline strikethrough | indent outdent | superscript subscript | removeformat |",

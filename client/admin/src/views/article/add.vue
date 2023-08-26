@@ -86,8 +86,7 @@
             <el-form-item class="row" label="缩略图">
               <el-upload
                 class="avatar-uploader"
-                action="/api/upload"
-                :on-success="upload"
+                :http-request="upload"
                 :show-file-list="false"
                 :before-upload="beforeUpload"
               >
@@ -316,6 +315,7 @@
 import { find } from "@/api/category.js";
 import { create, findField } from "@/api/article.js";
 import { search } from "@/api/tag.js";
+import { upload } from "@/api/upload.js";
 import Vue3Tinymce from "@jsdawn/vue3-tinymce";
 import { tinymceSet } from "@/config/tinymce.js";
 import { Plus } from "@element-plus/icons-vue";
@@ -476,7 +476,11 @@ export default {
       }
     },
     //上传缩略图
-    upload(res) {
+    async upload(file) {
+      let fd = new FormData();
+      //把上传文件的添加到 ForDate对象中
+      fd.append("file", file.file);
+      let res = await upload(fd);
       if (res.code === 200) {
         this.params.img = res.data.path;
       }
