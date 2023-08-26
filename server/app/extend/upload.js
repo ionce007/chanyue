@@ -30,9 +30,15 @@ const storage = multer.diskStorage({
     //1、获取后缀名
     let extname = path.extname(file.originalname);
     //2、根据时间戳生成文件名
-    cb(null, Date.now() + extname)
+    cb(null, Date.now() +`_${originalname}`+ extname)
   }
 });
 
 const upload = multer({ storage: storage })
-module.exports = upload;
+
+
+const uploads = multer({ dest: path.join(`app/public/upload/${template}`) }); //本地服务文件夹
+module.exports = {
+  upload,
+  uploads
+};

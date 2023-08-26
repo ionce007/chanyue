@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const config = require('../../config/config.js');
+
 const SysMenuController = require('../../controller/api/sys_menu.js');
 const AdminController = require('../../controller/api/admin.js');
 const ArticleController = require('../../controller/api/article.js');
@@ -13,7 +15,7 @@ const FriendlinkController = require('../../controller/api/friendlink.js');
 
 const MessageController = require('../../controller/api/message.js');
 
-const upload = require('../../extend/upload.js');
+const {upload,uploads} = require('../../extend/upload.js');
 const auth = require('../../middleware/auth.js');
 const QiniuController = require('../../controller/api/qiniu.js')
 
@@ -68,7 +70,19 @@ router.get('/article/findField', auth(), ArticleController.findField);
 router.post('/article/create', auth(), ArticleController.create);
 router.get('/article/delete', auth(), ArticleController.delete);
 router.post('/article/update', auth(), ArticleController.update);
-router.post('/upload', auth(), upload.any(), ArticleController.upload);
+
+let uploadConfig = {
+    'default':{
+        type:upload.any(),
+        method:ArticleController.upload,
+    },
+    'qiniuyun':{
+        type:uploads.single("file"),
+        method:QiniuController.upload,
+    },
+}[config.upload];
+
+router.post('/upload', auth(),uploadConfig.type, uploadConfig.method);
 
 // 模型管理
 router.get('/model/list', ModelController.list);
@@ -119,8 +133,8 @@ router.post('/message/update', auth(), MessageController.update);
 
 // 七牛云相关
 router.get('/qiniu/getUploadToken',QiniuController.getUploadToken)
-router.get('/qiniu/getBucketDomain',QiniuController.getBucketDomain)
-router.post('/qiniu/upload',auth(), upload.any(),QiniuController.upload)
+
+router.post('/qiniu/upload',auth(),  uploads.single("file"),QiniuController.upload)
 
 
 module.exports = router;

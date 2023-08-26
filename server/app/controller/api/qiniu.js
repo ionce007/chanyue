@@ -1,10 +1,9 @@
-'use strict';
-const BaseController = require('./base');
-const dayjs = require('dayjs');
-const path = require('path');
-const { success, fail } = require('../../extend/api.js');
-const QiniuService = require('../../service/api/qiniu.js');
-const {filterBody} = require('../../extend/helper.js');
+"use strict";
+const BaseController = require("./base");
+const { success, fail } = require("../../extend/api.js");
+const QiniuService = require("../../service/api/qiniu.js");
+const fs = require("fs");
+const config = require("../../config/config.js");
 
 class QiniuController extends BaseController {
   constructor(props) {
@@ -14,45 +13,40 @@ class QiniuController extends BaseController {
   // 获取七牛云上传token
   static async getUploadToken(req, res, next) {
     try {
-      const data = await QiniuService.getUploadToken()
-      res.json({ ...success, data: data })
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  // 获取七牛云bucket domain
-  static async getBucketDomain(req, res, next) {
-    try {
-      const data = await QiniuService.getBucketDomain()
-      res.json({ ...success, data: data })
+      const data = await QiniuService.getUploadToken();
+      res.json({ ...success, data: data });
     } catch (error) {
       next(error);
     }
   }
 
   // 服务端直传七牛
-  static async upload(req,res,next){
+  static async upload(req, res, next) {
     try {
-    
-      let file =  req.files;
-      //  console.log('file1:',file)
-      const uploadResult = await QiniuService.upload(file[0])
-      // 如果上线后配置了固定域名这里可以不要了，直接从配置返回
-      let bucketInfo = await QiniuService.getBucketDomain();
-      console.log('bucketInfo:',bucketInfo)
-      if(uploadResult.code==200){
-        res.json({ ...success, data: Object.assign(uploadResult.data,bucketInfo)})
-      }else{
-        res.json({...fail,data:uploadResult.data})
+      let file = req.file;
+      const { originalname, filename, path } = file;
+      const { domain = ''} = config.qiniuOss;
+      const uploadResult = await QiniuService.upload(file);
+      const { key='' } = uploadResult.data;
+      if (uploadResult.code == 200) {
+        fs.unlinkSync(file.path); //删除服务本地文件
+        res.json({
+          ...success,
+          data: {
+            path: `//${domain}${key}`,
+            domain,
+            originalname,
+            filename,
+            link: key,
+          },
+        });
+      } else {
+        res.json({ ...fail, data: uploadResult.data });
       }
-     
-      
     } catch (error) {
       next(error);
     }
   }
-
 }
 
 module.exports = QiniuController;

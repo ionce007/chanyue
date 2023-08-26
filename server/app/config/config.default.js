@@ -93,11 +93,16 @@ config.debug = true;
 config.template = 'default';
 config.apiService = 'api';
 
+
+
 // 七牛云上传相关配置
 config.qiniuOss = {
-    accessKey:'NZfXKcJKN3O2P_rv9fkE_G17c_QOd63CtDSszPmp',
-    secretKey:'9VRsdS_WODynonClF6dszEw1D_wuvx-ndc3i3tqf',
-    bucket:'chanyue-dev'
+    accessKey:'xxx',//ak
+    secretKey:'xxx', //sk
+    domain:'xxx', //域名
+    bucket:'xxx', //空间名称
 }
+
+config.upload = 'default';// default 普通上传 qiniuyun 七牛云上传
 
 module.exports = config;
