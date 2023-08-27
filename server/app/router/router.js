@@ -13,6 +13,8 @@ const init = require("../middleware/init.js");
 //前台
 router.use("/", web);
 
+// AdminController(router)
+
 //接口
 router.use("/api", api);
 
