@@ -1,5 +1,4 @@
-const { tree } = require("../extend/helper.js");
-const { template } = require("../config/config.js");
+
 const CommonService = require(`../service/web/default/common.js`);
 const SiteService = require("../service/api/site.js");
 const FragService = require("../service/api/frag.js");
@@ -27,7 +26,7 @@ module.exports = () => {
       friendlink = friendlink.list || [];
       //样式路径
       const {config} = req.app.locals
-      const base_url = `/public/template/${template}`;
+      const base_url = `/public/template/${config.template}`;
       //获取碎片 默认获取100条
       const frag = await FragService.list();
       //获取tag标签 默认100条
