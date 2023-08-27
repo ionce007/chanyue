@@ -52,6 +52,38 @@
 * 语音播报
 * 本地上传&七牛云上传
 
+### 项目架构
+
+```
+|- app
+    |- config
+    |- extend
+    |- middleware 
+    |- modules
+        |-api  
+          |-- controller
+          |-- service
+          |-- router.js
+        |-common
+          |-- controller
+          |-- service
+        |-web 
+          |-- controller
+          |-- service
+          |-- view
+          |-- router.js
+    |- plugin
+       |- open
+          |-- controller
+          |-- service
+          |-- view
+          |-- router.js
+    |- public
+    |- utils
+    |- router.js
+  app.js
+  ```
+
 ### 🍅️案例
 
 * 案例一 [世界气功网](http://www.shijieqigong.com/) `http://www.shijieqigong.com/`

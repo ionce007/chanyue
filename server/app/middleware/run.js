@@ -2,24 +2,24 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const favicon = require("serve-favicon");
 const morgan = require("morgan");
-const { setPath } = require("../utils/utils");
-// const { logger, appRoot, cookieKey } = require("../config/config.js");
-const config =  require("../config/config.js");
-const auth = require('../middleware/auth.js');
+const path = require("path");
 
-const {logger, appRoot, cookieKey} = config;
+const config = require("../config/config.js");
+const auth = require("./auth.js");
+const helper = require("../extend/helper.js");
 
+const { logger, appRoot, cookieKey } = config;
 module.exports = function (app) {
-
-  //加载配置文件 req.app可以获取
+  //挂在配置文件 req.app可以获取 const {config} = req.app.locals
   app.locals.config = config;
   app.locals.auth = auth;
+  app.locals.helper = helper;
 
   //日志
   app.use(morgan(logger.level));
 
   // favicon 图标
-  app.use(favicon(setPath(appRoot, "public/favicon.ico")));
+  app.use(favicon(path.join(approot, "public/favicon.ico")));
 
   //cookie
   app.use(cookieParser(cookieKey));
@@ -30,14 +30,14 @@ module.exports = function (app) {
 
   //配置模板引擎
   app.set("view options", {
-    debug: process.env.NODE_ENV !== "prd",
+    debug: process.env.NODE_ENV != "prd",
     cache: process.env.NODE_ENV == "prd",
     minimize: true,
   });
   app.set("view engine", "html");
-  app.set("views", setPath(appRoot, "view"));
+  app.set("views", path.join(appRoot, "view"));
   app.engine(".html", require("express-art-template"));
 
   //使用静态资源
-  app.use("/public", express.static(setPath(appRoot, "public")));
+  app.use("/public", express.static(path.join(appRoot, "public")));
 };
