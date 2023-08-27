@@ -1,49 +1,62 @@
-const fs = require("fs");
-const path = require("path");
-const express = require("express");
+const express = require('express');
 const router = express.Router();
+const init = require('../../../middleware/init.js');
+const { template } = require('../../../config/config.js');
+const HomeController = require(`../../../controller/web/${template}/home.js`);
 
-const { template } = require("../config/config.js");
-const api = require("./api/index.js");
+// 首页模板
+router.get('/', init(), HomeController.index);
 
-const web = require(`./web/${template}/index.js`);
-const open = require(`./open/index.js`);
-const init = require("../middleware/init.js");
+// 分类
+router.get([
+  '/list/:cid', //兼容old
+  '/:cate/index.html',
+  '/:cate/index:current.html',
+  '/:cate1/:cate/index.html',
+  '/:cate1/:cate/index:current.html',
+  '/:cate2/:cate1/:cate/index.html',
+  '/:cate2/:cate1/:cate/index:current.html',
+  '/:cate3/:cate2/:cate1/:cate/index.html',
+  '/:cate3/:cate2/:cate1/:cate/index:current.html'], init(), HomeController.list);
 
-//前台
-router.use("/", web);
 
-// AdminController(router)
+// 文章页
+router.get([
+  '/article/:id', //兼容old
+  '/article/:id.html', //兼容old
+  '/article-:id.html',
+  '/:cate/article-:id.html',
+  '/:cate1/:cate/article-:id.html',
+  '/:cate2/:cate1/:cate/article-:id.html',
+  '/:cate2/:cate1/:cate/article-:id.html',
+  '/:cate3/:cate2/:cate1/:cate/article-:id.html',
+], init(), HomeController.article);
 
-//接口
-router.use("/api", api);
 
-//开源api
-router.use("/open", open);
 
-//机器人抓取
-router.get("/robots.txt", function (req, res, next) {
-  let stream = fs.createReadStream(
-    path.join(__dirname, "../public/robots.txt"),
-    { flags: "r" }
-  );
-  stream.pipe(res);
-});
+// 单页栏目
+router.get([
+  '/page/:id', //兼容old
+  '/page/:id.html', //兼容old
+  '/page-:id.html',
+  '/:cate/page.html',
+  '/:cate/page-:id.html',
+  '/:cate1/:cate/page-:id.html',
+  '/:cate2/:cate1/:cate/page-:id.html',
+  '/:cate2/:cate1/:cate/page-:id.html',
+  '/:cate3/:cate2/:cate1/:cate/page-:id.html',
+], init(), HomeController.page);
 
-//404处理
-router.use(init(), (req, res, next) => {
-  res.render(`web/default/404.html`);
-});
 
-//在所有组件挂在之后处理错误中间件
-router.use(init(), (err, req, res, next) => {
-  console.log("err-info----->", req.method, req.url, err);
-  let data = { url: req.url, method: req.method, error: err.message };
-  if (req.is("html") || req.is("html") == null) {
-    res.render(`web/default/500.html`, { data });
-  } else {
-    res.json({ code: 500, data, msg: data.error });
-  }
-});
+ // 搜索页
+ router.get([
+  '/search/:keywords.html',
+  '/search/:keywords/:id.html'], init(), HomeController.search);
+
+ // tag列表页
+ router.get([
+  '/tags/:path.html',
+  '/tags/:path/:id.html'], init(), HomeController.tag);
+
 
 module.exports = router;
