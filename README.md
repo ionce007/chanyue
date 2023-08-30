@@ -55,8 +55,6 @@
 ### 项目架构
 
 ```js
- |- client
-    |- admin 后台管理(可忽略)
  |- data ->chanyue.sql 数据库文件
  |- server 源码（重点）
     |- app
