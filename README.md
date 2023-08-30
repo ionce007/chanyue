@@ -54,33 +54,39 @@
 
 ### 项目架构
 
+```js
+ |- client
+    |- admin 后台管理(可忽略)
+ |- data ->chanyue.sql 数据库文件
+ |- server 源码（重点）
+    |- app
+        |- config 配置
+        |- extend 扩展功能
+        |- middleware 中间件
+        |- modules 模块
+            |-api api模块
+                |-- controller
+                |-- service
+                |-- router.js
+            |-web web模块
+                |-- controller
+                |-- service
+                |-- view
+                |-- router.js
+                ***
+        |- plugin 插件
+            |- open 插件模块
+                |-- controller
+                |-- service
+                |-- view
+                |-- router.js
+                ***
+        |- public 静态资源
+        |- utils 工具
+        |- router.js 总路由
+    |-app.js 应用入口
+    |-pm2.json pm2管理      
 ```
-|- app
-    |- config
-    |- common
-    |- extend
-    |- middleware 
-    |- modules
-        |-api  
-          |-- controller
-          |-- service
-          |-- router.js
-        |-web 
-          |-- controller
-          |-- service
-          |-- view
-          |-- router.js
-    |- plugin
-       |- open
-          |-- controller
-          |-- service
-          |-- view
-          |-- router.js
-    |- public
-    |- utils
-    |- router.js
-  app.js
-  ```
 
 ### 🍅️案例
 
