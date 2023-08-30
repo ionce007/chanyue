@@ -1,15 +1,9 @@
 'use strict';
 const BaseService = require('./base');
 const path = require('path');
-const knex = require('../../config/config.knex.js');
-const { delImg, filterImgFromStr } = require('../../extend/helper.js');
-
-class FieldService extends BaseService {
+const {knex} = require('../../../common/BaseService.js');
+class FieldService {
   static model = 'field';
-  constructor(props) {
-    super(props);
-    
-  }
 
   // 增
   static async create(body) {
@@ -22,8 +16,8 @@ class FieldService extends BaseService {
         table_name = table_name[0][0].table_name;
         const result = await knex(FieldService.model).insert({ model_id, field_cname, field_ename, field_type, field_values, field_default, field_sort }).transacting(trx);
 
-       // result 返回是新增[id]
-        
+        // result 返回是新增[id]
+
         let sql = '';
         if (result[0]) {
           // 1单行文本（varchar）2.多行文本 text 3.下拉菜单 text 4.单选 text 5.多选 6.时间和日期
@@ -60,7 +54,6 @@ class FieldService extends BaseService {
 
   // 删 先删除field数据表中的数据 在删除对应表中的字段名称 2020-10-08
   // "alter table ${table_name} drop column ${fieldName}"
-  // https://study.163.com/course/courseLearn.htm?courseId=1003803023#/learn/video?lessonId=1004585871&courseId=1003803023
 
   static async delete(id, table_name) {
     try {
@@ -124,8 +117,6 @@ class FieldService extends BaseService {
         .offset(offset)
         .orderBy('id', 'desc');
 
-    
-
       // 查询模块名称
       const model = await knex.raw('SELECT model_name,table_name FROM model WHERE id=?', [model_id]);
       const count = total[0].count || 1;
@@ -155,4 +146,4 @@ class FieldService extends BaseService {
 
 }
 
-module.exports =  FieldService;
+module.exports = FieldService;

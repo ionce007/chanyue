@@ -1,12 +1,9 @@
 "use strict";
-const knex = require("../../config/config.knex.js");
 const BaseService = require("./base");
-class SiteService extends BaseService {
+const {knex} = require('../../../common/BaseService.js');
+class SiteService  {
   static model = "site";
-  constructor(props) {
-    super(props);
-  }
-
+  
   // 基本信息
   static async find() {
     try {

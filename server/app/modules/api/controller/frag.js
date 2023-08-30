@@ -1,17 +1,9 @@
 'use strict';
-const BaseController = require('./base');
 const dayjs = require('dayjs');
+const {helper: {success}} = require('../../../common/BaseController');
+const FragService = require('../service/frag.js');
 
-const { success, fail } = require('../../extend/api.js');
-const { md5, setToken } = require('../../extend/helper.js');
-const config = require('../../config/config.js');
-const FragService = require('../../service/api/frag.js');
-
-class FragController extends BaseController {
-
-  constructor(props) {
-    super(props);
-  }
+class FragController  {
 
   // 增
  static async create(req, res, next) {

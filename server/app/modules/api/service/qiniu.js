@@ -1,14 +1,9 @@
 "use strict";
 const BaseService = require("./base");
 const qiniu = require('qiniu');
-const config = require('../../config/config.js')
 
-class QiniuService extends BaseService {
-
-
-  constructor(props) {
-    super(props);
-  }
+const {config} = require('../../../common/BaseService.js');
+class QiniuService  {
 
   // 生成上传token
   static async _getToken(){

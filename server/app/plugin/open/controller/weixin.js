@@ -1,8 +1,12 @@
 "use strict";
-const { success } = require("../../extend/api.js");
-const { setToken } = require("../../extend/helper.js");
-const config = require("../../config/config.js");
 
+const {
+    config,knex, helper: {
+        setToken,
+      success,
+      fail,
+      filterBody
+    } } = require('../../../common/BaseService.js');
 class WeiXinController {
     constructor(props) {
         this.model = "weixin";

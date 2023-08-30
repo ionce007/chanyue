@@ -1,14 +1,10 @@
 'use strict';
 
-const BaseController = require('./base');
+const {helper: {success}} = require('../../../common/BaseController');
 const path = require('path');
-const { success, fail } = require('../../extend/api.js');
-const SiteService = require('../../service/api/site.js');
+const SiteService = require('../service/site.js');
 
-class SiteController extends BaseController {
-  constructor(props) {
-    super(props);
-  }
+class SiteController  {
 
   // 查
   static async find(req, res, next) {

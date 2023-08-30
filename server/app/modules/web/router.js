@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const init = require('../../../middleware/init.js');
-const { template } = require('../../../config/config.js');
-const HomeController = require(`../../../controller/web/${template}/home.js`);
+const init = require('./middleware/init.js');
+const HomeController = require(`./controller/home.js`);
 
 // 首页模板
 router.get('/', init(), HomeController.index);
@@ -31,7 +30,6 @@ router.get([
   '/:cate2/:cate1/:cate/article-:id.html',
   '/:cate3/:cate2/:cate1/:cate/article-:id.html',
 ], init(), HomeController.article);
-
 
 
 // 单页栏目

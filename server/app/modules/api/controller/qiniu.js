@@ -1,14 +1,10 @@
 "use strict";
-const BaseController = require("./base");
-const { success, fail } = require("../../extend/api.js");
-const QiniuService = require("../../service/api/qiniu.js");
+const {config, helper: {success,fail}} = require('../../../common/BaseController');
+const QiniuService = require("../service/qiniu.js");
 const fs = require("fs");
-const config = require("../../config/config.js");
 
-class QiniuController extends BaseController {
-  constructor(props) {
-    super(props);
-  }
+class QiniuController  {
+  
 
   // 获取七牛云上传token
   static async getUploadToken(req, res, next) {

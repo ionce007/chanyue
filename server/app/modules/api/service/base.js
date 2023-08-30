@@ -1,5 +1,6 @@
 'use strict';
-const knex = require('../../config/config.knex.js');
+const {knex } = require('../../../common/BaseService.js');
+
 class BaseService {
 	constructor() {
 	}

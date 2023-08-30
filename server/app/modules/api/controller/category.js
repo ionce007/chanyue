@@ -1,12 +1,11 @@
 'use strict';
-const BaseController = require('./base');
-const { success } = require('../../extend/api.js');
-const CategoryService = require('../../service/api/category.js');
-class CategoryController extends BaseController {
+const CategoryService = require('../service/category.js');
 
-  constructor(props) {
-    super(props);
-  }
+const {helper: {success} } = require('../../../common/BaseController');
+
+
+class CategoryController {
+
   // 增
   static async create(req, res, next) {
     try {
@@ -55,7 +54,7 @@ class CategoryController extends BaseController {
     try {
       const id = req.query.id;
       const data = await CategoryService.findId(id);
-      res.json({ ...success, data: data});
+      res.json({ ...success, data: data });
     } catch (err) {
       next(err);
     }

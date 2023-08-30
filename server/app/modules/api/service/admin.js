@@ -1,12 +1,10 @@
 'use strict';
-const BaseService = require('./base');
-const knex = require('../../config/config.knex.js');
-class AdminService extends BaseService {
-  static model = 'admin';
+const {knex} = require('../../../common/BaseService.js');
 
-  constructor(props) {
-    super(props);
-  }
+const BaseService = require('./base');
+
+class AdminService {
+  static model = 'admin';
 
   // 登录
   static async find(username, password) {

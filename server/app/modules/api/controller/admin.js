@@ -1,19 +1,10 @@
 'use strict';
-
-const BaseController = require('./base');
 const dayjs = require('dayjs');
 const svgCaptcha = require('svg-captcha');
-const { success, fail } = require('../../extend/api.js');
-const { md5, setToken } = require('../../extend/helper.js');
-const config = require('../../config/config.js');
-const AdminService = require('../../service/api/admin');
+const AdminService = require('../service/admin.js');
+const { config, helper: { md5, setToken, success, fail } } = require('../../../common/BaseController');
 
-class AdminController extends BaseController {
-
-  constructor(props) {
-    super(props);
-  }
-
+class AdminController {
   // 登录
   static async login(req, res, next) {
     try {
@@ -29,7 +20,7 @@ class AdminController extends BaseController {
         const data = { id, status, username, token };
         res.json({ ...success, data: data })
       } else {
-        res.json({ ...fail, data: null,msg:'登录失败' })
+        res.json({ ...fail, data: null, msg: '登录失败' })
       }
     } catch (err) {
       next(err);
@@ -45,7 +36,7 @@ class AdminController extends BaseController {
       body.updatedAt = dayjs(body.updatedAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await AdminService.create(body);
       res.json({ ...success, data: data })
-    }  catch (err) {
+    } catch (err) {
       next(err);
     }
   }
@@ -56,7 +47,7 @@ class AdminController extends BaseController {
       const id = req.query.id;
       const data = await AdminService.delete(id);
       res.json({ ...success, data: data });
-    }  catch (err) {
+    } catch (err) {
       next(err);
     }
   }
@@ -66,7 +57,6 @@ class AdminController extends BaseController {
     try {
       const body = req.body;
       body.password = md5(body.password + config.secret.key);
-
       body.createdAt = dayjs(body.createdAt).format('YYYY-MM-DD HH:mm:ss');
       body.updatedAt = dayjs(body.updatedAt).format('YYYY-MM-DD HH:mm:ss');
       const data = await AdminService.update(body);
@@ -119,7 +109,6 @@ class AdminController extends BaseController {
     }
   }
 
-
   // 获取验证码
   static async captcha(req, res, next) {
     try {
@@ -140,7 +129,7 @@ class AdminController extends BaseController {
     }
   }
 
-  
+
 
 }
 

@@ -1,16 +1,11 @@
 'use strict';
-const BaseController = require('./base');
 const dayjs = require('dayjs');
 const path = require('path');
-const { success, fail, } = require('../../extend/api.js');
-const { filterBody } = require('../../extend/helper.js');
-const FieldService = require('../../service/api/field.js');
+const {helper: {success,fail}} = require('../../../common/BaseController');
 
-class FieldController extends BaseController {
+const FieldService = require('../service/field.js');
 
-  constructor(props) {
-    super(props);
-  }
+class FieldController  {
 
   // 增
   static async create(req, res, next) {

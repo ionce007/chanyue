@@ -1,15 +1,9 @@
 'use strict';
-const BaseController = require('./base');
 const dayjs = require('dayjs');
-const { success } = require('../../extend/api.js');
-const { filterBody } = require('../../extend/helper.js');
-const ArticleService = require('../../service/api/article.js');
+const ArticleService = require('../service/article.js');
+const {helper: {success,filterBody}} = require('../../../common/BaseController');
 
-class ArticleController extends BaseController {
-
-  constructor(props) {
-    super(props);
-  }
+class ArticleController {
 
   // 增
   static async create(req, res, next) {
@@ -129,7 +123,7 @@ class ArticleController extends BaseController {
           domain: req.hostname,
           originalname,
           filename,
-          path: '/'+path.replace(/\\/g, "/").replace(/^app\//, "")
+          path: '/' + path.replace(/\\/g, "/").replace(/^app\//, "")
         }
       });
     } catch (err) {

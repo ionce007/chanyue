@@ -1,15 +1,11 @@
 'use strict';
 const BaseService = require('./base');
 const path = require('path');
-const knex = require('../../config/config.knex.js');
-const {convertArrayToObject } = require('../../extend/helper.js');
+const {knex, helper: {convertArrayToObject}} = require('../../../common/BaseService.js');
 
-class FragService extends BaseService {
+class FragService  {
   static model = 'frag';
-  constructor(props) {
-    super(props);
-    
-  }
+  
   // 新增
   static async create(body) {
     try {

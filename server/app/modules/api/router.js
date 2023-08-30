@@ -1,31 +1,24 @@
 const express = require('express');
 const router = express.Router();
+
+const AdminController = require('./controller/admin.js');
+const ArticleController = require('./controller/article.js');
+const SiteController = require('./controller/site.js');
+const CategoryController = require('./controller/category.js');
+const ModelController = require('./controller/model.js');
+const FieldController = require('./controller/field.js');
+const FragController = require('./controller/frag.js');
+const TagController = require('./controller/tag.js');
+const FriendlinkController = require('./controller/friendlink.js');
+const MessageController = require('./controller/message.js');
+const QiniuController = require('./controller/qiniu.js');
+
 const config = require('../../config/config.js');
-
-const SysMenuController = require('../../controller/api/sys_menu.js');
-const AdminController = require('../../controller/api/admin.js');
-const ArticleController = require('../../controller/api/article.js');
-const SiteController = require('../../controller/api/site.js');
-const CategoryController = require('../../controller/api/category.js');
-const ModelController = require('../../controller/api/model.js');
-const FieldController = require('../../controller/api/field.js');
-const FragController = require('../../controller/api/frag.js');
-const TagController = require('../../controller/api/tag.js');
-const FriendlinkController = require('../../controller/api/friendlink.js');
-
-const MessageController = require('../../controller/api/message.js');
-
-const {upload,uploads} = require('../../extend/upload.js');
+const { upload, uploads } = require('../../extend/upload.js');
 const auth = require('../../middleware/auth.js');
-const QiniuController = require('../../controller/api/qiniu.js')
-
 
 // 验证码
 router.get('/captcha', AdminController.captcha); // 验证码
-
-// copy 爬虫
-// router.get('/copy', controller.copy.home.index);
-// router.get('/copy/ruiwen', controller.copy.home.ruiwen);
 
 // 登录
 router.post('/admin/login', AdminController.login);
@@ -52,14 +45,7 @@ router.get('/category/delete', auth(), CategoryController.delete);
 router.post('/category/update', auth(), CategoryController.update);
 router.post('/category/create', auth(), CategoryController.create);
 
-//系统菜单
-router.get('/sys_memu/find', SysMenuController.find);
-router.get('/sys_memu/findId', SysMenuController.findId);
-router.get('/sys_memu/findSubId', SysMenuController.findSubId);
-router.get('/sys_memu/search', SysMenuController.search);
-router.get('/sys_memu/delete', auth(), SysMenuController.delete);
-router.post('/sys_memu/update', auth(), SysMenuController.update);
-router.post('/sys_memu/create', auth(), SysMenuController.create);
+
 
 // 文章栏目
 router.get('/article/list', ArticleController.list);
@@ -72,17 +58,16 @@ router.get('/article/delete', auth(), ArticleController.delete);
 router.post('/article/update', auth(), ArticleController.update);
 
 let uploadConfig = {
-    'default':{
-        type:upload.any(),
-        method:ArticleController.upload,
+    'default': {
+        type: upload.any(),
+        method: ArticleController.upload,
     },
-    'qiniuyun':{
-        type:uploads.single("file"),
-        method:QiniuController.upload,
+    'qiniuyun': {
+        type: uploads.single("file"),
+        method: QiniuController.upload,
     },
 }[config.upload];
-
-router.post('/upload', auth(),uploadConfig.type, uploadConfig.method);
+router.post('/upload', auth(), uploadConfig.type, uploadConfig.method);
 
 // 模型管理
 router.get('/model/list', ModelController.list);
@@ -132,7 +117,6 @@ router.get('/message/delete', auth(), MessageController.delete);
 router.post('/message/update', auth(), MessageController.update);
 
 // 七牛云相关
-router.get('/qiniu/getUploadToken',QiniuController.getUploadToken)
-
+router.get('/qiniu/getUploadToken', QiniuController.getUploadToken)
 
 module.exports = router;

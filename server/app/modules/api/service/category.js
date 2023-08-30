@@ -1,12 +1,8 @@
 "use strict";
 const BaseService = require("./base");
-const knex = require("../../config/config.knex.js");
-class CategoryService extends BaseService {
+const {knex} = require('../../../common/BaseService.js');
+class CategoryService  {
   static model = "category";
-  constructor(props) {
-    super(props);
-  }
-
   // 增
   static async create(body) {
     const { app } = this;

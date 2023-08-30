@@ -1,16 +1,12 @@
 'use strict';
-const BaseController = require('./base');
 const dayjs = require('dayjs');
 const path = require('path');
-const { success, fail, } = require('../../extend/api.js');
-const { filterBody } = require('../../extend/helper.js');
-const MessageService = require('../../service/api/message.js');
+const {helper: {success} } = require('../../../common/BaseController');
 
-class MessageController extends BaseController {
 
-  constructor(props) {
-    super(props);
-  }
+const MessageService = require('../service/message.js');
+
+class MessageController  {
 
   // 增
   static async create(req, res, next) {

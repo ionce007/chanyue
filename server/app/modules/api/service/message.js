@@ -1,12 +1,10 @@
 "use strict";
 const BaseService = require("./base");
-const knex = require("../../config/config.knex.js");
+const {knex} = require('../../../common/BaseService.js');
 
-class MessageService extends BaseService {
+class MessageService  {
   static model = "message";
-  constructor(props) {
-    super(props);
-  }
+  
 
   // 新增
   static async create(body) {

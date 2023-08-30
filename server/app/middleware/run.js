@@ -3,14 +3,15 @@ const cookieParser = require("cookie-parser");
 const favicon = require("serve-favicon");
 const morgan = require("morgan");
 const path = require("path");
-
-const config = require("../config/config.js");
 const auth = require("./auth.js");
 const helper = require("../extend/helper.js");
-
+const config = require("../config/config.js");
 const { logger, appRoot, cookieKey } = config;
+
+const view = require('./view.js');
+const router = require('../router.js');
 module.exports = function (app) {
-  //挂在配置文件 req.app可以获取 const {config} = req.app.locals
+  //挂载配置
   app.locals.config = config;
   app.locals.auth = auth;
   app.locals.helper = helper;
@@ -19,7 +20,7 @@ module.exports = function (app) {
   app.use(morgan(logger.level));
 
   // favicon 图标
-  app.use(favicon(path.join(approot, "public/favicon.ico")));
+  app.use(favicon(path.join(appRoot, "public/favicon.ico")));
 
   //cookie
   app.use(cookieParser(cookieKey));
@@ -29,15 +30,11 @@ module.exports = function (app) {
   app.use(express.urlencoded({ extended: false }));
 
   //配置模板引擎
-  app.set("view options", {
-    debug: process.env.NODE_ENV != "prd",
-    cache: process.env.NODE_ENV == "prd",
-    minimize: true,
-  });
-  app.set("view engine", "html");
-  app.set("views", path.join(appRoot, "view"));
-  app.engine(".html", require("express-art-template"));
+  view(app);
 
   //使用静态资源
   app.use("/public", express.static(path.join(appRoot, "public")));
+
+  //路由
+  app.use(router);
 };

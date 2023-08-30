@@ -1,8 +1,9 @@
 "use strict";
-const knex = require("../../../config/config.knex.js");
+
+const { knex } = require('../../../common/BaseService.js');
 
 class CommonService {
-  constructor() {}
+  constructor() { }
 
   // 网站栏目
   static async category() {
@@ -168,9 +169,9 @@ class CommonService {
    * @param {Number} len 默认10条
    * @returns 
    */
-  static async getArticlePvList( len = 10,id = "") {
+  static async getArticlePvList(len = 10, id = "") {
     try {
-      
+
       let query = knex
         .select(
           'a.id',
@@ -185,21 +186,19 @@ class CommonService {
         )
         .from('article AS a')
         .leftJoin('category AS c', 'a.cid', 'c.id');
-  
+
       if (id) {
         const ids = await knex('category')
           .select('id')
           .where('pid', id)
           .pluck('id');
-  
+
         ids.push(id);
         query.whereIn('cid', ids);
       }
-  
+
       query.orderBy('pv', 'DESC').limit(len);
-  
       let result = await query;
-  
       return result;
     } catch (err) {
       console.error(`id->${id} len->${len}`, err);
@@ -207,84 +206,84 @@ class CommonService {
     }
   }
 
- /**
- * @description 最新图文(全局|指定栏目)
- * @param {Number|String} id 栏目id
- * @param {Number} len 默认10条
- * @param {*} attr 1头条 2推荐 3轮播 4热门
- * @returns 
- */
-static async getNewImgList(len = 10, id = "", attr = '') {
-  try {
-    let query = knex
-      .select(
-        'a.id',
-        'a.title',
-        'a.short_title',
-        'a.img',
-        'a.createdAt',
-        'a.description',
-        'c.pinyin',
-        'c.name',
-        'c.path'
-      )
-      .from('article AS a')
-      .leftJoin('category AS c', 'a.cid', 'c.id')
-      .where('a.img', '!=', '');
+  /**
+  * @description 最新图文(全局|指定栏目)
+  * @param {Number|String} id 栏目id
+  * @param {Number} len 默认10条
+  * @param {*} attr 1头条 2推荐 3轮播 4热门
+  * @returns 
+  */
+  static async getNewImgList(len = 10, id = "", attr = '') {
+    try {
+      let query = knex
+        .select(
+          'a.id',
+          'a.title',
+          'a.short_title',
+          'a.img',
+          'a.createdAt',
+          'a.description',
+          'c.pinyin',
+          'c.name',
+          'c.path'
+        )
+        .from('article AS a')
+        .leftJoin('category AS c', 'a.cid', 'c.id')
+        .where('a.img', '!=', '');
 
-    if (id) {
-      const ids = await knex('category')
-        .select('id')
-        .where('pid', id)
-        .pluck('id');
+      if (id) {
+        const ids = await knex('category')
+          .select('id')
+          .where('pid', id)
+          .pluck('id');
 
-      ids.push(id);
-      query.whereIn('a.cid', ids);
+        ids.push(id);
+        query.whereIn('a.cid', ids);
+      }
+
+      if (attr) {
+        query.where("a.attr", "LIKE", `%${attr}%`);
+      }
+      query.orderBy('a.createdAt', 'DESC').limit(len);
+
+      let result = await query;
+      return result;
+    } catch (err) {
+      console.error(`id->${id} len->${len}`, err);
+      throw new Error(err)
     }
-
-    if (attr) {
-      query.where("a.attr", "LIKE", `%${attr}%`);
-    }
-    query.orderBy('a.createdAt', 'DESC').limit(len);
-
-    let result = await query;
-    return result;
-  } catch (err) {
-    console.error(`id->${id} len->${len}`, err);
-    throw new Error(err)
   }
-}
 
 
-   /**
-   * @description 文章列表
-   * @param {Number} id 栏目id
-   * @param {Number|String} current 当前页面
-   * @param {Number} pageSize 默认10条
-   * @returns {Array} 
-   */
-  static async list(id, current=1, pageSize=10) {
+  /**
+  * @description 文章列表
+  * @param {Number} id 栏目id
+  * @param {Number|String} current 当前页面
+  * @param {Number} pageSize 默认10条
+  * @returns {Array} 
+  */
+  static async list(id, current = 1, pageSize = 10) {
     try {
       const start = (current - 1) * pageSize;
-  
+
       // 获取所有id
       let ids = [id];
       const res = await knex('category')
         .select('id')
         .where('pid', id);
-  
+
       res.forEach((item) => {
         ids.push(item.id);
       });
-  
+
       // 查询个数
       const total = await knex('article')
         .count('id as count')
         .whereIn('cid', ids)
         .first();
-  
+
       const count = total.count || 1;
-  
+
       // 查询文章列表
       const result = await knex
         .select(
@@ -306,7 +305,7 @@ static async getNewImgList(len = 10, id = "", attr = '') {
         .orderBy('a.createdAt', 'DESC')
         .offset(start)
         .limit(pageSize);
-  
+
       return {
         count,
         total: Math.ceil(count / pageSize),
@@ -327,25 +326,21 @@ static async getNewImgList(len = 10, id = "", attr = '') {
    * @param {Number} pageSize 默认10条
    * @returns {Array} 
    */
-  static async tags(path, current=1, pageSize=10) {
+  static async tags(path, current = 1, pageSize = 10) {
     try {
       const start = (current - 1) * pageSize;
-      
+
       // 查询个数
       const total = await knex('article as a')
-      .join('category as c', 'a.cid', 'c.id')
-      .whereExists(function() {
-        this.select(1)
-          .from('tag as t')
-          .whereRaw('FIND_IN_SET(t.id, a.tag_id) > 0')
-          .andWhere('t.path', 'cms');
-      })
-      .count('* as total');
+        .join('category as c', 'a.cid', 'c.id')
+        .whereExists(function () {
+          this.select(1)
+            .from('tag as t')
+            .whereRaw('FIND_IN_SET(t.id, a.tag_id) > 0')
+            .andWhere('t.path', 'cms');
+        })
+        .count('* as total');
 
-    
-      console.log('total------------',total[0])
-     
-  
       // 查询文章列表
       const result = await knex('article as a')
         .select(
@@ -362,7 +357,7 @@ static async getNewImgList(len = 10, id = "", attr = '') {
           'c.path',
         )
         .join('category as c', 'a.cid', 'c.id')
-        .whereExists(function() {
+        .whereExists(function () {
           this.select(1)
             .from('tag as t')
             .whereRaw('FIND_IN_SET(t.id, a.tag_id) > 0')
@@ -372,13 +367,13 @@ static async getNewImgList(len = 10, id = "", attr = '') {
         .offset(start)
         .limit(pageSize);
 
-        const count = total.total || 1;
-  
+      const count = total.total || 1;
+
       return {
-         count,
-         total: Math.ceil(count / pageSize),
-         current: +current,
-         list: result,
+        count,
+        total: Math.ceil(count / pageSize),
+        current: +current,
+        list: result,
       };
     } catch (err) {
       console.error(`id->${path} current->${current} pageSize->${pageSize}`, err);
@@ -392,7 +387,7 @@ static async getNewImgList(len = 10, id = "", attr = '') {
    * @param {*} articleId 
    * @returns {Array} 返回数组 
    */
-  static async fetchTagsByArticleId (articleId) {
+  static async fetchTagsByArticleId(articleId) {
     try {
       const tags = await knex('tag')
         .select('tag.id', 'tag.path', 'tag.name')

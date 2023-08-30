@@ -1,11 +1,10 @@
 "use strict";
 const BaseService = require("./base");
-const knex = require("../../config/config.knex.js");
-class ArticleMapTagService extends BaseService {
+const {knex} = require('../../../common/BaseService.js');
+
+class ArticleMapTagService{
+
   static model = "article_map_tag";
-  constructor(props) {
-    super(props);
-  }
 
   // 新增
   static async create(body) {

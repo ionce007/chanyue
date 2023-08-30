@@ -1,8 +1,8 @@
 "use strict";
 
 const path = require("path");
-const knex = require("../../config/config.knex.js");
-const { delImg, filterImgFromStr } = require("../../extend/helper.js");
+const {knex, helper: { delImg,filterImgFromStr} } = require('../../../common/BaseService.js');
+
 const BaseService = require("./base");
 async function getImgsByArticleId(id, arr) {
   const imgStr = ` SELECT img,content FROM article WHERE id=${id}`;
@@ -17,13 +17,8 @@ async function getImgsByArticleId(id, arr) {
     }
   }
 }
-class ArticleService extends BaseService {
+class ArticleService  {
   static model = "article";
-  constructor(props) {
-    super(props);
-  
-  }
-
   // 增
   static async create(body) {
     try {

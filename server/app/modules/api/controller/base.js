@@ -1,7 +1,6 @@
 'use strict';
 class BaseController {
   constructor(){
-    
   }
 
  static success(res) {

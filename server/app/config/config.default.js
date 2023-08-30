@@ -93,8 +93,6 @@ config.debug = true;
 config.template = 'default';
 config.apiService = 'api';
 
-
-
 // 七牛云上传相关配置
 config.qiniuOss = {
     accessKey:'xxx',//ak
@@ -102,7 +100,12 @@ config.qiniuOss = {
     domain:'xxx', //域名
     bucket:'xxx', //空间名称
 }
-
 config.upload = 'default';// default 普通上传 qiniuyun 七牛云上传
+
+
+config.views = [
+    path.join(config.appRoot, `plugin/open/view`),
+]
+
 
 module.exports = config;

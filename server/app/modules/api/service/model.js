@@ -1,14 +1,10 @@
 'use strict';
-const knex = require('../../config/config.knex.js');
 const BaseService = require('./base');
-const { delImg, filterImgFromStr } = require('../../extend/helper.js');
+const {knex} = require('../../../common/BaseService.js');
 
-class ModelService extends BaseService {
+class ModelService  {
   static model = 'model';
-  constructor(props) {
-    super(props);
-    
-  }
+ 
 
   // 增
   static async create(body) {

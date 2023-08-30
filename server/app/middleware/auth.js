@@ -8,14 +8,14 @@ module.exports = () => {
         await helper.getToken(token, config.token.KEY);
         await next();
       } catch (error) {
-        res.status(200).json({
-          code: 0,
+        res.json({
+          code: 500,
           msg: error,
         });
       }
     } else {
-      res.status(200).json({
-        code: 0,
+      res.json({
+        code: 500,
         msg: "token缺失",
       });
     }

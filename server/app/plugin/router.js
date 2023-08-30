@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const OpenController = require('../../controller/open/index.js');
-const WeiXinController = require('../../controller/open/weixin.js');
+const OpenController = require('./open/controller/index.js');
+const WeiXinController = require('./open/controller/weixin.js');
 //微信小程序登录
 router.post('weixin/login', WeiXinController.login);
 //60秒读懂世界 
