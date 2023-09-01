@@ -8,4 +8,6 @@ router.post('weixin/login', WeiXinController.login);
 router.get('/60s', OpenController.news60s);
 //每日简报 
 router.get('/jianbao', OpenController.jianbao);
+//获取ip信息
+router.get('/getIp',OpenController.getIp)
 module.exports = router;

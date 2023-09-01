@@ -27,12 +27,14 @@ router.get("/robots.txt", function (req, res, next) {
 
 //404处理
 router.use(init(), (req, res, next) => {
+  let ip = req.headers['x-forwarded-for'] || req.ip;
+  console.log("404-->",`${req.method}-${decodeURI(req.url)}-${ip}`);
   res.render(`${template}/404.html`);
 });
 
 //在所有组件挂在之后处理错误中间件
 router.use((err, req, res, next) => {
-  console.error("err-info----->", req.method, req.url, err);
+  console.error("500-->", req.method, req.url, err);
   let data = { url: req.url, method: req.method, error: err.message };
   if (req.is("html") || req.is("html") == null) {
     res.render(`${template}/500.html`, { data });

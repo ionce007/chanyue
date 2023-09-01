@@ -3,13 +3,13 @@ const fs = require('fs');
 const path = require('path');
 
 const config = {};
-config.version = 'v0.1';
+config.version = 'v1.1';
 config.appName = 'chanyue-cms';
 config.appRoot = path.join(__dirname, '../');
 
 // cookie sign key
 config.keys = 'chanyue-cms_202301032044';
-config.port = '7004';
+config.port = '81';
 
 // add mysql config
 config.mysql = {
@@ -80,17 +80,25 @@ config.static = {
     preload: false,
 };
 
-
-// 日志
-config.logger = {
-    level: 'tiny',
-};
-
 //sql debug
 config.debug = false;
 
 // add your user config here
-config.template = 'lianmeng';
+config.template = 'default';
 config.apiService = 'api';
+
+// 七牛云上传相关配置
+config.qiniuOss = {
+    accessKey:'xxx',//ak
+    secretKey:'xxx', //sk
+    domain:'xxx', //域名
+    bucket:'xxx', //空间名称
+}
+config.upload = 'default';// default 普通上传 qiniuyun 七牛云上传
+
+config.views = [
+    path.join(config.appRoot, `plugin/open/view`),
+]
+
 
 module.exports = config;

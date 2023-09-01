@@ -103,7 +103,6 @@ document.querySelectorAll('.search-input').forEach((item) => {
         // 获取当前页面的scrollTop值
         const scrollTop = document.documentElement.scrollTop;
         if (scrollTop > 670) {
-
             btn.classList.remove("none")
         } else {
             btn.classList.add("none")
@@ -113,8 +112,7 @@ document.querySelectorAll('.search-input').forEach((item) => {
 
 
     // 监听按钮的点击事件
-    btn.addEventListener('click', () => {
-
+    btn?.addEventListener('click', () => {
         // 将页面滚动到顶部
         window.scrollTo({
             top: 0,
@@ -138,10 +136,10 @@ var swiper = new Swiper(".mySwiper", {
 });
 
 
-document.querySelector('.ico-open').addEventListener('click',function(){
+document.querySelector('.ico-open').addEventListener('click', function () {
     document.querySelector('.m-mask').classList.remove("none")
 })
 
-document.querySelector('.m-mask').addEventListener('click',function(){
-   this.classList.add("none")
+document.querySelector('.m-mask').addEventListener('click', function () {
+    this.classList.add("none")
 })

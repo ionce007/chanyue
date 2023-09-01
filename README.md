@@ -1,6 +1,6 @@
 # <center>![禅悦内容管理系统](https://gitee.com/yanyutao0402/chanyue-cms/raw/master/client/admin/public/admin/img/logo.png)禅悦内容管理系统（`chanyue-cms`）</center>
 
- 禅悦cms基于express+mysql的一款轻量级高质量实用型cms管理系统。它具备多种类型网站开发功能，高扩展，模块化，插件化灵活方便开发者进行二次开发。
+ 禅悦cms2.0（chanyue-cms）基于express+mysql的一款轻量级高质量实用型cms管理系统。它具备广泛应用的企业、图片、新闻、资讯、软件、博客、文章等多种类型网站开发功能，灵活方便开发者进行二次开发。
 
 ## 🌈系统特色
 
@@ -10,7 +10,8 @@
 * 灵活。碎片功能，支持零碎文案配置，方便各类灵活文案配置。
 * 高扩展。支持扩展模型，字段配置，可动态生成表，超强扩展。
 * 模块化。一切模块相互独立，互不干扰。
-* 插件化。为一切可能打开大门，一生二，而生三，三生万物。
+* 插件化。灵活开发，支持完整功能模块。
+* 持续迭代，长期维护
   
 ## ⛱️软件架构
 
@@ -51,48 +52,45 @@
 * 中英切换
 * 语音播报
 * 本地上传&七牛云上传
+* 日志功能
 
 ### 项目架构
 
-```js
- |- data ->chanyue.sql 数据库文件
- |- server 源码（重点）
-    |- app
-        |- config 配置
-        |- extend 扩展功能
-        |- middleware 中间件
-        |- modules 模块
-            |-api api模块
-                |-- controller
-                |-- service
-                |-- router.js
-            |-web web模块
-                |-- controller
-                |-- service
-                |-- view
-                |-- router.js
-                ***
-        |- plugin 插件
-            |- open 插件模块
-                |-- controller
-                |-- service
-                |-- view
-                |-- router.js
-                ***
-        |- public 静态资源
-        |- utils 工具
-        |- router.js 总路由
-    |-app.js 应用入口
-    |-pm2.json pm2管理      
 ```
+server 部署代码
+|- app
+    |- config
+    |- extend 
+    |- middleware 
+    |- modules
+      |-api 
+        |-- controller
+        |-- service
+        |-- router.js
+      |-web 
+        |-- controller
+        |-- middleware
+        |-- service
+        |-- view
+        |-- router.js
+    |- plugin 
+        |- open
+          |-- controller
+          |-- service
+          |-- view
+          |-- router.js
+    |- public
+    |- utils
+    |- router.js
+  app.js
+  ```
 
 ### 🍅️案例
 
 * 案例一 [世界气功网](http://www.shijieqigong.com/) `http://www.shijieqigong.com/`
 * 案例二 [世界大健康运动联盟](http://www.worldhealthgames.com/) `http://www.worldhealthgames.com/`
 * 案例三 [北京辉达环保科技有限公司](http://www.huidaep.com/) `http://www.huidaep.com/`
-* 官网演示站 [前端小栈• 禅悦](http://chanyue.zhanhongzhu.top/) `http://chanyue.zhanhongzhu.top`
-
+* 演示站 [前端小栈• 禅悦](http://chanyue.zhanhongzhu.top/)
 ## 👵开发文档
 
 * **官网文档 <https://yanyutao0402.gitee.io/chanyue-doc>**

@@ -10,7 +10,6 @@ module.exports = () => {
     try {
       const { helper, config: { template } } = req.app.locals;
       if ("site" in req.app.locals) {
-        console.log("已存在缓存，不需要重新在取");
         await next();
         return;
       }

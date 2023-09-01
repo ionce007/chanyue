@@ -86,7 +86,6 @@ class AdminService {
       const data = await knex(AdminService.model).where('id', '=', id).select(['id', 'username', 'createdAt', 'updatedAt', 'status'])
       return data[0];
     } catch (err) {
-      console.log(err)
       throw new Error(err)
     }
   }
@@ -109,7 +108,6 @@ class AdminService {
         list: list[0],
       };
     } catch (err) {
-      console.log(err)
       throw new Error(err)
     }
   }

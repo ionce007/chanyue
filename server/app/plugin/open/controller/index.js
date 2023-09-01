@@ -40,6 +40,22 @@ class OpenController {
     }
   }
 
+
+  static async getIp(){
+    try {
+      if(global.fetch){
+        const url = `https://qifu-api.baidubce.com/ip/local/geo/v1/district`;
+        const result = await fetch(url);
+        const { name, time, data } = await result.json();
+        res.render(`jianbao.html`, { data });
+      }
+      next({message:'当前node版本还不支持fetch'})
+    } catch (error) {
+      next(error)
+    }
+    
+  }
+
   
 }
 

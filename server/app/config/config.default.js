@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const config = {};
-config.version = 'v0.1';
+config.version = 'v1.1';
 config.appName = 'chanyue-cms';
 config.appRoot = path.join(__dirname, '../');
 
@@ -80,11 +80,6 @@ config.static = {
     preload: false,
 };
 
-
-// 日志
-config.logger = {
-    level: 'dev',
-};
 
 //sql debug
 config.debug = true;

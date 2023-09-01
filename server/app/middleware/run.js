@@ -1,12 +1,11 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const favicon = require("serve-favicon");
-const morgan = require("morgan");
 const path = require("path");
 const auth = require("./auth.js");
 const helper = require("../extend/helper.js");
 const config = require("../config/config.js");
-const { logger, appRoot, cookieKey } = config;
+const { appRoot, cookieKey } = config;
 
 const view = require('./view.js');
 const router = require('../router.js');
@@ -15,9 +14,6 @@ module.exports = function (app) {
   app.locals.config = config;
   app.locals.auth = auth;
   app.locals.helper = helper;
-
-  //日志
-  app.use(morgan(logger.level));
 
   // favicon 图标
   app.use(favicon(path.join(appRoot, "public/favicon.ico")));
