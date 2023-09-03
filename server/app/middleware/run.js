@@ -7,8 +7,8 @@ const helper = require("../extend/helper.js");
 const config = require("../config/config.js");
 const { appRoot, cookieKey } = config;
 
-const view = require('./view.js');
-const router = require('../router.js');
+const view = require("./view.js");
+const router = require("../router.js");
 module.exports = function (app) {
   //挂载配置
   app.locals.config = config;

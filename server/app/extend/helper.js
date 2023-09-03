@@ -246,7 +246,6 @@ exports.formatDay = (data, time = false, format = "YYYY-MM-DD HH:mm:ss") => {
   return data;
 };
 
-
 /**
  * @description 输出分页标签
  * @param {*} current 当前页面
@@ -259,56 +258,61 @@ exports.pages = function (current, total, pageSize, href) {
   let pageTemp = [];
   let totalPage = Math.ceil(total / pageSize);
   let pageStr = `<p>共${total}条记录，共${totalPage},当前${current}</p>`;
-  //上一页 
+  //上一页
   if (current == 1) {
-    pageTemp.push(`<li class="disabled">上一页</li>`)
+    pageTemp.push(`<li class="disabled">上一页</li>`);
   } else {
-    pageTemp.push(`<li><a href='${href}${current - 1}.html'>上一页</a></li>`)
+    pageTemp.push(`<li><a href='${href}${current - 1}.html'>上一页</a></li>`);
   }
   //中间的 小于8页面
   if (totalPage <= 8) {
     for (let i = 0; i < totalPage; i++) {
       if (current == i + 1) {
-        pageTemp.push(`<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+        pageTemp.push(
+          `<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`
+        );
       } else {
-        pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+        pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`);
       }
     }
   } else {
-    //获取前3 
+    //获取前3
     for (let i = 0; i < 3; i++) {
       if (current == i + 1) {
-        pageTemp.push(`<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+        pageTemp.push(
+          `<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`
+        );
       } else {
-        pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+        pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`);
       }
     }
-    pageTemp.push(`<li><a href='${href}${3 + 1}.html'>...</a></li>`)
+    pageTemp.push(`<li><a href='${href}${3 + 1}.html'>...</a></li>`);
     for (let i = totalPage - 3; i < totalPage; i++) {
       if (current == i + 1) {
-        pageTemp.push(`<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+        pageTemp.push(
+          `<li class="current"><a href='${href}${i + 1}.html'>${i + 1}</a></li>`
+        );
       } else {
-        pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`)
+        pageTemp.push(`<li><a href='${href}${i + 1}.html'>${i + 1}</a></li>`);
       }
     }
   }
   //下一页
   if (current == totalPage) {
-    pageTemp.push(`<li class="disabled">下一页</li>`)
+    pageTemp.push(`<li class="disabled">下一页</li>`);
   } else {
-    pageTemp.push(`<li><a href='${href}${current + 1}.html'>下一页</a></li>`)
+    pageTemp.push(`<li><a href='${href}${current + 1}.html'>下一页</a></li>`);
   }
 
-  return pageTemp.join('')
-}
-
+  return pageTemp.join("");
+};
 
 exports.success = {
   code: 200,
-  msg: 'success'
-}
+  msg: "success",
+};
 
 exports.fail = {
   code: 500,
-  msg: 'error'
-}
+  msg: "error",
+};

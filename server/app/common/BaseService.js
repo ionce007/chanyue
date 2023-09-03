@@ -6,5 +6,4 @@ class BaseService {
     static config = config;
     static helper = helper;
 }
-  
 module.exports = BaseService;
