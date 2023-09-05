@@ -10,4 +10,6 @@ router.get("/60s", OpenController.news60s);
 router.get("/jianbao", OpenController.jianbao);
 //获取ip信息
 router.get("/getIp", OpenController.getIp);
+//pdf参数
+router.get("/pdf", OpenController.pdf);
 module.exports = router;
