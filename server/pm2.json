@@ -1,7 +1,7 @@
 ﻿{
     "apps": [
         {
-            "name": "chanyue-cms",
+            "name": "禅悦cms",
             "script": "app.js",
             "watch": [
                 "app"

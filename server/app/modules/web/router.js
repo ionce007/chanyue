@@ -56,5 +56,4 @@ router.get([
   '/tags/:path.html',
   '/tags/:path/:id.html'], init(), HomeController.tag);
 
-
 module.exports = router;

@@ -152,3 +152,7 @@ body {
 .w-80{
   width: 80px!important;
 }
+
+.mce-preview-object{
+  display: block!important;
+}

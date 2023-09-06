@@ -8,12 +8,24 @@ function toSearch() {
 document.querySelectorAll('.search-input').forEach((item) => {
     item.addEventListener('keyup', function (event) {
         console.log(event)
+        event.stopPropagation()
         if (event.keyCode == 13) {
             event.preventDefault();
             toSearch()
         }
     })
+
+   
 });
+
+
+document.querySelectorAll('.search-wrap').forEach((item) => {
+    item.addEventListener('click',function(event){
+        event.stopPropagation()
+    })
+});
+
+
 
 
 (function audio() {

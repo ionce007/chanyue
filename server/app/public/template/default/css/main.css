@@ -420,9 +420,12 @@ html {
 
 /* list.html */
 
-
 .el-empty {
     font-family: 'chanyue';
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .list {
@@ -874,8 +877,16 @@ iframe {
         display: none;
     }
 
-    .search {
+    .search-wrap {
         display: none;
+    }
+
+    .drawer .search-wrap {
+        display: flex;
+    }
+
+    .search-input{
+        width: 78%;
     }
 
     .ico-open {

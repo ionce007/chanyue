@@ -4,7 +4,7 @@ const path = require("path");
 
 const config = {};
 config.version = "v1.1";
-config.appName = "chanyue-cms";
+config.appName = "禅悦cms";
 config.appRoot = path.join(__dirname, "../");
 
 // cookie sign key

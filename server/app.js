@@ -6,6 +6,6 @@ const app = express();
 run(app);
 app.listen(port, () => {
   console.log(
-    `server started at localhost:${port} appName:${appName}  version:${version}`
+    ` ${appName} 启动成功！\r\n localhost:${port} 版本:${version}`
   );
 });
