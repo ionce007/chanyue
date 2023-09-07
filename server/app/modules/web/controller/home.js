@@ -8,7 +8,6 @@ class HomeController {
   // 首页
   static async index(req, res, next) {
     try {
-
       let result = {};
       if (!("slide" in res.locals)) {
         result = await HomeService.home();
@@ -138,6 +137,7 @@ class HomeController {
     try {
       const { cate, id } = req.params;
       const { category } = req.app.locals;
+
       // 当前栏目和当前栏目下所有子导航
       let cid = "";
       let navSub = {};
@@ -159,7 +159,7 @@ class HomeController {
       //文章id查找栏目id
       if (id) {
         // 文章列表
-        article = await ArticleService.detail(id);
+         article = await ArticleService.detail(id);
         // 栏目id
         cid = article.cid || "";
       }
@@ -173,7 +173,7 @@ class HomeController {
 
       //获取单页列表
       const data = await HomeService.page(cid, 1, 20);
-      if (data.list.length > 0) {
+      if (data.list.length > 0 && !id) {
         article = await ArticleService.detail(data.list[0].id);
       }
 
