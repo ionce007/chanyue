@@ -9,13 +9,13 @@ module.exports = () => {
         await next();
       } catch (error) {
         res.json({
-          code: 500,
+          code: 501,
           msg: error,
         });
       }
     } else {
       res.json({
-        code: 500,
+        code: 501,
         msg: "token缺失",
       });
     }

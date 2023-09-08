@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const config = {};
-config.version = "v1.1";
+config.version = "v1.4";
 config.appName = "chanyue-cms";
 config.appRoot = path.join(__dirname, "../");
 

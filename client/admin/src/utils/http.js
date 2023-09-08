@@ -55,7 +55,7 @@ http.interceptors.response.use(
     //   }
     // }
 
-    if (data.code === 0) {
+    if (data.code === 501) {
       console.log("data->", data);
       if (data.msg.name == "TokenExpiredError") {
         // eslint-disable-next-line no-undef

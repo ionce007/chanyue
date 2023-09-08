@@ -14,9 +14,9 @@
           <p class="f-14 mb-6">
             <strong>前端架构：</strong>vite4.0 vue3 element-plus pinia axios
           </p>
-          <p class="f-14 mb-6"><strong>程序版本：</strong>v.0.5.0</p>
+          <p class="f-14 mb-6"><strong>程序版本：</strong>v.1.4.0</p>
           <p class="f-14 mb-6"><strong>程序路径：</strong>{{ dirname }}</p>
-          <p class="f-14 mb-6"><strong>发布时间：</strong>2023-08-19</p>
+          <p class="f-14 mb-6"><strong>发布时间：</strong>2023-09-08</p>
           <p class="f-14 mb-6"><strong>独立开发：</strong>明空</p>
           <p class="f-14 mb-6 row"><strong>联系微信：</strong>yanyutao2014</p>
           <p class="f-14 mb-6 row">
