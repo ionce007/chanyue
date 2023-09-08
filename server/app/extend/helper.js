@@ -316,3 +316,40 @@ exports.fail = {
   code: 500,
   msg: "error",
 };
+
+
+exports.cleanHTML = (htmlStr)=>{
+  // 清除 <script> 标签
+  htmlStr = htmlStr.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+
+  // 清除 <style> 标签
+  htmlStr = htmlStr.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '');
+
+  // 清除空白 <p> 标签
+  htmlStr = htmlStr.replace(/<p[^>]*>(\s|&nbsp;)*<\/p>/gi, '');
+
+  // 清除 <iframe> 标签
+  htmlStr = htmlStr.replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
+
+  // 清除 <audio> 标签
+  htmlStr = htmlStr.replace(/<audio\b[^<]*(?:(?!<\/audio>)<[^<]*)*<\/audio>/gi, '');
+
+  // 清除 <video> 标签
+  htmlStr = htmlStr.replace(/<video\b[^<]*(?:(?!<\/video>)<[^<]*)*<\/video>/gi, '');
+
+  // 清除 <div>、<span>、<i> 和 <strong> 标签，但保留其文本内容
+  htmlStr = htmlStr.replace(/<(div|span|i|strong|b|sup|sub|article|section)[^>]*>(.*?)<\/\1>/gi, '$2');
+
+  // 清除标签属性，除了 <div>、<span>、<i> 和 <strong> 标签之外的其他标签属性
+  htmlStr = htmlStr.replace(/<(\w+)\s*[^>]*>/g, function(match, p1) {
+    if (!/^(div|span|i|strong)$/i.test(p1)) {
+      return match.replace(/\s+[a-zA-Z0-9-]+=('|")[^'"]*('|")/gi, '');
+    }
+    return match;
+  });
+
+  // 过滤空格和换行符
+  htmlStr = htmlStr.replace(/\s/g, '');
+
+  return htmlStr;
+}
