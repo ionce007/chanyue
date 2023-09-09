@@ -201,6 +201,50 @@ export const asyncRoutes = [
   },
 
   {
+    path: "/gather",
+    name: "gather",
+    meta: {
+      title: "采集功能",
+      icon: "Operation",
+      isShow: true,
+      role: ["admin"],
+    },
+    redirect: "/collect",
+    children: [
+      {
+        path: "/collect",
+        name: "collect-index",
+        component: "@/views/collect/index.vue",
+        meta: {
+          title: "采集配置",
+          isShow: true,
+          role: ["admin"],
+        },
+      },
+      {
+        path: "/collect/add",
+        name: "collect-add",
+        component: "@/views/collect/add.vue",
+        meta: {
+          title: "采集配置-新增",
+          isShow: false,
+          role: ["admin"],
+        },
+      },
+      {
+        path: "/collect/:id",
+        name: "collect-edit",
+        component: "@/views/collect/edit.vue",
+        meta: {
+          title: "采集配置-更新",
+          isShow: false,
+          role: ["admin"],
+        },
+      },
+    ],
+  },
+
+  {
     path: "/extend",
     name: "extend",
     meta: {
