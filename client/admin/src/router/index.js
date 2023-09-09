@@ -205,7 +205,7 @@ export const asyncRoutes = [
     name: "gather",
     meta: {
       title: "采集功能",
-      icon: "Operation",
+      icon: "MagicStick",
       isShow: true,
       role: ["admin"],
     },

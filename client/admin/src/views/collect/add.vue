@@ -7,6 +7,13 @@
       label-width="74px"
       class="mt-20"
     >
+      <el-form-item label="任务名称">
+        <el-input
+          v-model="params.link"
+          placeholder="例：前端库-chat问答"
+        ></el-input>
+      </el-form-item>
+
       <el-form-item label="匹配网址" prop="title">
         <div class="row w-p100">
           <el-input
@@ -65,6 +72,10 @@
             >测试</el-button
           >
         </div>
+      </el-form-item>
+
+      <el-form-item label="保存栏目">
+        <el-input v-model="params.link" placeholder="例：cid"></el-input>
       </el-form-item>
 
       <el-form-item label="测试结果">
