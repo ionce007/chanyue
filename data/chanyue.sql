@@ -11,7 +11,7 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 07/09/2023 22:01:35
+ Date: 10/09/2023 17:56:57
 */
 
 SET NAMES utf8mb4;
@@ -230,6 +230,30 @@ CREATE TABLE `friendlink`  (
 -- Records of friendlink
 -- ----------------------------
 INSERT INTO `friendlink` VALUES (1, '香港日报', 'http://www.hongkongdaily.net', 0, '2023-07-22 22:59:55');
+
+-- ----------------------------
+-- Table structure for magic_collect
+-- ----------------------------
+DROP TABLE IF EXISTS `magic_collect`;
+CREATE TABLE `magic_collect`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `taskName` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '任务名称',
+  `targetUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '匹配网址',
+  `listTag` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文章列表',
+  `startNum` int(10) NULL DEFAULT NULL COMMENT '开始',
+  `endNum` int(10) NULL DEFAULT NULL COMMENT '结束',
+  `increment` int(10) NULL DEFAULT 1 COMMENT '递增数量默认1',
+  `titleTag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '标题标签',
+  `articleTag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '内容标签',
+  `cid` int(11) NULL DEFAULT NULL COMMENT '存储到栏目id',
+  `createdAt` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updatedAt` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of magic_collect
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for message
