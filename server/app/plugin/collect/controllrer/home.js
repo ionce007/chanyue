@@ -10,15 +10,7 @@ class CollectController {
   static async common(req, res, next) {
     try {
 
-      // let { taskName,
-      //   targetUrl,
-      //   listTag,
-      //   startNum,
-      //   endNum,
-      //   increment,
-      //   titleTag,
-      //   articleTag,
-      //   cid } = req.body;
+    
         const data = await CollectService.common()
          const $ = cheerio.load(data.toString(), { decodeEntities: false });
          $('.blist li a').each(function() {
