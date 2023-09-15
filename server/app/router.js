@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 const api = require("./modules/api/router.js");
 const web = require(`./modules/web/router.js`);
-const open = require(`./plugin/open/router.js`);
+const open = require(`./plugin/router.js`);
 const init = require("./modules/web/middleware/init.js");
 const { template } = require("./config/config.js");
 //前台
