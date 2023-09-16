@@ -12,8 +12,9 @@ class CollectController {
   static async getPages(req, res, next) {
     try {
       let arr = [];
-      const { taskUrl, listTag, chartset } = req.body;
-      const data = await CollectService.common(taskUrl, chartset)
+      const { targetUrl, listTag, chartset } = req.body;
+      const data = await CollectService.common(targetUrl, chartset)
+      console.log(data.toString())
       const $ = cheerio.load(data.toString(), { decodeEntities: false });
       $(`${listTag}`).each(function () {
         arr.push($(this).attr('href'))
@@ -59,7 +60,7 @@ class CollectController {
       eval(removeCode);
 
       // 获取清理后的文本内容
-      const articleText = $('.con_content').html().trim()
+      let articleText = $(`${articleTag}`).html().trim()
         .replace(/\r|\n/g, "").replace(/\"/g, "")
         .replace(/<span\b[^>]*>(.*?)<\/span>/gi, '$1')
         .replace(/<div\b[^>]*>(.*?)<\/div>/gi, '$1')

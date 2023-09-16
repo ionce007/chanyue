@@ -1,6 +1,24 @@
 import http from "../utils/http";
 import API from "../config/index";
 
+//页面集合
+export let getPages = (opt) => {
+  return http({
+    url: `${API.BASE_API}/api/collect/getPages`,
+    method: "post",
+    data: opt,
+  });
+};
+
+//文章内容
+export let getArticle = (opt) => {
+  return http({
+    url: `${API.BASE_API}/api/collect/getArticle`,
+    method: "post",
+    data: opt,
+  });
+};
+
 //查 所有栏目
 export let find = () => {
   return http({

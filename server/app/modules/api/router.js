@@ -115,8 +115,8 @@ router.get('/message/delete', auth(), MessageController.delete);
 router.post('/message/update', auth(), MessageController.update);
 
 //采集
-router.get('/collect/getPages', CollectController.getPages);
-router.get('/collect/getArticle', CollectController.getArticle);
+router.post('/collect/getPages', CollectController.getPages);
+router.post('/collect/getArticle', CollectController.getArticle);
 router.get('/collect/list', CollectController.list);
 router.get('/collect/search', CollectController.search);
 router.get('/collect/detail', CollectController.detail);

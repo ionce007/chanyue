@@ -9,6 +9,7 @@ class CollectService {
 
   static async common(url, chartset) {
     try {
+      console.log(url,chartset)
       const { data } = await axios.get(url, {
         responseType: 'arraybuffer',
         headers: {
