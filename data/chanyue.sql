@@ -11,7 +11,7 @@
  Target Server Version : 50726 (5.7.26)
  File Encoding         : 65001
 
- Date: 15/09/2023 20:48:38
+ Date: 16/09/2023 20:24:28
 */
 
 SET NAMES utf8mb4;
@@ -153,6 +153,35 @@ INSERT INTO `category` VALUES (11, 2, '', '', '', 'mysql', 'mysql', '/nodekaifa/
 INSERT INTO `category` VALUES (12, 3, '', '', '', '测试', 'ceshi', '/qianduanku/ceshi', '', '0', '', 0, '0', '0', '0');
 
 -- ----------------------------
+-- Table structure for collect
+-- ----------------------------
+DROP TABLE IF EXISTS `collect`;
+CREATE TABLE `collect`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `taskName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '任务名称',
+  `targetUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '采集地址',
+  `listTag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '列表tag标签',
+  `startNum` int(11) NULL DEFAULT 1 COMMENT '开始页面',
+  `endNum` int(11) NULL DEFAULT NULL COMMENT '结束页面',
+  `increment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '1' COMMENT '递增数量默认1',
+  `titleTag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '标题',
+  `articleTag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文章内容',
+  `charset` smallint(1) NULL DEFAULT NULL COMMENT '编码 1-> utf-8  2-> gb2312',
+  `pages` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '采集地址集合',
+  `clearRegCode` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '清理文章多余标签正则',
+  `removeCode` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '清理代码',
+  `cid` int(11) NULL DEFAULT NULL COMMENT '存储到栏目',
+  `status` smallint(1) NULL DEFAULT 1 COMMENT '发布状态 1 草稿 2 发布',
+  `createdAt` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updatedAt` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of collect
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for down
 -- ----------------------------
 DROP TABLE IF EXISTS `down`;
@@ -291,34 +320,6 @@ CREATE TABLE `page`  (
 
 -- ----------------------------
 -- Records of page
--- ----------------------------
-
--- ----------------------------
--- Table structure for plugin_collect
--- ----------------------------
-DROP TABLE IF EXISTS `plugin_collect`;
-CREATE TABLE `plugin_collect`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `taskName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '任务名称',
-  `targetUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '采集地址',
-  `listTag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '列表tag标签',
-  `startNum` int(11) NULL DEFAULT 1 COMMENT '开始页面',
-  `endNum` int(11) NULL DEFAULT NULL COMMENT '结束页面',
-  `increment` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '1' COMMENT '递增数量默认1',
-  `titleTag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '标题',
-  `articleTag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文章内容',
-  `charset` smallint(1) NULL DEFAULT NULL COMMENT '编码 1-> utf-8  2-> gb2312',
-  `pages` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '采集地址集合',
-  `clearArticleReg` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '清理文章多余标签正则',
-  `cid` int(11) NULL DEFAULT NULL COMMENT '存储到栏目',
-  `status` smallint(1) NULL DEFAULT 1 COMMENT '发布状态 1 不发布 2 发布',
-  `createdAt` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `updatedAt` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of plugin_collect
 -- ----------------------------
 
 -- ----------------------------
