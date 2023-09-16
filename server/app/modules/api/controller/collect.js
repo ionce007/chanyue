@@ -1,8 +1,7 @@
-"use strict";
 const dayjs = require("dayjs");
 const {
   config,
-  helper: { md5, setToken, success, fail },
+  helper: {success, fail },
 } = require("../../../common/BaseController");
 const CollectService = require("../service/collect.js");
 const cheerio = require('cheerio');
@@ -76,18 +75,6 @@ class CollectController {
     } catch (error) {
       console.log(error)
       next(error)
-    }
-  }
-
-
-
-  static async create(req, res, next) {
-    try {
-      const body = req.body;
-      const data = await CollectService.create(body);
-      res.json({ ...success, data: data });
-    } catch (err) {
-      next(err);
     }
   }
 

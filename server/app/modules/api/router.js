@@ -5,6 +5,7 @@ const AdminController = require('./controller/admin.js');
 const ArticleController = require('./controller/article.js');
 const SiteController = require('./controller/site.js');
 const CategoryController = require('./controller/category.js');
+const CollectController = require('./controller/collect.js')
 const ModelController = require('./controller/model.js');
 const FieldController = require('./controller/field.js');
 const FragController = require('./controller/frag.js');
@@ -22,7 +23,6 @@ router.get('/captcha', AdminController.captcha); // 验证码
 
 // 登录
 router.post('/admin/login', AdminController.login);
-router.post('/admin/create', AdminController.create);
 router.get('/admin/list', AdminController.list);
 router.get('/admin/search', AdminController.search);
 router.get('/admin/detail', AdminController.detail);
@@ -44,8 +44,6 @@ router.get('/category/search', CategoryController.search);
 router.get('/category/delete', auth(), CategoryController.delete);
 router.post('/category/update', auth(), CategoryController.update);
 router.post('/category/create', auth(), CategoryController.create);
-
-
 
 // 文章栏目
 router.get('/article/list', ArticleController.list);
@@ -116,7 +114,17 @@ router.post('/message/create', auth(), MessageController.create);
 router.get('/message/delete', auth(), MessageController.delete);
 router.post('/message/update', auth(), MessageController.update);
 
+//采集
+router.get('/collect/getPages', CollectController.getPages);
+router.get('/collect/getArticle', CollectController.getArticle);
+router.get('/collect/list', CollectController.list);
+router.get('/collect/search', CollectController.search);
+router.get('/collect/detail', CollectController.detail);
+router.post('/collect/create', auth(), CollectController.create);
+router.get('/collect/delete', auth(), CollectController.delete);
+router.post('/collect/update', auth(), CollectController.update);
+
 // 七牛云相关
-router.get('/qiniu/getUploadToken', QiniuController.getUploadToken)
+router.get('/qiniu/getUploadToken', QiniuController.getUploadToken);
 
 module.exports = router;

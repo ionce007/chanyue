@@ -33,7 +33,7 @@ router.use(init(), (req, res, next) => {
 });
 
 //在所有组件挂在之后处理错误中间件
-router.use((err, req, res, next) => {
+router.use((err, req, res) => {
   console.error("500-->", req.method, req.url, err);
   let data = { url: req.url, method: req.method, error: err.message };
   if (req.is("html") || req.is("html") == null) {
