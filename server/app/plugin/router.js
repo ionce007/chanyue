@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const OpenController = require("./open/controller/index.js");
 const WeiXinController = require("./open/controller/weixin.js");
-const CollectController = require("./collect/controllrer/home.js");
 
 //微信小程序登录
 router.post("weixin/login", WeiXinController.login);
@@ -14,6 +13,5 @@ router.get("/jianbao", OpenController.jianbao);
 router.get("/getIp", OpenController.getIp);
 //pdf参数
 router.get("/pdf", OpenController.pdf);
-//爬虫
-router.get("/collect",CollectController.getArticle)
+
 module.exports = router;

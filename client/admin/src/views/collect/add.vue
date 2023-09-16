@@ -39,6 +39,23 @@
       </el-form-item>
 
       <el-form-item
+        label="字符集"
+        prop="chartset"
+        :rules="[
+          {
+            required: true,
+            message: '请选择字符集',
+            trigger: 'blur',
+          },
+        ]"
+      >
+        <el-radio-group v-model="params.chartset" class="ml-4">
+          <el-radio label="1" size="large">uft-8</el-radio>
+          <el-radio label="2" size="large">gb2312</el-radio>
+        </el-radio-group>
+      </el-form-item>
+
+      <el-form-item
         label="文章列表"
         prop="listTag"
         :rules="[
@@ -132,14 +149,43 @@
         <el-input v-model="params.cid" placeholder="例：cid"></el-input>
       </el-form-item>
 
+      <el-form-item label="清理代码" prop="removeCode">
+        <el-input
+          v-model="params.removeCode"
+          placeholder="例：$('div').remove()"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item label="清理正则" prop="clearRegCode">
+        <el-input
+          v-model="params.clearRegCode"
+          placeholder="填写正则"
+        ></el-input>
+      </el-form-item>
+
+      <el-form-item
+        label="发布状态"
+        prop="status"
+        :rules="[
+          {
+            required: true,
+            message: '请选择字符集',
+            trigger: 'blur',
+          },
+        ]"
+      >
+        <el-radio-group v-model="params.status" class="ml-4">
+          <el-radio label="1" size="large">草稿</el-radio>
+          <el-radio label="2" size="large">发布</el-radio>
+        </el-radio-group>
+      </el-form-item>
+
       <el-form-item label="测试结果">
         <div>111</div>
       </el-form-item>
 
       <el-form-item>
         <el-button type="primary" @click="submit('params')">保存</el-button>
-
-        <el-button type="primary" @click="submit('params')">采集</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -159,8 +205,13 @@ export default {
         startNum: 1,
         endNum: 10,
         increment: 1,
+        pages: [],
         titleTag: "",
         articleTag: "",
+        chartset: 1, //utf-8
+        clearRegCode: "",
+        removeCode: "",
+        status: 1, //是否限制
         cid: 5,
       },
     };
