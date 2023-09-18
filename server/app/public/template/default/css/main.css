@@ -179,6 +179,7 @@ html {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     border-radius: 6px;
     width: 100%;
+    z-index: 1;
 }
 
 .header-wrap .sub-nav-item {
