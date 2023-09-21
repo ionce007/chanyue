@@ -337,7 +337,7 @@ class CommonService {
           this.select(1)
             .from('tag as t')
             .whereRaw('FIND_IN_SET(t.id, a.tag_id) > 0')
-            .andWhere('t.path', 'cms');
+            .andWhere('t.path', path);
         })
         .count('* as total');
 
@@ -361,7 +361,7 @@ class CommonService {
           this.select(1)
             .from('tag as t')
             .whereRaw('FIND_IN_SET(t.id, a.tag_id) > 0')
-            .andWhere('t.path', 'cms');
+            .andWhere('t.path', path);
         })
         .orderBy('a.createdAt', 'DESC')
         .offset(start)
