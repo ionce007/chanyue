@@ -1,1 +1,0 @@
-import{h as t,A as a}from"./index.js";import"./qiniu-js.js";let o=o=>(console.log("data",o),t({url:"".concat(a.BASE_API,"/api/upload"),method:"post",headers:{"Content-type":"multipart/form-data"},data:o}));export{o as u};
