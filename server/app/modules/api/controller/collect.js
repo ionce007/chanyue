@@ -12,16 +12,14 @@ class CollectController {
   static async getPages(req, res, next) {
     try {
       let arr = [];
-      const { targetUrl, listTag, chartset } = req.body;
-      const data = await CollectService.common(targetUrl, chartset)
-      console.log(data.toString())
+      const { targetUrl, listTag, charset } = req.body;
+      const data = await CollectService.common(targetUrl, charset)
       const $ = cheerio.load(data.toString(), { decodeEntities: false });
       $(`${listTag}`).each(function () {
         arr.push($(this).attr('href'))
       });
       res.json({ ...success, data: arr });
     } catch (error) {
-      console.log(error)
       next(error)
     }
   }
@@ -30,11 +28,13 @@ class CollectController {
   //测试列表所有地址 
   static async getArticle(req, res, next) {
     try {
-      const { taskUrl, titleTag, articleTag, removeCode, clearRegCode, chartset } = req.body;
-
-      const data = await CollectService.common(taskUrl, chartset);
+      const { taskUrl, titleTag, articleTag, removeCode, clearRegCode, charset } = req.body;
+      const data = await CollectService.common(taskUrl, charset);
       const $ = cheerio.load(data.toString(), { decodeEntities: false });
-      const title = $(`${titleTag}`).text();
+      const title = $(`${titleTag}`).text().trim();
+      console.log(`---------->${title}`)
+      //动态清理节点
+      eval(removeCode);
       $(`${articleTag}`).find('*')
         .not('img')
         .remove('script')
@@ -56,9 +56,6 @@ class CollectController {
           }
         });
 
-      //动态清理节点
-      eval(removeCode);
-
       // 获取清理后的文本内容
       let articleText = $(`${articleTag}`).html().trim()
         .replace(/\r|\n/g, "").replace(/\"/g, "")
@@ -74,7 +71,6 @@ class CollectController {
 
       res.json({ ...success, data: { title: title, article: articleText } });
     } catch (error) {
-      console.log(error)
       next(error)
     }
   }

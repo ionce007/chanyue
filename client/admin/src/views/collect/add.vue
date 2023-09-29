@@ -1,7 +1,7 @@
 <template>
   <div class="mr-10 ml-10 mb-20">
     <el-form ref="params" :model="params" label-width="84px" class="mt-20">
-      <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+      <el-tabs v-model="activeName" class="demo-tabs">
         <el-tab-pane label="列表测试" name="list">
           <el-form-item
             label="任务名称"
@@ -35,14 +35,14 @@
               <el-input
                 class="flex-1"
                 v-model="params.targetUrl"
-                placeholder="/SEO/index${*}.html"
+                placeholder="/SEO/1_${page}.html"
               ></el-input>
             </div>
           </el-form-item>
 
           <el-form-item
             label="字符集"
-            prop="chartset"
+            prop="charset"
             :rules="[
               {
                 required: true,
@@ -51,14 +51,14 @@
               },
             ]"
           >
-            <el-radio-group v-model="params.chartset" class="ml-4">
+            <el-radio-group v-model="params.charset" class="ml-4">
               <el-radio label="1" size="large">uft-8</el-radio>
               <el-radio label="2" size="large">gb2312</el-radio>
             </el-radio-group>
           </el-form-item>
 
           <el-form-item
-            label="文章列表"
+            label="列表链接"
             prop="listTag"
             :rules="[
               {
@@ -72,7 +72,7 @@
               <el-input
                 class="flex-1"
                 v-model="params.listTag"
-                placeholder="例：#ul"
+                placeholder="例：.content h4 a"
               ></el-input>
               <el-button class="ml-5" type="primary" @click="getPages">
                 测试
@@ -90,14 +90,18 @@
                 class="flex-1 mr-5"
                 v-model="params.increment"
               ></el-input>
-              <el-button type="primary" @click="submit('params')"
-                >测试</el-button
-              >
+              <el-button type="primary" @click="getListPages">测试</el-button>
             </div>
           </el-form-item>
 
-          <el-form-item label="目标地址" class="show">
-            <p v-for="(item, index) of params.pages" :key="index">
+          <el-form-item label="列表地址" v-if="listPages.length > 0">
+            <p class="mr-30" v-for="(item, index) of listPages" :key="index">
+              {{ item }}
+            </p>
+          </el-form-item>
+
+          <el-form-item label="文章地址" v-if="params.pages.length > 0">
+            <p class="mr-30" v-for="(item, index) of params.pages" :key="index">
               {{ item }}
             </p>
           </el-form-item>
@@ -151,7 +155,6 @@
               placeholder="例：$('div').remove()"
             ></el-input>
           </el-form-item>
-
           <el-form-item label="清理正则" prop="clearRegCode">
             <div class="row w-p100">
               <el-input
@@ -224,18 +227,18 @@ export default {
         taskName: "",
         targetUrl: "",
         listTag: "",
-        startNum: 0,
-        endNum: 0,
-        increment: 0,
-        pages: [],
+        startNum: 1,
+        endNum: 1,
+        increment: 1,
+        pages: [], //详情页面地址
         titleTag: "",
         articleTag: "",
-        chartset: "1", //utf-8
+        charset: "1", //utf-8
         clearRegCode: "",
-        removeCode: "",
         status: "1", //是否限制
         cid: 1,
       },
+      listPages: [],
       article: {},
     };
   },
@@ -253,15 +256,49 @@ export default {
 
     async getPages() {
       try {
-        let { targetUrl, listTag, chartset } = this.params;
-        let res = await getPages({ targetUrl, listTag, chartset });
+        let { targetUrl, listTag, charset } = this.params;
+        let res = await getPages({ targetUrl, listTag, charset });
         if (res.code == 200) {
-          this.params.pages = res.data || [];
+          let data = res.data;
+
+          // eslint-disable-next-line no-useless-escape
+          const regex = /^(.*:\/\/[^\/]+).*$/;
+          const matches = targetUrl.match(regex);
+          const fullUrl = matches[1];
+          if (!data[0].includes("http")) {
+            data = data.map((item) => {
+              return fullUrl + item;
+            });
+          }
+          this.params.pages = data;
           this.$message({
             message: "列表地址获取成功^_^",
             type: "success",
           });
         }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    async getListPages() {
+      try {
+        let { targetUrl, startNum, endNum, increment } = this.params;
+        let pages = [];
+        for (let i = startNum; i <= endNum; i += increment) {
+          let url = targetUrl.replace("${page}", i);
+          pages.push(url);
+        }
+        this.listPages = pages;
+        this.listPages.map(async (item, index) => {
+          let { listTag, charset } = this.params;
+          if (index > 0) {
+            let res = await getPages({ targetUrl: item, listTag, charset });
+            if (res.code == 200) {
+              this.params.pages = [...this.params.pages, ...res.data];
+            }
+          }
+        });
       } catch (error) {
         console.log(error);
       }
@@ -273,9 +310,9 @@ export default {
           taskUrl,
           titleTag,
           articleTag,
-          removeCode,
           clearRegCode,
-          chartset,
+          removeCode,
+          charset,
         } = this.params;
 
         taskUrl = this.params.pages[0] || "";
@@ -285,7 +322,7 @@ export default {
           articleTag,
           removeCode,
           clearRegCode,
-          chartset,
+          charset,
         });
         if (res.code == 200) {
           this.article = res.data;
@@ -302,6 +339,8 @@ export default {
     //新增
     async create() {
       try {
+        let params = this.params;
+        params.pages = this.params.pages.toString();
         let res = await create(this.params);
         if (res.code == 200) {
           this.$message({

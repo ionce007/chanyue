@@ -74,3 +74,27 @@ export let search = (key) => {
     method: "get",
   });
 };
+
+//文章列表
+export let list = (cur) => {
+  return http({
+    url: `${API.BASE_API}/api/collect/list?cur=${cur}&pageSize=10`,
+    method: "get",
+  });
+};
+
+//删
+export let del = (id) => {
+  return http({
+    url: `${API.BASE_API}/api/collect/delete?id=${id}`,
+    method: "get",
+  });
+};
+
+//文章详情
+export let detail = (id) => {
+  return http({
+    url: `${API.BASE_API}/api/collect/detail?id=${id}`,
+    method: "get",
+  });
+};

@@ -7,9 +7,9 @@ const iconv = require('iconv-lite');
 class CollectService {
   static model = 'collect';
 
-  static async common(url, chartset) {
+  static async common(url, charset) {
     try {
-      console.log(url,chartset)
+      console.log(url,charset)
       const { data } = await axios.get(url, {
         responseType: 'arraybuffer',
         headers: {
@@ -18,7 +18,7 @@ class CollectService {
           'Accept-Language': 'zh-CN,zh;q=0.9'
         }
       })
-      return chartset == 1 ? data : iconv.decode(data, 'gb2312')
+      return charset == 1 ? data : iconv.decode(data, 'gb2312')
     } catch (err) {
       throw new Error(err)
     }
@@ -65,7 +65,17 @@ class CollectService {
       // 查询个数
       const total = await knex(CollectService.model).count('id', { as: 'count' });
       const offset = parseInt((cur - 1) * pageSize);
-      const list = await knex.select(['id', 'taskName', 'targetUrl', 'updatedAt', 'chartset', 'status'])
+      const list = await knex.select(['id', 
+      'taskName', 
+      'pages', 
+      'updatedAt', 
+      'charset', 
+      'titleTag',
+      'articleTag',
+      'removeCode',
+      'clearRegCode',
+      'charset',
+      'status','cid'])
         .from(CollectService.model)
         .limit(pageSize)
         .offset(offset)
@@ -87,7 +97,11 @@ class CollectService {
   // 查
   static async detail(id) {
     try {
-      const data = await knex(CollectService.model).where('id', '=', id).select(['id', 'username', 'createdAt', 'updatedAt', 'status'])
+      const data = await knex(CollectService.model)
+      .where('id', '=', id)
+      .select(['id', 'taskName', 'targetUrl', 
+      'listTag', 'startNum','endNum','increment','pages',
+      'titleTag','articleTag','charset','clearRegCode','status','cid'])
       return data[0];
     } catch (err) {
       throw new Error(err)
@@ -102,7 +116,7 @@ class CollectService {
       const total = await knex.raw(sql, [CollectService.model]);
       // 翻页
       const offset = parseInt((cur - 1) * pageSize);
-      const sql_list = `SELECT p.id,p.taskName,p.targetUrl,p.updatedAt,p.chartset,p.status FROM ? p WHERE p.taskName LIKE '%${key}%' ORDER BY id DESC LIMIT ?,?`;
+      const sql_list = `SELECT p.id,p.taskName,p.targetUrl,p.updatedAt,p.charset,p.status FROM ? p WHERE p.taskName LIKE '%${key}%' ORDER BY id DESC LIMIT ?,?`;
       const list = await knex.raw(sql_list, [CollectService.model, offset, parseInt(pageSize)]);
       const count = total[0].count || 1;
       return {

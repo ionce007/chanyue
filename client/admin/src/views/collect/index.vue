@@ -15,20 +15,33 @@
   >
     <el-table-column type="selection"></el-table-column>
     <el-table-column prop="id" width="60" label="编号"></el-table-column>
-    <el-table-column prop="title" width="120" label="标题"></el-table-column>
-    <el-table-column prop="link" width="260" label="链接"></el-table-column>
-    <el-table-column prop="sort" label="排序"></el-table-column>
+    <el-table-column prop="taskName" label="任务名称"> </el-table-column>
+    <el-table-column prop="charset" label="编码">
+      <template #default="scope">{{
+        scope.row.charset == 1 ? "UTF-8" : "GB2312"
+      }}</template>
+    </el-table-column>
+    <el-table-column prop="status" label="状态">
+      <template #default="scope">{{
+        scope.row.status == 1 ? "草稿" : "发布"
+      }}</template>
+    </el-table-column>
     <el-table-column prop="createdAt" label="发布时间">
       <template #default="scope">{{ scope.row.createdAt }}</template>
     </el-table-column>
-    <el-table-column fixed="right" width="92" label="操作">
+    <el-table-column fixed="right" width="222" label="操作">
       <template #default="scope">
         <el-button :icon="Edit" circle @click="toEdit(scope.row)"></el-button>
+
         <el-button
           :icon="Delete"
           circle
           @click="handleDel(scope.row)"
         ></el-button>
+
+        <el-button type="primary" round :icon="Cpu" @click="toRun(scope.row)"
+          >执行</el-button
+        >
       </template>
     </el-table-column>
   </el-table>
@@ -47,17 +60,20 @@
 </template>
 
 <script>
-import { Delete, Edit, View, Search } from "@element-plus/icons-vue";
-import { list, del } from "@/api/friendlink.js";
+import { Delete, Edit, View, Search, Cpu } from "@element-plus/icons-vue";
+import { list, del, getArticle } from "@/api/collect.js";
+import { create } from "@/api/article.js";
+import { filterHtml } from "@/utils/tool.js";
 
 export default {
-  name: "friendlink-index",
+  name: "collect-index",
   setup() {
     return {
       Edit,
       Delete,
       View,
       Search,
+      Cpu,
     };
   },
   data: () => {
@@ -67,6 +83,28 @@ export default {
       multipleSelection: [],
       count: 0,
       cur: 1,
+      step: 0,
+      params: {
+        //接口入参
+        cid: 0,
+        title: "",
+        short_title: "",
+        tag_id: "",
+        attr: [],
+        seo_title: "",
+        seo_keywords: "",
+        seo_description: "",
+        source: "",
+        author: "",
+        description: "",
+        img: "",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        content: "禅悦",
+        status: "0",
+        pv: 1,
+        link: "",
+      },
     };
   },
   computed: {},
@@ -107,10 +145,87 @@ export default {
       this.multipleSelection = val;
     },
 
+    async toRun(params) {
+      try {
+        let {
+          pages,
+          titleTag,
+          articleTag,
+          clearRegCode,
+          removeCode,
+          charset,
+          cid,
+          status,
+        } = params;
+        pages = pages.split(",");
+
+        let res = await getArticle({
+          taskUrl: pages[this.step],
+          titleTag,
+          articleTag,
+          removeCode,
+          clearRegCode,
+          charset,
+        });
+        if (res.code == 200) {
+          this.article = res.data;
+          const { title, article } = res.data;
+          this.params.title = title;
+          this.params.content = article;
+          this.params.cid = cid;
+          this.params.status = status == 1 ? 1 : 0;
+          this.create(params);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    //新增
+    async create(scope) {
+      try {
+        let params = { ...this.params };
+        params.attr = params.attr.toString();
+        params.tag_id = params.tag_id.toString();
+        //提取255字符作为文章描述
+        if (!params.description) {
+          params.description = filterHtml(params.content).substr(0, 255);
+        }
+        let res = await create({
+          defaultParams: params,
+          fieldParams: {},
+        });
+
+        if (res.code == 200) {
+          this.$message({
+            message: `第一${this.step + 1}条数据完成^_^`,
+            type: "success",
+          });
+
+          setTimeout(() => {
+            let { pages } = scope;
+            pages = pages.split(",");
+            console.log(pages.length, this.step);
+            if (this.step <= pages.length - 1) {
+              this.toRun(scope);
+              this.step = this.step + 1;
+            }
+          }, 3000);
+        } else {
+          this.$message({
+            message: res.msg || `第一${this.step + 1}条数据失败^_^`,
+            type: "success",
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
     //编辑
     toEdit(e) {
       let id = e.id;
-      this.$router.push({ name: "friendlink-edit", params: { id: id } });
+      this.$router.push({ name: "collect-edit", params: { id: id } });
     },
 
     //删除

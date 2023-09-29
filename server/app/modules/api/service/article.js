@@ -39,16 +39,19 @@ class ArticleService  {
           const modId = await knex.raw(modIdStr, []).transacting(trx);
 
           // 通过模型查找表名
-          const tableNameStr = `SELECT table_name FROM model WHERE id=${modId[0][0].mid} LIMIT 0,1`;
-          const tableName = await knex.raw(tableNameStr, []).transacting(trx);
-
-          // 新增模型文章
-          if (tableName[0].length > 0) {
-            const fields = { ...fieldParams, aid: id };
-            res = await knex(`${tableName[0][0].table_name}`)
-              .insert(fields)
-              .transacting(trx);
+          if(modId[0].length>0){
+            const tableNameStr = `SELECT table_name FROM model WHERE id=${modId[0][0].mid} LIMIT 0,1`;
+            const tableName = await knex.raw(tableNameStr, []).transacting(trx);
+  
+            // 新增模型文章
+            if (tableName[0].length > 0) {
+              const fields = { ...fieldParams, aid: id };
+              res = await knex(`${tableName[0][0].table_name}`)
+                .insert(fields)
+                .transacting(trx);
+            }
           }
+         
 
           // 新增文章和标签关联
           const tags = defaultParams.tag_id

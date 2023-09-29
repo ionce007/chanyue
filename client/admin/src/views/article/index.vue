@@ -93,7 +93,20 @@
   <el-row type="flex" class="mt-20" justify="space-between">
     <div style="margin-top: 20px">
       批量操作：
-      <el-button @click="delSome">删除</el-button>
+
+      <el-popconfirm
+        confirm-button-text="确定"
+        cancel-button-text="取消"
+        :icon="InfoFilled"
+        icon-color="#626AEF"
+        title="此操作将永久删除, 是否继续?"
+        @confirm="delSome"
+        @cancel="cancelEvent"
+      >
+        <template #reference>
+          <el-button>删除</el-button>
+        </template>
+      </el-popconfirm>
     </div>
     <el-pagination
       background
@@ -108,7 +121,13 @@
 </template>
 
 <script>
-import { Delete, Edit, View, Search } from "@element-plus/icons-vue";
+import {
+  Delete,
+  Edit,
+  View,
+  Search,
+  InfoFilled,
+} from "@element-plus/icons-vue";
 import { search, del } from "@/api/article.js";
 import { find } from "@/api/category.js";
 import { addLabelValue, tree } from "@/utils/tool.js";
@@ -120,6 +139,7 @@ export default {
       Delete,
       View,
       Search,
+      InfoFilled,
     };
   },
   data: () => {
@@ -245,31 +265,20 @@ export default {
       this.$router.push({ name: "article-edit", params: { id: id } });
     },
 
-    delSome() {
+    cancelEvent() {},
+
+    async delSome() {
       let ids = this.multipleSelection.map((item) => {
         return item.id;
       });
-      this.$confirm("此操作将永久删除, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(async () => {
-          let res = await del(ids.join(","));
-          if (res.code === 200) {
-            this.$message({
-              message: "删除成功 ^_^",
-              type: "success",
-            });
-            this.search();
-          }
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "已取消删除",
-          });
+      let res = await del(ids.join(","));
+      if (res.code === 200) {
+        this.$message({
+          message: "删除成功 ^_^",
+          type: "success",
         });
+        this.search();
+      }
     },
 
     //删除文章
