@@ -53,7 +53,7 @@
       background
       layout="prev, pager, next"
       @current-change="handleCurrentChange"
-      :pager-size="10"
+      :page-size="10"
       :total="count"
       v-model:currentPage="cur"
       hide-on-single-page

@@ -49,7 +49,7 @@
           background
           layout="prev, pager, next"
           @current-change="handleCurrentChange"
-          :pager-size="10"
+          :page-size="10"
           :total="count"
           hide-on-single-page
         ></el-pagination>

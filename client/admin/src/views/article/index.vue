@@ -112,7 +112,7 @@
       background
       layout="prev, pager, next"
       @current-change="handleCurrentChange"
-      :pager-size="10"
+      :page-size="20"
       :total="count"
       v-model:currentPage="cur"
       hide-on-single-page
@@ -211,6 +211,7 @@ export default {
         if (res.code === 200) {
           this.tableData = [...res.data.list];
           this.count = res.data.count;
+          this.cur = res.data.current;
           this.loading = false;
         }
       } catch (error) {
