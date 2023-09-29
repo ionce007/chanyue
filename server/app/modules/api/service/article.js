@@ -298,8 +298,8 @@ class ArticleService  {
       // 翻页
       const offset = parseInt((cur - 1) * pageSize);
       let sql_list = "";
-      const listStart = `SELECT a.id,a.title,a.attr,a.tag_id,a.description,a.cid,a.pv,a.updatedAt,a.status,c.name,c.path FROM ${this.model} a LEFT JOIN category c ON a.cid=c.id WHERE a.title LIKE  \'%${key}%\' `;
-      const listEnd = `ORDER BY a.updatedAt desc LIMIT ${offset},${parseInt(
+      const listStart = `SELECT a.id,a.title,a.attr,a.tag_id,a.description,a.cid,a.pv,a.createdAt,a.status,c.name,c.path FROM ${this.model} a LEFT JOIN category c ON a.cid=c.id WHERE a.title LIKE  \'%${key}%\' `;
+      const listEnd = `ORDER BY a.createdAt desc LIMIT ${offset},${parseInt(
         pageSize
       )}`;
       if (cid === 0) {

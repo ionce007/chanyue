@@ -440,14 +440,20 @@ html {
 .page ul li {
     float: left;
     border: 1px solid #ede7e7;
-    padding: 8px 15px;
+   
     margin-right: 10px;
     color: #666;
     cursor: pointer;
     transition: all 0.5s linear;
     border-radius: 5px;
 }
-
+.page ul li.disabled{
+    padding: 8px 15px;
+}
+.page ul li a{
+    display: block;
+    padding: 8px 15px;
+}
 .page ul li.current {
     background-color: #1e80ff;
     border: none;
@@ -455,10 +461,11 @@ html {
 
 .page ul li.current a {
     color: #fff;
+    
 }
 
 .page ul li:hover {
-    border: 1px solid #69b1ff;
+    /* border: 1px solid #69b1ff; */
 }
 
 
