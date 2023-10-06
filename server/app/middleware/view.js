@@ -7,6 +7,7 @@ module.exports = (app) => {
   const web = path.join(appRoot, `modules/web/view`);
   //合并插件中的view
   const all = [...views, web];
+  
   app.set("view options", {
     debug: process.env.NODE_ENV != "prd",
     cache: process.env.NODE_ENV == "prd",

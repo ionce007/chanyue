@@ -125,15 +125,18 @@
           </el-form-item>
         </el-form>
       </el-tab-pane>
+
+      <sysSet></sysSet>
     </el-tabs>
   </div>
 </template>
 
 <script>
 import { siteInfo, updateInfo, updateSeo } from "@/api/site.js";
-
+import sysSet from "./components/set.vue";
 export default {
   name: "sys-index",
+  components: { sysSet },
   data: () => {
     return {
       loading: true,

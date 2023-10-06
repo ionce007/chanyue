@@ -14,12 +14,13 @@ config.mysql = {
   database: "chanyue",
 };
 
+
 //sql debug
-config.debug = false;
+config.debug = true;
 
 // add your user config here
-config.template = "default";
-config.apiService = "api";
+config.template = "default"; //模板和上传用同一个文件夹
+config.apiService = "api"; 
 
 // 七牛云上传相关配置
 config.qiniuOss = {

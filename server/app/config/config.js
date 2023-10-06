@@ -1,4 +1,4 @@
-﻿const dev = require("./config.default.js");
+﻿const dev = require("./config.dev.js");
 const prd = require("./config.prd.js");
 
 const map = new Map();
