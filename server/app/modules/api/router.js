@@ -4,6 +4,8 @@ const router = express.Router();
 const AdminController = require('./controller/admin.js');
 const ArticleController = require('./controller/article.js');
 const SiteController = require('./controller/site.js');
+const SysAppController = require('./controller/sysApp.js');
+
 const CategoryController = require('./controller/category.js');
 const CollectController = require('./controller/collect.js')
 const ModelController = require('./controller/model.js');
@@ -35,6 +37,10 @@ router.get('/site/find', auth(), SiteController.find);
 router.post('/site/updateInfo', auth(), SiteController.updateInfo);
 router.post('/site/updateSeo', auth(), SiteController.updateSeo);
 router.get('/site/runEnv', SiteController.runEnv);
+router.get('/sysApp/find', SysAppController.find);
+router.post('/sysApp/update', auth(), SysAppController.update);
+
+
 
 // 网站栏目
 router.get('/category/find', CategoryController.find);
@@ -44,6 +50,8 @@ router.get('/category/search', CategoryController.search);
 router.get('/category/delete', auth(), CategoryController.delete);
 router.post('/category/update', auth(), CategoryController.update);
 router.post('/category/create', auth(), CategoryController.create);
+
+
 
 // 文章栏目
 router.get('/article/list', ArticleController.list);
