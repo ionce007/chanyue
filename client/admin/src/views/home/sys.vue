@@ -126,17 +126,21 @@
         </el-form>
       </el-tab-pane>
 
-      <sysSet></sysSet>
+      <ConfigSet></ConfigSet>
+      <QiNiu></QiNiu>
+      <WeChat></WeChat>
     </el-tabs>
   </div>
 </template>
 
 <script>
 import { siteInfo, updateInfo, updateSeo } from "@/api/site.js";
-import sysSet from "./components/set.vue";
+import ConfigSet from "./components/config.vue";
+import QiNiu from "./components/qiniu.vue";
+import WeChat from "./components/wechat.vue";
 export default {
   name: "sys-index",
-  components: { sysSet },
+  components: { ConfigSet, QiNiu, WeChat },
   data: () => {
     return {
       loading: true,

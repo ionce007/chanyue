@@ -1,8 +1,8 @@
 <template>
   <div class="mr-10 ml-10">
     <!-- 基本设置 -->
-    <el-tab-pane label="应用配置" class="mt-20" name="three">
-      <el-form ref="set" :model="set" label-width="120px">
+    <el-tab-pane label="应用配置" class="mt-20" name="config">
+      <el-form ref="set" :model="set" label-width="80px">
         <el-form-item prop="template" label="模板">
           <el-input
             v-model="set.template"
@@ -17,40 +17,6 @@
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item
-          label="微信appid"
-          prop="appid"
-          :rules="[
-            {
-              required: true,
-              message: '请输入appid',
-              trigger: 'blur',
-            },
-          ]"
-        >
-          <el-input v-model="set.appid"></el-input>
-        </el-form-item>
-
-        <el-form-item prop="secret" label="微信secret">
-          <el-input v-model="set.secret"></el-input>
-        </el-form-item>
-
-        <el-form-item prop="accessKey" label="七牛云accessKey">
-          <el-input v-model="set.accessKey"></el-input>
-        </el-form-item>
-
-        <el-form-item prop="secretKey" label="七牛云secretKey">
-          <el-input v-model="set.secretKey"></el-input>
-        </el-form-item>
-
-        <el-form-item prop="domain" label="七牛云domain">
-          <el-input v-model="set.domain"></el-input>
-        </el-form-item>
-
-        <el-form-item prop="bucket" label="七牛云bucket">
-          <el-input v-model="set.bucket"></el-input>
-        </el-form-item>
-
         <el-form-item>
           <el-button type="primary" @click="submit('set')">保存</el-button>
         </el-form-item>
@@ -63,7 +29,7 @@
 import { find, update } from "@/api/sys_app.js";
 
 export default {
-  name: "sysSet",
+  name: "ConfigSet",
   data: () => {
     return {
       loading: true,
@@ -105,11 +71,7 @@ export default {
     //更新SEO信息
     async update() {
       try {
-        let params = this.set;
-        if (this.set.template == "default") {
-          params.template = "";
-        }
-        let res = await update(params);
+        let res = await update(this.set);
         if (res.code === 200) {
           this.$message({
             message: "更新成功^_^",

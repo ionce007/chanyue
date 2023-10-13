@@ -14,6 +14,21 @@ class SysAppService  {
     }
   }
 
+  static async config() {
+    try {
+      let res =  await knex.select(["template", "uploadWay"])
+      .from(SysAppService.model)
+      .limit(1);
+      return res[0];
+    } catch (err) {
+      console.error(err)
+      throw new Error(err)
+    }
+  }
+
+
+
+
   static async update(body) {
     const { id } = body;
     delete body.id;

@@ -19,7 +19,7 @@ config.debug = false;
 
 // add your user config here
 config.template = "default";
-config.apiService = "api";
+
 
 // 七牛云上传相关配置
 config.qiniuOss = {

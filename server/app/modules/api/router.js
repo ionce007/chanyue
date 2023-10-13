@@ -18,6 +18,7 @@ const QiniuController = require('./controller/qiniu.js');
 
 const config = require('../../config/config.js');
 const { upload, uploads } = require('../../extend/upload.js');
+const SysAppService = require('./service/sysApp.js');
 const auth = require('../../middleware/auth.js');
 
 // 验证码
@@ -38,9 +39,8 @@ router.post('/site/updateInfo', auth(), SiteController.updateInfo);
 router.post('/site/updateSeo', auth(), SiteController.updateSeo);
 router.get('/site/runEnv', SiteController.runEnv);
 router.get('/sysApp/find', SysAppController.find);
+router.get('/sysApp/config', SysAppController.config);
 router.post('/sysApp/update', auth(), SysAppController.update);
-
-
 
 // 网站栏目
 router.get('/category/find', CategoryController.find);
@@ -51,8 +51,6 @@ router.get('/category/delete', auth(), CategoryController.delete);
 router.post('/category/update', auth(), CategoryController.update);
 router.post('/category/create', auth(), CategoryController.create);
 
-
-
 // 文章栏目
 router.get('/article/list', ArticleController.list);
 router.get('/article/tongji', ArticleController.tongji);
@@ -62,18 +60,23 @@ router.get('/article/findField', auth(), ArticleController.findField);
 router.post('/article/create', auth(), ArticleController.create);
 router.get('/article/delete', auth(), ArticleController.delete);
 router.post('/article/update', auth(), ArticleController.update);
+//上传
+(async function() {
+    let config = await SysAppService.config();
+    const {uploadWay} = config;
+    let uploadConfig = {
+        '1': {
+            type: upload.any(),
+            method: ArticleController.upload,
+        },
+        '2': {
+            type: uploads.single("file"),
+            method: QiniuController.upload,
+        },
+    }[uploadWay];
+    router.post('/upload', auth(), uploadConfig.type, uploadConfig.method);
+  })();
 
-let uploadConfig = {
-    'default': {
-        type: upload.any(),
-        method: ArticleController.upload,
-    },
-    'qiniuyun': {
-        type: uploads.single("file"),
-        method: QiniuController.upload,
-    },
-}[config.upload];
-router.post('/upload', auth(), uploadConfig.type, uploadConfig.method);
 
 // 模型管理
 router.get('/model/list', ModelController.list);

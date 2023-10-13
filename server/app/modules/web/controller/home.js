@@ -3,11 +3,13 @@ const dayjs = require("dayjs");
 const HomeService = require(`../service/home.js`);
 const CommonService = require("../service/common.js");
 const ArticleService = require("../../api/service/article.js");
-const {config:{template},helper} = require('../../../common/BaseController.js');
+
 class HomeController {
   // 首页
   static async index(req, res, next) {
     try {
+     
+      const {config:{template},helper} = req.app.locals;
       let result = {};
       if (!("slide" in res.locals)) {
         result = await HomeService.home();
@@ -23,6 +25,7 @@ class HomeController {
   // 列表页
   static async list(req, res, next) {
     try {
+      const {config:{template},helper} = req.app.locals;
       const { cate, current, cid } = req.params;
       const currentPage = parseInt(current) || 1;
       const pageSize = 10;
@@ -67,6 +70,7 @@ class HomeController {
   // 详情页
   static async article(req, res, next) {
     try {
+      const {config:{template},helper} = req.app.locals;
       const { id } = req.params;
       const { category} = req.app.locals; 
       if (!id) {
@@ -135,6 +139,7 @@ class HomeController {
   // 单页
   static async page(req, res, next) {
     try {
+      const {config:{template},helper} = req.app.locals;
       const { cate, id } = req.params;
       const { category } = req.app.locals;
 
@@ -211,6 +216,7 @@ class HomeController {
   // 搜索页
   static async search(req, res, next) {
     try {
+      const {config:{template},helper} = req.app.locals;
       const { keywords, id } = req.params;
       const page = id || 1;
       const pageSize = 10;
@@ -237,6 +243,7 @@ class HomeController {
   // tag
   static async tag(req, res, next) {
     try {
+      const {config:{template},helper} = req.app.locals;
       const { path, id } = req.params;
       const page = id || 1;
       const pageSize = 10;

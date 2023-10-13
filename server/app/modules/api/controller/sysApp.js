@@ -14,6 +14,16 @@ class SysAppController  {
     }
   }
 
+   // app配置
+  static async config(req, res, next) {
+    try {
+      const data = await SysAppService.config();
+      res.json({ ...success, data: data })
+    } catch (err) {
+      next(err);
+    }
+  }
+
   // 改
   static async update(req, res, next) {
     try {
