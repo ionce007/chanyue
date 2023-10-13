@@ -1,13 +1,11 @@
 "use strict";
 const BaseService = require("./base");
 const qiniu = require('qiniu');
-
-const {config} = require('../../../common/BaseService.js');
 class QiniuService  {
 
   // 生成上传token
-  static async _getToken(){
-    const {accessKey,secretKey,bucket} = config.qiniuOss;
+  static async getUploadToken(config){
+    const {accessKey,secretKey,bucket} = config;
     let mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
     // 上传凭证
     let options = {
@@ -21,20 +19,20 @@ class QiniuService  {
   }
 
   // 获取上传token
-  static async getUploadToken() {
-    try {
-      const result = {
-        "token":await this._getToken(),
-      };
-      return result;
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  // static async getUploadToken() {
+  //   try {
+  //     const result = {
+  //       "token":await this._getToken(),
+  //     };
+  //     return result;
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
 
 
   //七牛云上传
-  static async upload(file){
+  static async upload(file,config){
     let date= new Date();
     let year = date.getFullYear();
     let month = (date.getMonth()+1).toString().padStart(2,'0');
@@ -42,7 +40,7 @@ class QiniuService  {
     // upload
     let key = `/uploads/${year}/${month}/${day}/${new Date().getTime()}_${file.originalname}`
     //上传token
-    let uploadToken = await this._getToken();
+    let uploadToken = await this.getUploadToken(config);
     let _config = new qiniu.conf.Config();
     let localFile = file.path;
     let formUploader = new qiniu.form_up.FormUploader(_config);

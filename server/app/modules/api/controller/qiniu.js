@@ -5,7 +5,6 @@ const fs = require("fs");
 
 class QiniuController  {
   
-
   // 获取七牛云上传token
   static async getUploadToken(req, res, next) {
     try {
@@ -19,10 +18,12 @@ class QiniuController  {
   // 服务端直传七牛
   static async upload(req, res, next) {
     try {
+      const {config:{domain,bucket,secretKey,accessKey}} = req.app.locals;
+
       let file = req.file;
       const { originalname, filename, path } = file;
-      const { domain = ''} = config.qiniuOss;
-      const uploadResult = await QiniuService.upload(file);
+    
+      const uploadResult = await QiniuService.upload(file,{bucket,secretKey,accessKey});
       const { key='' } = uploadResult.data;
       if (uploadResult.code == 200) {
         fs.unlinkSync(file.path); //删除服务本地文件
