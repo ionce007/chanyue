@@ -2,7 +2,6 @@
 const fs = require("fs");
 const path = require("path");
 
-
 const config = {};
 config.version = "v1.5";
 config.appName = "禅悦cms";
