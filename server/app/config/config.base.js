@@ -1,12 +1,14 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const { conf } = require("qiniu");
+
 
 const config = {};
 config.version = "v1.5";
 config.appName = "禅悦cms";
 config.port = '81';
+config.createdAt = '2023-10-13';
+
 config.appRoot = path.join(__dirname, "../");
 
 // cookie sign key

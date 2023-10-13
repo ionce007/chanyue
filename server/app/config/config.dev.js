@@ -1,9 +1,9 @@
 "use strict";
 const fs = require("fs");
 const path = require("path");
-const defaultConfig = require("./config.default.js");
+const configBase = require("./config.base.js");
 
-const config = {...defaultConfig};
+const config = {...configBase};
 
 // add mysql config
 config.mysql = {
@@ -18,17 +18,5 @@ config.mysql = {
 //sql debug
 config.debug = true;
 
-// add your user config here
-config.template = "default"; //模板和上传用同一个文件夹
-
-
-// 七牛云上传相关配置
-config.qiniuOss = {
-  accessKey: "xxx", //ak
-  secretKey: "xxx", //sk
-  domain: "xxx", //域名
-  bucket: "xxx", //空间名称
-};
-config.upload = "default"; // default 普通上传 qiniuyun 七牛云上传
 
 module.exports = config;
