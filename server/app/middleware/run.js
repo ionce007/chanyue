@@ -2,9 +2,6 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const favicon = require("serve-favicon");
 const path = require("path");
-const auth = require("./auth.js");
-const helper = require("../extend/helper.js");
-const config = require("../config/config.js");
 
 
 const sysconfig = require('./config.js')
@@ -12,11 +9,8 @@ const view = require("./view.js");
 const router = require("../router.js");
 module.exports = async function (app) {
   //挂载配置
-  // app.locals.config = config;
-  // app.locals.auth = auth;
-  // app.locals.helper = helper;
-
   await sysconfig(app)
+  
   const { appRoot, cookieKey } = app.locals.config;
   // favicon 图标
   app.use(favicon(path.join(appRoot, "public/favicon.ico")));
