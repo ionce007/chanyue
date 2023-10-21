@@ -69,12 +69,17 @@ server 部署代码
         |-- controller
         |-- service
         |-- router.js
-      |-web 
+      |-home 
         |-- controller
         |-- middleware
         |-- service
         |-- view
         |-- router.js
+      |-admin 
+        |-- controller
+        |-- middleware
+        |-- service
+        |-- router.js  
     |- plugin 
         |- open
           |-- controller
