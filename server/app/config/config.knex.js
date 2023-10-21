@@ -1,4 +1,4 @@
-﻿const config = require("./config");
+﻿const config = require(".");
 const {
   mysql: { host, port, user, password, database },
 } = config;

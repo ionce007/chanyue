@@ -1,5 +1,5 @@
 const SysAppService = require('../modules/api/service/sysApp.js');
-const config = require("../config/config.js");
+const config = require("../config/index.js");
 const auth = require("./auth.js");
 const helper = require("../extend/helper.js");
 

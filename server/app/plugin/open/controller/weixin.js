@@ -4,7 +4,7 @@ const {
   config,
   knex,
   helper: { setToken, success, fail, filterBody },
-} = require("../../../common/BaseService.js");
+} = require("../../config.js");
 class WeiXinController {
   constructor(props) {
     this.model = "weixin";

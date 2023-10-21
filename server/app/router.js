@@ -3,12 +3,12 @@ const path = require("path");
 const express = require("express");
 const router = express.Router();
 const api = require("./modules/api/router.js");
-const web = require(`./modules/web/router.js`);
+const home = require(`./modules/home/router.js`);
 const open = require(`./plugin/router.js`);
-const init = require("./modules/web/middleware/init.js");
+const init = require("./modules/home/middleware/init.js");
 
 //前台
-router.use("/", web);
+router.use("/", home);
 
 //接口
 router.use("/api", api);

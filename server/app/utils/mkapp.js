@@ -1,4 +1,4 @@
-const config = require('../config/config');
+const config = require('../config/index');
 
 //前置补零
 var addPreZero=(num)=>{

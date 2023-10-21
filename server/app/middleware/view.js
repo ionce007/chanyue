@@ -3,10 +3,10 @@ module.exports = (app) => {
   const {
     config: { appRoot, views },
   } = app.locals;
-  //默认web view
-  const web = path.join(appRoot, `modules/web/view`);
+  //默认home view
+  const home = path.join(appRoot, `modules/home/view`);
   //合并插件中的view
-  const all = [...views, web];
+  const all = [...views, home];
   
   app.set("view options", {
     debug: process.env.NODE_ENV != "prd",

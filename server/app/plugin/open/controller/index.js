@@ -3,7 +3,7 @@ const {
   config,
   knex,
   helper: { success, fail, filterBody },
-} = require("../../../common/BaseService.js");
+} = require("../../config.js");
 const { Readable } = require('stream');
 
 const axios = require('axios');

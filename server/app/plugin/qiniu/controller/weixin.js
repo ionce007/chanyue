@@ -1,7 +1,7 @@
 "use strict";
 const { success } = require("../../extend/api.js");
 const { setToken } = require("../../extend/helper.js");
-const config = require("../../config/config.js");
+const config = require("../../config/index.js");
 
 class WeiXinController {
   constructor(props) {

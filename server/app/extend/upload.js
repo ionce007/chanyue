@@ -2,7 +2,7 @@ const multer = require("multer");
 const dayjs = require("dayjs");
 const fs = require("fs");
 const path = require("path");
-const { template } = require("../config/config.js");
+const { template } = require("../config/index.js");
 const { mkdirsSync } = require("./helper.js");
 
 const storage = multer.diskStorage({
