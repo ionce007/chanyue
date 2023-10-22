@@ -54,7 +54,7 @@ export const userStore = defineStore("user", {
       this.token = "";
       localStorage.removeItem("token");
     },
-
+    //根据角色进行过滤 superadmin admin editor
     getAccessRoutes(role) {
       let asyncRoutes = this.menuList;
       const accessRoutes = filterRoutes(asyncRoutes, role);

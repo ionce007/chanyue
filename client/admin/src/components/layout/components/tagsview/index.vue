@@ -30,7 +30,7 @@ watch(
     //addTags();
     //   moveToCurrentTag()
   },
-  { immediate: true }
+  { immediate: true },
 );
 </script>
 

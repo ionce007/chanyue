@@ -27,7 +27,7 @@ export default class Login extends Base {
     //   }, 300);
     // });
   }
-
+  //改成真实的就就支持了角色权限控制
   static userInfo() {
     return new Promise((resovle, reject) => {
       setTimeout(() => {
