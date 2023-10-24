@@ -94,10 +94,10 @@ server 部署代码
 
 ### 🍅️案例
 
-* 案例一 [世界气功网](http://www.shijieqigong.com/) `http://www.shijieqigong.com/`
-* 案例二 [世界大健康运动联盟](http://www.worldhealthgames.com/) `http://www.worldhealthgames.com/`
-* 案例三 [北京辉达环保科技有限公司](http://www.huidaep.com/) `http://www.huidaep.com/`
-* 案例四 [七弈国象](https://doc.7yi.link/) `https://doc.7yi.link/`
+* 案例一 [七弈国象](https://doc.7yi.link/) `https://doc.7yi.link/`
+* 案例二 [世界气功网](http://www.shijieqigong.com/) `http://www.shijieqigong.com/`
+* 案例三 [世界大健康运动联盟](http://www.worldhealthgames.com/) `http://www.worldhealthgames.com/`
+* 案例四 [北京辉达环保科技有限公司](http://www.huidaep.com/) `http://www.huidaep.com/`
 * 演示站 [前端小栈• 禅悦](http://chanyue.zhanhongzhu.top/)
 
 ## 👵开发文档
