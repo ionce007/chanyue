@@ -13,11 +13,11 @@ config.port = '81';
 
 // add mysql config
 config.mysql = {
-    host: 'localhost',
-    port: '3306',
-    user: 'root',
-    password: 'root',
-    database: 'qigong'
+    host: "mysql.sqlpub.com",
+    port: "3306",
+    user: "huangm",
+    password: "34756fb129acd30c",
+    database: "chanyue",
 };
 
 config.token = {
