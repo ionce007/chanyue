@@ -7,10 +7,10 @@ const config = {...configBase};
 
 // add mysql config
 config.mysql = {
-  host: "localhost",
+  host: "mysql.sqlpub.com",
   port: "3306",
-  user: "root",
-  password: "123456",
+  user: "huangm",
+  password: "34756fb129acd30c",
   database: "chanyue",
 };
 
